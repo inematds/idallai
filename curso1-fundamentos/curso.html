@@ -1,0 +1,1836 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="curso" content="fcia-c1">
+<title>Fundamentos — onde tudo começa · Formação Cinema com IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/aula.css">
+<script src="../config.js"></script>
+<script>(function(){try{var m=document.querySelector('meta[name=curso]');var CK=(m&&m.content)||'v5:curso';var s=JSON.parse(localStorage.getItem(CK));if(s&&s.prefs&&s.prefs.theme)document.documentElement.setAttribute('data-theme',s.prefs.theme);}catch(e){}})();</script>
+<!--
+  PROTOCOLO DE DESCOBERTA (v5, Passo 0 — registrado como metadado):
+  - Público específico: adultos 40+, leigos em tecnologia, que querem criar imagens e vídeos cinematográficos com IA para uso profissional.
+  - Profissões-alvo (≥2): fotógrafa com estúdio próprio · dono de restaurante/pequeno comércio · social media autônoma.
+  - Familiaridade com tecnologia: baixa-média — usa WhatsApp, já conversou com IA de chat no navegador; nunca gerou imagem; zero terminal.
+  - Resultado prático esperado: sair produzindo sozinho imagens cinematográficas e um mini-filme de 30–60s com IA, pronto para usar ou vender.
+  - Tempo por sessão: 20–30 minutos.
+-->
+<style>
+  .view{display:none}.view.active{display:block}
+  .lnav{max-width:1160px;margin:0 auto 5vh;padding:0 clamp(24px,5vw,60px);display:flex;justify-content:space-between;gap:12px}
+  .lnav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:12px 16px}
+  .lnav a:hover{border-color:var(--accent);color:var(--ink)}
+  #v-trilha .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(24px,5vw,60px)}
+  #v-trilha .t-hero{position:relative;overflow:hidden;padding:20vh 0 8vh;border-bottom:1px solid var(--line)}
+  #v-trilha h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.4vw,72px);line-height:1;letter-spacing:-.025em;margin:0 0 22px}
+  #v-trilha h1 em{font-style:italic;color:var(--accent)}
+  #v-trilha .lead{font-family:var(--serif);font-size:clamp(19px,2.1vw,24px);line-height:1.5;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+  #v-trilha section{padding:8vh 0}
+  #v-trilha .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  #v-trilha h2{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);margin:0 0 28px}
+  #v-trilha .aulas{display:grid;gap:14px}
+  #v-trilha .au{display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:center;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  #v-trilha .au .num{font-family:var(--serif);font-size:30px;color:var(--accent);text-align:center}
+  #v-trilha .au h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 5px}
+  #v-trilha .au p{margin:0;color:var(--muted);font-size:14.5px}
+  #v-trilha .au .meta{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap;text-align:right}
+  #v-trilha .au .prog{position:static;margin-top:10px;height:5px;border-radius:99px;background:var(--line);overflow:hidden;max-width:220px;width:auto}
+  #v-trilha .au .prog i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  #v-trilha footer{max-width:1080px;margin:0 auto;padding:6vh clamp(24px,5vw,60px) 12vh;color:var(--faint);text-align:center;font-family:var(--serif);font-style:italic;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-inner">
+  <span class="brand"><a class="mark" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a><a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a><a class="course" href="../index.html">Fundamentos — onde tudo começa</a></span>
+  <a class="back" href="#trilha" style="display:none">← trilha</a>
+  <button id="pill" class="pill" style="display:none">0 lido</button>
+  <button id="revbtn">revisar <span id="revn">0</span></button>
+  <button id="exbtn">exercícios</button>
+  <button id="jorbtn">jornada</button>
+  <button id="helpbtn" aria-label="Como funciona">?</button>
+  <button id="prefsbtn" aria-label="Preferências de leitura">Aa</button>
+  <button id="themebtn">tema: escuro</button>
+</div></div>
+
+<!-- ===== TRILHA ===== -->
+<section class="view" id="v-trilha">
+  <header class="t-hero"><div class="wrap">
+    <p class="kicker">Formação Cinema com IA · Curso 1</p>
+    <h1>Fundamentos — onde <em>tudo começa</em></h1>
+    <p class="lead">Em oito aulas você sai da estaca zero: cria sua primeira imagem realista, dá movimento a ela e monta seu primeiro mini-filme — sem base técnica nenhuma.</p>
+  </div></header>
+  <section><div class="wrap">
+    <div class="statcards"></div>
+    <p class="eyebrow">Aulas</p>
+    <h2>Do primeiro quadro ao primeiro filme</h2>
+    <div class="aulas">
+      <a class="au on" data-aula="1" href="#aula-1">
+        <div class="num">1</div>
+        <div><h3>A anatomia do realismo</h3><p>Recrie o clima e a luz de uma foto profissional que você admira, numa imagem sua gerada por IA.</p><div class="prog"><i></i></div></div>
+        <div class="meta">18 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="2" href="#aula-2">
+        <div class="num">2</div>
+        <div><h3>O método da grade</h3><p>Transforme uma única imagem em seis ângulos de câmera da mesma cena — com a mesma pessoa, a mesma roupa, a mesma luz.</p><div class="prog"><i></i></div></div>
+        <div class="meta">20 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="3" href="#aula-3">
+        <div class="num">3</div>
+        <div><h3>A ponte de movimento</h3><p>Faça sua imagem parada virar vídeo controlado: você decide onde a cena começa e onde termina.</p><div class="prog"><i></i></div></div>
+        <div class="meta">20 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="4" href="#aula-4">
+        <div class="num">4</div>
+        <div><h3>Montagem com ritmo</h3><p>Emende seus clipes num editor gratuito, com velocidade e som — e ninguém vê a costura.</p><div class="prog"><i></i></div></div>
+        <div class="meta">22 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="5" href="#aula-5">
+        <div class="num">5</div>
+        <div><h3>Seu primeiro personagem de cinema</h3><p>Construa, camada por camada, um personagem forte o bastante para carregar um filme inteiro.</p><div class="prog"><i></i></div></div>
+        <div class="meta">20 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="6" href="#aula-6">
+        <div class="num">6</div>
+        <div><h3>O storyboard cronometrado</h3><p>Planeje uma cena de 15 segundos, batida por batida, antes de gastar uma geração de vídeo sequer.</p><div class="prog"><i></i></div></div>
+        <div class="meta">20 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="7" href="#aula-7">
+        <div class="num">7</div>
+        <div><h3>Do plano ao movimento</h3><p>Gere sua cena completa de 15 segundos seguindo o storyboard — com a IA de chat escrevendo o pedido técnico por você.</p><div class="prog"><i></i></div></div>
+        <div class="meta">25 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="8" href="#aula-8">
+        <div class="num">8</div>
+        <div><h3>De clipes soltos a mini-filme</h3><p>Escolha os melhores momentos, remonte a história e exporte seu primeiro filme — pronto para mostrar.</p><div class="prog"><i></i></div></div>
+        <div class="meta">25 min · abrir →</div>
+      </a>
+    </div>
+  </div></section>
+  <footer><div class="wrap">Curso 1 · Formação Cinema com IA · INEMA.CLUB PRO</div></footer>
+</section>
+
+<!-- ===== AULA 1 ===== -->
+<section class="view" id="v-aula-1" data-aula="1" data-tempo="18min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 1 · Aula 1</p>
+    <h1>A anatomia do <em>realismo</em></h1>
+    <p class="promise">Ao fim desta aula você consegue recriar, numa imagem gerada por IA, o clima e a luz de uma foto profissional que você admira — usando só o que já tem hoje.</p>
+    <p class="why">Você já pediu uma imagem para uma IA e recebeu algo com cara de boneco de plástico. A maioria desiste aí, achando que a ferramenta é fraca. O problema não é a ferramenta: é que ninguém ensinou a IA — nem você — a olhar para a luz. É isso que esta aula corrige.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/8418088e2ee84727beb3cd30a4815998" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: duas vitrines com a mesma peça — só a luz muda -->
+    <rect x="18" y="40" width="120" height="150" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+    <rect x="162" y="40" width="120" height="150" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+    <circle cx="78" cy="115" r="26" style="stroke:var(--line2)" stroke-width="2"/>
+    <circle cx="222" cy="115" r="26" style="stroke:var(--accent)" stroke-width="2"/>
+    <path d="M196 52 L222 89 M248 52 L222 89" style="stroke:var(--warm)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="222" cy="46" r="7" style="stroke:var(--warm)" stroke-width="2"/>
+    <text x="78" y="212" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">mesma peça</text>
+    <text x="222" y="212" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="10">outra luz</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> A luz pesa mais que a ferramenta</h2>
+      <p>Nove em cada dez imagens feitas com IA parecem plástico barato. E a causa quase nunca é a IA escolhida: é a luz que ninguém descreveu. No cinema existe uma regra prática — cerca de 70% do que faz uma cena parecer cara é iluminação. A ferramenta responde pelos outros 30%.</p>
+      <p>A fotógrafa conhece isso de cor: o mesmo rosto, fotografado ao meio-dia num estacionamento e no fim de tarde perto de uma janela, vira duas pessoas diferentes. A câmera é a mesma. O que mudou foi a luz.</p>
+      <p>Com a IA é igual. Quando você escreve um pedido — o tal do <span class="gterm" tabindex="0" data-def="O texto que você escreve para a IA descrevendo o que quer. Quanto mais preciso, melhor o resultado.">prompt</span> — sem falar de luz, a IA escolhe por você. E ela escolhe a luz mais sem graça possível.</p>
+      <div class="qanchor"><p>Quem descreve a luz, dirige. Quem não descreve, torce.</p></div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> Perfeito demais parece falso</h2>
+      <p>Aqui está o paradoxo que separa amador de profissional: uma pele sem nenhum poro, um tecido sem nenhuma dobra, um chão sem nenhuma marca — tudo isso grita "computador". O olho humano confia na imperfeição, porque o mundo real é imperfeito.</p>
+      <p>Por isso, quem trabalha sério com imagem faz o contrário do instinto: pede textura, grão, poros visíveis, pequenas marcas de uso. "Piora" a imagem de propósito — e ela passa a parecer uma fotografia cara.</p>
+      <p>A social media sente isso na prática: o post impecável demais parece propaganda de banco, e o público rola direto. A foto com textura de vida real segura o dedo.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> A fórmula profissional: observar, descrever, referenciar</h2>
+      <p>Todo resultado de cinema nasce da mesma receita de três partes: <b>observação</b> (você olha uma foto que admira e nota a luz, a lente, o clima), <b>descrição técnica</b> (você transforma o que viu em palavras precisas no prompt) e <b>referência</b> (você entrega a própria foto para a IA copiar a paleta de cores e o estilo).</p>
+      <p>A <span class="gterm" tabindex="0" data-def="Uma foto existente que você mostra para a IA como exemplo do estilo, das cores ou do clima que quer alcançar.">imagem de referência</span> é o atalho mais poderoso dos três: em vez de tentar explicar um tom de cor com palavras, você mostra.</p>
+      <p>O dono de um restaurante pode usar isso amanhã: pega a foto de capa de um restaurante premiado que ele admira, entrega como referência, e pede o prato dele naquela mesma luz de janela com sombras suaves.</p>
+      <div class="qbefore-after">
+        <div class="qba-col"><p class="qk">Antes</p><p>"Foto bonita de um prato de massa." A IA decide tudo — e devolve banco de imagem genérico.</p></div>
+        <div class="qba-col"><p class="qk">Depois</p><p>"Massa artesanal em prato fundo, luz lateral de janela no fim da tarde, sombras longas, vapor sutil, toalha de linho amassada." Mesma ferramenta, resultado de capa de revista.</p></div>
+        <p class="qba-saldo">Saldo: zero real gasto a mais — a diferença inteira veio da descrição.</p>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="ChatGPT, jul/2026">
+      <h2><span class="n">04</span> Deixe a IA de chat ser seu diretor de fotografia</h2>
+      <p>"Mas eu não sei falar de lente e sombra" — não precisa saber. Você vai usar a IA de chat (o ChatGPT serve, na versão gratuita) como tradutora: ela olha a foto de referência e escreve a descrição técnica por você.</p>
+      <p>O caminho é simples: você envia a foto que admira para o ChatGPT junto com um pedido pronto, e ele devolve duas coisas — a análise da foto em linguagem de fotógrafo e um prompt técnico pronto para colar em qualquer gerador de imagens.</p>
+      <p>Para a fotógrafa, isso é ter um assistente que descreve qualquer luz que ela mostrar. Para a social media, é transformar qualquer referência de cliente em pedido técnico em um minuto.</p>
+      <p>O pedido pronto está na prática logo abaixo. Ele é uma receita: você não precisa entender cada palavra — só trocar a foto.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <div class="quiz" data-answer="b">
+        <p class="qk">Teste-se</p><p class="q">Sua imagem saiu com cara de plástico. Pela regra desta aula, qual é o primeiro suspeito?</p>
+        <button class="opt" data-k="a" data-fb="A ferramenta responde por uma parte pequena do resultado. Trocar de IA sem mudar a descrição costuma dar o mesmo plástico.">A IA que você usou é fraca — melhor trocar de ferramenta</button>
+        <button class="opt" data-k="b" data-fb="Exato: sem descrição de luz e sem textura pedida, a IA escolhe o caminho mais artificial. Primeiro se corrige a descrição, depois se julga a ferramenta.">Faltou descrever a luz e pedir imperfeição real</button>
+        <button class="opt" data-k="c" data-fb="O tamanho não muda o realismo — uma imagem grande e lisa continua parecendo boneco.">A imagem saiu pequena demais</button>
+        <p class="qfb"></p>
+      </div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p1" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Recrie o clima de uma foto que você admira</h3>
+      <p class="pgoal">Sair com uma imagem sua, gerada por IA, no clima de uma referência escolhida por você — em ~10 minutos.</p>
+      <p class="psafe">Nada aqui mexe em arquivos seus nem gasta nada: você só conversa com a IA. Se o resultado vier estranho, é só gerar de novo — cada tentativa é grátis e independente.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Analise esta imagem como um fotógrafo profissional e diretor de fotografia.
+Descreva com precisão: pose, ângulo, expressão, estilo e direção da luz,
+sombras, lente, profundidade de campo, cores, texturas, roupa, composição
+e clima geral. Seja fiel ao que está visível na imagem.
+
+Depois da análise, escreva um prompt técnico completo, EM INGLÊS, em um
+único parágrafo, para eu recriar esse mesmo estilo visual em um gerador
+de imagens — trocando o assunto por: &lt;descreva aqui o SEU assunto:
+seu produto, seu prato, seu retrato&gt;.
+
+Responda em português; só o prompt final vai em inglês.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Escolha 1 foto profissional que você admira (vale busca por "retrato editorial" ou uma capa de revista) e salve no celular ou computador.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Abra o ChatGPT, envie a foto e cole o pedido acima — trocando só a parte marcada com &lt; &gt;.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Copie o prompt em inglês que ele devolver e cole num gerador de imagens (o próprio ChatGPT gera imagem; serve o que você tiver).</label></li>
+        <li><label><input type="checkbox" data-ptask="4"> Compare lado a lado: a sua imagem puxou a luz e o clima da referência? Se ainda parecer plástico, peça "add realistic skin texture and film grain" e gere de novo.</label></li>
+      </ol>
+      <p class="pdone">Você recriou o clima de uma foto profissional numa imagem sua — a promessa desta aula, cumprida com o que você já tinha em mãos.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> O peso de cada fator no resultado: a luz responde pela maior fatia — é nela que se mexe primeiro."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="30" y="40" width="42" height="110" rx="4" style="stroke:var(--accent)" stroke-width="2"/>
+        <rect x="30" y="40" width="42" height="110" rx="4" style="fill:var(--accent);opacity:.18"/>
+        <rect x="96" y="105" width="42" height="45" rx="4" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="162" y="120" width="28" height="30" rx="4" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="51" y="170" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">luz</text>
+        <text x="117" y="170" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">descrição</text>
+        <text x="176" y="170" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">IA</text>
+        <text x="51" y="32" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="10">~70%</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> Liso demais dispara o alarme de 'artificial' no olho; textura e pequenas marcas fazem o cérebro aceitar a imagem como real."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="22" y="45" width="80" height="100" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <circle cx="62" cy="85" r="18" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="118" y="45" width="80" height="100" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="158" cy="85" r="18" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M150 80 l4 3 M162 88 l5 2 M154 92 l3 -2" style="stroke:var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M126 128 h64 M126 134 h48" style="stroke:var(--accent);opacity:.5" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 3"/>
+        <text x="62" y="168" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">liso = falso</text>
+        <text x="158" y="168" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">textura = real</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> As três entradas da fórmula se somam num prompt só: o que você viu, como descreveu e a foto que serve de molde de cor."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="18" y="24" width="88" height="34" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="18" y="82" width="88" height="34" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="18" y="140" width="88" height="34" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="62" y="45" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">observação</text>
+        <text x="62" y="103" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">descrição</text>
+        <text x="62" y="161" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">referência</text>
+        <path d="M106 41 c30 0 30 58 42 58 M106 99 h42 M106 157 c30 0 30 -58 42 -58" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+        <rect x="152" y="82" width="52" height="34" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="178" y="103" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">prompt</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> O circuito da aula: sua referência entra na IA de chat, sai descrição técnica, e ela vira imagem no gerador."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="24" y="30" width="60" height="44" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="54" y="56" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">sua foto</text>
+        <path d="M84 52 h36" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M114 47 l8 5 -8 5" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+        <rect x="126" y="30" width="70" height="44" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="161" y="50" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">IA de chat</text>
+        <text x="161" y="63" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">analisa a luz</text>
+        <path d="M161 74 v34" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M156 100 l5 8 5 -8" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+        <rect x="126" y="112" width="70" height="40" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="161" y="136" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">prompt técnico</text>
+        <path d="M126 132 h-50 v-24" style="stroke:var(--warm)" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
+        <rect x="46" y="164" width="128" height="26" rx="8" style="stroke:var(--warm)" stroke-width="2"/>
+        <text x="110" y="181" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">gerador de imagens</text>
+        <path d="M161 152 v12" style="stroke:var(--warm)" stroke-width="2"/>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>O realismo de uma imagem de IA vem, antes de tudo, da luz descrita — a ferramenta pesa menos do que parece.</li>
+    <li>Imperfeição proposital (textura, grão, marcas de uso) é o que faz o olho aceitar a imagem como fotografia de verdade.</li>
+    <li>A receita completa tem três partes que se somam: observar uma referência, descrever tecnicamente, e entregar a própria foto como molde de cor e estilo.</li>
+    <li>Você não precisa dominar o vocabulário de fotógrafo: a IA de chat traduz qualquer referência em descrição técnica por você.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de dirigir a IA pela primeira vez — em vez de aceitar o que ela quis dar.</p>
+  <p class="na-action">Nos próximos 15 minutos: pegue uma foto do seu próprio trabalho (um prato, um produto, um retrato) e rode a mesma análise nela. Guarde o prompt que sair — ele é seu primeiro modelo reutilizável.</p>
+  <p class="na-hook">Na próxima aula, você resolve o problema que trava todo iniciante: fazer a mesma pessoa aparecer igual em seis ângulos diferentes — sem virar outra pessoa a cada geração.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#trilha">← trilha</a><a href="#aula-2">próxima aula →</a></nav>
+<footer>Aula 1 · Fundamentos · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-1">
+[
+  {"front":"Sua imagem de IA saiu com cara de boneco. Qual é a primeira coisa a revisar no pedido, antes de trocar de ferramenta?","back":"A luz: descrever direção, hora do dia e sombras — e pedir textura real (poros, grão, marcas de uso)."},
+  {"front":"Decisão: o cliente quer 'uma foto igual a esta capa de revista'. Qual é o caminho mais rápido para chegar perto do tom exato de cor?","back":"Entregar a própria capa como imagem de referência para a IA copiar paleta e estilo — em vez de tentar descrever as cores com palavras."},
+  {"front":"Contraste: o que separa um pedido amador de um pedido profissional para o mesmo prato de massa?","back":"O amador descreve o assunto ('foto bonita de massa'); o profissional descreve a cena (luz lateral de janela, sombras longas, vapor, linho amassado)."},
+  {"front":"Você não sabe nomear a luz de uma foto que admira. O que faz com ela nos próximos 2 minutos?","back":"Envia a foto para a IA de chat e pede a análise de diretor de fotografia — ela devolve a descrição técnica e o prompt pronto."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-1 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="18min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), social media (s2), dono de restaurante (s3), fotógrafa+social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-1"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 em forma pergunta/decisão/contraste/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+
+<!-- ===== AULA 2 ===== -->
+<section class="view" id="v-aula-2" data-aula="2" data-tempo="20min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 1 · Aula 2</p>
+    <h1>O método da <em>grade</em></h1>
+    <p class="promise">Ao fim desta aula você transforma uma única imagem em uma folha com seis ângulos da mesma cena — mesma pessoa, mesma roupa, mesma luz — num só pedido.</p>
+    <p class="why">Você gera uma imagem boa, pede "a mesma pessoa de lado"... e recebe outra pessoa. É o muro onde todo iniciante bate. Sem resolver isso, não existe história em vídeo — porque história precisa do mesmo personagem em vários ângulos.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/8ca52090285c434087c0c50621f847db" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: molde de costura — um risco, seis peças idênticas -->
+    <path d="M40 36 c18 -14 42 -14 60 0 v44 h-60 z" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
+    <text x="70" y="100" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="10">o molde</text>
+    <g style="stroke:var(--accent)" stroke-width="1.6" fill="none">
+      <path d="M150 40 c10 -8 24 -8 34 0 v26 h-34 z"/>
+      <path d="M200 40 c10 -8 24 -8 34 0 v26 h-34 z"/>
+      <path d="M250 40 c10 -8 24 -8 34 0 v26 h-34 z" opacity=".7"/>
+      <path d="M150 96 c10 -8 24 -8 34 0 v26 h-34 z"/>
+      <path d="M200 96 c10 -8 24 -8 34 0 v26 h-34 z" opacity=".7"/>
+      <path d="M250 96 c10 -8 24 -8 34 0 v26 h-34 z"/>
+    </g>
+    <path d="M108 70 h28" style="stroke:var(--muted)" stroke-width="2"/>
+    <path d="M130 65 l8 5 -8 5" style="stroke:var(--muted)" stroke-width="2" fill="none"/>
+    <text x="216" y="152" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="10">seis peças iguais</text>
+    <text x="150" y="205" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">um risco só, cortado seis vezes</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> A IA não tem memória entre um pedido e outro</h2>
+      <p>Cada vez que você pede uma imagem nova, a IA começa do zero — ela não lembra do rosto que criou há um minuto. Pedir "a mesma mulher, agora de perfil" é pedir para um desenhista que nunca a viu. Por isso o rosto muda.</p>
+      <p>A saída dos profissionais é esperta: em vez de seis pedidos separados, <b>um pedido só que já traz os seis ângulos juntos</b>, na mesma folha. Como tudo nasce na mesma geração, a IA mantém rosto, roupa e luz iguais em todos os quadros.</p>
+      <p>Para a fotógrafa, é o equivalente a um ensaio inteiro numa prensa só: em vez de seis sessões com seis modelos parecidas, uma folha de contato com a mesma modelo em seis poses.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="geradores de imagem com envio de foto, jul/2026">
+      <h2><span class="n">02</span> A grade de seis ângulos, num pedido pronto</h2>
+      <p>O pedido abaixo é uma receita testada: você envia a sua imagem da aula 1, cola o texto, e recebe de volta uma folha com seis fotos da mesma cena — close, plano médio e plano aberto, como se um fotógrafo tivesse circulado o set.</p>
+      <p>Ele está em inglês porque os geradores de imagem entendem melhor os termos técnicos assim. Você não precisa traduzir nem entender palavra por palavra — a receita se aplica inteira, sem mexer em nada.</p>
+      <p>O dono de restaurante usa isso amanhã: uma foto boa do prato principal vira seis ângulos do mesmo prato — de cima para o cardápio, de lado para o post, fechado no detalhe para o anúncio.</p>
+      <div class="qsteps">
+        <p class="qk">O caminho, em quatro passos</p>
+        <ol>
+          <li>Abra o gerador que você já usa (o próprio ChatGPT serve) e envie a sua imagem.</li>
+          <li>Ajuste a proporção para <b>quadrada (1:1)</b> — o porquê vem no próximo passo da aula.</li>
+          <li>Cole o pedido pronto da prática, sem alterar nada.</li>
+          <li>Gere e confira: mesma pessoa, mesma roupa, mesma luz nos seis quadros.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Por que a folha é quadrada</h2>
+      <p>Parece detalhe, mas é geometria: cada quadro de cinema vertical é mais alto do que largo. Para caber seis desses quadros lado a lado numa folha só, a folha precisa ser quadrada — três colunas, duas linhas, tudo justo.</p>
+      <p>Se você deixar a proporção vertical, a IA tenta espremer a grade num corredor estreito: quadros cortados, ângulos repetidos, folha inutilizável.</p>
+      <p>E há uma segunda chave no pedido: ele <b>proíbe a IA de reinventar</b>. Nada de trocar roupa, mudar penteado ou "melhorar" o cenário. A social media conhece essa dor: o cliente aprovou um visual — a série inteira de posts precisa manter exatamente aquele visual.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="fundamento">
+      <h2><span class="n">04</span> O método tem limites — e isso é bom saber agora</h2>
+      <p>Honestidade: nos quadros mais abertos da grade, o rosto fica pequeno e perde detalhe. Existem métodos profissionais de consistência total — você vai vê-los mais adiante na formação. A grade é o método <b>rápido e sem dor de cabeça</b> para começar hoje.</p>
+      <p>Pense nela como a base de trabalho: dela saem os quadros que viram vídeo na próxima aula. Para a fotógrafa, é o rascunho do ensaio, não a foto final entregue ao cliente — e rascunho bom é o que separa um ensaio produtivo de uma tarde perdida.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Usar o rostinho pequeno do plano aberto como se fosse um close.</b> Ampliado, ele revela as falhas e quebra o realismo que você construiu na aula 1. Para close, use o quadro fechado da própria grade — cada quadro no seu papel.</p>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <div class="quiz" data-answer="c">
+        <p class="qk">Teste-se</p><p class="q">Por que os seis ângulos saem com o mesmo rosto quando vêm todos na mesma folha?</p>
+        <button class="opt" data-k="a" data-fb="A quantidade de pedidos não cria memória — seis pedidos separados dão seis rostos, não importa a ordem.">Porque a IA aprende o rosto depois de alguns pedidos seguidos</button>
+        <button class="opt" data-k="b" data-fb="A proporção quadrada resolve o encaixe dos quadros na folha, não a identidade do personagem.">Por causa da proporção quadrada, que trava a identidade</button>
+        <button class="opt" data-k="c" data-fb="Exato: tudo nasce numa geração só — a IA compõe os seis quadros de uma vez, então mantém rosto, roupa e luz iguais.">Porque tudo é criado numa única geração, sem a IA recomeçar do zero</button>
+        <p class="qfb"></p>
+      </div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p2" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Gere a sua folha de seis ângulos</h3>
+      <p class="pgoal">Sair com uma grade de seis ângulos da sua imagem da aula 1 — em ~12 minutos.</p>
+      <p class="psafe">Sua imagem original continua intacta: a grade é sempre um arquivo novo. Saiu torta ou repetida? Gere de novo — nada se perde entre uma tentativa e outra.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Create six new 2:3 cinematic images based on the reference scene,
+preserving ALL characters, objects, and environment elements exactly
+as they appear. Do NOT remove, modify, or reinterpret any character
+or object. Only change camera placement, angle, and composition to
+create alternate close-up, medium, and wide shots of the same moment.
+Maintain consistent lighting direction, atmosphere, color palette,
+depth of field, and cinematic style. No redesigns, no new elements,
+no stylization changes. The final images must look like alternate
+photographs captured during the same professional shoot of the
+exact same scene.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Abra o gerador de imagens e envie a sua imagem da aula 1 (ou gere uma nova antes).</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Ajuste a proporção para 1:1 (quadrada) nas opções do gerador.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Cole o pedido acima, inteiro, sem traduzir — e gere.</label></li>
+        <li><label><input type="checkbox" data-ptask="4"> Confira quadro a quadro: mesma pessoa, mesma roupa, mesma luz nos seis? Se um quadro fugiu, gere de novo — é normal precisar de 2 ou 3 tentativas.</label></li>
+      </ol>
+      <p class="pdone">Você tem em mãos uma folha de seis ângulos da mesma cena — o material bruto de que o vídeo da próxima aula precisa.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> Pedidos separados recomeçam do zero e mudam o rosto; a folha única nasce inteira de uma geração só."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--line2)" stroke-width="2" fill="none">
+          <rect x="20" y="28" width="34" height="44" rx="6"/>
+          <rect x="64" y="28" width="34" height="44" rx="6"/>
+          <rect x="108" y="28" width="34" height="44" rx="6"/>
+        </g>
+        <circle cx="37" cy="45" r="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <path d="M77 40 l8 10 M85 40 l-8 10" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="118" y="38" width="14" height="14" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="81" y="90" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">3 pedidos = 3 rostos</text>
+        <rect x="42" y="108" width="96" height="66" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <g style="stroke:var(--accent)" stroke-width="1.4">
+          <line x1="74" y1="108" x2="74" y2="174"/><line x1="106" y1="108" x2="106" y2="174"/>
+          <line x1="42" y1="141" x2="138" y2="141"/>
+        </g>
+        <circle cx="58" cy="124" r="6" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <circle cx="90" cy="124" r="6" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <circle cx="122" cy="124" r="6" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <circle cx="58" cy="157" r="6" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <circle cx="90" cy="157" r="6" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <circle cx="122" cy="157" r="6" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <text x="90" y="192" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">1 folha = 1 rosto</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> A folha entrega três distâncias de câmera: fechado no detalhe, médio para a ação, aberto para o mundo."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="30" y="30" width="160" height="120" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <line x1="83" y1="30" x2="83" y2="150" style="stroke:var(--line2)" stroke-width="1.4"/>
+        <line x1="136" y1="30" x2="136" y2="150" style="stroke:var(--line2)" stroke-width="1.4"/>
+        <line x1="30" y1="90" x2="190" y2="90" style="stroke:var(--line2)" stroke-width="1.4"/>
+        <circle cx="56" cy="60" r="16" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="109" cy="62" r="9" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M104 78 v10" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="163" cy="66" r="5" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M160 74 v8 M148 86 h30" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <text x="56" y="170" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">close</text>
+        <text x="110" y="170" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">médio</text>
+        <text x="163" y="170" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">aberto</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> Seis quadros verticais (mais altos que largos) só fecham a conta dentro de uma folha quadrada — 3 colunas × 2 linhas."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="46" y="26" width="128" height="128" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <g style="stroke:var(--accent);opacity:.75" stroke-width="1.4" fill="none">
+          <rect x="56" y="36" width="32" height="50" rx="3"/><rect x="94" y="36" width="32" height="50" rx="3"/><rect x="132" y="36" width="32" height="50" rx="3"/>
+          <rect x="56" y="94" width="32" height="50" rx="3"/><rect x="94" y="94" width="32" height="50" rx="3"/><rect x="132" y="94" width="32" height="50" rx="3"/>
+        </g>
+        <text x="110" y="172" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">1:1 = 3 × 2 quadros em pé</text>
+        <text x="110" y="188" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">vertical espremeria tudo</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> Cada quadro no seu papel: o aberto mostra o mundo, o fechado mostra o rosto — ampliar o aberto quebra o realismo."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="24" y="40" width="76" height="100" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <circle cx="62" cy="74" r="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <path d="M58 84 v14 M50 98 h24" style="stroke:var(--line2)" stroke-width="1.6"/>
+        <path d="M100 66 c20 -18 20 -18 34 -22" style="stroke:var(--warm)" stroke-width="2" stroke-dasharray="4 3" fill="none"/>
+        <rect x="128" y="24" width="66" height="52" rx="8" style="stroke:var(--warm)" stroke-width="2"/>
+        <circle cx="161" cy="50" r="16" style="stroke:var(--warm)" stroke-width="2"/>
+        <text x="161" y="92" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">ampliado: falhas</text>
+        <rect x="128" y="110" width="66" height="52" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="161" cy="136" r="16" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="161" y="178" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">close da grade: nítido</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>A IA recomeça do zero a cada pedido — a consistência vem de gerar os seis ângulos juntos, numa folha só.</li>
+    <li>A folha quadrada existe por geometria: é o único formato onde seis quadros em pé se encaixam sem corte.</li>
+    <li>O pedido pronto proíbe a IA de reinventar roupa, penteado e cenário — identidade é regra, não sorte.</li>
+    <li>A grade é base de trabalho ágil, com limites conhecidos: rosto pequeno em plano aberto não vira close.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de resolver o problema que faz a maioria desistir: manter a mesma pessoa em seis ângulos.</p>
+  <p class="na-action">Nos próximos 15 minutos: rode a grade numa foto do seu produto ou do seu espaço de trabalho e salve a folha — ela vira matéria-prima das próximas aulas.</p>
+  <p class="na-hook">Na próxima aula, esses quadros parados ganham movimento — e você aprende o truque que impede o rosto de "derreter" no meio do vídeo.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-1">← aula anterior</a><a href="#aula-3">próxima aula →</a></nav>
+<footer>Aula 2 · Fundamentos · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-2">
+[
+  {"front":"Você precisa da mesma personagem em vários ângulos. Por que seis pedidos separados não funcionam — e o que funciona?","back":"Cada pedido recomeça do zero e muda o rosto; funciona pedir os seis ângulos numa única folha, gerados de uma vez."},
+  {"front":"Diagnóstico: a grade saiu com quadros cortados e ângulos repetidos. Qual ajuste você esqueceu?","back":"A proporção: a folha precisa ser quadrada (1:1) para os seis quadros verticais caberem — em formato vertical a grade sai espremida."},
+  {"front":"Decisão: você precisa de um close nítido e só tem a grade em mãos. De onde tirar o close?","back":"Do quadro fechado da própria grade — nunca ampliando o rosto pequeno de um plano aberto, que revela falhas."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-2 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), dono de restaurante (s2), social media (s3), fotógrafa (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-2"> presente (3 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 3/3 pergunta/diagnóstico/decisão; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); teste-se opcional presente (1 pergunta no s4)
+-->
+</section>
+
+<!-- ===== AULA 3 ===== -->
+<section class="view" id="v-aula-3" data-aula="3" data-tempo="20min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 1 · Aula 3</p>
+    <h1>A ponte de <em>movimento</em></h1>
+    <p class="promise">Ao fim desta aula você transforma dois quadros parados num clipe de vídeo de 5 segundos em que você decide onde a cena começa e onde termina.</p>
+    <p class="why">Gerar vídeo com IA, do jeito ingênuo, é loteria: você aperta o botão e torce para o rosto não derreter no caminho. Quem trabalha com isso não torce — trava as duas pontas do trajeto e obriga a IA a viajar entre elas.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/f05afb097ce7492e98e4a912155635c6" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: ponte entre duas margens conhecidas -->
+    <path d="M20 170 h70 M210 170 h70" style="stroke:var(--line2)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M90 170 C130 96 170 96 210 170" style="stroke:var(--accent)" stroke-width="2.5" fill="none"/>
+    <path d="M110 170 v-32 M150 170 v-46 M190 170 v-32" style="stroke:var(--accent);opacity:.55" stroke-width="1.6"/>
+    <rect x="34" y="128" width="34" height="42" rx="4" style="stroke:var(--warm)" stroke-width="2"/>
+    <rect x="232" y="128" width="34" height="42" rx="4" style="stroke:var(--warm)" stroke-width="2"/>
+    <text x="51" y="192" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="10">começo</text>
+    <text x="249" y="192" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="10">fim</text>
+    <text x="150" y="216" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">a travessia é da IA — as margens são suas</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Pare de apostar: trave o começo e o fim</h2>
+      <p>O segredo desta aula cabe numa frase: em vez de dar uma imagem e rezar, você entrega <b>duas</b> — o quadro onde o clipe começa e o quadro onde ele termina. A IA só preenche a travessia entre os dois.</p>
+      <p>Com as pontas travadas, a identidade não tem para onde fugir: o rosto do início e o rosto do fim são os mesmos, então o meio se mantém no trilho.</p>
+      <p>A social media conhece a versão manual disso: no vídeo de cliente, ela define a primeira cena e a última antes de qualquer coisa — o meio existe para ligar uma à outra. Aqui é igual, só que a IA faz o meio.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="Kling AI (imagem-para-vídeo), jul/2026">
+      <h2><span class="n">02</span> Recorte os dois quadros à mão</h2>
+      <p>Da sua folha de seis ângulos (aula 2), você vai recortar dois quadros — por exemplo, o plano médio e o close — cada um no formato vertical de celular (proporção 9:16, a mesma dos stories e reels).</p>
+      <p>Recortar à mão, antes de entregar à IA, é um ato de direção: <b>você</b> escolhe o enquadramento, em vez de deixar a máquina cortar onde quiser. Serve o editor de fotos do próprio celular.</p>
+      <p>A fotógrafa faz isso desde sempre: da folha de contato, ela marca com caneta os dois quadros que valem — ninguém entrega a folha inteira para o cliente.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Enviar a folha inteira da grade para o gerador de vídeo.</b> A IA não sabe qual quadro usar e mistura tudo. Sempre recorte primeiro: um arquivo para o começo, outro para o fim.</p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="ferramenta" data-versao="Kling AI, jul/2026">
+      <h2><span class="n">03</span> No prompt de vídeo, descreva a câmera — não a pessoa</h2>
+      <p>Deixar o pedido em branco é o erro que faz o vídeo "derreter": sem instrução, a IA inventa movimento para tudo — rosto, roupa, fundo. A fórmula profissional inverte a lógica: <b>movimento de câmera + ação mínima do assunto + atmosfera</b>.</p>
+      <p>Um exemplo pronto, no espírito do que você vai colar:</p>
+      <pre>Cinematic slow push-in, smooth zoom on the face,
+the character remains stationary, warm lighting.
+No morphing, consistent features.</pre>
+      <p>Traduzindo a receita: a câmera avança devagar, a pessoa quase não se mexe, a luz continua quente — e as duas últimas palavras proíbem a IA de deformar o rosto.</p>
+      <p>Não sabe os termos de câmera? Peça à IA de chat: "escreva 3 pedidos de movimento de câmera, em inglês, para ligar um plano médio a um close em 5 segundos". O dono de restaurante não precisa estudar cinema — precisa saber a quem pedir.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="Kling AI, jul/2026">
+      <h2><span class="n">04</span> A corrente: clipes que se emendam sozinhos</h2>
+      <p>Um clipe de 5 segundos é pouco para contar qualquer coisa. A saída se chama corrente: o <b>último</b> quadro do clipe A vira o <b>primeiro</b> quadro do clipe B. Como a emenda acontece num quadro idêntico, o corte fica invisível — e a sequência cresce sem limite.</p>
+      <p>Para o dono de restaurante, é um passeio contínuo: clipe 1 atravessa o salão e termina na porta da cozinha; clipe 2 começa exatamente nessa porta e revela o fogão aceso.</p>
+      <div class="qsteps">
+        <p class="qk">Montando a corrente</p>
+        <ol>
+          <li>Gere o clipe A com quadro de começo e de fim (o método desta aula).</li>
+          <li>Salve o último quadro do clipe A como imagem (a própria ferramenta permite, ou uma captura de tela no ponto final).</li>
+          <li>Use essa imagem como quadro <b>inicial</b> do clipe B — e escolha um novo quadro final.</li>
+          <li>Repita quantas vezes a história pedir: A liga em B, B liga em C.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p3" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Construa a sua primeira ponte de movimento</h3>
+      <p class="pgoal">Sair com um clipe de ~5 segundos ligando dois quadros seus — em ~15 minutos.</p>
+      <p class="psafe">Suas imagens originais não são alteradas — o vídeo é sempre um arquivo novo. Se o movimento vier estranho, simplifique o pedido e gere de novo; ferramentas de vídeo têm plano gratuito com algumas gerações por dia, então errar faz parte do orçamento.</p>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Recorte dois quadros da sua grade (um médio e um close) no formato 9:16, usando o editor de fotos do celular ou do computador.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Abra o Kling AI (ou outra ferramenta de vídeo que aceite "primeiro e último quadro") no modo imagem-para-vídeo e envie os dois quadros nas posições de início e fim.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Escreva o pedido pela fórmula — câmera + ação mínima + atmosfera — ou cole o exemplo do passo 03 da aula.</label></li>
+        <li><label><input type="checkbox" data-ptask="4"> Gere e assista: o clipe sai do seu quadro inicial e chega exatamente no seu quadro final, com o mesmo rosto? Então a ponte fechou.</label></li>
+      </ol>
+      <p class="pdone">Você decidiu onde a cena começa e onde termina — a IA só fez a travessia. Isso é dirigir, não apostar.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> Sem âncoras, o vídeo deriva para onde a IA quiser; com começo e fim travados, o meio corre no trilho."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M24 60 c30 -22 60 18 90 -8 c20 -16 40 6 62 -14" style="stroke:var(--line2)" stroke-width="2" fill="none" stroke-dasharray="4 4"/>
+        <text x="110" y="36" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">sem âncoras: deriva</text>
+        <rect x="20" y="120" width="26" height="38" rx="4" style="stroke:var(--accent)" stroke-width="2"/>
+        <rect x="174" y="120" width="26" height="38" rx="4" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M46 139 h128" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M166 134 l8 5 -8 5" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+        <text x="110" y="182" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">com âncoras: trilho reto</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> Da folha inteira saem dois recortes verticais escolhidos por você — cada um vira um arquivo próprio."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="24" y="30" width="96" height="66" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <g style="stroke:var(--line2)" stroke-width="1.2">
+          <line x1="56" y1="30" x2="56" y2="96"/><line x1="88" y1="30" x2="88" y2="96"/><line x1="24" y1="63" x2="120" y2="63"/>
+        </g>
+        <rect x="26" y="32" width="28" height="29" style="stroke:var(--accent)" stroke-width="2"/>
+        <rect x="90" y="65" width="28" height="29" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M70 110 l-20 26 M104 110 l20 26" style="stroke:var(--accent)" stroke-width="1.8" stroke-dasharray="3 3"/>
+        <rect x="26" y="140" width="34" height="52" rx="4" style="stroke:var(--accent)" stroke-width="2"/>
+        <rect x="128" y="140" width="34" height="52" rx="4" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="43" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">começo 9:16</text>
+        <text x="145" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">fim 9:16</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> As três camadas do pedido de vídeo, na ordem de importância: câmera manda, assunto quase parado, atmosfera constante."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="34" y="28" width="152" height="38" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="110" y="51" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">1 · movimento de câmera</text>
+        <rect x="34" y="80" width="152" height="38" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="110" y="103" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">2 · ação mínima do assunto</text>
+        <rect x="34" y="132" width="152" height="38" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="110" y="155" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">3 · atmosfera e luz</text>
+        <text x="110" y="190" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">vazio = a IA inventa por você</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> A corrente: o quadro final de um clipe é reaproveitado como quadro inicial do seguinte — a emenda some."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="18" y="50" width="64" height="40" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="50" y="74" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">clipe A</text>
+        <circle cx="82" cy="70" r="7" style="stroke:var(--warm)" stroke-width="2"/>
+        <rect x="78" y="110" width="64" height="40" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="110" y="134" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">clipe B</text>
+        <circle cx="78" cy="130" r="7" style="stroke:var(--warm)" stroke-width="2"/>
+        <path d="M82 77 c0 24 -4 43 -4 46" style="stroke:var(--warm)" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
+        <circle cx="142" cy="130" r="7" style="stroke:var(--warm)" stroke-width="2"/>
+        <rect x="138" y="50" width="64" height="40" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="170" y="74" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">clipe C…</text>
+        <path d="M142 123 c0 -24 -2 -26 -2 -33" style="stroke:var(--warm)" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
+        <text x="110" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">fim de um = começo do outro</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Vídeo de IA deixa de ser loteria quando você trava as duas pontas: quadro de começo e quadro de fim.</li>
+    <li>O recorte à mão, antes da IA, é onde você exerce a direção — enquadramento é escolha sua, não da máquina.</li>
+    <li>No pedido, quem se move é a câmera; o assunto fica quase parado e a atmosfera se mantém.</li>
+    <li>Clipes se emendam em corrente reaproveitando o quadro final de um como inicial do próximo — e o corte desaparece.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de fazer seu primeiro vídeo dirigido — com começo e fim decididos por você.</p>
+  <p class="na-action">Nos próximos 15 minutos: gere o clipe B da sua corrente, partindo do último quadro do clipe que você acabou de criar. Dois clipes emendados já são uma cena.</p>
+  <p class="na-hook">Na próxima aula, seus clipes viram um vídeo com ritmo e som — e você aprende por que velocidade constante faz o público dormir.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-2">← aula anterior</a><a href="#aula-4">próxima aula →</a></nav>
+<footer>Aula 3 · Fundamentos · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-3">
+[
+  {"front":"Diagnóstico: o rosto 'derreteu' no meio do clipe gerado. Quais duas causas você investiga primeiro?","back":"Faltou travar as pontas (quadro de começo e de fim) e/ou o pedido ficou vazio ou descrevendo o assunto em vez da câmera."},
+  {"front":"Decisão: você quer um passeio contínuo de 15 segundos pelo seu espaço, mas a ferramenta só gera 5. O que faz?","back":"Monta uma corrente: salva o último quadro de cada clipe e usa como quadro inicial do seguinte — três clipes emendados sem corte visível."},
+  {"front":"Contraste: no pedido de vídeo, qual a diferença entre descrever o assunto e descrever a câmera?","back":"Descrever o assunto convida a IA a mexer nele (e deformar); descrever a câmera move o olhar e mantém o assunto estável."},
+  {"front":"Aplicação: sua grade da aula 2 está pronta. Quais dois quadros você recorta para uma ponte que aproxima o público do rosto?","back":"Um plano médio como começo e o close como fim — recortados à mão em 9:16, um arquivo para cada."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-3 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), fotógrafa (s2), dono de restaurante (s3), dono de restaurante (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-3"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/contraste/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+
+<!-- ===== AULA 4 ===== -->
+<section class="view" id="v-aula-4" data-aula="4" data-tempo="22min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 1 · Aula 4</p>
+    <h1>Montagem com <em>ritmo</em></h1>
+    <p class="promise">Ao fim desta aula você emenda três clipes soltos num vídeo único, com variação de velocidade e som — sem que ninguém perceba a costura.</p>
+    <p class="why">Uma pasta cheia de clipes de IA não é um filme — é entulho digital bem gerado. O que transforma material em história é a montagem: ritmo, velocidade e som. E isso se aprende num editor gratuito, em uma tarde.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/8daabc8448d340f09a38749a10fdaac6" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: dois tecidos e a costura que some -->
+    <path d="M30 70 h100 v100 h-100 z" style="stroke:var(--line2)" stroke-width="2"/>
+    <path d="M170 70 h100 v100 h-100 z" style="stroke:var(--line2)" stroke-width="2"/>
+    <path d="M130 70 c14 16 -14 34 0 50 c14 16 -14 34 0 50" style="stroke:var(--accent)" stroke-width="2.4" fill="none"/>
+    <path d="M170 70 c-14 16 14 34 0 50 c-14 16 14 34 0 50" style="stroke:var(--accent)" stroke-width="2.4" fill="none"/>
+    <path d="M138 92 l24 10 M138 128 l24 10 M138 62 l24 10" style="stroke:var(--warm)" stroke-width="1.8" stroke-dasharray="3 3"/>
+    <text x="150" y="200" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">bem costurado, vira uma peça só</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Ritmo é matemática, não talento</h2>
+      <p>Se todos os trechos do seu vídeo correm na mesma velocidade, o público dorme — é fisiologia, não opinião. O olho humano acorda com <b>contraste</b>: devagar para mostrar, rápido para cortar, devagar de novo para respirar.</p>
+      <p>A estrutura que você vai usar é uma fórmula de três tempos: <b>entrada lenta → aceleração no corte → resolução lenta</b>. Cada emenda entre clipes acontece dentro do trecho rápido, onde o olho não consegue inspecionar.</p>
+      <p>A social media já viu isso mil vezes sem nomear: os vídeos que seguram até o fim são os que mudam de andamento; os que perdem o público em três segundos correm chapados, numa velocidade só.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="CapCut, jul/2026">
+      <h2><span class="n">02</span> A curva de velocidade, na prática</h2>
+      <p>No CapCut — editor gratuito, no celular ou no computador — essa fórmula tem nome de botão: <span class="gterm" tabindex="0" data-def="Ferramenta de edição que faz a velocidade do clipe variar dentro dele mesmo: começa normal, acelera, volta ao normal — em vez de uma velocidade fixa.">curva de velocidade</span>. Você desenha a variação dentro do próprio clipe: começa a 1x, sobe para 5x ou 10x perto do corte, e o clipe seguinte desce de volta ao normal.</p>
+      <p>A fotógrafa montando um vídeo de bastidores usa exatamente isso: o preparo da cena corre acelerado, o clique final abre em câmera normal — o público sente o clímax sem saber por quê.</p>
+      <div class="qsteps">
+        <p class="qk">Aplicando a curva</p>
+        <ol>
+          <li>Toque no clipe na linha de montagem e abra <b>Velocidade → Curva</b>.</li>
+          <li>Escolha o modelo <b>Montagem</b> — ele já traz o desenho lento-rápido-lento.</li>
+          <li>Arraste os pontos para a subida de velocidade cair bem em cima do corte.</li>
+          <li>Repita no clipe seguinte, invertendo: rápido na entrada, lento no restante.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> O som é metade da ilusão</h2>
+      <p>A imagem prende o olho; o som segura a atenção. Um vídeo mudo, por mais bonito, parece inacabado. A receita mínima tem duas camadas: <b>uma música de fundo</b> e <b>dois efeitos sonoros</b> marcando as transições — um sopro na aceleração, uma batida no corte.</p>
+      <p>E a regra de ouro da mixagem: na hora do efeito, a música <b>abaixa</b>. As duas coisas no volume cheio viram barulho; o efeito por cima da música abafada vira impacto.</p>
+      <p>Não sabe que efeito usar? Descreva o vídeo para a IA de chat e peça: "sugira 5 efeitos sonoros e em que ponto da linha do tempo colocar cada um". O dono de restaurante fez isso para o vídeo do prato — recebeu até a dica do chiado da frigideira na abertura.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="CapCut, jul/2026">
+      <h2><span class="n">04</span> A tela certa desde o primeiro clique</h2>
+      <p>Antes de arrastar qualquer clipe, defina o formato do projeto: <b>9:16</b>, o retrato vertical do celular — o mesmo dos seus clipes das aulas anteriores. No CapCut, isso fica em Proporção (ou Formato), na criação do projeto.</p>
+      <p>Na exportação, o padrão sugerido já serve: resolução 1080p e o restante como está. Exporte, assista no próprio celular e pergunte-se: a costura entre os clipes aparece? Se não aparece, a aula cumpriu o prometido.</p>
+      <p>A social media aprendeu essa ordem no prejuízo: montagem pronta no formato errado significa refazer enquadramento por enquadramento.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Montar primeiro e ajustar o formato depois.</b> Mudar a proporção no fim reenquadra tudo: cabeças cortadas, texto fora da tela. Formato se decide na criação do projeto, antes do primeiro clipe.</p>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p4" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Monte seu primeiro vídeo com ritmo</h3>
+      <p class="pgoal">Sair com um vídeo único, exportado, feito dos seus clipes das aulas 2 e 3 — em ~15 minutos.</p>
+      <p class="psafe">O editor nunca altera os arquivos originais: ele monta uma cópia de trabalho. Errou a curva ou o corte? Desfaça ou apague o projeto e recomece — seus clipes continuam onde sempre estiveram.</p>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Crie um projeto novo no CapCut já em 9:16 e importe seus 2–3 clipes das aulas anteriores.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Aplique a curva de velocidade (modelo Montagem) em pelo menos uma emenda, com a aceleração caindo no corte.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Adicione uma música de fundo e 2 efeitos sonoros nas transições, abaixando a música na hora de cada efeito.</label></li>
+        <li><label><input type="checkbox" data-ptask="4"> Exporte em 1080p e assista no celular: se a emenda entre os clipes passa despercebida, está pronto.</label></li>
+      </ol>
+      <p class="pdone">Você montou clipes soltos num vídeo com ritmo e som — a costura existe, mas só você sabe onde está.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> A linha do interesse: velocidade constante achata a atenção; o vale-e-pico do lento-rápido-lento a mantém acordada."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M24 70 h172" style="stroke:var(--line2)" stroke-width="2" stroke-dasharray="4 4"/>
+        <text x="110" y="52" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">sempre igual: sono</text>
+        <path d="M24 150 c26 0 30 -34 46 -34 c16 0 14 34 40 34 c26 0 30 -34 46 -34 c16 0 14 34 40 34" style="stroke:var(--accent)" stroke-width="2.4" fill="none"/>
+        <text x="110" y="182" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">lento · rápido · lento</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> A curva dentro do clipe: 1x na mostra, pico de 5–10x exatamente sobre o corte, retorno a 1x no clipe seguinte."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="20" y="120" width="88" height="34" rx="4" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="112" y="120" width="88" height="34" rx="4" style="stroke:var(--line2)" stroke-width="2"/>
+        <line x1="110" y1="108" x2="110" y2="166" style="stroke:var(--warm)" stroke-width="2" stroke-dasharray="3 3"/>
+        <path d="M24 96 h56 c16 0 18 -40 30 -40 c12 0 14 40 30 40 h56" style="stroke:var(--accent)" stroke-width="2.4" fill="none"/>
+        <text x="110" y="44" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">pico no corte</text>
+        <text x="52" y="182" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">clipe A</text>
+        <text x="156" y="182" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">clipe B</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> As duas camadas de som: a música cede espaço (abaixa) no instante exato em que o efeito entra — é isso que vira impacto."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M24 84 h58 c8 0 8 22 16 22 h24 c8 0 8 -22 16 -22 h58" style="stroke:var(--accent)" stroke-width="2.2" fill="none"/>
+        <text x="40" y="70" style="fill:var(--accent);font-family:var(--mono)" font-size="9">música</text>
+        <path d="M104 150 l6 -18 4 26 5 -34 4 26 6 -12" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
+        <text x="150" y="152" style="fill:var(--warm);font-family:var(--mono)" font-size="9">efeito</text>
+        <line x1="116" y1="60" x2="116" y2="170" style="stroke:var(--line2)" stroke-width="1.4" stroke-dasharray="3 4"/>
+        <text x="110" y="190" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">música desce quando o efeito sobe</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> O formato decide o enquadramento: o mesmo material em 9:16 nasce certo; convertido depois, perde cabeça e contexto."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="36" y="34" width="64" height="112" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="68" cy="70" r="12" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M60 88 v22 M50 100 h36" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <text x="68" y="164" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">nasceu 9:16</text>
+        <rect x="126" y="60" width="72" height="60" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="146" y="60" width="32" height="60" style="stroke:var(--warm)" stroke-width="1.8" stroke-dasharray="3 3"/>
+        <circle cx="162" cy="56" r="10" style="stroke:var(--warm)" stroke-width="1.8" stroke-dasharray="3 3"/>
+        <text x="162" y="140" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">convertido: corta</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Montagem transforma clipes em história — e o motor dela é o contraste de velocidade, não a velocidade em si.</li>
+    <li>A curva lento-rápido-lento esconde as emendas nos trechos acelerados, onde o olho não inspeciona.</li>
+    <li>Som tem duas camadas com hierarquia: música de fundo que cede espaço e efeitos que marcam as transições.</li>
+    <li>Formato se decide na criação do projeto — 9:16 do primeiro clipe à exportação, nunca convertido no fim.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de fechar o ciclo completo: imagem, movimento e montagem — do zero ao vídeo exportado.</p>
+  <p class="na-action">Nos próximos 15 minutos: mostre o vídeo a uma pessoa e observe onde ela desvia o olhar — ali é onde falta um efeito sonoro ou sobra um segundo lento. Anote e ajuste.</p>
+  <p class="na-hook">Na próxima aula começa a parte 2: você constrói um personagem de cinema em nove camadas — o protagonista do seu primeiro mini-filme.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-3">← aula anterior</a><a href="#aula-5">próxima aula →</a></nav>
+<footer>Aula 4 · Fundamentos · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-4">
+[
+  {"front":"Diagnóstico: o público larga seu vídeo no meio, mesmo com imagens boas. Qual é o suspeito rítmico?","back":"Velocidade constante do início ao fim — sem o contraste lento-rápido-lento, a atenção achata e o olho desliga."},
+  {"front":"Decisão: em que ponto exato do clipe você posiciona o pico da curva de velocidade, e por quê?","back":"Em cima do corte para o clipe seguinte — no trecho acelerado o olho não consegue inspecionar, e a emenda some."},
+  {"front":"Pergunta: qual é a regra de mixagem quando um efeito sonoro entra sobre a música?","back":"A música abaixa naquele instante; efeito e música em volume cheio juntos viram barulho, não impacto."},
+  {"front":"Aplicação: você vai montar o vídeo do seu produto para stories. Qual é a primeira decisão no editor, antes de importar qualquer clipe?","back":"Criar o projeto já em 9:16 — mudar o formato depois reenquadra tudo e corta o que importa."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-4 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), fotógrafa (s2), dono de restaurante (s3), social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-4"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/pergunta/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+
+<!-- ===== AULA 5 ===== -->
+<section class="view" id="v-aula-5" data-aula="5" data-tempo="20min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 1 · Aula 5</p>
+    <h1>Seu primeiro personagem de <em>cinema</em></h1>
+    <p class="promise">Ao fim desta aula você constrói, camada por camada, um personagem vertical de cinema — forte o bastante para carregar o mini-filme que você termina na aula 8.</p>
+    <p class="why">Um pedido raso devolve um rosto raso: bonito, esquecível, igual a milhões. Personagem que segura um filme não sai de uma frase — sai de decisões empilhadas: quem é, que pele tem, o que veste, o que sente, onde está, que luz o ilumina. É isso que você empilha hoje.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/17842af91f5b421f995c79f51d60e0b3" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: o manequim do alfaiate recebendo camadas, uma a uma -->
+    <ellipse cx="110" cy="60" rx="20" ry="24" style="stroke:var(--accent)" stroke-width="2"/>
+    <path d="M110 84 v70 M84 110 h52 M110 154 l-22 50 M110 154 l22 50" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M84 100 c-8 24 -6 44 4 62" style="stroke:var(--warm)" stroke-width="2" fill="none" stroke-dasharray="4 3"/>
+    <g style="stroke:var(--line2)" stroke-width="1.6">
+      <rect x="196" y="34" width="76" height="24" rx="6"/>
+      <rect x="196" y="66" width="76" height="24" rx="6"/>
+      <rect x="196" y="98" width="76" height="24" rx="6"/>
+      <rect x="196" y="130" width="76" height="24" rx="6"/>
+    </g>
+    <path d="M196 46 h-40 M196 78 h-52 M196 110 h-44 M196 142 h-56" style="stroke:var(--faint)" stroke-width="1.4" stroke-dasharray="2 4"/>
+    <text x="234" y="50" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">quem é</text>
+    <text x="234" y="82" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">o que veste</text>
+    <text x="234" y="114" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">o que sente</text>
+    <text x="234" y="146" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">onde está</text>
+    <text x="150" y="226" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">uma peça de cada vez, até virar alguém</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Pedido genérico, rosto genérico</h2>
+      <p>Escreva "mulher bonita, foto realista" e a IA devolve exatamente o que você pediu: a média de todos os rostos bonitos que ela conhece. Média não tem história. O problema não é estético — é narrativo: ninguém quer saber o que acontece com um rosto de banco de imagem.</p>
+      <p>A social media percebe isso nos números: o post com um rosto "perfeito de IA" passa batido; o post com um personagem que parece ter vida — uma ruga de expressão, uma roupa com memória — para o dedo do público.</p>
+      <div class="qanchor"><p>Personagem não se pede. Personagem se constrói.</p></div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> As nove camadas, em quatro perguntas</h2>
+      <p>A construção profissional empilha nove camadas. Parece muito, mas elas respondem a só quatro perguntas que você já sabe fazer:</p>
+      <ul>
+        <li><b>Quem é?</b> — identidade (idade, traços, presença), pele com textura real (poros, brilho natural, pequenas marcas) e figurino (materiais, cores, acessórios).</li>
+        <li><b>O que sente?</b> — a energia emocional: calma, confiante, misteriosa, vulnerável. Emoção muda postura, olhar e até a luz que combina.</li>
+        <li><b>Onde está?</b> — o ambiente ao redor. É a camada que transforma retrato em cena de filme.</li>
+        <li><b>Como é filmado?</b> — luz de cinema (fim de tarde, contraluz, sombras), linguagem de câmera (lente, profundidade, composição) e o formato vertical 9:16.</li>
+      </ul>
+      <p>A fotógrafa reconhece o próprio processo: é a ordem mental de um ensaio — modelo, styling, locação, luz, lente. A novidade é só o meio: aqui, tudo vira texto.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> A nona camada: dizer o que você não quer</h2>
+      <p>A camada final é uma lista de proibições, escrita no fim do pedido: nada de pele de plástico, nada de aparência de desenho de computador, nada de anatomia distorcida, nada de objetos aleatórios, textos ou marcas d'água na imagem.</p>
+      <p>Funciona porque a IA, na dúvida, escorrega exatamente para esses vícios — e a proibição explícita fecha as portas antes de ela entrar.</p>
+      <p>O dono de restaurante criando o "chef" fictício da sua marca sente a diferença na hora: sem as proibições, aparece um chef de videogame; com elas, um profissional que poderia estar na cozinha dele amanhã.</p>
+      <div class="qbefore-after">
+        <div class="qba-col"><p class="qk">Antes</p><p>"Mulher misteriosa num farol, foto realista." Uma frase, uma camada — a IA decide as outras oito.</p></div>
+        <div class="qba-col"><p class="qk">Depois</p><p>Nove camadas descritas: a vigia de meia-idade, pele com textura real, capa de lã encharcada, serena, farol ao entardecer, contraluz dourada, lente longa, 9:16, proibições no fim.</p></div>
+        <p class="qba-saldo">Saldo: de rosto de banco de imagem a protagonista com filme pela frente — mesma ferramenta, um minuto a mais de escrita.</p>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="ChatGPT (geração de imagem), jul/2026">
+      <h2><span class="n">04</span> A fórmula pronta — e a protagonista que nos acompanha</h2>
+      <p>A fórmula abaixo organiza as nove camadas em lacunas. Você preenche cada colchete e cola no gerador de imagens do ChatGPT (a versão gratuita gera imagem) — ou no gerador que você já usa.</p>
+      <p>Para as próximas aulas, criamos aqui <b>a vigia do farol</b>: uma mulher de meia-idade, serena, numa costa de tempestade ao entardecer. Ela vira storyboard na aula 6, movimento na aula 7 e filme na aula 8. Você pode adotá-la ou criar a sua — a regra é uma só: escolha alguém que você queira ver vivo.</p>
+      <p>A social media pode criar o personagem-mascote da marca do cliente; a fotógrafa, a modelo impossível de contratar. O personagem é seu — o método é o mesmo.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <div class="quiz" data-answer="a">
+        <p class="qk">Teste-se</p><p class="q">Seu personagem saiu como retrato bonito, mas sem clima de filme. Qual camada provavelmente ficou de fora?</p>
+        <button class="opt" data-k="a" data-fb="Exato: sem ambiente descrito, a IA entrega fundo neutro de estúdio — e retrato sem mundo ao redor não vira cena.">O ambiente — o mundo ao redor do personagem</button>
+        <button class="opt" data-k="b" data-fb="O formato muda a moldura, não o clima: um 9:16 de fundo neutro continua sendo retrato de estúdio.">O formato vertical 9:16</button>
+        <button class="opt" data-k="c" data-fb="As proibições evitam defeitos (plástico, distorção), mas não criam mundo — quem cria cena é o ambiente e a luz.">As instruções de proibição</button>
+        <p class="qfb"></p>
+      </div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p5" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Construa o protagonista do seu filme</h3>
+      <p class="pgoal">Sair com o seu personagem vertical de cinema, gerado em 9:16 — em ~12 minutos.</p>
+      <p class="psafe">É só texto e geração: nada se perde, nada se paga a mais por tentar de novo. Personagem que não convenceu vai para a lixeira sem dó — o método fica com você.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Create a vertical 9:16 ultra-realistic cinematic image of
+&lt;quem é: idade, traços, presença&gt;.
+The character has realistic skin with visible pores, natural texture
+and subtle imperfections, and wears &lt;figurino: materiais, cores, acessórios&gt;.
+The character's emotional energy is &lt;emoção: serena, confiante, misteriosa...&gt;.
+The scene takes place in &lt;ambiente e detalhes de história&gt;.
+Use &lt;luz: golden hour, contraluz, sombras longas...&gt;, realistic shadows,
+atmospheric depth, natural color grading, and &lt;câmera: lente, profundidade&gt;.
+The image should feel like &lt;referência de gênero de filme&gt;.
+Avoid plastic skin, CGI look, cartoon style, distorted anatomy, blurry face,
+random objects, extra characters, text, logos, watermarks, or UI elements.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Preencha os colchetes da fórmula em português ou inglês — vale rascunhar as quatro perguntas antes: quem é, o que sente, onde está, como é filmado.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Cole no gerador e gere 2 ou 3 variações do mesmo pedido.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Escolha a mais forte e guarde imagem e texto juntos: esse par é a certidão de nascimento do seu protagonista — as aulas 6, 7 e 8 partem dele.</label></li>
+      </ol>
+      <p class="pdone">Você tem um protagonista com presença, mundo e luz próprios — construído por decisão sua, camada por camada.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> O pedido raso mira a média de todos os rostos; o pedido em camadas mira um ponto específico — e é aí que mora a história."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <circle cx="66" cy="90" r="40" style="stroke:var(--line2)" stroke-width="2" stroke-dasharray="4 4"/>
+        <circle cx="66" cy="90" r="22" style="stroke:var(--line2)" stroke-width="1.6" stroke-dasharray="4 4"/>
+        <circle cx="66" cy="90" r="5" style="fill:var(--line2)"/>
+        <text x="66" y="152" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">a média: todos e ninguém</text>
+        <circle cx="160" cy="90" r="40" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="176" cy="72" r="6" style="fill:var(--accent)"/>
+        <path d="M176 72 l-34 34" style="stroke:var(--accent)" stroke-width="1.6" stroke-dasharray="2 3"/>
+        <text x="160" y="152" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">um ponto: alguém</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> Nove camadas, quatro perguntas: quem é, o que sente, onde está e como é filmado — empilhadas num pedido só."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--accent)" stroke-width="2" fill="none">
+          <rect x="52" y="140" width="116" height="24" rx="6"/>
+          <rect x="60" y="108" width="100" height="24" rx="6" opacity=".85"/>
+          <rect x="68" y="76" width="84" height="24" rx="6" opacity=".7"/>
+          <rect x="76" y="44" width="68" height="24" rx="6" opacity=".55"/>
+        </g>
+        <text x="110" y="156" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">quem é</text>
+        <text x="110" y="124" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">o que sente</text>
+        <text x="110" y="92" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">onde está</text>
+        <text x="110" y="60" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">como é filmado</text>
+        <text x="110" y="186" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">cada andar sustenta o de cima</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> As proibições fecham as saídas de emergência da IA: sem elas, na dúvida, o resultado escorrega para plástico e distorção."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="70" y="40" width="80" height="110" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="110" cy="80" r="16" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M102 104 v26 M92 116 h36" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <g style="stroke:var(--warm)" stroke-width="2">
+          <path d="M46 60 l14 0 M46 60 l6 -6 M46 60 l6 6"/>
+          <path d="M174 60 l-14 0 M174 60 l-6 -6 M174 60 l-6 6"/>
+          <path d="M46 130 l14 0 M46 130 l6 -6 M46 130 l6 6"/>
+          <path d="M174 130 l-14 0 M174 130 l-6 -6 M174 130 l-6 6"/>
+        </g>
+        <text x="110" y="176" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">saídas fechadas: plástico não entra</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> O par imagem + texto do seu protagonista alimenta as três próximas aulas: storyboard, movimento e filme."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="28" y="36" width="46" height="70" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="51" cy="62" r="10" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <rect x="28" y="116" width="46" height="30" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <path d="M34 126 h34 M34 134 h24" style="stroke:var(--line2)" stroke-width="1.4"/>
+        <path d="M74 90 h30 M104 90 v-40 h28 M104 90 h28 M104 90 v40 h28" style="stroke:var(--muted)" stroke-width="1.8" fill="none"/>
+        <rect x="132" y="34" width="62" height="26" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="132" y="77" width="62" height="26" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="132" y="120" width="62" height="26" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="163" y="51" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">aula 6</text>
+        <text x="163" y="94" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">aula 7</text>
+        <text x="163" y="137" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">aula 8</text>
+        <text x="110" y="182" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">guarde imagem e texto juntos</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Pedido raso devolve a média dos rostos — e média não sustenta narrativa.</li>
+    <li>As nove camadas respondem a quatro perguntas: quem é, o que sente, onde está e como é filmado.</li>
+    <li>Ambiente e luz são as camadas que transformam retrato em cena; as proibições finais evitam os vícios clássicos da IA.</li>
+    <li>O par imagem + texto do personagem é documento de trabalho: dele partem o storyboard, o movimento e o filme.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de criar um protagonista com identidade própria — não um rosto sorteado.</p>
+  <p class="na-action">Nos próximos 15 minutos: gere uma segunda versão do mesmo personagem trocando só a camada de emoção. Compare as duas — sentir a camada mudar a imagem é o que grava o método.</p>
+  <p class="na-hook">Na próxima aula, esse personagem para de posar: você planeja, batida por batida, os 15 segundos de cena que ele vai viver.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-4">← aula anterior</a><a href="#aula-6">próxima aula →</a></nav>
+<footer>Aula 5 · Fundamentos · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-5">
+[
+  {"front":"Diagnóstico: o personagem saiu 'bonito de banco de imagem', sem vida. O que faltou no pedido?","back":"Camadas — provavelmente ambiente, emoção e textura de pele; um pedido de uma frase deixa a IA escolher a média em oito camadas."},
+  {"front":"Pergunta: quais são as quatro perguntas que organizam as nove camadas do personagem?","back":"Quem é, o que sente, onde está e como é filmado."},
+  {"front":"Decisão: você quer o mesmo personagem, mas ameaçador em vez de sereno. Qual camada troca primeiro — e o que mais muda junto?","back":"A energia emocional; ela arrasta postura, olhar e a luz que combina (sombras mais duras, contraste maior)."},
+  {"front":"Aplicação: o cliente pede um 'garçom-mascote' para a marca do restaurante. Cite as duas camadas que impedem o resultado de parecer videogame.","back":"Pele com textura real (poros, imperfeições) e a lista de proibições no fim (sem CGI, sem pele de plástico, sem distorção)."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-5 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), fotógrafa (s2), dono de restaurante (s3), social media+fotógrafa (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-5"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/pergunta/decisão/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+
+<!-- ===== AULA 6 ===== -->
+<section class="view" id="v-aula-6" data-aula="6" data-tempo="20min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 1 · Aula 6</p>
+    <h1>O storyboard <em>cronometrado</em></h1>
+    <p class="promise">Ao fim desta aula você transforma o seu personagem numa folha de nove quadros com tempo marcado — o plano completo de uma cena de 15 segundos, pronto para virar vídeo.</p>
+    <p class="why">Gerar vídeo sem plano é gastar tentativa com sorte. Um clipe bom não é aleatório: alguém decidiu o que acontece em cada segundo antes de apertar o botão. Hoje esse alguém passa a ser você — e a decisão custa uma folha de papel digital, não uma geração cara.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/2f48182d8da245a189526643c32e3ca1" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: a planta da casa antes do tijolo -->
+    <rect x="40" y="46" width="130" height="140" rx="4" style="stroke:var(--accent)" stroke-width="2"/>
+    <path d="M40 100 h130 M105 46 v140 M40 146 h65" style="stroke:var(--accent);opacity:.6" stroke-width="1.4"/>
+    <path d="M70 100 a14 14 0 0 1 14 -14" style="stroke:var(--accent)" stroke-width="1.4" fill="none"/>
+    <text x="105" y="206" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="10">a planta</text>
+    <path d="M186 116 h28" style="stroke:var(--muted)" stroke-width="2"/>
+    <path d="M208 111 l8 5 -8 5" style="stroke:var(--muted)" stroke-width="2" fill="none"/>
+    <path d="M226 150 h50 v-34 l-25 -20 -25 20 z" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
+    <text x="251" y="172" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="10">a casa</text>
+    <text x="150" y="226" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">ninguém assenta tijolo sem planta</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Uma imagem bonita ainda não é um vídeo</h2>
+      <p>Entre o retrato da aula 5 e um clipe que emociona existe uma peça que os iniciantes pulam: decidir <b>o que acontece</b>, segundo a segundo. Essa peça tem nome de cinema — <span class="gterm" tabindex="0" data-def="Folha com os quadros-chave de uma cena, em ordem, cada um com tempo e descrição da ação. É o plano visual do vídeo antes de ele existir.">storyboard</span> — mas a ideia é doméstica: é a lista de compras da sua cena.</p>
+      <p>E atenção ao detalhe que muda tudo: storyboard não é uma galeria de variações bonitas. É um plano com tempo marcado, em que cada quadro responde "e agora, o que muda?".</p>
+      <p>A social media já faz isso sem nomear, quando rabisca a sequência de um reels no papel: cena de abertura, virada, final. Aqui o rabisco vira uma folha profissional de nove quadros.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> A regra de ouro: tudo parado, menos a história</h2>
+      <p>Nos nove quadros, quatro coisas ficam travadas: <b>o personagem, a roupa, o mundo e a luz</b>. Uma coisa só avança: a história. É essa assimetria que faz a folha parecer cenas do mesmo filme — e não nove filmes diferentes.</p>
+      <p>A fotógrafa reconhece a disciplina do ensaio bom: mesma modelo, mesmo figurino, mesma luz da tarde inteira — o que evolui é a pose e a intenção. Quando ela muda a luz no meio, o cliente percebe que "algo quebrou", mesmo sem saber dizer o quê.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Deixar a criatividade trocar roupa ou cenário no meio dos nove quadros.</b> Parece variedade, mas mata a continuidade — o vídeo final fica com cara de colagem. Variedade boa mora nos ângulos e na ação, nunca na identidade.</p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="ferramenta" data-versao="estrutura de cena, jul/2026">
+      <h2><span class="n">03</span> As nove batidas de 15 segundos</h2>
+      <p>O arco que você vai usar é um clássico condensado — funciona para tempestade no farol, para cozinha em fogo alto e para vitrine de loja:</p>
+      <ul>
+        <li><b>0–1,5s · Silêncio de abertura</b> — plano bem aberto, mundo calmo.</li>
+        <li><b>1,5–3s · Algo muda</b> — vento, vapor, luz: a atmosfera acorda.</li>
+        <li><b>3–4,5s · O personagem sente</b> — close no rosto, o olhar percebe.</li>
+        <li><b>4,5–6s · Um detalhe se move</b> — tecido, mão, textura do chão.</li>
+        <li><b>6–7,5s · A tensão cresce</b> — ângulo baixo, o mundo pesa.</li>
+        <li><b>7,5–9s · A força oculta</b> — algo aparece ao longe.</li>
+        <li><b>9–10,5s · O clima dispara</b> — perfil, o personagem se volta.</li>
+        <li><b>10,5–12,5s · A revelação</b> — o evento principal acontece.</li>
+        <li><b>12,5–15s · Final de herói</b> — ângulo baixo, personagem firme no meio do caos.</li>
+      </ul>
+      <p>Na versão do dono de restaurante: a cozinha em silêncio, o vapor sobe, o chef sente o ponto, a chama lambe a panela, e o prato final chega à mesa como revelação. Mesmo arco, outro mundo.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="ChatGPT (geração de imagem), jul/2026">
+      <h2><span class="n">04</span> Da regra à folha: gerando o storyboard</h2>
+      <p>O gerador monta a folha para você: recebe a imagem do seu personagem como referência, o arco das nove batidas como roteiro, e devolve a grade 3×3 com número, tempo, título e uma linha de ação por quadro — com bordas pretas de folha profissional.</p>
+      <p>O seu papel é o de diretor: conferir a folha pronta quadro a quadro, checando a regra de ouro. Rosto igual? Roupa igual? Mundo e luz iguais? História avançando?</p>
+      <p>A social media ganha aqui um artefato de venda: a folha aprovada pelo cliente <b>antes</b> de gastar qualquer geração de vídeo — fim da conversa "não era isso que eu imaginei".</p>
+      <div class="qsteps">
+        <p class="qk">O fluxo completo</p>
+        <ol>
+          <li>Envie a imagem do seu personagem (aula 5) no gerador.</li>
+          <li>Cole o pedido de storyboard da prática abaixo.</li>
+          <li>Confira os nove quadros contra a regra de ouro — identidade travada, história avançando.</li>
+          <li>Quadro fugiu? Gere de novo citando o problema ("keep the exact same outfit in all panels").</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p6" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Planeje os 15 segundos do seu personagem</h3>
+      <p class="pgoal">Sair com a folha 3×3 cronometrada da sua cena — em ~12 minutos.</p>
+      <p class="psafe">A folha é papel digital: errar aqui não custa nada — e é exatamente para isso que ela existe. Melhor dez folhas descartadas do que uma geração de vídeo desperdiçada.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Create a cinematic 3x3 timed storyboard for a 15-second video
+sequence based on the uploaded image. It must look like a professional
+film pre-production board: 9 panels in a clean 3x3 grid, black borders,
+each panel with panel number, timecode, short shot title and one short
+action description. Use the uploaded image as the main character
+reference. Preserve the same character identity, facial structure,
+outfit, environment, lighting direction, atmosphere and color grading
+in all 9 panels. Scene arc and exact timecodes:
+1 (0:00-0:01.5) opening silence, extreme wide shot;
+2 (0:01.5-0:03) the atmosphere begins to move;
+3 (0:03-0:04.5) close-up, the character senses it;
+4 (0:04.5-0:06) a small detail moves;
+5 (0:06-0:07.5) tension builds, low angle;
+6 (0:07.5-0:09) a hidden force appears in the distance;
+7 (0:09-0:10.5) side profile, atmosphere surges;
+8 (0:10.5-0:12.5) the reveal, wide action shot;
+9 (0:12.5-0:15) hero ending, low-angle iconic shot.
+The scene concept: &lt;descreva em 2-3 frases a SUA cena: onde o
+personagem está, o que muda, o que é revelado no final&gt;.
+Avoid redesigning the character, changing outfit or environment,
+extra characters, cartoon style, plastic skin, messy text, logos
+or watermarks.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Escreva as 2–3 frases do conceito da sua cena (use o arco do passo 03 como esqueleto) e preencha o colchete.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Envie a imagem do personagem, cole o pedido e gere a folha.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Audite os nove quadros pela regra de ouro; se um fugir, regenere apontando o desvio. Guarde a folha aprovada junto do personagem.</label></li>
+      </ol>
+      <p class="pdone">Sua cena de 15 segundos existe no papel, com tempo marcado — decisão tomada antes de gastar qualquer geração de vídeo.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> Galeria responde 'quais versões existem?'; storyboard responde 'o que acontece agora?' — a seta do tempo é a diferença."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--line2)" stroke-width="1.8" fill="none">
+          <rect x="26" y="34" width="30" height="30" rx="4"/><rect x="64" y="34" width="30" height="30" rx="4"/><rect x="102" y="34" width="30" height="30" rx="4"/>
+        </g>
+        <text x="80" y="86" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">galeria: versões soltas</text>
+        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
+          <rect x="26" y="112" width="30" height="30" rx="4"/><rect x="80" y="112" width="30" height="30" rx="4"/><rect x="134" y="112" width="30" height="30" rx="4"/>
+        </g>
+        <path d="M56 127 h24 M110 127 h24" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M74 122 l8 5 -8 5 M128 122 l8 5 -8 5" style="stroke:var(--accent)" stroke-width="1.8" fill="none"/>
+        <text x="42" y="158" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">0s</text>
+        <text x="96" y="158" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">7s</text>
+        <text x="150" y="158" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">15s</text>
+        <text x="96" y="182" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">storyboard: tempo + ação</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> Quatro trilhos travados (personagem, roupa, mundo, luz) e um trilho livre (história) — a assimetria que cria continuidade."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--line2)" stroke-width="2">
+          <line x1="30" y1="46" x2="190" y2="46"/><line x1="30" y1="72" x2="190" y2="72"/>
+          <line x1="30" y1="98" x2="190" y2="98"/><line x1="30" y1="124" x2="190" y2="124"/>
+        </g>
+        <g style="fill:var(--line2)">
+          <rect x="24" y="41" width="8" height="10" rx="2"/><rect x="24" y="67" width="8" height="10" rx="2"/>
+          <rect x="24" y="93" width="8" height="10" rx="2"/><rect x="24" y="119" width="8" height="10" rx="2"/>
+        </g>
+        <text x="196" y="50" style="fill:var(--muted);font-family:var(--mono)" font-size="8">fixo</text>
+        <path d="M30 158 c40 -12 80 12 120 -6 c14 -6 26 -8 40 -4" style="stroke:var(--accent)" stroke-width="2.4" fill="none"/>
+        <path d="M182 144 l10 3 -6 8" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+        <text x="110" y="184" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">só a história anda</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> A curva de tensão das nove batidas: calma, subida, revelação perto do fim e o herói firme no último quadro."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M24 150 h172" style="stroke:var(--line2)" stroke-width="1.6"/>
+        <path d="M24 146 c24 -2 40 -8 62 -18 c22 -10 34 -24 52 -34 c10 -6 14 -22 24 -22 c10 0 14 10 34 8" style="stroke:var(--accent)" stroke-width="2.4" fill="none"/>
+        <circle cx="162" cy="72" r="5" style="stroke:var(--warm);fill:none" stroke-width="2"/>
+        <text x="162" y="58" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">revelação</text>
+        <g style="fill:var(--faint);font-family:var(--mono)" font-size="8">
+          <text x="28" y="168">0s</text><text x="104" y="168">7,5s</text><text x="182" y="168">15s</text>
+        </g>
+        <g style="fill:var(--accent)">
+          <circle cx="24" cy="146" r="2.4"/><circle cx="46" cy="142" r="2.4"/><circle cx="68" cy="134" r="2.4"/>
+          <circle cx="90" cy="122" r="2.4"/><circle cx="112" cy="108" r="2.4"/><circle cx="130" cy="94" r="2.4"/>
+          <circle cx="146" cy="80" r="2.4"/><circle cx="178" cy="74" r="2.4"/><circle cx="196" cy="80" r="2.4"/>
+        </g>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> O circuito da folha: personagem + arco entram, a grade 3×3 sai, e a auditoria da regra de ouro aprova ou devolve."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="22" y="30" width="54" height="40" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="49" y="54" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">personagem</text>
+        <rect x="22" y="84" width="54" height="40" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="49" y="108" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">arco 9x</text>
+        <path d="M76 50 c22 0 22 27 34 27 M76 104 c22 0 22 -27 34 -27" style="stroke:var(--muted)" stroke-width="1.8" fill="none"/>
+        <rect x="116" y="56" width="60" height="44" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <g style="stroke:var(--accent);opacity:.7" stroke-width="1.2">
+          <line x1="136" y1="56" x2="136" y2="100"/><line x1="156" y1="56" x2="156" y2="100"/>
+          <line x1="116" y1="71" x2="176" y2="71"/><line x1="116" y1="86" x2="176" y2="86"/>
+        </g>
+        <path d="M146 100 v28" style="stroke:var(--warm)" stroke-width="2"/>
+        <path d="M141 120 l5 8 5 -8" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
+        <rect x="96" y="132" width="100" height="34" rx="8" style="stroke:var(--warm)" stroke-width="2"/>
+        <text x="146" y="153" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">auditoria: regra de ouro</text>
+        <text x="110" y="188" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">reprovou? gera de novo</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Storyboard é plano com tempo marcado, não galeria de variações — cada quadro responde "o que muda agora".</li>
+    <li>A regra de ouro trava personagem, roupa, mundo e luz; só a história tem licença para avançar.</li>
+    <li>O arco de nove batidas leva a cena da calma à revelação — e serve a qualquer mundo, do farol à cozinha.</li>
+    <li>A folha aprovada é o contrato da cena: barata de refazer, e economiza as gerações de vídeo que custam caro.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de planejar uma cena como planeja um profissional: no papel, antes do botão.</p>
+  <p class="na-action">Nos próximos 15 minutos: conte a cena da sua folha, em voz alta, para alguém — quadro a quadro. Onde a pessoa franzir a testa, a batida está confusa; ajuste a descrição daquele quadro.</p>
+  <p class="na-hook">Na próxima aula, a folha ganha vida: os nove quadros viram um vídeo de 15 segundos que segue o seu plano — não a sorte.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-5">← aula anterior</a><a href="#aula-7">próxima aula →</a></nav>
+<footer>Aula 6 · Fundamentos · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-6">
+[
+  {"front":"Contraste: o que separa um storyboard de uma galeria de imagens bonitas do mesmo personagem?","back":"O tempo: no storyboard cada quadro tem timecode e ação — responde 'o que acontece agora', não 'que versões existem'."},
+  {"front":"Pergunta: na regra de ouro do storyboard, o que fica travado e o que pode avançar?","back":"Travados: personagem, roupa, mundo e luz. Livre: só a história."},
+  {"front":"Aplicação: o cliente do restaurante quer '15 segundos que deem água na boca'. Como você usa o arco das nove batidas na cozinha dele?","back":"Cozinha calma → vapor sobe → chef sente → detalhe da chama → tensão do ponto → algo se revela → prato emerge → revelação à mesa → final firme do chef."},
+  {"front":"Diagnóstico: no vídeo final, a cena parece uma colagem de filmes diferentes. Onde o storyboard falhou?","back":"A identidade vazou: roupa, cenário ou luz mudaram entre quadros — variedade entrou onde só ângulo e ação podiam variar."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-6 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), fotógrafa (s2), dono de restaurante (s3), social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-6"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 contraste/pergunta/aplicação/diagnóstico; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+
+<!-- ===== AULA 7 ===== -->
+<section class="view" id="v-aula-7" data-aula="7" data-tempo="25min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 1 · Aula 7</p>
+    <h1>Do plano ao <em>movimento</em></h1>
+    <p class="promise">Ao fim desta aula você gera a sua cena completa de 15 segundos seguindo o storyboard — com a IA de chat escrevendo o pedido técnico gigante por você.</p>
+    <p class="why">O pedido que gera um vídeo de nível profissional tem o tamanho de uma página: cada segundo descrito, câmera, luz, física. Ninguém espera que você escreva isso — nem os profissionais escrevem mais. Eles treinam um assistente para escrever. Hoje você monta o seu.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/6a22ceea7e6f46d28dd77f898d03f709" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: o despachante — você fala uma frase, ele preenche o formulário de 30 campos -->
+    <circle cx="52" cy="70" r="16" style="stroke:var(--accent)" stroke-width="2"/>
+    <path d="M52 86 v34 M36 102 h32" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M74 66 c14 -10 30 -10 44 -2" style="stroke:var(--accent)" stroke-width="1.8" fill="none" stroke-dasharray="3 3"/>
+    <ellipse cx="96" cy="52" rx="20" ry="12" style="stroke:var(--accent);opacity:.6" stroke-width="1.6"/>
+    <rect x="140" y="46" width="58" height="76" rx="6" style="stroke:var(--warm)" stroke-width="2"/>
+    <path d="M148 60 h42 M148 72 h42 M148 84 h30 M148 96 h42 M148 108 h36" style="stroke:var(--warm);opacity:.7" stroke-width="1.6"/>
+    <path d="M206 84 h28" style="stroke:var(--muted)" stroke-width="2"/>
+    <path d="M228 79 l8 5 -8 5" style="stroke:var(--muted)" stroke-width="2" fill="none"/>
+    <rect x="242" y="58" width="40" height="52" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+    <path d="M250 96 l8 -12 6 8 8 -14" style="stroke:var(--line2)" stroke-width="1.8" fill="none"/>
+    <text x="52" y="146" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="10">sua frase</text>
+    <text x="169" y="146" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="10">o formulário</text>
+    <text x="262" y="146" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="10">o vídeo</text>
+    <text x="150" y="210" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">o despachante preenche — você decide</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Você dirige; o assistente datilografa</h2>
+      <p>Um vídeo de 15 segundos com qualidade de cinema precisa de um pedido enorme: cada trecho de 1,5 segundo descrito em detalhe — o que o personagem faz, para onde a câmera vai, como a luz se comporta. Escrever isso à mão é trabalho de especialista.</p>
+      <p>A virada de chave: você não escreve o pedido — você <b>encomenda</b> o pedido. A IA de chat, treinada com as instruções certas, lê a sua folha de storyboard e redige a página técnica inteira. Você continua no comando das decisões; ela cuida da papelada.</p>
+      <p>A social media já vive essa divisão de trabalho: ela define conceito e referências, e delega a redação técnica — só que agora o redator técnico é gratuito e responde em segundos.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="ChatGPT, jul/2026">
+      <h2><span class="n">02</span> O treinamento: cole uma vez, use para sempre</h2>
+      <p>Numa conversa nova do ChatGPT, você cola um texto de treinamento (está na prática, pronto). Ele transforma aquela conversa num especialista em pedidos de vídeo, com quatro manias que fazem a diferença:</p>
+      <ul>
+        <li><b>Lê os tempos da sua folha</b> — se o storyboard diz 0–1,5s, o pedido respeita 0–1,5s.</li>
+        <li><b>Detalha cada trecho</b> — ação, câmera, luz e física, segundo a segundo.</li>
+        <li><b>Protege a identidade</b> — repete as instruções de "mesmo rosto, sem deformação" em todo pedido.</li>
+        <li><b>Fecha com a cauda técnica</b> — a lista anti-defeito (sem derretimento, sem tremulação, física realista).</li>
+      </ul>
+      <p>Guarde essa conversa nos favoritos: é uma ferramenta sua, reutilizável em todo projeto de vídeo daqui em diante. A fotógrafa que monta um book anima cena nova por semana — sempre na mesma conversa treinada.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Pular o treinamento e pedir direto "escreva um prompt de vídeo".</b> Sem as instruções, a IA devolve três linhas genéricas — e o vídeo sai da loteria de novo. O treinamento é o que faz o assistente pensar como engenheiro.</p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="ferramenta" data-versao="ChatGPT, jul/2026">
+      <h2><span class="n">03</span> Duas referências entram, um pedido sai</h2>
+      <p>Com o assistente treinado, você envia as duas peças que construiu: a imagem do personagem (aula 5) e a folha do storyboard (aula 6). Aí pede: "escreva o pedido final usando as duas — seguindo os tempos da folha e preservando a identidade".</p>
+      <p>As duas juntas se completam: o retrato garante o rosto em alta qualidade; a folha dita o que acontece a cada segundo. Uma sem a outra manca — retrato sozinho não tem história, folha sozinha tem rostos pequenos demais para segurar a identidade.</p>
+      <p>O dono de restaurante manda o retrato do chef fictício e a folha da cozinha em nove batidas — e recebe de volta uma página técnica que ele jamais escreveria. Nem precisa: a decisão foi toda dele.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="Seedance 2.0 (Higgsfield/CapCut), jul/2026">
+      <h2><span class="n">04</span> Gerar — e conferir contra a folha</h2>
+      <p>A geração roda numa ferramenta que aceite o Seedance 2.0 — Higgsfield e CapCut são dois caminhos; se você já usa outra plataforma com Seedance, o mesmo pedido funciona nela. Você envia as duas imagens, cola o pedido, ajusta três opções e gera.</p>
+      <p>Depois, o trabalho de diretor: assistir com a folha do lado. O vídeo não é bom "porque ficou bonito" — é bom se cumpriu o plano. A fotógrafa confere assim um ensaio entregue: a pergunta nunca é "ficou bonito?", é "é o que o cliente aprovou na folha?".</p>
+      <div class="qsteps">
+        <p class="qk">Gerar e conferir</p>
+        <ol>
+          <li>Na ferramenta de vídeo, envie o retrato e a folha como referências.</li>
+          <li>Cole o pedido que o assistente escreveu, sem cortar nada.</li>
+          <li>Ajuste: duração 15s · formato 9:16 · qualidade alta. Gere.</li>
+          <li>Confira contra a folha: mesmo rosto do início ao fim? Roupa igual? Movimento segue as batidas? Final forte?</li>
+          <li>Quebrou em algo? Simplifique a ação daquele trecho no pedido e gere de novo.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p7" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Gere a sua cena de 15 segundos</h3>
+      <p class="pgoal">Sair com o vídeo da sua cena, gerado a partir do seu storyboard — em ~15 minutos.</p>
+      <p class="psafe">O treinamento vive numa conversa de chat: não muda nada no seu computador nem nas suas contas. Se a geração de vídeo do dia acabar (planos gratuitos têm limite), o pedido fica pronto esperando — nada se perde.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Você é um engenheiro de prompts especialista em Seedance 2.0.
+Sua função: escrever pedidos de vídeo LONGOS e DETALHADOS, em inglês,
+com qualidade de cinema. Regras:
+- Vou enviar 2 imagens: @image1 = personagem (referência estrita de
+  identidade), @image2 = storyboard cronometrado. Leia os timecodes
+  EXATOS do storyboard e siga cada um.
+- Cada trecho de tempo deve ter 4-6 frases: ação do personagem,
+  movimento de câmera, luz, atmosfera e física.
+- Sempre inclua: "Use @image1 as strict identity reference. Preserve
+  exact likeness. Stable face throughout."
+- Máximo 3-4 ações no clipe; nunca escreva "cut to"; nada de marcas
+  ou celebridades.
+- Termine sempre com: "No morphing. No deformation. No flickering.
+  Realistic physics. 4K cinematic."
+- Entregue o pedido final completo dentro de um bloco de código.
+Quando eu enviar as imagens, faça perguntas se faltar algo e depois
+escreva o pedido final em inglês, formato 9:16, duração 15s.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Abra uma conversa nova no ChatGPT, cole o treinamento acima e envie.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Envie o retrato do personagem e a folha do storyboard, pedindo o pedido final.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Copie o pedido, abra a ferramenta com Seedance 2.0, envie as duas imagens, cole e gere (15s · 9:16 · alta).</label></li>
+        <li><label><input type="checkbox" data-ptask="4"> Assista com a folha do lado, batida por batida. Cumpriu o plano? Guarde o vídeo — ele é a matéria-prima da aula final.</label></li>
+      </ol>
+      <p class="pdone">Sua cena saiu do papel e virou vídeo seguindo o seu plano — o assistente escreveu, mas quem dirigiu foi você.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> A divisão de trabalho: as decisões continuam suas; a redação técnica de página inteira vira tarefa do assistente."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="24" y="36" width="76" height="52" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="62" y="58" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">você</text>
+        <text x="62" y="74" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">decide a cena</text>
+        <rect x="120" y="36" width="76" height="52" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="158" y="58" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">assistente</text>
+        <text x="158" y="74" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">redige a página</text>
+        <path d="M100 62 h20" style="stroke:var(--muted)" stroke-width="2"/>
+        <rect x="70" y="120" width="80" height="56" rx="8" style="stroke:var(--warm)" stroke-width="2"/>
+        <path d="M80 134 h60 M80 146 h60 M80 158 h44" style="stroke:var(--warm);opacity:.7" stroke-width="1.6"/>
+        <path d="M62 88 c0 22 30 22 40 32 M158 88 c0 22 -30 22 -40 32" style="stroke:var(--muted)" stroke-width="1.6" fill="none"/>
+        <text x="110" y="194" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">pedido técnico completo</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> O treinamento instala quatro manias no assistente: tempos exatos, detalhe por trecho, identidade protegida e cauda técnica."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="60" y="24" width="100" height="34" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="110" y="45" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">treinamento</text>
+        <path d="M78 58 c-20 14 -28 22 -34 34 M96 58 c-4 14 -6 22 -8 34 M124 58 c4 14 6 22 8 34 M142 58 c20 14 28 22 34 34" style="stroke:var(--muted)" stroke-width="1.6" fill="none"/>
+        <g style="stroke:var(--line2)" stroke-width="1.8" fill="none">
+          <rect x="16" y="96" width="44" height="30" rx="6"/><rect x="68" y="96" width="40" height="30" rx="6"/>
+          <rect x="116" y="96" width="40" height="30" rx="6"/><rect x="164" y="96" width="42" height="30" rx="6"/>
+        </g>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="7.5">
+          <text x="38" y="114" text-anchor="middle">tempos</text>
+          <text x="88" y="114" text-anchor="middle">detalhe</text>
+          <text x="136" y="114" text-anchor="middle">rosto</text>
+          <text x="185" y="114" text-anchor="middle">cauda</text>
+        </g>
+        <text x="110" y="160" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">cola 1 vez · vale para todo projeto</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> Cada referência cobre a fraqueza da outra: o retrato dá o rosto em alta; a folha dá o tempo e a ação."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="30" y="40" width="52" height="76" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="56" cy="68" r="13" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="56" y="132" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">@image1 rosto</text>
+        <rect x="138" y="40" width="52" height="76" rx="6" style="stroke:var(--warm)" stroke-width="2"/>
+        <g style="stroke:var(--warm);opacity:.7" stroke-width="1.2">
+          <line x1="155" y1="40" x2="155" y2="116"/><line x1="172" y1="40" x2="172" y2="116"/>
+          <line x1="138" y1="65" x2="190" y2="65"/><line x1="138" y1="90" x2="190" y2="90"/>
+        </g>
+        <text x="164" y="132" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">@image2 tempo</text>
+        <path d="M82 78 c20 22 36 22 56 0" style="stroke:var(--muted)" stroke-width="1.8" fill="none" stroke-dasharray="3 3"/>
+        <rect x="72" y="150" width="76" height="30" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="110" y="169" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">1 pedido final</text>
+        <path d="M56 116 c0 20 30 26 40 34 M164 116 c0 20 -30 26 -40 34" style="stroke:var(--line2)" stroke-width="1.6" fill="none"/>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> O ciclo de direção: gera, confere contra a folha, simplifica o trecho que quebrou e gera de novo — até o plano ser cumprido."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="72" y="24" width="76" height="32" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="110" y="44" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">gerar</text>
+        <rect x="130" y="90" width="76" height="32" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="168" y="110" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">conferir folha</text>
+        <rect x="14" y="90" width="76" height="32" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="52" y="110" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">simplificar</text>
+        <rect x="72" y="156" width="76" height="32" rx="8" style="stroke:var(--warm)" stroke-width="2"/>
+        <text x="110" y="176" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">plano cumprido</text>
+        <path d="M148 44 c30 8 30 34 24 46 M130 110 h-40 M52 90 c-6 -20 10 -40 20 -46 M168 122 c-6 16 -20 30 -44 36" style="stroke:var(--muted)" stroke-width="1.6" fill="none"/>
+        <path d="M96 105 l-8 5 8 5" style="stroke:var(--muted)" stroke-width="1.6" fill="none"/>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>O pedido de vídeo profissional é longo demais para escrever à mão — e não precisa: você o encomenda a um assistente treinado.</li>
+    <li>O treinamento se cola uma vez e vira ferramenta permanente: tempos exatos, detalhe por trecho, identidade protegida, cauda técnica.</li>
+    <li>Retrato e storyboard entram juntos porque se completam — rosto em alta de um lado, tempo e ação do outro.</li>
+    <li>Vídeo bom é o que cumpre a folha; quando quebra, simplifica-se o trecho e gera-se de novo.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de gerar uma cena que segue um plano seu — o salto que separa quem aperta botão de quem dirige.</p>
+  <p class="na-action">Nos próximos 15 minutos: peça ao mesmo assistente uma segunda versão do pedido com uma batida diferente na revelação. Gerar a variação amanhã já deixa a aula 8 com mais material para montar.</p>
+  <p class="na-hook">Na última aula, três cenas viram um filme: você corta o que não presta, guarda o ouro e monta o seu primeiro mini-filme completo.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-6">← aula anterior</a><a href="#aula-8">próxima aula →</a></nav>
+<footer>Aula 7 · Fundamentos · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-7">
+[
+  {"front":"Diagnóstico: o assistente devolveu um pedido de vídeo de três linhas. O que faltou na conversa?","back":"O treinamento: sem as instruções coladas no início, a IA de chat escreve raso — com elas, redige a página técnica trecho a trecho."},
+  {"front":"Pergunta: por que o pedido final precisa das DUAS imagens — retrato e storyboard — e não só de uma?","back":"O retrato segura a identidade (rosto em alta); a folha dita tempo e ação. Só retrato = sem história; só folha = rostos pequenos que não seguram o rosto."},
+  {"front":"Decisão: a geração saiu boa, menos o trecho da revelação, que virou bagunça. Qual é o ajuste profissional?","back":"Simplificar a ação daquele trecho específico no pedido (menos coisas acontecendo) e gerar de novo — não reescrever o pedido inteiro."},
+  {"front":"Aplicação: em que momento de um novo projeto você reabre a conversa treinada do assistente?","back":"Sempre que houver storyboard novo pronto — a mesma conversa treinada escreve o pedido de qualquer cena futura."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-7 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="25min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), fotógrafa (s2), dono de restaurante (s3), fotógrafa (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-7"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/pergunta/decisão/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+
+<!-- ===== AULA 8 ===== -->
+<section class="view" id="v-aula-8" data-aula="8" data-tempo="25min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 1 · Aula 8</p>
+    <h1>De clipes soltos a <em>mini-filme</em></h1>
+    <p class="promise">Ao fim desta aula você monta, a partir dos seus clipes gerados, um mini-filme completo — com começo, conflito e clímax — exportado e pronto para mostrar.</p>
+    <p class="why">Clipe gerado é matéria bruta: às vezes o melhor segundo está no meio, o começo é fraco e o final serve para outra coisa. Quem cola três clipes em fila entrega uma colagem. Quem garimpa os melhores momentos e remonta entrega um filme. Hoje você garimpa.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/d7f2d1f9222541f293dab5ed526a259e" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: a peneira do garimpo — muito cascalho, pouco ouro -->
+    <ellipse cx="150" cy="90" rx="80" ry="26" style="stroke:var(--line2)" stroke-width="2.4"/>
+    <ellipse cx="150" cy="90" rx="52" ry="16" style="stroke:var(--line2);opacity:.6" stroke-width="1.6"/>
+    <g style="fill:var(--line2)">
+      <circle cx="122" cy="88" r="4"/><circle cx="140" cy="94" r="3.4"/><circle cx="170" cy="86" r="4.2"/><circle cx="186" cy="93" r="3"/>
+    </g>
+    <g style="fill:var(--warm)">
+      <circle cx="152" cy="88" r="4.6"/><circle cx="132" cy="92" r="3.2"/><circle cx="168" cy="94" r="3.6"/>
+    </g>
+    <path d="M150 128 v34" style="stroke:var(--warm)" stroke-width="2"/>
+    <path d="M145 154 l5 8 5 -8" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
+    <g style="fill:var(--warm)">
+      <circle cx="138" cy="184" r="4"/><circle cx="152" cy="190" r="4.6"/><circle cx="166" cy="184" r="3.6"/>
+    </g>
+    <text x="150" y="216" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">o filme é feito só das pepitas</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Pense como editor, não como colecionador</h2>
+      <p>O erro do iniciante nesta etapa tem nome: apego. Ele gastou gerações para produzir cada clipe e quer usar tudo. O editor profissional faz o oposto — assiste ao material perguntando só uma coisa: <b>que momentos servem à história?</b> O resto, por mais bonito, cai.</p>
+      <p>Um caso para sentir o método: Vera, fotógrafa, gerou três cenas da vigia do farol e detestou o segundo clipe inteiro — menos os dois segundos em que a capa sobe com o vento. Ela cortou fora os treze segundos restantes sem culpa. Foram exatamente esses dois segundos que viraram a melhor transição do filme dela.</p>
+      <p>Estrutura para o garimpo: <b>preparação</b> (o mundo e a ameaça aparecem) → <b>conflito</b> (a tensão cresce) → <b>clímax</b> (o momento mais forte, e a resolução). Toda pepita que você guardar vai morar numa dessas três caixas.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="Topaz (ou similar), jul/2026">
+      <h2><span class="n">02</span> Antes de cortar, melhore a matéria-prima</h2>
+      <p>Vídeo gerado por IA perde detalhe fino — rosto, tecido, poeira — principalmente em movimento rápido. Por isso os profissionais passam os clipes por uma <span class="gterm" tabindex="0" data-def="Programa que aumenta a resolução e recupera detalhe de um vídeo pronto, sem regerar a cena — a imagem fica mais nítida e limpa.">ampliação inteligente</span> antes da montagem.</p>
+      <p>A ferramenta citada nesta trilha é o Topaz, um programa pago com modelos que recuperam textura de tecido e pele. Regra prática: se o resultado ficar nítido demais, com aspecto serrilhado, troque para o modelo de limpeza geral da própria ferramenta.</p>
+      <p>E a versão honesta para quem está começando: <b>esta etapa é opcional</b>. A social media que ainda não quer pagar ferramenta nenhuma monta o filme com os clipes originais — o método da aula funciona igual; a ampliação só acrescenta acabamento.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Corte em pedaços, remonte a história</h2>
+      <p>No editor, o fluxo profissional tem uma ordem que evita horas perdidas: primeiro se corta cada clipe em pedaços pequenos, depois se escolhe, e só então se monta. Quem tenta "montar direto" fica refém da ordem original dos clipes.</p>
+      <p>O dono de restaurante montando o filme do seu chef fictício corta os três clipes em doze pedaços, joga fora sete — movimento estranho, segundos vazios, quadros quebrados — e remonta cinco na ordem que serve: cozinha calma, chama subindo, o ponto exato, o empratamento, a mesa.</p>
+      <div class="qsteps">
+        <p class="qk">O fluxo da montagem</p>
+        <ol>
+          <li>Importe os três clipes (ampliados ou originais) num projeto 9:16 novo.</li>
+          <li>Corte cada clipe em pedaços pequenos, nos pontos onde a ação muda.</li>
+          <li>Classifique rápido: pepita (usa), talvez (guarda), entulho (apaga).</li>
+          <li>Remonte só as pepitas na ordem preparação → conflito → clímax.</li>
+          <li>Assista uma vez inteira: onde o olho tropeçar, corte mais um segundo.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="CapCut, jul/2026">
+      <h2><span class="n">04</span> Som herdado, polimento leve, exportação</h2>
+      <p>Boa notícia no áudio: as gerações de vídeo atuais já saem com som e ambiente próprios, muitas vezes bons. Ouça o áudio original antes de mexer — se funciona, fica. Ajuste só o necessário: abaixe picos altos, silencie trechos ruins, acrescente um efeito onde a transição pedir (o vento e a batida da aula 4 continuam valendo).</p>
+      <p>No visual, polimento é tempero, não reforma. Um ponto de partida que funciona: contraste +4, nitidez +10, saturação +4, realces −7, temperatura +2. Se o clipe já passou pela ampliação inteligente, corte a nitidez pela metade ou zere.</p>
+      <p>A fotógrafa reconhece o princípio da revelação de fotos: o ajuste bom é o que ninguém nota — as três cenas apenas passam a parecer filmadas no mesmo dia. Exporte em 1080p e assista no celular, do início ao fim, sem pausar.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p8" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/5 feito</span></p>
+      <h3 class="ph">Monte o seu primeiro mini-filme</h3>
+      <p class="pgoal">Sair com um mini-filme de 30–60 segundos exportado, feito dos seus clipes — em ~15 minutos de montagem.</p>
+      <p class="psafe">Seus clipes originais permanecem intocados na pasta — o editor trabalha sobre cópias. A pior coisa possível aqui é um projeto feio, que se apaga e se refaz em minutos.</p>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Reúna seus clipes gerados no curso (a cena da aula 7 e os das aulas 3–4; se tiver só um, gere mais uma variação antes).</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Corte cada clipe em pedaços e classifique: pepita, talvez, entulho.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Remonte as pepitas em preparação → conflito → clímax, com uma curva de velocidade escondendo a pior emenda.</label></li>
+        <li><label><input type="checkbox" data-ptask="4"> Resolva o som: áudio original onde funciona, um efeito onde a transição pedir, música abafada sob os efeitos.</label></li>
+        <li><label><input type="checkbox" data-ptask="5"> Aplique o polimento leve, exporte em 1080p e assista inteiro no celular. Terminou sem tropeço no olho? Está pronto.</label></li>
+      </ol>
+      <p class="pdone">Você tem um filme. Não um teste, não um rascunho: um mini-filme com história, som e acabamento — feito por você, do zero.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> As três caixas da remontagem: cada pepita garimpada dos clipes vai para preparação, conflito ou clímax — o que não cabe, cai."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--line2)" stroke-width="1.8" fill="none">
+          <rect x="20" y="30" width="180" height="22" rx="4"/>
+        </g>
+        <g style="fill:var(--warm)">
+          <rect x="36" y="34" width="14" height="14" rx="2"/><rect x="92" y="34" width="10" height="14" rx="2"/><rect x="150" y="34" width="18" height="14" rx="2"/>
+        </g>
+        <path d="M43 60 c-6 30 -10 40 -12 52 M97 60 c2 30 4 40 6 52 M159 60 c10 30 16 40 20 52" style="stroke:var(--muted)" stroke-width="1.4" fill="none" stroke-dasharray="3 3"/>
+        <g style="stroke:var(--accent)" stroke-width="2" fill="none">
+          <rect x="14" y="118" width="56" height="40" rx="6"/><rect x="82" y="118" width="56" height="40" rx="6"/><rect x="150" y="118" width="56" height="40" rx="6"/>
+        </g>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
+          <text x="42" y="142" text-anchor="middle">preparação</text>
+          <text x="110" y="142" text-anchor="middle">conflito</text>
+          <text x="178" y="142" text-anchor="middle">clímax</text>
+        </g>
+        <text x="110" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">clipe bruto em cima, história embaixo</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> A ampliação inteligente recupera o detalhe fino que a geração perdeu — mesmo quadro, textura de volta. Etapa de acabamento, não de salvação."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="26" y="50" width="72" height="90" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <circle cx="62" cy="86" r="16" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="62" y="160" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">detalhe perdido</text>
+        <path d="M98 95 h24" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M116 90 l8 5 -8 5" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+        <rect x="122" y="50" width="72" height="90" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="158" cy="86" r="16" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M150 80 l4 3 M162 90 l5 2 M154 94 l4 -3 M164 78 l3 3" style="stroke:var(--accent)" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M130 118 h56 M130 126 h40" style="stroke:var(--accent);opacity:.5" stroke-width="1.4" stroke-dasharray="2 3"/>
+        <text x="158" y="160" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">textura de volta</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> A ordem que economiza horas: cortar tudo em pedaços, classificar, e só então montar — nunca montar direto do bruto."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="20" y="30" width="180" height="18" rx="4" style="stroke:var(--line2)" stroke-width="1.8"/>
+        <g style="stroke:var(--muted)" stroke-width="1.4">
+          <line x1="56" y1="30" x2="56" y2="48"/><line x1="92" y1="30" x2="92" y2="48"/>
+          <line x1="128" y1="30" x2="128" y2="48"/><line x1="164" y1="30" x2="164" y2="48"/>
+        </g>
+        <g style="stroke:var(--line2)" stroke-width="1.6" fill="none">
+          <rect x="24" y="78" width="28" height="16" rx="3"/><rect x="60" y="78" width="28" height="16" rx="3"/>
+          <rect x="96" y="78" width="28" height="16" rx="3"/><rect x="132" y="78" width="28" height="16" rx="3"/>
+          <rect x="168" y="78" width="28" height="16" rx="3"/>
+        </g>
+        <path d="M74 94 l-8 14 M110 94 l0 14 M182 94 l-52 14" style="stroke:var(--faint)" stroke-width="1.2" stroke-dasharray="2 3"/>
+        <g style="fill:var(--warm)">
+          <rect x="52" y="120" width="28" height="16" rx="3"/><rect x="96" y="120" width="28" height="16" rx="3"/><rect x="140" y="120" width="28" height="16" rx="3"/>
+        </g>
+        <path d="M52 128 h-18 M124 128 h16" style="stroke:var(--warm);opacity:.6" stroke-width="1.4"/>
+        <text x="110" y="164" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">só as pepitas, na nova ordem</text>
+        <text x="110" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">cortar → classificar → montar</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> Polimento é tempero: ajustes pequenos que fazem três cenas parecerem filmadas no mesmo dia — se o ajuste aparece, passou do ponto."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--line2)" stroke-width="2">
+          <line x1="40" y1="50" x2="180" y2="50"/><line x1="40" y1="82" x2="180" y2="82"/>
+          <line x1="40" y1="114" x2="180" y2="114"/><line x1="40" y1="146" x2="180" y2="146"/>
+        </g>
+        <g style="fill:var(--accent)">
+          <circle cx="120" cy="50" r="5"/><circle cx="132" cy="82" r="5"/><circle cx="112" cy="114" r="5"/><circle cx="98" cy="146" r="5"/>
+        </g>
+        <line x1="110" y1="36" x2="110" y2="160" style="stroke:var(--faint)" stroke-width="1.2" stroke-dasharray="2 4"/>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
+          <text x="34" y="54" text-anchor="end">contraste</text>
+          <text x="34" y="86" text-anchor="end">nitidez</text>
+          <text x="34" y="118" text-anchor="end">saturação</text>
+          <text x="34" y="150" text-anchor="end">realces</text>
+        </g>
+        <text x="110" y="186" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">tudo perto do centro — nada no extremo</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Clipe gerado é matéria bruta — o filme nasce do garimpo, não da fila de clipes inteiros.</li>
+    <li>A ordem profissional poupa horas: cortar em pedaços, classificar, e só então remontar em preparação, conflito e clímax.</li>
+    <li>Som herdado da geração fica quando funciona; polimento visual é tempero que ninguém deve notar.</li>
+    <li>Com esta aula você fechou o ciclo inteiro do curso: personagem, plano, movimento e montagem — o mesmo caminho dos profissionais, encurtado.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de terminar seu primeiro mini-filme — de uma ideia em branco a um arquivo exportado.</p>
+  <p class="na-action">Nos próximos 15 minutos: publique o filme nas suas redes, hoje, como está. O maior inimigo de quem chega até aqui não é a técnica — é esperar o "bom o bastante" que nunca chega. Publicar o primeiro destrava todos os seguintes.</p>
+  <p class="na-hook">No curso 2, você assume o controle fino do quadro: composição, luz e consistência de personagem nas duas ferramentas de imagem que mais importam — a base do salto de qualidade.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-7">← aula anterior</a><a href="#trilha">concluir o curso ✓ →</a></nav>
+<footer>Aula 8 · Fundamentos · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-8">
+[]
+</script>
+
+<!--
+COMPLETUDE aula-8 | tipo=PRATICA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="25min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa/mini-caso Vera (s1), social media (s2), dono de restaurante (s3), fotógrafa (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-8"> presente (vazio por regra: aula PRÁTICA/INTEGRAÇÃO não cria cartões novos, só revisa os existentes)
+  [OK] anti-duplicacao    sem cartões novos — nada a duplicar; recap é síntese pura
+  [N/A] teste-se-FUND     aula é PRATICA/INTEGRAÇÃO (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+
+<script src="../assets/curso.js"></script>
+</body>
+</html>

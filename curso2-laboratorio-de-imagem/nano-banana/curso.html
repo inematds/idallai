@@ -1,0 +1,1601 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="curso" content="fcia-c2a">
+<title>Nano Banana — a oficina da imagem · Formação Cinema com IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/aula.css">
+<script src="../../config.js"></script>
+<script>(function(){try{var m=document.querySelector('meta[name=curso]');var CK=(m&&m.content)||'v5:curso';var s=JSON.parse(localStorage.getItem(CK));if(s&&s.prefs&&s.prefs.theme)document.documentElement.setAttribute('data-theme',s.prefs.theme);}catch(e){}})();</script>
+<!--
+  PROTOCOLO DE DESCOBERTA (v5, Passo 0 — registrado como metadado):
+  - Público específico: adultos 40+, leigos em tecnologia, que querem criar imagens e vídeos cinematográficos com IA para uso profissional.
+  - Profissões-alvo (≥2): fotógrafa com estúdio próprio · dono de restaurante/pequeno comércio · social media autônoma.
+  - Familiaridade com tecnologia: baixa-média — usa WhatsApp, já conversou com IA de chat no navegador; nunca gerou imagem; zero terminal.
+  - Resultado prático esperado: sair produzindo sozinho imagens cinematográficas e um mini-filme de 30–60s com IA, pronto para usar ou vender.
+  - Tempo por sessão: 20–30 minutos.
+-->
+<style>
+  .view{display:none}.view.active{display:block}
+  .lnav{max-width:1160px;margin:0 auto 5vh;padding:0 clamp(24px,5vw,60px);display:flex;justify-content:space-between;gap:12px}
+  .lnav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:12px 16px}
+  .lnav a:hover{border-color:var(--accent);color:var(--ink)}
+  #v-trilha .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(24px,5vw,60px)}
+  #v-trilha .t-hero{position:relative;overflow:hidden;padding:20vh 0 8vh;border-bottom:1px solid var(--line)}
+  #v-trilha h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.4vw,72px);line-height:1;letter-spacing:-.025em;margin:0 0 22px}
+  #v-trilha h1 em{font-style:italic;color:var(--accent)}
+  #v-trilha .lead{font-family:var(--serif);font-size:clamp(19px,2.1vw,24px);line-height:1.5;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+  #v-trilha section{padding:8vh 0}
+  #v-trilha .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  #v-trilha h2{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);margin:0 0 28px}
+  #v-trilha .aulas{display:grid;gap:14px}
+  #v-trilha .au{display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:center;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  #v-trilha .au .num{font-family:var(--serif);font-size:30px;color:var(--accent);text-align:center}
+  #v-trilha .au h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 5px}
+  #v-trilha .au p{margin:0;color:var(--muted);font-size:14.5px}
+  #v-trilha .au .meta{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap;text-align:right}
+  #v-trilha .au .prog{position:static;margin-top:10px;height:5px;border-radius:99px;background:var(--line);overflow:hidden;max-width:220px;width:auto}
+  #v-trilha .au .prog i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  #v-trilha footer{max-width:1080px;margin:0 auto;padding:6vh clamp(24px,5vw,60px) 12vh;color:var(--faint);text-align:center;font-family:var(--serif);font-style:italic;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-inner">
+  <span class="brand"><a class="mark" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a><a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a><a class="course" href="../../index.html">Laboratório de Imagem · Nano Banana</a></span>
+  <a class="back" href="#trilha" style="display:none">← trilha</a>
+  <button id="pill" class="pill" style="display:none">0 lido</button>
+  <button id="revbtn">revisar <span id="revn">0</span></button>
+  <button id="exbtn">exercícios</button>
+  <button id="jorbtn">jornada</button>
+  <button id="helpbtn" aria-label="Como funciona">?</button>
+  <button id="prefsbtn" aria-label="Preferências de leitura">Aa</button>
+  <button id="themebtn">tema: escuro</button>
+</div></div>
+
+<!-- ===== TRILHA ===== -->
+<section class="view" id="v-trilha">
+  <header class="t-hero"><div class="wrap">
+    <p class="kicker">Formação Cinema com IA · Curso 2 · Trilha A</p>
+    <h1>Nano Banana — a oficina da <em>imagem</em></h1>
+    <p class="lead">Sete aulas para dominar o quadro: você passa a dirigir cada imagem — plano, lente, luz e personagem — em vez de aceitar o que a IA quiser dar.</p>
+  </div></header>
+  <section><div class="wrap">
+    <div class="statcards"></div>
+    <p class="eyebrow">Aulas</p>
+    <h2>Da frase solta à cena dirigida</h2>
+    <div class="aulas">
+      <a class="au on" data-aula="1" href="#aula-1">
+        <div class="num">1</div>
+        <div><h3>Pense em planos, não em frases</h3><p>Escreva pedidos como um diretor descreve um plano — e veja a mesma cena mudar de nível na hora.</p><div class="prog"><i></i></div></div>
+        <div class="meta">18 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="2" href="#aula-2">
+        <div class="num">2</div>
+        <div><h3>As quatro alavancas de controle</h3><p>Folha de ângulos, reiluminação, ficha de produção e camada mestra — controle fino sem sorte.</p><div class="prog"><i></i></div></div>
+        <div class="meta">22 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="3" href="#aula-3">
+        <div class="num">3</div>
+        <div><h3>Storyboard: o ensaio geral barato</h3><p>Entenda por que a IA muda os rostos — e monte a folha de referência que reduz a variação.</p><div class="prog"><i></i></div></div>
+        <div class="meta">18 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="4" href="#aula-4">
+        <div class="num">4</div>
+        <div><h3>A trava de personagem</h3><p>Defina seu ator uma vez, treine os ângulos e continue a mesma cena — sem a identidade escapar.</p><div class="prog"><i></i></div></div>
+        <div class="meta">20 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="5" href="#aula-5">
+        <div class="num">5</div>
+        <div><h3>Três planos contam uma história</h3><p>Lugar, ação, emoção: a gramática visual que dispensa qualquer palavra.</p><div class="prog"><i></i></div></div>
+        <div class="meta">18 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="6" href="#aula-6">
+        <div class="num">6</div>
+        <div><h3>O fluxo completo, de ponta a ponta</h3><p>As oito etapas que levam uma ideia crua até o quadro-herói polido — o sistema inteiro numa cena sua.</p><div class="prog"><i></i></div></div>
+        <div class="meta">22 min · abrir →</div>
+      </a>
+      <a class="au on" data-aula="7" href="#aula-7">
+        <div class="num">7</div>
+        <div><h3>Sua biblioteca de modelos</h3><p>Transforme tudo o que funcionou em modelos reutilizáveis — e nunca mais comece do zero.</p><div class="prog"><i></i></div></div>
+        <div class="meta">15 min · abrir →</div>
+      </a>
+    </div>
+  </div></section>
+  <footer><div class="wrap">Curso 2 · Trilha A · Formação Cinema com IA · INEMA.CLUB PRO</div></footer>
+</section>
+
+<!-- ===== AULA 1 ===== -->
+<section class="view" id="v-aula-1" data-aula="1" data-tempo="18min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 2A · Aula 1</p>
+    <h1>Pense em planos, não em <em>frases</em></h1>
+    <p class="promise">Ao fim desta aula você escreve pedidos de imagem na estrutura que os diretores usam — e comprova, numa comparação lado a lado, o salto que isso dá.</p>
+    <p class="why">A diferença entre uma imagem qualquer e um quadro de filme raramente está na ferramenta: está na ordem e na precisão do pedido. Estúdios já usam geradores de imagem para desenvolver filmes e campanhas — e todos escrevem do mesmo jeito: como quem descreve um plano de cinema.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/e707567d1f6a4bc6a5ebfbd751ac5113" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: o pedido de balcão vs a comanda profissional -->
+    <rect x="28" y="52" width="104" height="130" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+    <path d="M44 84 h72" style="stroke:var(--line2)" stroke-width="2"/>
+    <text x="80" y="126" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="10">"me vê</text>
+    <text x="80" y="142" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="10">um bolo"</text>
+    <rect x="168" y="36" width="104" height="162" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+    <path d="M184 60 h72 M184 82 h72 M184 104 h72 M184 126 h72 M184 148 h72 M184 170 h52" style="stroke:var(--accent);opacity:.55" stroke-width="1.6"/>
+    <g style="fill:var(--accent);font-family:var(--mono)" font-size="8">
+      <text x="188" y="56">massa</text><text x="188" y="78">recheio</text><text x="188" y="100">cobertura</text>
+      <text x="188" y="122">tamanho</text><text x="188" y="144">entrega</text><text x="188" y="166">acabamento</text>
+    </g>
+    <text x="150" y="222" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">a encomenda detalhada sai como você quer</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> O gerador entende a língua do cinema</h2>
+      <p>Ferramentas como o Nano Banana — um gerador de imagens rápido, bom para desenvolvimento visual — foram alimentadas com décadas de cinema e fotografia. Elas reconhecem os termos do ofício: plano aberto, close, lente 50mm, contraluz. Quem fala essa língua recebe cenas; quem não fala recebe ilustrações genéricas.</p>
+      <p>E vale a regra da formação: não é preciso ter esta ferramenta específica. A estrutura desta aula funciona em qualquer gerador — a língua do cinema é a mesma em todos.</p>
+      <p>A social media sente a diferença no primeiro teste: "foto de perfume" devolve catálogo raso; "close do frasco, lente macro, luz lateral dourada, fundo escuro" devolve anúncio de revista.</p>
+      <div class="qanchor"><p>Pedido raso descreve o assunto. Pedido de diretor descreve o plano.</p></div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> A ordem do diretor: seis peças, sempre na mesma sequência</h2>
+      <p>Diretores e fotógrafos de cinema descrevem um plano sempre na mesma ordem — e o seu pedido vai copiá-la:</p>
+      <ul>
+        <li><b>Tipo de plano</b> — aberto, médio, close, detalhe.</li>
+        <li><b>Câmera e lente</b> — o "olho" da cena: 35mm abraça o ambiente, 85mm isola o rosto.</li>
+        <li><b>Ambiente</b> — onde estamos, hora do dia, clima.</li>
+        <li><b>Ação do personagem</b> — o que acontece, em uma frase.</li>
+        <li><b>Luz</b> — de onde vem, que humor cria.</li>
+        <li><b>Estilo visual</b> — o acabamento: realista de filme, comercial premium, documental.</li>
+      </ul>
+      <p>A fotógrafa reconhece o próprio checklist mental de set. A novidade é que agora esse checklist vira texto — e a ordem importa, porque o gerador dá mais peso ao que vem primeiro.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Troque uma peça por vez — e aprenda o que cada uma faz</h2>
+      <p>O jeito mais rápido de dominar a estrutura não é decorar: é o experimento controlado. Você gera a cena, troca <b>uma única peça</b> — só a lente, ou só a luz — e gera de novo. A comparação lado a lado mostra, sem teoria, o que aquela peça controla.</p>
+      <p>O dono de restaurante fez o teste com a mesa de feijoada de sábado: trocou apenas "luz de meio-dia" por "luz de fim de tarde entrando pela janela" e viu o mesmo prato sair de refeitório para restaurante de revista. Uma peça, um salto.</p>
+      <div class="qbefore-after">
+        <div class="qba-col"><p class="qk">Antes</p><p>"Foto de uma confeiteira decorando um bolo." Assunto descrito, plano por conta da IA.</p></div>
+        <div class="qba-col"><p class="qk">Depois</p><p>"Plano médio, lente 50mm, cozinha de manhã com luz de janela, confeiteira concentrada aplicando o glacê, contraluz suave, estilo de filme realista." As seis peças, na ordem.</p></div>
+        <p class="qba-saldo">Saldo: mesma ferramenta, mesma cena — e a segunda imagem parece parada de filme, não banco de imagem.</p>
+      </div>
+      <div class="quiz" data-answer="b">
+        <p class="qk">Teste-se</p><p class="q">Você quer descobrir, na prática, o que a lente muda numa cena. Qual é o experimento certo?</p>
+        <button class="opt" data-k="a" data-fb="Trocando tudo de uma vez, você não sabe qual peça causou qual mudança — o experimento perde o valor.">Reescrever o pedido inteiro e comparar com o primeiro</button>
+        <button class="opt" data-k="b" data-fb="Exato: uma peça por vez é o experimento controlado — a diferença entre as duas imagens é obra só da lente.">Gerar a cena, trocar só a lente e gerar de novo</button>
+        <button class="opt" data-k="c" data-fb="Gerar a mesma cena repetida mostra a variação aleatória da IA, não o efeito da lente.">Gerar a mesma cena cinco vezes seguidas</button>
+        <p class="qfb"></p>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p1" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Dirija sua primeira cena — e prove o método</h3>
+      <p class="pgoal">Sair com duas versões da mesma cena, mudando uma peça só, e a conclusão de qual peça pesou mais — em ~10 minutos.</p>
+      <p class="psafe">Só texto e geração: nenhum arquivo seu é tocado, nenhuma tentativa se perde. Imagem ruim é dado do experimento, não fracasso.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">&lt;tipo de plano: wide shot / medium shot / close-up&gt;,
+&lt;lente: 35mm / 50mm / 85mm lens&gt;,
+&lt;ambiente: onde, hora do dia, clima&gt;,
+&lt;ação: o que o personagem faz, em uma frase&gt;,
+&lt;luz: direção e humor — golden hour, luz de janela, contraluz&gt;,
+&lt;estilo: cinematic film still, realistic textures, natural colors&gt;</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Escolha uma cena do seu mundo (seu produto, seu espaço, um personagem) e preencha as seis peças, nessa ordem.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Gere a imagem. Depois troque UMA peça (a lente ou a luz) e gere de novo.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Compare lado a lado e anote em uma frase: qual troca mudou mais a cena? Essa frase é o seu primeiro aprendizado de direção.</label></li>
+      </ol>
+      <p class="pdone">Você dirigiu a mesma cena duas vezes e sabe dizer o que cada peça controla — isso é exatamente o que a promessa desta aula pedia.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> Mesmo motor, duas línguas: o pedido comum ativa o repertório genérico; o vocabulário de cinema ativa o repertório de filme."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <ellipse cx="110" cy="52" rx="56" ry="24" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="110" y="57" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">gerador</text>
+        <path d="M78 74 c-16 20 -22 34 -24 52 M142 74 c16 20 22 34 24 52" style="stroke:var(--muted)" stroke-width="1.6" fill="none"/>
+        <rect x="20" y="130" width="80" height="40" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="60" y="149" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">"foto de..."</text>
+        <text x="60" y="162" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">catálogo raso</text>
+        <rect x="120" y="130" width="80" height="40" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="160" y="149" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">"close, 85mm..."</text>
+        <text x="160" y="162" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">parada de filme</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> As seis peças do pedido, na ordem do diretor — o gerador pesa mais o que vem primeiro."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
+          <rect x="30" y="20" width="160" height="22" rx="5"/>
+          <rect x="30" y="48" width="160" height="22" rx="5" opacity=".9"/>
+          <rect x="30" y="76" width="160" height="22" rx="5" opacity=".8"/>
+          <rect x="30" y="104" width="160" height="22" rx="5" opacity=".7"/>
+          <rect x="30" y="132" width="160" height="22" rx="5" opacity=".6"/>
+          <rect x="30" y="160" width="160" height="22" rx="5" opacity=".5"/>
+        </g>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8.5">
+          <text x="110" y="34" text-anchor="middle">1 · tipo de plano</text>
+          <text x="110" y="62" text-anchor="middle">2 · câmera e lente</text>
+          <text x="110" y="90" text-anchor="middle">3 · ambiente</text>
+          <text x="110" y="118" text-anchor="middle">4 · ação</text>
+          <text x="110" y="146" text-anchor="middle">5 · luz</text>
+          <text x="110" y="174" text-anchor="middle">6 · estilo visual</text>
+        </g>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> O experimento controlado: tudo constante, uma variável trocada — a diferença entre as duas imagens é o efeito puro daquela peça."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="28" y="36" width="70" height="52" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="122" y="36" width="70" height="52" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <g style="stroke:var(--muted)" stroke-width="1.4">
+          <line x1="36" y1="50" x2="90" y2="50"/><line x1="36" y1="60" x2="90" y2="60"/><line x1="36" y1="70" x2="90" y2="70"/>
+          <line x1="130" y1="50" x2="184" y2="50"/><line x1="130" y1="70" x2="184" y2="70"/>
+        </g>
+        <line x1="130" y1="60" x2="184" y2="60" style="stroke:var(--warm)" stroke-width="2.4"/>
+        <text x="63" y="104" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">pedido A</text>
+        <text x="157" y="104" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">pedido B: 1 troca</text>
+        <rect x="28" y="124" width="70" height="46" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="122" y="124" width="70" height="46" rx="6" style="stroke:var(--warm)" stroke-width="2"/>
+        <path d="M104 147 h12" style="stroke:var(--faint)" stroke-width="1.6"/>
+        <text x="110" y="190" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">a diferença = o que a peça faz</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Geradores de imagem foram criados sobre décadas de cinema — falar a língua deles é falar de plano, lente e luz.</li>
+    <li>O pedido de diretor tem seis peças em ordem fixa: plano, câmera, ambiente, ação, luz, estilo.</li>
+    <li>A posição pesa: o que vem primeiro no pedido recebe mais atenção do gerador.</li>
+    <li>O método de aprender é o experimento controlado — uma peça trocada por vez, comparação lado a lado.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de escrever seu primeiro pedido na língua dos diretores — e viu a cena responder.</p>
+  <p class="na-action">Nos próximos 15 minutos: repita o experimento trocando outra peça (se testou a lente, teste a luz). Guarde as duas anotações — elas começam a sua biblioteca da aula 7.</p>
+  <p class="na-hook">Na próxima aula, você ganha as quatro alavancas de controle fino — inclusive a que conserta a luz de uma imagem boa sem refazer a cena.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#trilha">← trilha</a><a href="#aula-2">próxima aula →</a></nav>
+<footer>Aula 1 · Nano Banana · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-1">
+[
+  {"front":"Pergunta: quais são as seis peças do pedido de diretor, na ordem?","back":"Tipo de plano → câmera e lente → ambiente → ação do personagem → luz → estilo visual."},
+  {"front":"Diagnóstico: sua imagem saiu com cara de catálogo genérico. O que faltou na língua do pedido?","back":"Vocabulário de cinema — plano, lente e luz descritos; sem eles o gerador ativa o repertório raso."},
+  {"front":"Decisão: você quer entender o que a luz controla numa cena. Monte o experimento em dois passos.","back":"Gerar a cena com o pedido completo; trocar só a peça da luz e gerar de novo — comparar lado a lado."},
+  {"front":"Aplicação: o anúncio do perfume precisa parar o dedo no feed. Reescreva 'foto de perfume' com três peças do pedido de diretor.","back":"Ex.: 'close do frasco, lente macro, luz lateral dourada sobre fundo escuro' — plano + lente + luz já mudam o nível."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-1 | tipo=FUNDAMENTO | steps=3
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="18min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), fotógrafa (s2), dono de restaurante (s3) (3/3)
+  [OK] apoio-visual       figs 1–3 legendadas no trilho, mobfig por step (3/3)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-1"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 pergunta/diagnóstico/decisão/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s3)
+-->
+</section>
+
+<!-- ===== AULA 2 ===== -->
+<section class="view" id="v-aula-2" data-aula="2" data-tempo="22min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 2A · Aula 2</p>
+    <h1>As quatro alavancas de <em>controle</em></h1>
+    <p class="promise">Ao fim desta aula você conserta a luz de uma imagem sem refazer a cena — e aplica a camada de qualidade que eleva qualquer pedido seu de hoje em diante.</p>
+    <p class="why">Gerar uma imagem boa uma vez é sorte; gerar de novo, sob encomenda, é controle. O que separa os dois é um conjunto pequeno de técnicas que os profissionais usam todo dia — quatro alavancas que você puxa conforme a necessidade, em vez de torcer pelo acaso.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/24f1b410fc944d2ea448752914cf8eee" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: o painel de alavancas da oficina — cada uma controla uma coisa só -->
+    <rect x="60" y="34" width="180" height="150" rx="10" style="stroke:var(--line2)" stroke-width="2"/>
+    <g style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round">
+      <line x1="96" y1="150" x2="96" y2="86"/><line x1="146" y1="150" x2="146" y2="110"/>
+      <line x1="196" y1="150" x2="196" y2="72"/>
+    </g>
+    <line x1="246" y1="150" x2="246" y2="128" style="stroke:var(--warm)" stroke-width="2.4" stroke-linecap="round"/>
+    <g style="fill:var(--accent)">
+      <circle cx="96" cy="86" r="7"/><circle cx="146" cy="110" r="7"/><circle cx="196" cy="72" r="7"/>
+    </g>
+    <circle cx="246" cy="128" r="7" style="fill:var(--warm)"/>
+    <g style="fill:var(--faint);font-family:var(--mono)" font-size="8">
+      <text x="96" y="170" text-anchor="middle">ângulos</text>
+      <text x="146" y="170" text-anchor="middle">luz</text>
+      <text x="196" y="170" text-anchor="middle">ficha</text>
+      <text x="246" y="170" text-anchor="middle">qualidade</text>
+    </g>
+    <text x="150" y="216" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">cada alavanca mexe numa coisa só</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> A conquista não é gerar — é controlar</h2>
+      <p>O iniciante digita e espera; o profissional decide e confere. Entre um e outro existe um princípio de oficina: cada ajuste mexe <b>numa coisa de cada vez</b>, deixando o resto intacto. É assim que se conserta uma cena sem destruí-la.</p>
+      <p>As quatro alavancas desta aula seguem esse princípio: a <b>folha de ângulos</b> muda só o ponto de vista; a <b>reiluminação</b> muda só a luz; a <b>ficha de produção</b> organiza o pedido complexo; a <b>camada mestra</b> eleva o acabamento de qualquer geração.</p>
+      <p>O dono de restaurante entende por instinto: quando o caldo está bom e falta sal, ninguém joga a panela fora — ajusta-se o sal. Nas próximas telas, você aprende a "ajustar o sal" das suas imagens.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="Nano Banana (ou similar), jul/2026">
+      <h2><span class="n">02</span> Alavanca 1 — a folha de ângulos (cena congelada)</h2>
+      <p>Você já conhece a ideia do curso 1; aqui ela vira instrumento de estudo. A folha de contato mostra a <b>mesma cena congelada no tempo</b> vista de vários pontos: personagem, ambiente e luz idênticos — só a câmera muda de lugar.</p>
+      <p>O uso profissional vai além da consistência: é assim que você <b>estuda</b> uma cena antes de decidir o plano final. Em vez de imaginar como ficaria de cima, de baixo ou de lado — você vê as nove opções numa folha e escolhe com os olhos.</p>
+      <p>A fotógrafa usa a folha como usava o rascunho de ensaio: para descobrir que a mesa posta do buffet rende mais fotografada baixa, na altura das taças, do que de cima — antes de gastar o clique que vale.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="ferramenta" data-versao="Nano Banana (ou similar), jul/2026">
+      <h2><span class="n">03</span> Alavanca 2 — reiluminar sem refazer</h2>
+      <p>A cena saiu perfeita, mas escura demais. O instinto do iniciante é gerar tudo de novo — e perder a cena boa. A alavanca certa é a <span class="gterm" tabindex="0" data-def="Pedido que muda só a iluminação de uma imagem pronta — composição, pessoas e objetos permanecem exatamente onde estão.">reiluminação</span>: você envia a imagem pronta e pede a mudança <b>apenas na luz</b>.</p>
+      <p>O pedido nomeia o que muda e tranca o resto: "mantenha a composição, as pessoas e os objetos exatamente como estão; apenas clareie a cena com luz suave de fim de tarde vinda da janela da esquerda".</p>
+      <p>O dono de restaurante salvou assim a melhor foto do salão: ambiente certo, clientes bem posicionados, mas luz de porão. Uma reiluminação depois, a mesma cena parecia iluminada por janelões — sem mexer numa cadeira.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Pedir "melhore essa imagem".</b> Pedido vago dá licença para a IA refazer tudo — e a cena boa morre junto com a luz ruim. Nomeie o que muda (só a luz) e tranque explicitamente o que fica.</p>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="Nano Banana (ou similar), jul/2026">
+      <h2><span class="n">04</span> Alavanca 3 — a ficha de produção</h2>
+      <p>Cena complexa — vários elementos, câmera precisa, clima específico — estoura o pedido corrido: alguma peça sempre se perde no parágrafo. A solução profissional é a mesma de um set de verdade: uma <b>ficha de produção</b>, com um campo para cada decisão.</p>
+      <p>Antes de você ver o exemplo: isto é um formulário por escrito — cada linha tem um rótulo (câmera, personagem, ambiente, luz) e a sua resposta. O formato de texto se chama <span class="gterm" tabindex="0" data-def="Formato de texto organizado em pares de rótulo e valor, entre chaves e aspas. Para você, é só um formulário por escrito — preencha os valores e ignore a pontuação.">JSON</span>, e a pontuação estranha (chaves, aspas) é só o jeito de a máquina separar os campos. Você preenche as respostas; o resto, copia como está.</p>
+      <pre>{
+  "cena": "chef solitário na cozinha antes do serviço",
+  "camera": { "plano": "wide shot", "angulo": "low angle", "lente": "35mm" },
+  "personagem": { "aparencia": "chef de meia-idade, avental de linho",
+                  "acao": "acende a primeira boca do fogão", "emocao": "calmo e alerta" },
+  "ambiente": { "local": "cozinha profissional vazia", "hora": "antes do amanhecer",
+                "detalhes": "vapor sutil, panelas de cobre penduradas" },
+  "luz": { "estilo": "uma única luz quente sobre o fogão", "paleta": "tons âmbar e aço" },
+  "acabamento": "ultra photorealistic cinematic, 8K"
+}</pre>
+      <p>A social media descobriu o benefício escondido: a ficha é apresentável. O cliente aprova campo por campo <b>antes</b> da geração — e mudanças viram edições de uma linha, não reuniões.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="5" data-kind="ferramenta" data-versao="Nano Banana (ou similar), jul/2026">
+      <h2><span class="n">05</span> Alavanca 4 — a camada mestra de qualidade</h2>
+      <p>A última alavanca é a mais simples: uma lista fixa de termos de acabamento — luz natural de filme, reflexos realistas, grão sutil, poros visíveis, foco preciso — que você cola no <b>fim</b> de qualquer pedido. Ela não muda a cena; muda o nível do acabamento.</p>
+      <pre>ULTRA PHOTOREALISTIC CINEMATIC SCENE, NATURAL FILM LIGHTING,
+GLOBAL ILLUMINATION, REALISTIC REFLECTIONS, KODAK CINEMATIC COLOR
+GRADING, SUBTLE FILM GRAIN, HIGH DYNAMIC RANGE, SHARP FOCUS,
+CINEMATIC DEPTH OF FIELD, REALISTIC TEXTURES, NATURAL SKIN PORES.</pre>
+      <p>A fotógrafa pensa nela como o acabamento de laboratório que ela aplicava em toda ampliação boa: um padrão de qualidade da casa, não uma decisão nova por foto.</p>
+      <div class="qsteps">
+        <p class="qk">Usando a camada mestra</p>
+        <ol>
+          <li>Escreva o pedido da cena normalmente (as seis peças da aula 1).</li>
+          <li>Cole a camada mestra no final, sem alterar.</li>
+          <li>Gere e compare com a versão sem camada: textura, luz e nitidez sobem juntas.</li>
+          <li>Guarde a sua versão da camada — ela entra na biblioteca da aula 7.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="5"></div>
+      <button class="readbtn" data-read="s5">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p2" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Conserte a luz e suba o acabamento</h3>
+      <p class="pgoal">Sair com uma imagem sua reiluminada sem perder a cena, e uma comparação com/sem camada mestra — em ~12 minutos.</p>
+      <p class="psafe">A imagem original continua salva; a reiluminação sempre gera um arquivo novo. Se a IA mexer no que devia ficar parado, repita o pedido reforçando o que está trancado.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Keep the composition, characters and objects exactly as they are.
+Change ONLY the lighting: &lt;descreva a luz nova — ex.: soft warm
+late-afternoon light coming from a window on the left, gentle
+shadows, natural exposure&gt;. Do not add or remove anything.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Escolha uma imagem sua com boa cena e luz ruim (ou gere uma de propósito com "luz dura de meio-dia").</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Envie a imagem com o pedido acima, descrevendo a luz que você quer. Confira: a composição ficou intacta?</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Agora gere uma cena nova qualquer duas vezes — com e sem a camada mestra no final — e compare o acabamento lado a lado.</label></li>
+      </ol>
+      <p class="pdone">Você consertou a luz sem sacrificar a cena e comprovou o efeito da camada de qualidade — as duas alavancas mais usadas do dia a dia, dominadas.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> O princípio da oficina: cada alavanca isola um ajuste — ponto de vista, luz, organização ou acabamento — sem tocar no resto."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="70" y="66" width="80" height="66" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="110" y="102" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">a cena</text>
+        <g style="stroke:var(--line2)" stroke-width="1.8" fill="none">
+          <rect x="16" y="20" width="60" height="26" rx="6"/><rect x="144" y="20" width="60" height="26" rx="6"/>
+          <rect x="16" y="152" width="60" height="26" rx="6"/><rect x="144" y="152" width="60" height="26" rx="6"/>
+        </g>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
+          <text x="46" y="36" text-anchor="middle">ângulos</text><text x="174" y="36" text-anchor="middle">luz</text>
+          <text x="46" y="168" text-anchor="middle">ficha</text><text x="174" y="168" text-anchor="middle">qualidade</text>
+        </g>
+        <path d="M60 46 c14 8 20 14 26 20 M160 46 c-14 8 -20 14 -26 20 M60 152 c14 -8 20 -14 26 -20 M160 152 c-14 -8 -20 -14 -26 -20" style="stroke:var(--faint)" stroke-width="1.4" stroke-dasharray="3 3"/>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> Cena congelada, câmera passeando: nove pontos de vista do mesmo instante — escolha com os olhos, não com a imaginação."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <circle cx="110" cy="100" r="18" style="stroke:var(--accent)" stroke-width="2"/>
+        <g style="stroke:var(--line2)" stroke-width="1.6" fill="none">
+          <rect x="34" y="30" width="26" height="18" rx="3"/><rect x="97" y="18" width="26" height="18" rx="3"/><rect x="160" y="30" width="26" height="18" rx="3"/>
+          <rect x="20" y="92" width="26" height="18" rx="3"/><rect x="174" y="92" width="26" height="18" rx="3"/>
+          <rect x="34" y="152" width="26" height="18" rx="3"/><rect x="97" y="164" width="26" height="18" rx="3"/><rect x="160" y="152" width="26" height="18" rx="3"/>
+        </g>
+        <g style="stroke:var(--faint)" stroke-width="1.2" stroke-dasharray="2 3">
+          <line x1="58" y1="46" x2="96" y2="86"/><line x1="110" y1="36" x2="110" y2="82"/><line x1="162" y1="46" x2="124" y2="86"/>
+          <line x1="46" y1="101" x2="92" y2="101"/><line x1="174" y1="101" x2="128" y2="101"/>
+          <line x1="58" y1="154" x2="96" y2="114"/><line x1="110" y1="164" x2="110" y2="118"/><line x1="162" y1="154" x2="124" y2="114"/>
+        </g>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> Reiluminação cirúrgica: composição trancada (cadeado), só a camada de luz troca — a cena boa sobrevive ao conserto."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="40" y="60" width="140" height="90" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="86" cy="100" r="12" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <rect x="120" y="92" width="36" height="34" rx="4" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <rect x="30" y="46" width="20" height="16" rx="4" style="stroke:var(--muted)" stroke-width="1.8"/>
+        <path d="M34 46 v-5 a6 6 0 0 1 12 0 v5" style="stroke:var(--muted)" stroke-width="1.8" fill="none"/>
+        <path d="M170 30 l-18 26 M186 34 l-14 22 M198 44 l-12 16" style="stroke:var(--warm)" stroke-width="2" stroke-linecap="round"/>
+        <text x="110" y="176" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">luz nova, cena intacta</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> A ficha de produção: um campo por decisão. O parágrafo corrido perde peças; o formulário não deixa nada cair."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M22 40 c30 -14 50 12 76 -2 c14 -8 24 2 24 2" style="stroke:var(--line2)" stroke-width="2" fill="none"/>
+        <text x="70" y="66" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">parágrafo: peças caem</text>
+        <circle cx="118" cy="52" r="3" style="fill:var(--warm)"/>
+        <path d="M118 55 c2 10 4 14 8 20" style="stroke:var(--warm)" stroke-width="1.4" stroke-dasharray="2 2" fill="none"/>
+        <rect x="48" y="92" width="124" height="88" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <g style="stroke:var(--accent);opacity:.6" stroke-width="1.2">
+          <line x1="48" y1="114" x2="172" y2="114"/><line x1="48" y1="136" x2="172" y2="136"/><line x1="48" y1="158" x2="172" y2="158"/>
+          <line x1="104" y1="92" x2="104" y2="180"/>
+        </g>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="7.5">
+          <text x="56" y="107">câmera</text><text x="56" y="129">personagem</text><text x="56" y="151">ambiente</text><text x="56" y="173">luz</text>
+        </g>
+        <g style="fill:var(--accent);font-family:var(--mono)" font-size="7.5">
+          <text x="112" y="107">resposta</text><text x="112" y="129">resposta</text><text x="112" y="151">resposta</text><text x="112" y="173">resposta</text>
+        </g>
+      </svg></div>
+      <div class="fig" data-fig="5" data-cap="<b>Fig. 5</b> A camada mestra entra sempre no fim do pedido e sobe o acabamento inteiro — textura, luz e nitidez juntas."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="46" y="28" width="128" height="70" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <path d="M56 44 h108 M56 58 h108 M56 72 h84" style="stroke:var(--muted)" stroke-width="1.4"/>
+        <text x="110" y="92" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">seu pedido</text>
+        <rect x="46" y="110" width="128" height="30" rx="8" style="stroke:var(--warm)" stroke-width="2"/>
+        <text x="110" y="129" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">+ camada mestra (fixa)</text>
+        <path d="M110 140 v18" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M105 152 l5 8 5 -8" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+        <text x="110" y="182" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">acabamento de filme</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Controle é mexer numa coisa de cada vez: ponto de vista, luz, organização do pedido ou acabamento.</li>
+    <li>A folha de ângulos serve para estudar a cena congelada antes de escolher o plano que vale.</li>
+    <li>Reiluminação nomeia o que muda e tranca o que fica — é o conserto que preserva a cena boa.</li>
+    <li>A ficha de produção organiza pedidos complexos campo a campo, e a camada mestra fecha todo pedido com padrão de qualidade fixo.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de ganhar as ferramentas de conserto — cena boa nunca mais morre por causa de um detalhe.</p>
+  <p class="na-action">Nos próximos 15 minutos: monte a ficha de produção de UMA cena do seu trabalho (copie o modelo do passo 04 e troque as respostas). Gere e guarde a ficha — cliente algum resiste a aprovar campo por campo.</p>
+  <p class="na-hook">Na próxima aula, o assunto é o calcanhar de aquiles da IA — por que os rostos variam — e a folha de referência que reduz essa variação de vez.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-1">← aula anterior</a><a href="#aula-3">próxima aula →</a></nav>
+<footer>Aula 2 · Nano Banana · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-2">
+[
+  {"front":"Diagnóstico: a cena estava perfeita, você pediu 'melhore a imagem' e perdeu tudo. Qual foi o erro de método?","back":"Pedido vago libera a IA para refazer a cena inteira — o certo era nomear a única mudança (a luz) e trancar explicitamente o resto."},
+  {"front":"Decisão: cena complexa com cinco decisões de câmera e clima, e o cliente ainda vai opinar. Qual alavanca você usa e por quê?","back":"A ficha de produção: um campo por decisão, nada se perde no parágrafo, e o cliente aprova campo por campo antes de gastar geração."},
+  {"front":"Pergunta: onde entra a camada mestra no pedido, e o que ela muda?","back":"Sempre no fim; não altera a cena — eleva o acabamento (textura, luz, nitidez) de qualquer geração."},
+  {"front":"Aplicação: você quer decidir se fotografa a mesa do buffet de cima ou na altura das taças, sem gastar tentativa. Que técnica resolve?","back":"A folha de ângulos: a mesma cena congelada em nove pontos de vista numa folha só — escolhe-se com os olhos."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-2 | tipo=FERRAMENTA | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  dono de restaurante (s1), fotógrafa (s2), dono de restaurante (s3), social media (s4), fotógrafa (s5) (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-2"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/pergunta/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+
+<!-- ===== AULA 3 ===== -->
+<section class="view" id="v-aula-3" data-aula="3" data-tempo="18min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 2A · Aula 3</p>
+    <h1>Storyboard: o ensaio geral <em>barato</em></h1>
+    <p class="promise">Ao fim desta aula você monta a folha de referência do seu personagem — o documento que reduz a variação de rosto em todas as cenas que você gerar daqui em diante.</p>
+    <p class="why">Toda produção profissional visualiza a cena antes de gastar um centavo filmando. Com IA, esse ensaio geral custa minutos — mas esbarra num limite que ninguém te conta: a IA esquece o rosto entre uma imagem e outra. Esta aula explica o porquê e entrega a defesa clássica dos profissionais.</p>
+    <p class="video-aula"><a href="https://www.loom.com/share/6ababf342d9d4178ba1b61f15e5f9465" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: a folha de fotos 3x4 da papelaria — a mesma pessoa em ângulos oficiais -->
+    <rect x="70" y="30" width="160" height="180" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+    <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
+      <rect x="86" y="48" width="58" height="72" rx="4"/><rect x="156" y="48" width="58" height="72" rx="4"/>
+      <rect x="86" y="130" width="58" height="64" rx="4"/><rect x="156" y="130" width="58" height="64" rx="4"/>
+    </g>
+    <circle cx="115" cy="76" r="14" style="stroke:var(--accent)" stroke-width="1.8"/>
+    <path d="M178 62 a14 14 0 0 1 8 26" style="stroke:var(--accent)" stroke-width="1.8" fill="none"/>
+    <path d="M115 152 a13 13 0 0 1 0 26 M108 152 v26" style="stroke:var(--accent)" stroke-width="1.8" fill="none"/>
+    <circle cx="185" cy="162" r="13" style="stroke:var(--accent)" stroke-width="1.8"/>
+    <path d="M176 172 a13 13 0 0 0 18 0" style="stroke:var(--accent)" stroke-width="1.4" fill="none"/>
+    <g style="fill:var(--faint);font-family:var(--mono)" font-size="8">
+      <text x="115" y="115" text-anchor="middle">frente</text><text x="185" y="115" text-anchor="middle">3/4</text>
+      <text x="115" y="204" text-anchor="middle">perfil</text><text x="185" y="204" text-anchor="middle">costas</text>
+    </g>
+    <text x="150" y="230" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">a mesma pessoa, oficializada em quatro ângulos</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Visualizar antes de gastar: a função do storyboard</h2>
+      <p>No cinema, o storyboard existe por economia: errar no papel custa nada; errar no set custa o dia de equipe inteira. Ele decide composição, posição do personagem, ângulos e atmosfera antes de qualquer câmera ligar.</p>
+      <p>Com um gerador rápido como o Nano Banana, essa etapa — que os estúdios chamam de previsualização — fica ao alcance de qualquer um: você testa composições, luz e enquadramentos em minutos, como quem rabisca ideias num guardanapo que responde.</p>
+      <p>A fotógrafa usa isso na proposta comercial: em vez de descrever o ensaio por telefone, mostra três quadros de previsualização do conceito — e fecha o contrato na hora, porque o cliente viu antes de pagar.</p>
+      <div class="qanchor"><p>Errar no papel é grátis. Errar na produção custa o dia.</p></div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> O calcanhar de aquiles: cada imagem nasce órfã</h2>
+      <p>Aqui está o limite honesto da tecnologia: o gerador cria cada imagem <b>de forma independente</b>, sem memória da anterior. Por isso o rosto muda um pouco, o cabelo escorrega, a idade oscila — mesmo com a mesma descrição.</p>
+      <p>Anote a consequência prática, porque ela orienta tudo nesta trilha: o trabalho profissional com IA busca <b>reduzir a variação, não eliminá-la</b>. Quem promete consistência perfeita está vendendo; quem reduz a variação a ponto de ninguém notar está trabalhando.</p>
+      <p>O dono de restaurante viveu isso na série de posts do chef fictício: entre a segunda e a quinta imagem, o chef envelheceu dez anos. Não era defeito da ferramenta — era a ausência da defesa que vem no próximo passo.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> A defesa clássica: a folha de referência</h2>
+      <p>A solução dos profissionais é anterior à IA — vem dos estúdios de animação: uma <b>folha de referência de personagem</b>, com a mesma pessoa em quatro ângulos oficiais: de frente, a três quartos, de perfil e de costas.</p>
+      <p>Essa folha vira o documento de identidade do personagem: você a envia junto com os pedidos futuros, e o gerador passa a ter um gabarito visual para consultar em vez de reinventar de memória.</p>
+      <p>A social media guarda a folha na pasta do cliente, ao lado do manual da marca — porque é isso que ela é: o manual de identidade do personagem.</p>
+      <div class="qbefore-after">
+        <div class="qba-col"><p class="qk">Antes</p><p>Sem folha: cada cena reinventa o rosto de memória — cinco posts, três pessoas diferentes.</p></div>
+        <div class="qba-col"><p class="qk">Depois</p><p>Com folha anexada aos pedidos: o gerador consulta o gabarito — a variação cai a ponto de o público não notar.</p></div>
+        <p class="qba-saldo">Saldo: um documento gerado uma vez protege todas as cenas futuras do personagem.</p>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="fundamento">
+      <h2><span class="n">04</span> O fluxo de previsualização, do início ao fim</h2>
+      <p>Com a folha em mãos, o fluxo profissional tem quatro tempos: <b>descrição fixa</b> do personagem (escrita uma vez, nunca alterada) → <b>folha de referência</b> gerada → a mesma descrição repetida em <b>todos</b> os pedidos → e os planos gerados na ordem do cinema: geral para situar, médio para a ação, close para a emoção, reações para costurar.</p>
+      <p>Repare no princípio por trás: repetição disciplinada. Tudo que puder ser fixado — descrição, folha, ordem dos planos — se fixa; a criatividade mora no que a cena conta, não em reinventar o personagem.</p>
+      <p>A fotógrafa compara com o book de gestante: o roteiro de poses é o mesmo há anos — geral, médio, detalhe das mãos. A disciplina do roteiro é o que libera a atenção dela para a emoção da cliente.</p>
+      <div class="quiz" data-answer="c">
+        <p class="qk">Teste-se</p><p class="q">Por que o rosto do personagem muda entre duas gerações com a mesma descrição?</p>
+        <button class="opt" data-k="a" data-fb="A descrição igual é justamente o que você controla — o problema está em como o gerador funciona por dentro.">Porque a descrição precisa mudar a cada pedido</button>
+        <button class="opt" data-k="b" data-fb="Pagar não muda a arquitetura: qualquer gerador cria cada imagem de forma independente.">Porque a versão gratuita da ferramenta limita a memória</button>
+        <button class="opt" data-k="c" data-fb="Exato: cada imagem nasce órfã, sem memória da anterior — por isso a defesa é dar um gabarito visual (a folha) para o gerador consultar.">Porque cada imagem é criada de forma independente, sem memória da anterior</button>
+        <p class="qfb"></p>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p3" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Emita o documento de identidade do seu personagem</h3>
+      <p class="pgoal">Sair com a folha de referência do seu personagem em quatro ângulos — em ~12 minutos.</p>
+      <p class="psafe">Nada aqui altera suas imagens anteriores; a folha é um documento novo. Se um ângulo sair estranho, gere de novo — o personagem oficial é o que você aprovar.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Create a character reference sheet with the same character shown
+from four angles on a clean neutral background: front view,
+three-quarter view, side profile, and back view.
+The character: &lt;cole aqui a descrição fixa do seu personagem —
+a mesma da aula 5 do curso 1, sem mudar uma palavra&gt;.
+Keep identical face, hair, outfit, colors and proportions in all
+four views. Neutral even lighting, no scenery, no props, no text.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Recupere a descrição fixa do seu personagem (o texto guardado na prática do curso 1, aula 5 — ou escreva uma agora e congele).</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Cole a descrição no pedido acima e gere a folha. Confira: é a mesma pessoa nos quatro ângulos?</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Guarde folha + descrição juntas na pasta do personagem — esse par acompanha todo pedido futuro que o envolver.</label></li>
+      </ol>
+      <p class="pdone">Seu personagem agora tem documento de identidade: descrição fixa e folha de quatro ângulos — a variação de rosto deixou de ser sorte.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> A economia da previsualização: quanto mais cedo o erro aparece, menos ele custa — no papel, custa zero."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M30 160 h160" style="stroke:var(--line2)" stroke-width="1.8"/>
+        <path d="M30 156 c40 0 80 -10 110 -50 c16 -22 30 -50 40 -76" style="stroke:var(--warm)" stroke-width="2.2" fill="none"/>
+        <g style="fill:var(--faint);font-family:var(--mono)" font-size="8">
+          <text x="46" y="176">papel</text><text x="106" y="176">geração</text><text x="166" y="176">produção</text>
+        </g>
+        <text x="40" y="140" style="fill:var(--accent);font-family:var(--mono)" font-size="9">erro grátis</text>
+        <text x="128" y="46" style="fill:var(--warm);font-family:var(--mono)" font-size="9">erro caro</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> Cada geração nasce sem memória da anterior — sem gabarito, a identidade deriva um pouco a cada imagem."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--line2)" stroke-width="2" fill="none">
+          <circle cx="46" cy="70" r="18"/><circle cx="110" cy="70" r="18"/><circle cx="174" cy="70" r="18"/>
+        </g>
+        <path d="M40 66 a8 8 0 0 1 12 0 M104 64 a8 8 0 0 1 12 4 M170 68 a8 8 0 0 1 10 -2" style="stroke:var(--line2)" stroke-width="1.6" fill="none"/>
+        <path d="M64 70 h28 M128 70 h28" style="stroke:var(--faint)" stroke-width="1.4" stroke-dasharray="2 4"/>
+        <text x="64" y="52" style="fill:var(--warm);font-family:var(--mono)" font-size="12">✕</text>
+        <text x="128" y="52" style="fill:var(--warm);font-family:var(--mono)" font-size="12">✕</text>
+        <text x="110" y="120" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">sem memória entre elas</text>
+        <text x="110" y="150" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">meta: reduzir a variação</text>
+        <text x="110" y="166" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">(eliminar é promessa de vendedor)</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> A folha vira gabarito: em vez de reinventar de memória, o gerador consulta o documento — e a deriva de identidade despenca."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="26" y="40" width="70" height="90" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <g style="stroke:var(--accent);opacity:.7" stroke-width="1.2">
+          <line x1="61" y1="40" x2="61" y2="130"/><line x1="26" y1="85" x2="96" y2="85"/>
+        </g>
+        <g style="stroke:var(--accent)" stroke-width="1.4" fill="none">
+          <circle cx="43" cy="60" r="8"/><circle cx="79" cy="60" r="8"/><circle cx="43" cy="105" r="8"/><circle cx="79" cy="105" r="8"/>
+        </g>
+        <text x="61" y="148" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">gabarito</text>
+        <path d="M96 85 c22 0 22 0 34 0" style="stroke:var(--muted)" stroke-width="1.8"/>
+        <path d="M124 80 l8 5 -8 5" style="stroke:var(--muted)" stroke-width="1.8" fill="none"/>
+        <rect x="138" y="52" width="60" height="66" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+        <circle cx="168" cy="78" r="12" style="stroke:var(--line2)" stroke-width="1.8"/>
+        <text x="168" y="136" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">cena nova</text>
+        <text x="110" y="180" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">consulta, não memória</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> O fluxo em quatro tempos: descrição congelada → folha → mesma descrição em tudo → planos na ordem do cinema."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
+          <rect x="24" y="24" width="80" height="28" rx="6"/>
+          <rect x="24" y="66" width="80" height="28" rx="6"/>
+          <rect x="24" y="108" width="80" height="28" rx="6"/>
+          <rect x="24" y="150" width="80" height="28" rx="6"/>
+        </g>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="7.5">
+          <text x="64" y="41" text-anchor="middle">1 descrição fixa</text>
+          <text x="64" y="83" text-anchor="middle">2 folha 4 ângulos</text>
+          <text x="64" y="125" text-anchor="middle">3 repete em tudo</text>
+          <text x="64" y="167" text-anchor="middle">4 planos na ordem</text>
+        </g>
+        <path d="M64 52 v14 M64 94 v14 M64 136 v14" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <g style="stroke:var(--line2)" stroke-width="1.6" fill="none">
+          <rect x="130" y="108" width="66" height="20" rx="4"/><rect x="130" y="134" width="52" height="20" rx="4"/><rect x="130" y="160" width="38" height="20" rx="4"/>
+        </g>
+        <g style="fill:var(--faint);font-family:var(--mono)" font-size="7">
+          <text x="163" y="121" text-anchor="middle">geral</text><text x="156" y="147" text-anchor="middle">médio</text><text x="149" y="173" text-anchor="middle">close</text>
+        </g>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Previsualizar é economia: o erro descoberto no papel custa zero; na produção, custa o dia.</li>
+    <li>Cada imagem de IA nasce sem memória da anterior — por isso o objetivo profissional é reduzir a variação, não eliminá-la.</li>
+    <li>A folha de referência em quatro ângulos é o documento de identidade do personagem, consultado em todo pedido futuro.</li>
+    <li>O fluxo de previsualização vive de repetição disciplinada: descrição congelada, folha anexada, planos na ordem do cinema.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de emitir o documento que protege a identidade do seu personagem em toda cena futura.</p>
+  <p class="na-action">Nos próximos 15 minutos: gere UMA cena nova do personagem anexando a folha e a descrição fixa. Compare com uma cena antiga sem folha — a diferença de consistência é o seu argumento de venda.</p>
+  <p class="na-hook">Na próxima aula, a folha vira sistema: a trava de personagem — definir o ator uma vez, treinar os ângulos e continuar a mesma cena sem a identidade escapar.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-2">← aula anterior</a><a href="#aula-4">próxima aula →</a></nav>
+<footer>Aula 3 · Nano Banana · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-3">
+[
+  {"front":"Pergunta: por que o trabalho profissional com IA mira 'reduzir a variação' e não 'consistência perfeita'?","back":"Porque cada imagem nasce independente, sem memória — variação zero não existe; reduzi-la até ninguém notar é o padrão real de trabalho."},
+  {"front":"Pergunta: quais são os quatro ângulos oficiais da folha de referência?","back":"Frente, três quartos, perfil e costas — sobre fundo neutro, com luz uniforme."},
+  {"front":"Decisão: o chef fictício envelheceu dez anos entre o post 2 e o post 5. O que você institui no fluxo para a próxima série?","back":"Descrição fixa congelada + folha de referência anexada a todo pedido — o gerador passa a consultar o gabarito em vez de reinventar."},
+  {"front":"Aplicação: o cliente quer 'ver o ensaio antes de pagar'. Como a previsualização vira argumento comercial?","back":"Gera-se três quadros do conceito em minutos e apresenta-se antes do contrato — o cliente compra o que já viu."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-3 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="18min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), dono de restaurante (s2), social media (s3), fotógrafa (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-3"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 pergunta/pergunta/decisão/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+
+<!-- ===== AULA 4 ===== -->
+<section class="view" id="v-aula-4" data-aula="4" data-tempo="20min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 2A · Aula 4</p>
+    <h1>A trava de <em>personagem</em></h1>
+    <p class="promise">Ao fim desta aula você gera uma sequência de planos da mesma cena, com o mesmo personagem, usando o sistema completo de trava — definir, treinar, continuar, expandir.</p>
+    <p class="why">A folha de referência da aula passada reduz a variação — mas sozinha ela não segura uma sequência inteira. Falta o sistema em volta: uma descrição que nunca muda, um treino de ângulos e a disciplina de continuar a cena em vez de recomeçar. É o que separa imagens soltas de uma cena que se sustenta.</p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: o cadeado fechado sobre o ator; câmera, luz e cenário giram livres ao redor -->
+    <circle cx="150" cy="112" r="34" style="stroke:var(--accent)" stroke-width="2"/>
+    <circle cx="150" cy="102" r="10" style="stroke:var(--accent)" stroke-width="1.8"/>
+    <path d="M138 132 a12 12 0 0 1 24 0" style="stroke:var(--accent)" stroke-width="1.8" fill="none"/>
+    <rect x="138" y="152" width="24" height="20" rx="4" style="stroke:var(--warm)" stroke-width="2"/>
+    <path d="M142 152 v-6 a8 8 0 0 1 16 0 v6" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
+    <g style="stroke:var(--line2)" stroke-width="1.8" fill="none">
+      <rect x="34" y="40" width="52 " height="26" rx="6"/>
+      <rect x="214" y="40" width="52" height="26" rx="6"/>
+      <rect x="34" y="170" width="52" height="26" rx="6"/>
+    </g>
+    <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
+      <text x="60" y="56" text-anchor="middle">câmera</text>
+      <text x="240" y="56" text-anchor="middle">luz</text>
+      <text x="60" y="186" text-anchor="middle">cenário</text>
+    </g>
+    <path d="M86 60 c24 12 34 24 40 32 M214 60 c-24 12 -34 24 -40 32 M86 176 c24 -12 34 -20 40 -28" style="stroke:var(--faint)" stroke-width="1.4" stroke-dasharray="3 3" fill="none"/>
+    <text x="150" y="216" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">o ator trancado — o resto gira em volta</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Contrate o ator uma vez — e nunca reescreva o contrato</h2>
+      <p>O sistema começa com uma decisão de produtor: o personagem se define <b>uma única vez</b>, por escrito, e esse texto vira lei. Rosto, cabelo, roupa, acessórios, tom — tudo registrado na descrição fixa. Mudou uma vírgula no meio do projeto, o sistema quebra.</p>
+      <p>A consistência nasce de quatro apoios somados: descrição fixa, imagens de referência, a mesma estrutura de pedido repetida, e uma frase de controle de identidade em todo pedido ("mesmo rosto, mesma roupa, sem redesenhar").</p>
+      <p>A social media aprendeu com a série da veterinária fictícia do pet shop: no terceiro post, "melhorou" a descrição — e a veterinária virou outra mulher. Desde então, a descrição mora num documento trancado, e ela só copia e cola.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="Nano Banana (ou similar), jul/2026">
+      <h2><span class="n">02</span> Treine os ângulos antes da primeira cena</h2>
+      <p>Antes de qualquer cena, o modelo precisa conhecer o seu ator por todos os lados. Você gera o conjunto de treino: frente, perfil, costas e dois closes — tudo com a descrição fixa e fundo neutro.</p>
+      <p>É a folha da aula 3 levada ao nível de trabalho: os closes entram porque cena de verdade pede rosto grande — e rosto grande sem treino é onde a identidade mais escorrega.</p>
+      <p>A fotógrafa pensa nisso como o teste de câmera que se faz com modelo novo antes do ensaio pago: meia hora de ângulos controlados que salvam o dia inteiro.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Pular o treino e ir direto para a cena.</b> Funciona até a primeira pose diferente — aí o rosto quebra e você volta ao zero. Os dez minutos de treino de ângulos custam menos que uma sequência inteira refeita.</p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="ferramenta" data-versao="Nano Banana (ou similar), jul/2026">
+      <h2><span class="n">03</span> Continue a cena — não recomece</h2>
+      <p>Aqui mora a virada de mentalidade da aula: parar de gerar imagens novas e passar a <b>continuar a mesma cena</b>. O pedido muda de "crie uma imagem de..." para "continue esta cena: agora a câmera se aproxima do rosto; nada mais muda".</p>
+      <p>Mudanças pequenas entre planos são o segredo da continuidade: a IA tem pouco espaço para inventar, e o espectador sente uma cena única — não uma coleção.</p>
+      <p>O dono de restaurante montou assim a sequência do forno a lenha: plano aberto do salão, continua com a câmera indo ao balcão, continua com o close da pizza saindo. Três pedidos, uma cena — e o mesmo forno em todas.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="Nano Banana (ou similar), jul/2026">
+      <h2><span class="n">04</span> Expanda o mundo — com o ator trancado</h2>
+      <p>Com a cena base estabelecida, vem a recompensa: expandir. Estender o ambiente para além do quadro, aumentar a escala, acrescentar efeitos de clima — chuva, poeira, neblina. A regra que governa tudo: <b>não mude o personagem; mude a câmera, a luz e o ambiente.</b></p>
+      <p>É a mesma lógica de novela que a social media conhece do outro lado da tela: o ator é o mesmo o ano inteiro; quem trabalha são os cenários, o figurino do episódio e a fotografia.</p>
+      <div class="qsteps">
+        <p class="qk">O sistema da trava, em cinco passos</p>
+        <ol>
+          <li>Escreva a descrição fixa do ator e tranque o texto (documento à parte).</li>
+          <li>Gere o conjunto de treino: frente, perfil, costas e dois closes, fundo neutro.</li>
+          <li>Crie a cena base com descrição fixa + referências anexadas + frase de controle.</li>
+          <li>Continue a cena em planos seguintes — uma mudança pequena por pedido.</li>
+          <li>Expanda ambiente, escala e clima — personagem intocado.</li>
+        </ol>
+      </div>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p4" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Rode o sistema completo com o seu ator</h3>
+      <p class="pgoal">Sair com uma cena base + uma continuação + uma expansão, tudo com o mesmo personagem — em ~15 minutos.</p>
+      <p class="psafe">Cada pedido gera um arquivo novo; a cena base fica salva mesmo que a continuação saia errada. Escapou a identidade? Reforce a frase de controle e repita só aquele plano.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Continue this exact scene. Camera change ONLY:
+&lt;a mudança — ex.: move closer to a medium shot of the character&gt;.
+Keep the same character, face, hair, outfit, environment, lighting
+and color palette. Same identity as the reference images.
+No redesign, no new elements. Stable face.</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Gere a cena base: descrição fixa + folha de referência anexada + frase de controle no fim do pedido.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Envie a cena base de volta e peça a continuação com o pedido acima (uma mudança de câmera só).</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Peça a expansão: "amplie o ambiente ao redor, aumente a escala do cenário, adicione &lt;clima&gt; — personagem intocado".</label></li>
+        <li><label><input type="checkbox" data-ptask="4"> Enfileire os três quadros e confira: mesma pessoa, mesma roupa, mesma luz? A cena se sustenta como sequência?</label></li>
+      </ol>
+      <p class="pdone">Você conduziu uma cena inteira com o ator trancado — o sistema que transforma imagens soltas em sequência de filme.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> Os quatro apoios da trava: descrição fixa, referências, estrutura repetida e frase de controle — a consistência é a soma, não um deles sozinho."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="70" y="30" width="80" height="34" rx="8" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="110" y="51" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">identidade</text>
+        <g style="stroke:var(--line2)" stroke-width="1.8" fill="none">
+          <rect x="14" y="120" width="44" height="30" rx="6"/><rect x="66" y="120" width="44" height="30" rx="6"/>
+          <rect x="118" y="120" width="44" height="30" rx="6"/><rect x="170" y="120" width="38" height="30" rx="6"/>
+        </g>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="7">
+          <text x="36" y="138" text-anchor="middle">descrição</text><text x="88" y="138" text-anchor="middle">referências</text>
+          <text x="140" y="138" text-anchor="middle">estrutura</text><text x="189" y="138" text-anchor="middle">controle</text>
+        </g>
+        <path d="M36 120 c14 -30 48 -44 62 -50 M88 120 c8 -22 16 -40 20 -54 M140 120 c-8 -22 -16 -40 -20 -54 M189 120 c-16 -30 -48 -46 -66 -54" style="stroke:var(--faint)" stroke-width="1.3" fill="none"/>
+        <text x="110" y="180" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">tire um apoio e a mesa cai</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> O conjunto de treino: quatro ângulos mais dois closes — porque é no rosto grande que a identidade mais escorrega."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
+          <rect x="22" y="34" width="52" height="64" rx="4"/><rect x="84" y="34" width="52" height="64" rx="4"/><rect x="146" y="34" width="52" height="64" rx="4"/>
+        </g>
+        <circle cx="48" cy="60" r="11" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <path d="M106 50 a11 11 0 0 1 6 20" style="stroke:var(--accent)" stroke-width="1.6" fill="none"/>
+        <circle cx="172" cy="60" r="11" style="stroke:var(--accent)" stroke-width="1.6" stroke-dasharray="3 2"/>
+        <g style="stroke:var(--warm)" stroke-width="2" fill="none">
+          <rect x="52" y="116" width="52" height="56" rx="4"/><rect x="116" y="116" width="52" height="56" rx="4"/>
+        </g>
+        <circle cx="78" cy="142" r="16" style="stroke:var(--warm)" stroke-width="1.8"/>
+        <circle cx="142" cy="142" r="16" style="stroke:var(--warm)" stroke-width="1.8"/>
+        <text x="110" y="190" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">closes: onde mais quebra</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> Recomeçar cria ilhas; continuar cria corrente — cada plano herda a cena anterior com uma mudança só."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--line2)" stroke-width="1.8" fill="none">
+          <rect x="20" y="30" width="46" height="34" rx="5"/><rect x="88" y="30" width="46" height="34" rx="5"/><rect x="156" y="30" width="46" height="34" rx="5"/>
+        </g>
+        <text x="110" y="84" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">recomeçar: 3 ilhas</text>
+        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
+          <rect x="20" y="110" width="46" height="34" rx="5"/><rect x="88" y="110" width="46" height="34" rx="5"/><rect x="156" y="110" width="46" height="34" rx="5"/>
+        </g>
+        <path d="M66 127 h22 M134 127 h22" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M82 122 l8 5 -8 5 M150 122 l8 5 -8 5" style="stroke:var(--accent)" stroke-width="1.8" fill="none"/>
+        <text x="110" y="166" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">continuar: 1 corrente</text>
+        <text x="110" y="186" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">uma mudança pequena por elo</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> Expansão com trava: o quadro cresce — ambiente, escala, clima — e o personagem permanece o ponto fixo do sistema."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="82" y="74" width="56 " height="52" rx="5" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="110" cy="96" r="9" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <path d="M104 108 v10 M98 113 h24" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <rect x="48" y="48" width="124" height="104" rx="7" style="stroke:var(--line2)" stroke-width="1.8" stroke-dasharray="5 4"/>
+        <rect x="16" y="22" width="188" height="156" rx="9" style="stroke:var(--line2)" stroke-width="1.6" stroke-dasharray="2 4"/>
+        <path d="M30 40 l-10 -10 M190 40 l10 -10 M30 160 l-10 10 M190 160 l10 10" style="stroke:var(--warm)" stroke-width="1.8"/>
+        <text x="110" y="192" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">o mundo cresce; o ator, nunca</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>O personagem se define uma vez, por escrito, e a descrição vira lei — mudou no meio, o sistema quebra.</li>
+    <li>O treino de ângulos com closes vem antes da primeira cena, porque rosto grande é onde a identidade escorrega.</li>
+    <li>Continuar a cena, com uma mudança pequena por pedido, cria a corrente que o espectador lê como cena única.</li>
+    <li>Na expansão, o mundo pode crescer à vontade — câmera, luz e ambiente trabalham; o ator fica trancado.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de operar o sistema que os estúdios usam para segurar identidade em sequência.</p>
+  <p class="na-action">Nos próximos 15 minutos: gere um quarto plano da sua cena — um detalhe (mãos, objeto, textura) — continuando a corrente. Detalhe é o plano que ninguém lembra de gerar e todo filme precisa.</p>
+  <p class="na-hook">Na próxima aula, você aprende a gramática que dá sentido a esses planos: três imagens — lugar, ação, emoção — contando uma história sem legenda.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-3">← aula anterior</a><a href="#aula-5">próxima aula →</a></nav>
+<footer>Aula 4 · Nano Banana · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-4">
+[
+  {"front":"Diagnóstico: no terceiro plano da sequência, o personagem virou outra pessoa. Quais dos quatro apoios da trava você confere primeiro?","back":"Se a descrição fixa mudou (a causa mais comum) e se as referências foram anexadas naquele pedido — depois, se a frase de controle estava presente."},
+  {"front":"Contraste: qual a diferença entre 'crie uma imagem do personagem no balcão' e 'continue esta cena: a câmera vai ao balcão'?","back":"O primeiro recomeça do zero (ilha nova, identidade em risco); o segundo herda a cena com uma mudança só (elo da corrente)."},
+  {"front":"Pergunta: o que pode mudar livremente durante a expansão da cena — e o que nunca muda?","back":"Mudam câmera, luz, ambiente, escala e clima; o personagem (rosto, roupa, identidade) fica intocado."},
+  {"front":"Aplicação: você vai lançar uma série de 8 posts com um personagem fixo. O que produz ANTES do primeiro post?","back":"A descrição fixa trancada em documento + o conjunto de treino (frente, perfil, costas, dois closes) — só então a cena base."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-4 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), fotógrafa (s2), dono de restaurante (s3), social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-4"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/contraste/pergunta/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+
+<!-- ===== AULA 5 ===== -->
+<section class="view" id="v-aula-5" data-aula="5" data-tempo="18min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 2A · Aula 5</p>
+    <h1>Três planos contam uma <em>história</em></h1>
+    <p class="promise">Ao fim desta aula você monta, com apenas três pedidos, uma sequência que situa o lugar, mostra a ação e revela a emoção — sem escrever uma linha de legenda.</p>
+    <p class="why">Uma imagem sozinha pode ser bonita e ainda assim não contar nada. A maioria dos pedidos de IA produz quadros isolados, sem relação entre si — e o que separa uma imagem solta de uma cena de filme é justamente essa gramática de sequência, que qualquer pessoa pode aprender em uma aula.</p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: três porta-retratos na estante, cada um contando uma parte da mesma cena -->
+    <path d="M20 190 h260" style="stroke:var(--line2)" stroke-width="2.4"/>
+    <rect x="34" y="72" width="76" height="98" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
+    <path d="M50 150 l14 -22 12 14 10 -10 14 18" style="stroke:var(--muted)" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+    <text x="72" y="184" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="9">lugar</text>
+    <rect x="128" y="58" width="76" height="112" rx="6" style="stroke:var(--accent)" stroke-width="2.2"/>
+    <circle cx="166" cy="108" r="10" style="stroke:var(--accent)" stroke-width="1.8"/>
+    <path d="M166 118 v22 M156 132 h20 M158 156 l8 -6 8 6" style="stroke:var(--accent)" stroke-width="1.8" fill="none"/>
+    <text x="166" y="184" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="9">ação</text>
+    <rect x="222" y="46" width="66" height="124" rx="6" style="stroke:var(--warm)" stroke-width="2.4"/>
+    <circle cx="255" cy="102" r="16" style="stroke:var(--warm)" stroke-width="2"/>
+    <path d="M247 106 q8 8 16 0" style="stroke:var(--warm)" stroke-width="1.8" fill="none"/>
+    <text x="255" y="184" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">emoção</text>
+    <text x="150" y="220" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">três retratos na estante contam a cena inteira</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Três planos, uma sequência: lugar, ação, emoção</h2>
+      <p>A menor sequência que conta uma história completa tem três elos, sempre nesta ordem. O <b>plano geral</b> situa: mostra onde a cena acontece, a escala do lugar, o clima do momento. O <b>plano médio</b> mostra a ação: o que o personagem está fazendo, o movimento que empurra a história adiante.</p>
+      <p>O terceiro elo é o <b>close</b>, que revela a emoção: o que a pessoa sente, sem precisar de uma palavra de legenda. Os três juntos, na ordem certa, substituem qualquer texto explicativo.</p>
+      <p>A fotógrafa usa essa sequência na festa de 15 anos: plano geral do salão decorado situa a noite; plano médio da debutante dançando com o pai mostra o momento; close nos olhos marejados dela fecha a cena — três fotos, zero legenda, a história inteira contada.</p>
+      <div class="qanchor"><p>Lugar situa. Ação move. Emoção fica.</p></div>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> Ângulo baixo dá força; ângulo alto expõe vulnerabilidade</h2>
+      <p>A altura da câmera não é só enquadramento — é direção emocional. Câmera baixa, olhando para cima, faz o personagem parecer maior, dominante, no controle. Câmera alta, olhando para baixo, faz o mesmo personagem parecer pequeno, exposto, vulnerável.</p>
+      <p>É o mesmo recurso que o cinema usa há décadas para decidir, sem dizer uma palavra, quem está por cima numa cena — e você pede esse ângulo diretamente, dentro do mesmo pedido que já aprendeu na aula 1.</p>
+      <p>O dono de restaurante usou o ângulo baixo na foto de capa do cardápio novo: o chef, visto de baixo, apresentando o prato-assinatura, parece confiante e no comando da cozinha — exatamente o efeito que o lançamento pedia.</p>
+      <div class="quiz" data-answer="b">
+        <p class="qk">Teste-se</p><p class="q">Você quer que a social media pareça pequena e sobrecarregada num post sobre o caos dos bastidores de segunda-feira. Que ângulo você pede?</p>
+        <button class="opt" data-k="a" data-fb="Ângulo baixo projeta força e controle — o oposto do efeito de sobrecarga que esse post busca.">Ângulo baixo, olhando para cima</button>
+        <button class="opt" data-k="b" data-fb="Exato: o ângulo alto expõe e diminui o personagem — combina com a sensação de estar soterrada de tarefas.">Ângulo alto, olhando para baixo</button>
+        <button class="opt" data-k="c" data-fb="Altura neutra é o padrão sem intenção — não comunica nem força nem vulnerabilidade por si só.">Altura neutra, na linha dos olhos</button>
+        <p class="qfb"></p>
+      </div>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Profundidade em camadas: primeiro plano, meio e fundo</h2>
+      <p>Uma cena parece achatada quando tudo está no mesmo nível de nitidez — como uma foto de identidade. Uma cena parece um still de filme quando tem camadas: algo desfocado bem perto da câmera, o assunto nítido no meio, o cenário suavizado ao fundo.</p>
+      <p>Pedir profundidade é simples: descreva o que fica em primeiro plano (mesmo que borrado), o assunto principal no meio, e o que existe no fundo. O gerador organiza a nitidez de cada camada sozinho.</p>
+      <p>A social media aplicou isso nos bastidores do salão de beleza: tesoura desfocada em primeiro plano, a cabeleireira nítida cortando no meio, outras clientes suavizadas esperando ao fundo — a foto ganhou profundidade de still de novela, não de flagrante de celular.</p>
+      <div class="qbefore-after">
+        <div class="qba-col"><p class="qk">Antes</p><p>Foto do salão sem profundidade: tudo no mesmo plano de foco, cliente e fundo disputando atenção igual.</p></div>
+        <div class="qba-col"><p class="qk">Depois</p><p>Mesma cena com três camadas descritas: primeiro plano desfocado, cabeleireira nítida, fundo suave — o olhar sabe exatamente para onde ir.</p></div>
+        <p class="qba-saldo">Saldo: a mesma cena, sem trocar o assunto, ganha a sensação de profundidade que só still de filme tem.</p>
+      </div>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="fundamento">
+      <h2><span class="n">04</span> Atmosfera: a luz encontrando partículas no ar</h2>
+      <p>O último ingrediente da cena cinematográfica não é o assunto — é o ar entre a câmera e o assunto. Luz batendo em poeira, vapor ou neblina cria feixes visíveis, e feixes visíveis criam atmosfera na hora.</p>
+      <p>O pedido é uma frase a mais no fim: descreva a luz entrando de um ângulo (janela, porta, fresta) e o que está suspenso no ar — poeira fina, vapor de uma xícara, neblina rasteira de manhã.</p>
+      <p>A fotógrafa usou isso no ensaio de recém-nascido: luz de fim de tarde atravessando o celeiro, poeira suspensa no feixe, o bebê no colo da mãe dentro daquele raio dourado — a atmosfera fez metade do trabalho emocional da foto sozinha.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p5" data-mode="prompt">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Escreva a cena de três planos que conta sozinha</h3>
+      <p class="pgoal">Sair com os três pedidos da sua cena — geral, médio, close — prontos para gerar, em ~10 minutos.</p>
+      <p class="psafe">Só texto: nada seu é alterado, e gerar as três imagens depois é opcional nesta prática. Se a emoção do close não convencer, ajuste só essa frase e tente de novo.</p>
+      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">PLANO GERAL — situe o lugar:
+&lt;wide shot&gt;, &lt;ambiente e hora do dia&gt;, &lt;clima geral da cena&gt;
+
+PLANO MÉDIO — mostre a ação:
+&lt;medium shot&gt;, &lt;o que o personagem faz&gt;, &lt;ângulo: low angle (força) ou high angle (vulnerável)&gt;
+
+CLOSE — revele a emoção:
+&lt;close-up&gt;, &lt;expressão ou detalhe do rosto/mãos&gt;, &lt;luz e atmosfera: poeira, vapor ou neblina no ar&gt;</pre></div>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Escolha uma cena real do seu trabalho (um evento, um prato, um atendimento) e escreva os três pedidos acima, um por plano.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> No pedido do plano médio, escolha o ângulo de propósito — baixo se quer força, alto se quer vulnerabilidade.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Releia os três pedidos em sequência, sem gerar nada ainda: eles já contam uma história, do lugar à emoção?</label></li>
+      </ol>
+      <p class="pdone">Você escreveu a menor sequência que conta uma história completa — lugar, ação e emoção, prontos para virar três imagens.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> A sequência mínima: plano geral situa o lugar, plano médio mostra a ação, close revela a emoção — três elos, uma história."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
+          <rect x="14" y="70" width="70" height="50" rx="6"/>
+          <rect x="94" y="76" width="56" height="42" rx="6"/>
+          <rect x="160" y="82" width="40" height="34" rx="6"/>
+        </g>
+        <path d="M84 95 h10 M150 97 h10" style="stroke:var(--muted)" stroke-width="1.6"/>
+        <path d="M90 90 l6 5 -6 5 M156 92 l6 5 -6 5" style="stroke:var(--muted)" stroke-width="1.6" fill="none"/>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
+          <text x="49" y="98" text-anchor="middle">geral</text>
+          <text x="122" y="101" text-anchor="middle">médio</text>
+          <text x="180" y="103" text-anchor="middle">close</text>
+        </g>
+        <g style="fill:var(--faint);font-family:var(--mono)" font-size="8">
+          <text x="49" y="140" text-anchor="middle">lugar</text>
+          <text x="122" y="140" text-anchor="middle">ação</text>
+          <text x="180" y="140" text-anchor="middle">emoção</text>
+        </g>
+        <text x="110" y="176" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">três elos, uma história</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> O ângulo muda a leitura emocional: câmera baixa olhando para cima projeta força; câmera alta olhando para baixo expõe vulnerabilidade."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <circle cx="110" cy="100" r="20" style="stroke:var(--line2)" stroke-width="2"/>
+        <path d="M40 168 c30 -10 46 -34 62 -56" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+        <rect x="26" y="160" width="22" height="16" rx="3" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <text x="37" y="188" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">baixo</text>
+        <path d="M180 32 c-30 10 -46 34 -62 56" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
+        <rect x="172" y="18" width="22" height="16" rx="3" style="stroke:var(--warm)" stroke-width="1.8"/>
+        <text x="183" y="14" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">alto</text>
+        <text x="55" y="130" style="fill:var(--accent);font-family:var(--mono)" font-size="8">força</text>
+        <text x="150" y="130" style="fill:var(--warm);font-family:var(--mono)" font-size="8">vulnerável</text>
+        <text x="110" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">a câmera também decide o que se sente</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> Profundidade em camadas: primeiro plano desfocado, meio nítido, fundo suave — a cena ganha volume e o olhar sabe para onde ir."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="20" y="30" width="180" height="120" rx="8" style="stroke:var(--line2);opacity:.5" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <text x="110" y="46" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="7.5">fundo</text>
+        <rect x="55" y="58" width="110" height="80" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <circle cx="110" cy="98" r="18" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <text x="110" y="150" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">meio (nítido)</text>
+        <path d="M14 168 l30 -46 M206 168 l-30 -46" style="stroke:var(--warm)" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+        <text x="110" y="184" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">1º plano desfocado (bordas)</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> Luz encontrando partículas no ar — poeira, vapor, neblina — é o atalho mais rápido para criar atmosfera."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M30 24 l40 30 M40 20 l30 38 M52 18 l20 44" style="stroke:var(--warm)" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="24" cy="18" r="8" style="fill:var(--warm)"/>
+        <g style="fill:var(--muted)" opacity=".7">
+          <circle cx="90" cy="70" r="2.4"/><circle cx="104" cy="90" r="2"/><circle cx="82" cy="98" r="2.6"/>
+          <circle cx="118" cy="76" r="2"/><circle cx="96" cy="112" r="2.2"/><circle cx="130" cy="100" r="1.8"/>
+          <circle cx="108" cy="128" r="2.4"/><circle cx="76" cy="120" r="2"/>
+        </g>
+        <path d="M60 170 h130" style="stroke:var(--line2)" stroke-width="2"/>
+        <text x="110" y="188" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">feixe visível + partículas = clima</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>A menor sequência que conta uma história tem três planos: geral, médio e close — cada um faz um trabalho que o anterior não fez.</li>
+    <li>O ângulo da câmera também dirige a emoção: baixo projeta força, alto expõe vulnerabilidade.</li>
+    <li>Profundidade em camadas — primeiro plano, meio, fundo — dá volume à cena e guia o olhar de quem vê.</li>
+    <li>Luz batendo em algo suspenso no ar é o atalho mais rápido para criar atmosfera numa cena.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de aprender a gramática visual que substitui qualquer legenda — três planos bastam para contar uma história.</p>
+  <p class="na-action">Nos próximos 10 minutos: repita o experimento trocando só o ângulo do plano médio (baixo em vez de neutro) e veja a leitura emocional da cena mudar.</p>
+  <p class="na-hook">Na próxima aula, essas peças soltas — planos, alavancas, folha de referência, trava de personagem, gramática de três planos — se encaixam num fluxo único, do zero ao quadro final.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-4">← aula anterior</a><a href="#aula-6">próxima aula →</a></nav>
+<footer>Aula 5 · Nano Banana · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-5">
+[
+  {"front":"Diagnóstico: você fotografou só o close de um casamento e quer publicar a história completa do momento. Que dois planos faltam?","back":"O plano geral (mostra o lugar) e o plano médio (mostra a ação) — o close sozinho conta só a emoção, sem contexto."},
+  {"front":"Decisão: a foto de capa do cardápio precisa passar confiança e controle sobre a cozinha. Que ângulo de câmera você pede?","back":"Ângulo baixo, olhando para cima — é o que projeta força; o alto faria o efeito contrário."},
+  {"front":"Diagnóstico: a foto do salão saiu achatada, com tudo na mesma nitidez. O que faltou pedir?","back":"Camadas de profundidade: algo desfocado bem perto da câmera, o assunto nítido no meio, o fundo suavizado."},
+  {"front":"Aplicação: seu próximo ensaio é numa manhã fria, e você quer o mesmo efeito de luz visível do celeiro do recém-nascido. O que descreve no pedido, além da luz de fim de manhã?","back":"O que está suspenso no ar da cena — hálito visível, neblina rasteira, vapor de uma bebida — é o que faz o feixe de luz aparecer."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-5 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="18min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), dono de restaurante (s2), social media (s3), fotógrafa (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-5"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/diagnóstico/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s2)
+-->
+</section>
+
+<!-- ===== AULA 6 ===== -->
+<section class="view" id="v-aula-6" data-aula="6" data-tempo="22min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 2A · Aula 6</p>
+    <h1>O fluxo completo, de ponta a <em>ponta</em></h1>
+    <p class="promise">Ao fim desta aula você conduz uma cena sua pelas oito etapas do fluxo completo — do mundo em branco ao quadro-herói polido — sem pular nenhuma.</p>
+    <p class="why">Até agora você aprendeu peças: pedir um plano, consertar a luz, travar um personagem, sequenciar três planos. Sozinhas, elas ainda dependem de você lembrar a ordem certa a cada cena nova. Esta aula entrega o sistema que amarra tudo — a mesma disciplina que evita recomeçar do zero a cada projeto.</p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: a receita completa, do primeiro ingrediente ao prato pronto -->
+    <rect x="46" y="30" width="208" height="170" rx="10" style="stroke:var(--line2)" stroke-width="2"/>
+    <g style="stroke:var(--accent)" stroke-width="1.6">
+      <circle cx="70" cy="76" r="3.4"/><path d="M80 76 h130" opacity=".7"/>
+      <circle cx="70" cy="96" r="3.4"/><path d="M80 96 h130" opacity=".6"/>
+      <circle cx="70" cy="116" r="3.4"/><path d="M80 116 h130" opacity=".55"/>
+      <circle cx="70" cy="136" r="3.4"/><path d="M80 136 h130" opacity=".5"/>
+      <circle cx="70" cy="156" r="3.4"/><path d="M80 156 h100" opacity=".45"/>
+    </g>
+    <circle cx="70" cy="42" r="10" style="stroke:var(--warm)" stroke-width="1.8"/>
+    <path d="M65 42 h10 M70 37 v10" style="stroke:var(--warm)" stroke-width="1.4"/>
+    <path d="M198 176 a28 10 0 1 1 .1 0" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
+    <path d="M186 176 q12 -14 24 0" style="stroke:var(--accent)" stroke-width="1.6" fill="none"/>
+    <text x="150" y="222" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">a receita inteira, do ingrediente cru ao prato na mesa</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> O fluxo tem começo, meio e fim — não é sorte</h2>
+      <p>Até aqui você aprendeu peças soltas: como pedir um plano, como consertar a luz, como manter um personagem, como sequenciar três planos. A peça que falta é o que amarra tudo — um fluxo com ordem fixa, do zero ao quadro pronto para publicar.</p>
+      <p>Profissionais de cinema não inventam a ordem a cada projeto: primeiro se decide o mundo, depois a história, só então se produz a imagem, e o acabamento vem por último. Pular essa ordem é a causa mais comum de retrabalho.</p>
+      <p>O dono de restaurante sentiu a diferença quando parou de gerar imagens soltas para o feed e passou a rodar cada campanha pelo mesmo fluxo: menos tentativas, resultado mais parecido com o que ele tinha em mente antes de começar.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="jul/2026">
+      <h2><span class="n">02</span> As oito etapas, da ideia crua ao quadro-herói</h2>
+      <p>Isto pode parecer uma lista longa, mas funciona como uma receita: siga a ordem uma vez, e ela se repete sozinha em toda cena nova. As quatro primeiras etapas constroem a cena; as quatro últimas refinam o que já existe.</p>
+      <div class="qsteps">
+        <p class="qk">As oito etapas do fluxo</p>
+        <ol>
+          <li>Construir o mundo — personagem, ambiente, luz e tom visual, definidos uma vez.</li>
+          <li>Planejar a história — um storyboard simples com a sequência de planos.</li>
+          <li>Dar vida à cena — transformar o rascunho em quadro realista, mantendo a composição.</li>
+          <li>Capturar o quadro-herói — escolher o melhor quadro e refiná-lo até a qualidade final.</li>
+          <li>Expandir a cobertura — gerar a gama completa de planos, do aberto ao close, da mesma cena.</li>
+          <li>Controlar a emoção — ajustar expressão e microdetalhes até a atuação parecer real.</li>
+          <li>Somar atmosfera — reforçar com luz, movimento e detalhes do ambiente.</li>
+          <li>Polir no final — subir nitidez, textura e qualidade geral.</li>
+        </ol>
+      </div>
+      <p>A social media roda esse fluxo inteiro numa tarde para o lançamento de um produto do cliente: em vez de gerar dez imagens soltas na esperança de uma servir, ela sai com uma sequência que já nasce pronta para o carrossel.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="ferramenta" data-versao="jul/2026">
+      <h2><span class="n">03</span> Um só lugar para rodar o fluxo inteiro</h2>
+      <p>As oito etapas não pedem oito ferramentas diferentes. A maioria dos geradores de imagem hoje organiza isso no ambiente de fluxo de trabalho do seu gerador de imagens: cada etapa vira um passo na mesma linha do tempo, sem trocar de programa.</p>
+      <p>Pense nele como uma linha de produção: você entra com a ideia crua de um lado, e cada etapa empurra a cena adiante sem perder o que já foi decidido nas anteriores.</p>
+      <p>A fotógrafa usa esse ambiente para a campanha de noivas: o personagem (a noiva) e o mundo (o jardim da cerimônia) ficam fixos numa aba, e ela navega entre as oito etapas sem reconstruir nada do zero.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="jul/2026">
+      <h2><span class="n">04</span> Erro comum: polir antes de aprovar a composição</h2>
+      <p>O atalho mais tentador também é o mais caro: aplicar atmosfera e polimento antes de fechar a composição. A cena fica bonita, mas errada — muda um detalhe da composição e todo o acabamento se perde, porque foi aplicado em cima do quadro errado.</p>
+      <div class="qerr">
+        <p class="qk">Erro comum</p>
+        <p class="qerr-txt"><b>Polir antes de aprovar a composição.</b> O acabamento (etapas 6 a 8) só entra depois que o quadro-herói (etapa 4) estiver fechado. Aprove a composição primeiro; o resto se refaz em minutos, o polimento não.</p>
+      </div>
+      <p>O dono de restaurante aprendeu isso na marra: aplicou vapor e grão de filme na foto do prato-assinatura antes de notar que o ângulo da faca estava errado. Corrigir o ângulo significou refazer o polimento inteiro — da segunda vez, ele travou a composição antes de tocar no acabamento.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="5" data-kind="fundamento">
+      <h2><span class="n">05</span> O fluxo é cíclico: a cena nova reaproveita metade do caminho</h2>
+      <p>Aqui está a economia escondida do fluxo: as duas primeiras etapas — mundo e personagem — só se fazem uma vez por projeto. Toda cena nova do mesmo projeto entra direto na etapa 2, o planejamento da história.</p>
+      <p>Isso significa que a quinta cena de uma campanha é sempre mais rápida que a primeira — o mundo já existe, só a história muda.</p>
+      <p>A social media sente isso na prática: construiu o mundo do restaurante fictício uma vez, na primeira semana de trabalho; nas cenas seguintes, cada post novo entra direto no planejamento — metade do fluxo, sempre reaproveitado.</p>
+      <div class="mobfig" data-mobfig="5"></div>
+      <button class="readbtn" data-read="s5">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p6" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+      <h3 class="ph">Rode uma cena sua pelo fluxo completo</h3>
+      <p class="pgoal">Sair com uma cena que passou pelas oito etapas, do mundo ao polimento final — em ~15 minutos.</p>
+      <p class="psafe">Cada etapa gera um arquivo novo; as versões anteriores continuam salvas. Travou numa etapa? Volte para a anterior e ajuste — nada se perde ao repetir um passo.</p>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Construa o mundo e o personagem da cena (ou reaproveite um que já tem pronto) — isso é a etapa 1.</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Planeje a história em 2–3 planos e gere o quadro-herói (etapas 2 a 4) — aprove a composição antes de seguir.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Expanda a cobertura com mais um ou dois planos da mesma cena (etapa 5).</label></li>
+        <li><label><input type="checkbox" data-ptask="4"> Só então aplique emoção, atmosfera e polimento nessa sequência já aprovada (etapas 6 a 8).</label></li>
+      </ol>
+      <p class="pdone">Você rodou o fluxo inteiro, do zero ao acabamento — a mesma disciplina que separa tentativa solta de produção de verdade.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> Sem ordem, cada geração é uma tentativa isolada; com fluxo, cada etapa entrega a base para a próxima."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="fill:var(--muted)" opacity=".8">
+          <circle cx="40" cy="50" r="5"/><circle cx="70" cy="70" r="5"/><circle cx="34" cy="90" r="5"/><circle cx="66" cy="40" r="5"/><circle cx="52" cy="100" r="5"/>
+        </g>
+        <text x="55" y="130" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">tentativas soltas</text>
+        <line x1="130" y1="90" x2="200" y2="90" style="stroke:var(--accent)" stroke-width="1.8"/>
+        <g style="fill:var(--accent)">
+          <circle cx="130" cy="90" r="5"/><circle cx="147" cy="90" r="5"/><circle cx="164" cy="90" r="5"/><circle cx="181" cy="90" r="5"/><circle cx="198" cy="90" r="5"/>
+        </g>
+        <text x="165" y="130" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">fluxo com ordem</text>
+        <text x="110" y="176" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">cada etapa entrega a base da próxima</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> As oito etapas em linha: as quatro primeiras constroem a cena, as quatro últimas refinam o que já existe."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M20 100 h180" style="stroke:var(--line2)" stroke-width="1.8"/>
+        <g style="fill:var(--accent)">
+          <circle cx="30" cy="100" r="6"/><circle cx="58" cy="100" r="6"/><circle cx="86" cy="100" r="6"/><circle cx="114" cy="100" r="6"/>
+        </g>
+        <g style="fill:var(--warm)">
+          <circle cx="142" cy="100" r="6"/><circle cx="164" cy="100" r="6"/><circle cx="186" cy="100" r="6"/><circle cx="204" cy="100" r="6"/>
+        </g>
+        <text x="72" y="126" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">constroem a cena</text>
+        <text x="173" y="126" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">refinam a cena</text>
+        <text x="20" y="70" style="fill:var(--faint);font-family:var(--mono)" font-size="8">ideia crua</text>
+        <text x="168" y="70" style="fill:var(--faint);font-family:var(--mono)" font-size="8">quadro final</text>
+        <text x="110" y="168" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">oito etapas, uma linha do tempo só</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> O ambiente de fluxo de trabalho organiza as oito etapas numa linha do tempo só — sem trocar de programa a cada uma."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="24" y="26" width="172" height="120" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <rect x="34" y="36" width="60" height="40" rx="4" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <rect x="100" y="36" width="86" height="40" rx="4" style="stroke:var(--line2)" stroke-width="1.4"/>
+        <path d="M34 92 h152" style="stroke:var(--line2)" stroke-width="1.4"/>
+        <g style="fill:var(--accent)">
+          <rect x="34" y="100" width="18" height="14" rx="3"/><rect x="58" y="100" width="18" height="14" rx="3" opacity=".8"/>
+          <rect x="82" y="100" width="18" height="14" rx="3" opacity=".6"/><rect x="106" y="100" width="18" height="14" rx="3" opacity=".4"/>
+        </g>
+        <text x="110" y="164" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">mesma tela, oito passos, uma linha do tempo</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> Polir antes de aprovar cria um laço de retrabalho; aprovar a composição primeiro deixa o caminho reto."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <path d="M40 60 c40 -20 80 -20 100 10 c14 22 -4 44 -30 40 c-20 -3 -26 -22 -10 -30 c10 -5 22 0 22 10" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
+        <path d="M118 88 l6 -10 10 4" style="stroke:var(--warm)" stroke-width="1.8" fill="none"/>
+        <text x="110" y="130" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">polir antes: laço de retrabalho</text>
+        <path d="M40 168 h140" style="stroke:var(--accent)" stroke-width="2.2"/>
+        <path d="M168 162 l12 6 -12 6" style="stroke:var(--accent)" stroke-width="1.8" fill="none"/>
+        <text x="110" y="188" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">aprovar antes: caminho reto</text>
+      </svg></div>
+      <div class="fig" data-fig="5" data-cap="<b>Fig. 5</b> Mundo e personagem se fixam uma vez; cada cena nova gira só pelas etapas seguintes — metade do caminho, sempre reaproveitado."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <circle cx="110" cy="100" r="26" style="stroke:var(--accent)" stroke-width="2.2"/>
+        <text x="110" y="104" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">mundo +</text>
+        <text x="110" y="114" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">ator</text>
+        <path d="M110 74 a56 56 0 1 1 -39 17" style="stroke:var(--line2)" stroke-width="1.8" fill="none" stroke-dasharray="4 4"/>
+        <path d="M67 95 l4 -12 12 4" style="stroke:var(--line2)" stroke-width="1.6" fill="none"/>
+        <text x="110" y="188" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">cena nova = mesma órbita, sem reconstruir o centro</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>O fluxo profissional tem uma ordem fixa: construir o mundo, planejar a história, dar vida à cena, capturar o quadro-herói, expandir a cobertura, controlar a emoção, somar atmosfera e polir no final.</li>
+    <li>Pular etapas custa caro: composição se aprova antes do polimento, nunca depois.</li>
+    <li>O ambiente de fluxo de trabalho do seu gerador de imagens organiza as oito etapas numa linha do tempo só.</li>
+    <li>Depois que mundo e personagem existem, cada cena nova reaproveita metade do caminho.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você acabou de ver o sistema inteiro que amarra tudo que aprendeu até aqui — planos, alavancas, folha de referência, trava de personagem — numa única linha de produção.</p>
+  <p class="na-action">Nos próximos 15 minutos: escolha uma cena sua já aprovada e rode só as três últimas etapas nela (emoção, atmosfera, polimento) — sinta a diferença entre uma imagem boa e uma imagem pronta para publicar.</p>
+  <p class="na-hook">Na próxima aula, você organiza tudo isso — cada pedido que funcionou — numa biblioteca pessoal, para nunca mais recomeçar do zero.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-5">← aula anterior</a><a href="#aula-7">próxima aula →</a></nav>
+<footer>Aula 6 · Nano Banana · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-6">
+[
+  {"front":"Pergunta: nas oito etapas do fluxo, o que vem imediatamente antes de capturar o quadro-herói?","back":"Dar vida à cena — transformar o rascunho em quadro realista, mantendo a composição planejada."},
+  {"front":"Diagnóstico: você aplicou atmosfera e polimento, e só depois percebeu que a composição precisa mudar. O que deu errado na ordem?","back":"A composição não foi aprovada antes do acabamento — a regra é travar a composição primeiro, polir por último."},
+  {"front":"Decisão: você já construiu o mundo e o personagem do seu restaurante fictício numa cena anterior. Precisa refazer essa etapa para a cena desta semana?","back":"Não — mundo e personagem já existem; a cena nova entra direto no planejamento da história, a partir da etapa 2."},
+  {"front":"Aplicação: uma cena saiu tecnicamente certa, mas a atuação do personagem parece de manequim. Que etapa do fluxo resolve isso, e o que ela ajusta?","back":"Controlar a emoção — pequenos ajustes de expressão e microdetalhes que fazem a atuação parecer real."}
+]
+</script>
+
+<!--
+COMPLETUDE aula-6 | tipo=FERRAMENTA | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  dono de restaurante (s1), social media (s2), fotógrafa (s3), dono de restaurante (s4), social media (s5) (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-6"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 pergunta/diagnóstico/decisão/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+
+<!-- ===== AULA 7 ===== -->
+<section class="view" id="v-aula-7" data-aula="7" data-tempo="15min">
+<header class="hero"><div class="hero-inner">
+  <div>
+    <p class="kicker">Curso 2A · Aula 7</p>
+    <h1>Sua biblioteca de <em>modelos</em></h1>
+    <p class="promise">Ao fim desta aula você tem uma biblioteca pessoal com pelo menos três modelos de pedido testados — e um reuso comprovado numa cena nova.</p>
+    <p class="why">Nas seis últimas aulas você escreveu pedidos que funcionaram: a sequência de três planos, a camada de qualidade, a frase de controle de identidade, a ficha de produção. Sem um lugar para guardar, cada um desses acertos se perde na conversa — e a próxima cena recomeça do zero.</p>
+    <p class="cue"><span class="arw">↓</span> role para estudar</p>
+  </div>
+  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
+    <!-- metáfora: a gaveta de ferramentas organizada, cada modelo no seu lugar -->
+    <rect x="40" y="50" width="220" height="150" rx="10" style="stroke:var(--line2)" stroke-width="2.2"/>
+    <path d="M40 100 h220 M40 150 h220" style="stroke:var(--line2)" stroke-width="1.6"/>
+    <path d="M90 50 v150 M150 50 v150 M210 50 v150" style="stroke:var(--line2);opacity:.6" stroke-width="1.4"/>
+    <line x1="65" y1="60" x2="65" y2="88" style="stroke:var(--accent)" stroke-width="1.8"/>
+    <circle cx="65" cy="58" r="4" style="fill:var(--accent)"/>
+    <rect x="105" y="65" width="30" height="20" rx="3" style="stroke:var(--warm)" stroke-width="1.8"/>
+    <circle cx="180" cy="75" r="13" style="stroke:var(--accent)" stroke-width="1.8"/>
+    <path d="M225 62 l20 20 M245 62 l-20 20" style="stroke:var(--warm)" stroke-width="1.8"/>
+    <text x="150" y="222" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">cada modelo no seu lugar, pronto pra pegar</text>
+  </svg></div>
+</div></header>
+
+<div class="layout">
+  <div class="col">
+
+    <section class="step" data-fig="1" data-kind="fundamento">
+      <h2><span class="n">01</span> Cada pedido que funcionou é um modelo, não um acaso</h2>
+      <p>Um caso para sentir o problema: Renata, social media autônoma, gastou quinze minutos reescrevendo de memória o pedido do carrossel de produto de uma cliente — o mesmo pedido que ela tinha acertado três semanas antes, testado e aprovado, mas nunca salvo em lugar nenhum.</p>
+      <p>Ao longo das seis últimas aulas você escreveu pedidos que funcionaram: a sequência de três planos, a camada de qualidade, a frase de controle de identidade, a ficha de produção. Cada um desses é um <b>modelo</b> — um texto pronto para reusar — mas só se você o guardar.</p>
+      <p>Sem biblioteca, todo pedido bom se perde na conversa e você reinventa a roda a cada cena nova. Com biblioteca, você copia, cola e ajusta só os detalhes.</p>
+      <div class="mobfig" data-mobfig="1"></div>
+      <button class="readbtn" data-read="s1">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="2" data-kind="fundamento">
+      <h2><span class="n">02</span> Monte sua biblioteca em cinco passos</h2>
+      <p>Isto não exige nenhuma ferramenta nova — o mesmo bloco de notas ou documento de texto que você já usa serve perfeitamente.</p>
+      <div class="qsteps">
+        <p class="qk">Montando sua biblioteca</p>
+        <ol>
+          <li>Abra um documento novo, no aplicativo de texto que você já usa.</li>
+          <li>Crie uma seção por modelo, com um nome curto (ex.: "camada de qualidade", "trava de personagem").</li>
+          <li>Cole o texto exato que funcionou — sem editar, sem tentar melhorar de memória.</li>
+          <li>Anote, em uma linha, quando usar aquele modelo (ex.: "quando a imagem sair sem acabamento de filme").</li>
+          <li>Revise: cada modelo tem nome, texto e situação de uso? Se sim, está pronto para reusar.</li>
+        </ol>
+      </div>
+      <p>O dono de restaurante organizou a dele em quatro seções: a ficha de produção do prato-assinatura, a frase de controle do chef fictício, a camada de qualidade e a sequência de três planos — quatro modelos, prontos para qualquer prato novo do cardápio.</p>
+      <div class="mobfig" data-mobfig="2"></div>
+      <button class="readbtn" data-read="s2">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="3" data-kind="fundamento">
+      <h2><span class="n">03</span> Testar um reuso: a prova de que a biblioteca funciona</h2>
+      <p>Um modelo só vale alguma coisa se funcionar numa cena que ele nunca viu. Testar um reuso é isso: pegar um modelo salvo e aplicá-lo, sem reescrever, numa cena completamente nova.</p>
+      <p>Se o resultado sair parecido com o que funcionou da primeira vez, o modelo está validado — e passa a valer para qualquer cena futura do mesmo tipo.</p>
+      <p>A fotógrafa testou assim: pegou a camada de qualidade que usou no ensaio de casamento e colou, sem mudar uma palavra, no pedido de um ensaio de recém-nascido completamente diferente. O acabamento subiu junto, do mesmo jeito, na cena nova.</p>
+      <div class="mobfig" data-mobfig="3"></div>
+      <button class="readbtn" data-read="s3">marcar como lido</button>
+    </section>
+
+    <section class="step" data-fig="4" data-kind="fundamento">
+      <h2><span class="n">04</span> A biblioteca é sua — e cresce no ritmo do seu trabalho</h2>
+      <p>Esta biblioteca não depende de ninguém além de você. Ela cresce exatamente na medida do seu próprio trabalho, um modelo por vez, sem depender de mais nada.</p>
+      <p>Cada projeto novo que você fizer é a chance de testar um modelo salvo ou de nascer um modelo novo. Depois de algumas semanas, a maioria das suas cenas começa com uma cópia da biblioteca, não com a página em branco.</p>
+      <p>É a mesma lógica do dono de restaurante que guarda as receitas de família num caderno próprio: ele não espera ninguém escrever a próxima — escreve a próxima ele mesmo, na primeira vez que dá certo.</p>
+      <div class="mobfig" data-mobfig="4"></div>
+      <button class="readbtn" data-read="s4">marcar como lido</button>
+    </section>
+
+    <section class="practice" data-practice="p7" data-mode="tarefa">
+      <p class="pk">Pratique agora <span class="pcount">0/3 feito</span></p>
+      <h3 class="ph">Monte sua biblioteca e teste o primeiro reuso</h3>
+      <p class="pgoal">Sair com pelo menos três modelos salvos e um reuso testado numa cena nova — em ~10 minutos.</p>
+      <p class="psafe">Nenhuma imagem ou pedido antigo é apagado — você só está copiando o que já funcionou para um lugar novo. Errou a cópia? O original continua onde estava.</p>
+      <ol class="psteps">
+        <li><label><input type="checkbox" data-ptask="1"> Abra o documento da sua biblioteca e cole pelo menos três modelos que funcionaram nas aulas anteriores (ex.: camada de qualidade, frase de controle, ficha de produção).</label></li>
+        <li><label><input type="checkbox" data-ptask="2"> Escolha um desses modelos e aplique numa cena que você ainda não tentou — sem reescrever o texto do modelo.</label></li>
+        <li><label><input type="checkbox" data-ptask="3"> Compare o resultado com a cena original em que o modelo funcionou pela primeira vez: o acabamento ou o efeito se repetiu?</label></li>
+      </ol>
+      <p class="pdone">Sua biblioteca tem os primeiros modelos guardados e testados — a partir de agora, nenhuma cena nova começa do zero.</p>
+    </section>
+  </div>
+
+  <aside class="rail"><div class="railsticky">
+    <div class="figstage">
+      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> Pedido sem lugar guardado se perde na conversa; pedido salvo vira modelo — pronto para a próxima cena."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="20" y="40" width="80" height="50" rx="6" style="stroke:var(--line2)" stroke-width="1.8"/>
+        <path d="M36 56 h48 M36 68 h34" style="stroke:var(--muted)" stroke-width="1.4"/>
+        <path d="M60 96 c4 20 -2 30 -14 40" style="stroke:var(--faint)" stroke-width="1.6" stroke-dasharray="2 3" fill="none"/>
+        <text x="46" y="150" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">esquecido</text>
+        <rect x="130" y="34" width="72" height="94" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M144 52 h44 M144 66 h44 M144 80 h30" style="stroke:var(--accent);opacity:.7" stroke-width="1.4"/>
+        <path d="M144 100 h44" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <text x="166" y="150" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">salvo = modelo</text>
+      </svg></div>
+      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> A biblioteca é um documento com uma seção por modelo — nome, texto exato e quando usar."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="30" y="30" width="160" height="140" rx="8" style="stroke:var(--line2)" stroke-width="2"/>
+        <g style="stroke:var(--accent)" stroke-width="1.6">
+          <line x1="30" y1="66" x2="190" y2="66"/><line x1="30" y1="102" x2="190" y2="102"/><line x1="30" y1="138" x2="190" y2="138"/>
+        </g>
+        <g style="fill:var(--muted);font-family:var(--mono)" font-size="7.5">
+          <text x="44" y="52">camada de qualidade</text>
+          <text x="44" y="88">trava de personagem</text>
+          <text x="44" y="124">ficha de produção</text>
+          <text x="44" y="158">sequência de 3 planos</text>
+        </g>
+        <text x="110" y="188" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">um documento, uma seção por modelo</text>
+      </svg></div>
+      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> Testar um reuso: pegar o modelo salvo e aplicar, sem reescrever, numa cena que ele nunca viu."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <rect x="18" y="70" width="66" height="46" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
+        <text x="51" y="98" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">modelo</text>
+        <path d="M84 93 h40" style="stroke:var(--muted)" stroke-width="1.8"/>
+        <path d="M114 87 l10 6 -10 6" style="stroke:var(--muted)" stroke-width="1.8" fill="none"/>
+        <rect x="136" y="52" width="66" height="46" rx="6" style="stroke:var(--line2)" stroke-width="1.8"/>
+        <text x="169" y="79" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">cena nova A</text>
+        <rect x="136" y="112" width="66" height="46" rx="6" style="stroke:var(--line2)" stroke-width="1.8"/>
+        <text x="169" y="139" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">cena nova B</text>
+        <text x="110" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">mesmo modelo, cenas diferentes</text>
+      </svg></div>
+      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> A biblioteca cresce um modelo de cada vez, no ritmo do seu próprio trabalho."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
+        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
+          <rect x="24" y="130" width="26" height="40" rx="4"/>
+          <rect x="58" y="112" width="26" height="58" rx="4"/>
+          <rect x="92" y="94" width="26" height="76" rx="4"/>
+          <rect x="126" y="76" width="26" height="94" rx="4"/>
+          <rect x="160" y="56" width="26" height="114" rx="4"/>
+        </g>
+        <text x="37" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="7">aula 3</text>
+        <text x="173" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="7">hoje</text>
+        <text x="110" y="40" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">um modelo a mais, a cada projeto seu</text>
+      </svg></div>
+    </div>
+    <p class="railcap"></p>
+    <div class="steps-ind"></div>
+    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+  </div></aside>
+</div>
+
+<div class="fecho-wrap">
+<div class="recap-autor">
+  <p class="rak">Resumo</p>
+  <ul>
+    <li>Pedido que funciona sem ser guardado se perde — vira reinvenção repetida em vez de modelo reutilizável.</li>
+    <li>Uma biblioteca pessoal simples tem nome, texto exato e situação de uso para cada modelo salvo.</li>
+    <li>Testar um reuso é aplicar o modelo, sem editar, numa cena nova — se funcionar de novo, está validado.</li>
+    <li>A biblioteca é sua: cresce na velocidade do seu próprio trabalho, um modelo por vez.</li>
+  </ul>
+</div>
+
+<div class="next-action">
+  <p class="nak">Seu próximo passo</p>
+  <p class="na-win">Você fechou a trilha do Nano Banana com uma biblioteca própria de modelos testados — a diferença entre recomeçar toda vez e reaproveitar o que já funciona.</p>
+  <p class="na-action">Nos próximos 10 minutos: volte às suas anotações das aulas 1 a 6 e adicione à biblioteca qualquer pedido que ainda não salvou. Quanto mais completa agora, menos trabalho depois.</p>
+  <p class="na-hook">Esta trilha termina aqui. A próxima trilha do curso 2 explora o Midjourney — outro gerador de imagem, com pontos fortes próprios de paleta e textura, que amplia o que você já sabe dirigir.</p>
+</div>
+</div>
+
+<nav class="lnav"><a href="#aula-6">← aula anterior</a><a href="#trilha">concluir o curso ✓ →</a></nav>
+<footer>Aula 7 · Nano Banana · Formação Cinema com IA</footer>
+
+<script type="application/json" id="cards-7">
+[]
+</script>
+
+<!--
+COMPLETUDE aula-7 | tipo=PRATICA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="15min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media/mini-caso Renata (s1), dono de restaurante (s2), fotógrafa (s3), dono de restaurante (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-7"> presente (vazio por regra: aula PRÁTICA/INTEGRAÇÃO não cria cartões novos, só revisa os existentes)
+  [OK] anti-duplicacao    sem cartões novos — nada a duplicar; recap é síntese pura
+  [N/A] teste-se-FUND     aula é PRATICA/INTEGRAÇÃO (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+<script src="../../assets/curso.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Material-fonte bruto (não publicado — comunidade externa, referência interna apenas)
+1fundamentos/
+2imagemlab/
+3aifilmmaking1/
+4aifilmmaking2/
+5aifilmmaking3/
+6aifilmmaking4/
+7resourcesworkflowshub/
+
+# Vídeos (4,5GB — a formação usa os links Loom originais como opcional, não hospeda mp4)
+*.mp4
+
+# Documentos internos de planejamento/handoff (mencionam a fonte original — não publicar)
+PLANO-FORMACAO.md
+HANDOFF.md
