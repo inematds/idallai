@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="fcia-c2b" name="curso"/>
+<title>Midjourney — control y realismo · Formación en Cine con IA</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;family=Inter:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/aula.css" rel="stylesheet"/>
+<script src="../../../config.js"></script>
+<script>(function(){try{var m=document.querySelector('meta[name=curso]');var CK=(m&&m.content)||'v5:curso';var s=JSON.parse(localStorage.getItem(CK));if(s&&s.prefs&&s.prefs.theme)document.documentElement.setAttribute('data-theme',s.prefs.theme);}catch(e){}})();</script>
+<!--
+  PROTOCOLO DE DESCOBERTA (v5, Passo 0 — registrado como metadado):
+  - Público específico: adultos 40+, leigos em tecnologia, que querem criar imagens e vídeos cinematográficos com IA para uso profissional.
+  - Profissões-alvo (≥2): fotógrafa com estúdio próprio · dono de restaurante/pequeno comércio · social media autônoma.
+  - Familiaridade com tecnologia: baixa-média — usa WhatsApp, já conversou com IA de chat no navegador; nunca gerou imagem; zero terminal.
+  - Resultado prático esperado: sair produzindo sozinho imagens cinematográficas e um mini-filme de 30–60s com IA, pronto para usar ou vender.
+  - Tempo por sessão: 20–30 minutos.
+-->
+<style>
+  .view{display:none}.view.active{display:block}
+  .lnav{max-width:1160px;margin:0 auto 5vh;padding:0 clamp(24px,5vw,60px);display:flex;justify-content:space-between;gap:12px}
+  .lnav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:12px 16px}
+  .lnav a:hover{border-color:var(--accent);color:var(--ink)}
+  #v-trilha .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(24px,5vw,60px)}
+  #v-trilha .t-hero{position:relative;overflow:hidden;padding:20vh 0 8vh;border-bottom:1px solid var(--line)}
+  #v-trilha h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.4vw,72px);line-height:1;letter-spacing:-.025em;margin:0 0 22px}
+  #v-trilha h1 em{font-style:italic;color:var(--accent)}
+  #v-trilha .lead{font-family:var(--serif);font-size:clamp(19px,2.1vw,24px);line-height:1.5;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+  #v-trilha section{padding:8vh 0}
+  #v-trilha .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  #v-trilha h2{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);margin:0 0 28px}
+  #v-trilha .aulas{display:grid;gap:14px}
+  #v-trilha .au{display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:center;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  #v-trilha .au .num{font-family:var(--serif);font-size:30px;color:var(--accent);text-align:center}
+  #v-trilha .au h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 5px}
+  #v-trilha .au p{margin:0;color:var(--muted);font-size:14.5px}
+  #v-trilha .au .meta{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap;text-align:right}
+  #v-trilha .au .prog{position:static;margin-top:10px;height:5px;border-radius:99px;background:var(--line);overflow:hidden;max-width:220px;width:auto}
+  #v-trilha .au .prog i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  #v-trilha footer{max-width:1080px;margin:0 auto;padding:6vh clamp(24px,5vw,60px) 12vh;color:var(--faint);text-align:center;font-family:var(--serif);font-style:italic;border-top:1px solid var(--line)}
+</style>
+<link href="https://inematds.github.io/idallai/curso2-laboratorio-de-imagem/midjourney/curso.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/idallai/en/curso2-laboratorio-de-imagem/midjourney/curso.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/idallai/es/curso2-laboratorio-de-imagem/midjourney/curso.html" hreflang="es" rel="alternate"/></head>
+<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso2-laboratorio-de-imagem/midjourney/curso.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso2-laboratorio-de-imagem/midjourney/curso.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="curso.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<div class="bar"><div class="bar-inner">
+<span class="brand"><a class="mark" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a><a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a><a class="course" href="../../index.html">Laboratório de Imagem · Midjourney</a></span>
+<a class="back" href="#trilha" style="display:none">← ruta</a>
+<button class="pill" id="pill" style="display:none">0 leído</button>
+<button id="revbtn">revisar <span id="revn">0</span></button>
+<button id="exbtn">ejercicios</button>
+<button id="jorbtn">recorrido</button>
+<button aria-label="Cómo funciona" id="helpbtn">?</button>
+<button aria-label="Preferencias de lectura" id="prefsbtn">Aa</button>
+<button id="themebtn">tema: oscuro</button>
+</div></div>
+<!-- ===== TRILHA ===== -->
+<section class="view" id="v-trilha">
+<header class="t-hero"><div class="wrap">
+<p class="kicker">Formación en Cine con IA · Curso 2 · Ruta B</p>
+<h1>Midjourney — <em>control y realismo</em></h1>
+<p class="lead">Cuatro lecciones para convertir al generador más famoso del mundo en un instrumento de precisión: calibras, diriges, editas y repites el resultado a pedido.</p>
+</div></header>
+<section><div class="wrap">
+<div class="statcards"></div>
+<p class="eyebrow">Lecciones</p>
+<h2>De la suposición al resultado a medida</h2>
+<div class="aulas">
+<a class="au on" data-aula="1" href="#aula-1">
+<div class="num">1</div>
+<div><h3>Calibra el motor antes de conducir</h3><p>Sal sabiendo ajustar los controles que separan una foto realista de una ilustración, y demuestra la diferencia en un experimento.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · abrir →</div>
+</a>
+<a class="au on" data-aula="2" href="#aula-2">
+<div class="num">2</div>
+<div><h3>Realismo brutal, por capas</h3><p>Genera un retrato que parezca una foto sin retoques — pide poros, asimetría e imperfecciones de gente real.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · abrir →</div>
+</a>
+<a class="au on" data-aula="3" href="#aula-3">
+<div class="num">3</div>
+<div><h3>El editor: tu laboratorio de revelado</h3><p>Amplía el lienzo, cambia objetos y anima el cuadro: corrige la imagen en vez de volver a generarlo todo.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · abrir →</div>
+</a>
+<a class="au on" data-aula="4" href="#aula-4">
+<div class="num">4</div>
+<div><h3>Dirección mediante variables controladas</h3><p>Una escena fija, cuatro ajustes diferentes: la prueba final que reúne estructura y parámetros en tu propio método.</p><div class="prog"><i></i></div></div>
+<div class="meta">22 min · abrir →</div>
+</a>
+</div>
+</div></section>
+<footer><div class="wrap">Curso 2 · Ruta B · Formación Cine con IA · INEMA.CLUB PRO</div></footer>
+</section>
+<!-- ===== AULA 1 ===== -->
+<section class="view" data-aula="1" data-tempo="20min" id="v-aula-1">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 2B · Lección 1</p>
+<h1>Calibra el motor antes de <em>dirigir</em></h1>
+<p class="promise">Al final de esta clase regularás los controles de Midjourney a propósito y comprobarás, con el mismo pedido en tres configuraciones, qué hace cada botón.</p>
+<p class="why">En el trabajo profesional con imágenes, los resultados no vienen de la suerte: vienen de los ajustes. La mayoría usa Midjourney tal como viene de fábrica y acepta lo que sale. Quien ajusta cuatro controles sencillos empieza a elegir entre foto y pintura, entre obediencia y creatividad. Hoy vas a aprender a manejar esos controles.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/b8ffd9f7dfdb41208621f64267a8b0b9" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: o botão do rádio antigo — girar até sintonizar a estação certa -->
+<rect height="120" rx="12" stroke-width="2" style="stroke:var(--line2)" width="180" x="60" y="50"></rect>
+<rect height="34" rx="6" stroke-width="1.6" style="stroke:var(--line2)" width="102" x="76" y="70"></rect>
+<line stroke-width="1.4" style="stroke:var(--muted)" x1="84" x2="170" y1="87" y2="87"></line>
+<g stroke-width="1.2" style="stroke:var(--faint)">
+<line x1="96" x2="96" y1="82" y2="92"></line><line x1="116" x2="116" y1="82" y2="92"></line>
+<line x1="136" x2="136" y1="82" y2="92"></line><line x1="156" x2="156" y1="82" y2="92"></line>
+</g>
+<line stroke-width="2.4" style="stroke:var(--warm)" x1="128" x2="128" y1="76" y2="98"></line>
+<circle cx="206" cy="87" r="20" stroke-width="2.4" style="stroke:var(--accent)"></circle>
+<line stroke-linecap="round" stroke-width="2.4" style="stroke:var(--accent)" x1="206" x2="218" y1="87" y2="74"></line>
+<circle cx="96" cy="136" r="11" stroke-width="2" style="stroke:var(--line2)"></circle>
+<line stroke-width="2" style="stroke:var(--muted)" x1="96" x2="96" y1="136" y2="127"></line>
+<circle cx="136" cy="136" r="11" stroke-width="2" style="stroke:var(--line2)"></circle>
+<line stroke-width="2" style="stroke:var(--muted)" x1="136" x2="143" y1="136" y2="129"></line>
+<circle cx="176" cy="136" r="11" stroke-width="2" style="stroke:var(--line2)"></circle>
+<line stroke-width="2" style="stroke:var(--muted)" x1="176" x2="170" y1="136" y2="128"></line>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="204">quien gira la perilla elige la estación</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Por defecto, decide por ti</h2>
+<p>El Midjourney viene de fábrica con una opinión propia: embellece, estiliza, redondea. Para el arte conceptual, eso ayuda; para el trabajo comercial realista, estorba. El cambio profesional consiste en entender que cada resultado es la suma de <b>ajustes</b> — y que todas están a tu alcance.</p>
+<p>Piensa en cuatro controles: el modelo (la versión del motor), el nivel de intervención artística, el modo de obediencia al texto y el grado de variación entre las cuatro imágenes de cada generación. Ajustados en conjunto, determinan si el resultado es una foto de catálogo o un póster de fantasía.</p>
+<p>La social media que atiende a la tienda de cosméticos lo notó en su primer trabajo: con todo en la configuración de fábrica, la crema facial aparecía en frascos de cuento de hadas. Después de ajustar dos controles, salía un empaque real sobre una mesa de mármol: aprobado sin revisión.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">02</span> Los dos botones que más lo cambian todo</h2>
+<p>Antes de los nombres técnicos, la introducción: estos controles aparecen en la pantalla de configuración de la herramienta como opciones con nombres en inglés. Solo necesitas saber cuál activar y cuándo; el menú hace el resto.</p>
+<p><b>Estilización</b> (el control llamado <span class="gterm" data-def="Controle do Midjourney que define o quanto a IA 'opina' esteticamente. Baixo = obedece o texto; alto = embeleza por conta própria." tabindex="0">Stylize</span>): es el nivel de opinión artística de la IA. Bajo (50–100), obedece y el resultado se acerca a una foto. Alto (600+), se convierte en artista: excelente para conceptos, pésimo para productos reales.</p>
+<p><b>Modo crudo</b> (Raw): desactiva por completo el posprocesamiento estético. Es el modo para quien quiere que se respete estrictamente el pedido: la opción correcta cuando la fotógrafa necesita que se siga al pie de la letra la referencia del cliente, sin "mejoras" indeseadas.</p>
+<div class="qerr">
+<p class="qk">Error común</p>
+<p class="qerr-txt"><b>Subir la estilización esperando «más calidad».</b> El control no aumenta la calidad: aumenta la opinión de la IA. Para lograr realismo, el camino es el contrario: poca estilización, modo crudo activado y calidad basada en la descripción.</p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">03</span> La economía del generador: rápido para decidir, relajado para explorar</h2>
+<p>La suscripción de Midjourney incluye una cantidad de horas de generación rápida al mes y, en los planes más grandes, un modo relajado sin límite que solo espera su turno en la cola. Quien no conoce esta diferencia agota rápido sus horas con pruebas tontas y se queda sin ellas justo al momento de entregar.</p>
+<p>La regla de los profesionales es sencilla: <b>explorar en modo relajado, finalizar en modo rápido</b>. Los borradores, las variaciones y los experimentos van a la cola sin costo; el modo rápido queda reservado para el refinamiento final, cuando cada minuto importa.</p>
+<p>El dueño de una cafetería de barrio que produce sus propios carteles organiza así la semana: deja que las ideas se procesen en modo relajado el lunes y reserva las horas rápidas para el jueves, para el cartel de la promoción del fin de semana.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">04</span> Personalización: enseña tus gustos al motor</h2>
+<p>El recurso más subestimado de la herramienta: en la sección de personalización, evalúas una secuencia de imágenes (cerca de 200 elecciones de "me gusta/no me gusta") y Midjourney crea un filtro estético tuyo, un código de estilo personal que puede acompañar tus pedidos.</p>
+<p>El efecto práctico: los resultados empiezan a acercarse a tu estética incluso antes de que la describas. Para la fotógrafa, es una firma visual; para quien lleva las redes sociales, es coherencia entre publicaciones sin repetir párrafos sobre el estilo en cada pedido.</p>
+<div class="qsteps">
+<p class="qk">El experimento de calibración (lo repites en la práctica)</p>
+<ol>
+<li>Completa la personalización: evalúa las ~200 imágenes en la sección Personalize.</li>
+<li>Genera el mismo prompt en modo estándar y en modo crudo — compara dónde la IA «completó por su cuenta».</li>
+<li>Genera la misma escena con estilización 100, 500 y 1000 — encuentra el punto en que empieza la «apariencia de IA».</li>
+<li>Anota la configuración ganadora para TU tipo de trabajo: esta anotación es tu calibración predeterminada.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p1">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Descubre tu ajuste predeterminado</h3>
+<p class="pgoal">Sal con la serie de 3 estilizaciones comparadas y el ajuste que elegiste anotado, en ~12 minutos.</p>
+<p class="psafe">Ajustar los botones no rompe nada: cada configuración vuelve a los valores predeterminados con un clic, y cada generación es un archivo nuevo. Usa el modo relajado, si lo tienes, para no gastar las horas rápidas en esta prueba.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Ultra-photorealistic portrait of &lt;seu assunto: uma pessoa, um
+produto, um prato&gt;, natural skin texture with visible pores,
+soft window light, neutral colors, shot on full-frame camera
+--v 7 --style raw --stylize 100</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Pega el prompt de arriba (está en inglés porque la herramienta responde mejor así; cambia solo el tema) y genera.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Repite cambiando el final a --stylize 500 y luego a --stylize 1000.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Compara las tres una al lado de la otra: ¿en qué punto empezó a parecer hecha por IA?</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Anota tu configuración ganadora (modo + estilización) — se convierte en tu punto de partida para todo trabajo realista.</label></li>
+</ol>
+<p class="pdone">Ajustaste el motor a propósito y sabes qué hace cada botón: exactamente lo que prometía esta clase.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; O mesmo pedido atravessa as regulagens antes de virar imagem — mudar os botões muda o destino, sem tocar no texto." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="28" rx="6" stroke-width="2" style="stroke:var(--line2)" width="80" x="70" y="20"></rect>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="38">tu pedido</text>
+<path d="M110 48 v22" stroke-width="2" style="stroke:var(--muted)"></path>
+<rect height="44" rx="8" stroke-width="2" style="stroke:var(--accent)" width="128" x="46" y="74"></rect>
+<g stroke-width="1.8" style="stroke:var(--accent)">
+<circle cx="72" cy="96" r="8"></circle><circle cx="110" cy="96" r="8"></circle><circle cx="148" cy="96" r="8"></circle>
+</g>
+<line stroke-width="1.8" style="stroke:var(--accent)" x1="72" x2="72" y1="96" y2="89"></line>
+<line stroke-width="1.8" style="stroke:var(--accent)" x1="110" x2="116" y1="96" y2="90"></line>
+<line stroke-width="1.8" style="stroke:var(--accent)" x1="148" x2="143" y1="96" y2="89"></line>
+<path d="M78 118 c-10 18 -14 26 -16 38 M142 118 c10 18 14 26 16 38" fill="none" stroke-width="1.6" style="stroke:var(--muted)"></path>
+<rect height="26" rx="6" stroke-width="1.8" style="stroke:var(--line2)" width="76" x="24" y="160"></rect>
+<rect height="26" rx="6" stroke-width="1.8" style="stroke:var(--warm)" width="76" x="120" y="160"></rect>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="62" y="177">foto realista</text>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="158" y="177">póster artístico</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A régua da estilização: à esquerda a IA obedece (foto), à direita ela opina (arte) — realismo mora no trecho baixo." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<line stroke-width="2.4" style="stroke:var(--line2)" x1="30" x2="190" y1="100" y2="100"></line>
+<g stroke-width="1.4" style="stroke:var(--faint)">
+<line x1="50" x2="50" y1="93" y2="107"></line><line x1="90" x2="90" y1="93" y2="107"></line>
+<line x1="130" x2="130" y1="93" y2="107"></line><line x1="170" x2="170" y1="93" y2="107"></line>
+</g>
+<rect height="8" rx="4" style="fill:var(--accent);opacity:.35" width="60" x="30" y="96"></rect>
+<circle cx="58" cy="100" fill="none" r="8" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="50" y="76">50–100</text>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="170" y="76">600+</text>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="58" y="136">obedece</text>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="166" y="136">opina</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="172">el realismo vive en el tramo bajo de la escala</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Dois bolsos de geração: o relaxado (fila, sem limite) banca a exploração; o rápido (estoque do mês) fica para a entrega." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="110" rx="8" stroke-width="2" style="stroke:var(--line2)" width="80" x="24" y="40"></rect>
+<g fill="none" stroke-width="1.4" style="stroke:var(--line2)">
+<circle cx="48" cy="66" r="7"></circle><circle cx="66" cy="66" r="7"></circle><circle cx="84" cy="66" r="7"></circle>
+<circle cx="48" cy="88" r="7"></circle><circle cx="66" cy="88" r="7"></circle><circle cx="84" cy="88" r="7"></circle>
+<circle cx="48" cy="110" r="7"></circle><circle cx="66" cy="110" r="7"></circle>
+</g>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="64" y="140">relajado: explora</text>
+<rect height="110" rx="8" stroke-width="2" style="stroke:var(--warm)" width="80" x="116" y="40"></rect>
+<path d="M142 70 l14 -20 v14 h12 l-14 20 v-14 z" fill="none" stroke-width="1.8" style="stroke:var(--warm)"></path>
+<path d="M132 116 h48 M132 126 h32" stroke-width="1.6" style="stroke:var(--warm);opacity:.6"></path>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="156" y="140">rápido: entrega</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="180">no se gasta el stock del mes en pruebas</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; A personalização destila ~200 escolhas suas num filtro estético que passa a acompanhar os pedidos — seu gosto vira regulagem." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.6" style="stroke:var(--line2)">
+<rect height="26" rx="4" width="26" x="24" y="24"></rect><rect height="26" rx="4" width="26" x="58" y="24"></rect>
+<rect height="26" rx="4" width="26" x="92" y="24"></rect><rect height="26" rx="4" width="26" x="126" y="24"></rect>
+<rect height="26" rx="4" width="26" x="160" y="24"></rect>
+</g>
+<g font-size="10" style="fill:var(--accent);font-family:var(--mono)">
+<text text-anchor="middle" x="37" y="42">✓</text><text text-anchor="middle" x="105" y="42">✓</text><text text-anchor="middle" x="173" y="42">✓</text>
+</g>
+<g font-size="10" style="fill:var(--faint);font-family:var(--mono)">
+<text text-anchor="middle" x="71" y="42">—</text><text text-anchor="middle" x="139" y="42">—</text>
+</g>
+<path d="M110 58 v24" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M105 74 l5 8 5 -8" fill="none" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<circle cx="110" cy="112" r="22" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="117">tu filtro</text>
+<path d="M110 134 v18" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<rect height="26" rx="6" stroke-width="1.8" style="stroke:var(--line2)" width="96" x="62" y="156"></rect>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="173">cada pedido futuro</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>El Midjourney viene de fábrica con una opinión estética propia: el trabajo profesional empieza por sacarlo del modo automático.</li>
+<li>La estilización baja + el modo crudo son la combinación para el realismo; la estilización alta es territorio del arte conceptual.</li>
+<li>Explora en el modo relajado y entrega en el rápido: el saldo de horas del mes es un recurso de producción, no de borrador.</li>
+<li>La personalización convierte tu gusto en un filtro permanente: coherencia visual sin repetir párrafos de estilo.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de hacerte cargo de los controles que la mayoría ni siquiera sabe que existen.</p>
+<p class="na-action">En los próximos 15 minutos: haz el experimento del modo crudo —el mismo pedido en estándar y en Raw— y guarda el par de imágenes. Es el argumento visual perfecto para explicarle tu trabajo a un cliente.</p>
+<p class="na-hook">En la próxima clase, los botones se encuentran con la escritura: las capas de descripción que consiguen que la herramienta genere un retrato con poros, venas y una piel realista.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#trilha">← ruta</a><a href="#aula-2">próxima clase →</a></nav>
+<footer>Lección 1 · Midjourney · Formación Cine con IA</footer>
+<script id="cards-1" type="application/json">
+[
+  {"front":"Diagnóstico: o frasco de cosmético saiu parecendo ilustração de conto de fadas. Quais dois controles você revisa primeiro?","back":"Estilização (baixar para 50–100) e modo cru (ligar) — os dois tiram a opinião artística da ferramenta do caminho."},
+  {"front":"Pergunta: o que o controle de estilização realmente aumenta quando sobe?","back":"A opinião estética da IA sobre a imagem — não a qualidade. Realismo pede o controle baixo."},
+  {"front":"Decisão: segunda-feira, dez ideias para testar; quinta, a entrega do cartaz. Como você distribui os modos de geração?","back":"Ideias e variações no modo relaxado (fila, sem custo de estoque); as horas rápidas ficam guardadas para o refinamento da entrega."},
+  {"front":"Aplicação: você quer que seus posts puxem para a sua estética sem escrever o estilo em todo pedido. Que recurso resolve, e como se ativa?","back":"A personalização: avaliar ~200 imagens na seção Personalize cria um filtro estético seu que acompanha os pedidos."}
+]
+</script>
+<!--
+COMPLETUDE aula-1 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media/loja de cosméticos (s1), fotógrafa (s2), dono do café (s3), fotógrafa+social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-1"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/pergunta/decisão/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+<!-- ===== AULA 2 ===== -->
+<section class="view" data-aula="2" data-tempo="20min" id="v-aula-2">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 2B · Lección 2</p>
+<h1>Realismo brutal, por <em>capas</em></h1>
+<p class="promise">Al final de esta clase, preparas un pedido de retrato capa por capa —piel, luz, variación— y te llevas la comparación entre el resultado de fábrica y el resultado realmente sin procesar.</p>
+<p class="why">Un cliente de bodas, de un plan de salud o de cualquier trabajo que necesite una foto creíble hoy reconoce «la cara de IA» a kilómetros: piel de cera, luz de anuncio, demasiada simetría. Eso hace que descarte la contratación antes siquiera de conversar. La buena noticia es que el realismo no depende de la suerte ni de un prompt mágico: depende de pedir la imperfección a propósito, por capas, de una en una.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/c9b4419fb81a477a939d970540f2af46" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a balança de cozinha — cada camada de realismo entra pesada de propósito, não no olho -->
+<rect height="20" rx="6" stroke-width="2" style="stroke:var(--line2)" width="160" x="70" y="150"></rect>
+<rect height="34" rx="6" stroke-width="2" style="stroke:var(--line2)" width="64" x="118" y="118"></rect>
+<text font-size="12" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="150" y="139">32g</text>
+<ellipse cx="150" cy="104" rx="46" ry="14" stroke-width="2.2" style="stroke:var(--accent)"></ellipse>
+<g style="fill:var(--warm)">
+<circle cx="128" cy="100" r="4"></circle><circle cx="146" cy="96" r="3.4"></circle><circle cx="163" cy="102" r="4.2"></circle>
+<circle cx="175" cy="96" r="3"></circle><circle cx="136" cy="107" r="3"></circle>
+</g>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="76">poros · venas · asimetría</text>
+<line stroke-width="2" style="stroke:var(--line2)" x1="60" x2="240" y1="170" y2="170"></line>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="208">cada capa se aplica con precisión, no a ojo</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> La IA retoca por defecto; el realismo exige lo contrario</h2>
+<p>Pide «retrato realista» sin nada más y el motor devuelve piel lisa, luz publicitaria, simetría casi perfecta: el ajuste de fábrica es bonito, no real. La gente de verdad tiene poros, venas visibles en la sien y un lado del rostro ligeramente distinto del otro. Pedirlo a propósito es lo que separa una foto de banco de imágenes de una que parece tomada con una cámara de verdad.</p>
+<p>El dueño del restaurante probó pedir solo «foto del chef preparando el plato»: apareció un chef de anuncio de margarina, con piel de muñeco de cera. El cambio llegó cuando empezó a nombrar las capas: piel con poros visibles, leve asimetría en el rostro, luz de cocina real.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>"Foto del chef preparando el plato." Sin capas, la IA decide por su cuenta cuánto realismo ofrecer (poco).</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>"Foto del chef preparando el plato, enfoque en el realismo biológico, poros de la piel visibles, venas sutiles en la sien, asimetría natural del rostro, luz ambiental suave, textura de la piel sin pulir." Las capas, nombradas una por una.</p></div>
+<p class="qba-saldo">Resultado: el mismo plato, el mismo chef; la segunda versión pasa la prueba de «esto parece una foto de verdad».</p>
+</div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">02</span> La fórmula por capas: Tema → Detalles → Estilo</h2>
+<p>Antes de mostrar cómo se escribe, vayamos paso a paso: piensa en un encargo a una costurera — primero dices la prenda (un vestido), después el acabado (dobladillo, tipo de tela) y solo al final el estilo (clásico o moderno). El encargo de un retrato realista sigue el mismo orden: primero el sujeto, después los detalles biológicos y, por último, el estilo y la técnica fotográfica.</p>
+<p>Un párrafo poético suelto ("una persona hermosa bajo la luz dorada del atardecer, con una mirada que cuenta historias...") es bonito de leer, pero el motor no sabe qué parte merece más atención. La estructura por capas resuelve esto al dar un lugar fijo a cada tipo de información.</p>
+<p>La fotógrafa reutilizó la lista de verificación de estudio que ya usaba antes de la IA: sujeto (quién, qué), detalles (piel, textura, luz), estilo (lente, revelado). Se convirtió en el guion de todas sus instrucciones para retratos, sin reinventarlo con cada cliente nuevo.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">03</span> Dos ajustes que parecen «más variedad» y no lo son</h2>
+<p>La pantalla de configuración tiene dos controles adicionales que prometen "más variedad": Esquisitice (Weirdness) y Variação (Variety). Piensa en ellos como el condimento de una receta: con un poco te pasas y el plato no queda más interesante, sino extraño.</p>
+<p>La Excentricidad lleva la escena hacia lo surrealista: una mano con un dedo de más, un ojo fuera de lugar. Para un retrato o producto realista, se deja en cero. La Variación controla cuánto exploran encuadres diferentes las cuatro opciones de cada generación: con valores de 15 a 25 ya hay variedad sin abandonar el tema solicitado.</p>
+<p>Quien gestiona las redes sociales probó Esquisitice alta en una foto de una rutina de cuidado de la piel, pensando en "darle más vida" a la escena: apareció una mano con un dedo de más, casi invisible en la vista previa pequeña, pero evidente en la publicación ampliada. Poner Esquisitice en cero lo resolvió ese mismo día.</p>
+<div class="qerr">
+<p class="qk">Error común</p>
+<p class="qerr-txt"><b>Subir la Rareza pensando que da «más variedad humana real».</b> Este control añade desviación surrealista, no variación natural — las manos, los rostros y las proporciones empiezan a deformarse. Para un retrato o producto realista, mantenlo en cero y usa Variación cuando quieras explorar distintos encuadres.</p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">04</span> Dos ampliaciones, dos objetivos diferentes</h2>
+<p>Después de obtener una buena imagen, aún falta un paso que parece técnico, pero es sencillo: aumentar el tamaño y el detalle del archivo final. En la pantalla de la herramienta, este paso se llama <span class="gterm" data-def="Upscale (ampliação): aumentar o tamanho e o nível de detalhe de uma imagem já gerada, sem trocar a cena." tabindex="0">upscale</span> — ampliación.</p>
+<p>Hay dos ampliaciones con propósitos opuestos. La <b>suave</b> preserva la estructura y la textura de la piel exactamente como quedaron; es la opción adecuada para fotos que deben seguir pareciendo reales. A <b>creativa</b> añade detalles artísticos por su cuenta — excelente para pósteres y arte conceptual, arriesgada para productos o retratos realistas, porque puede "mejorar" la escena hasta que deje de ser la misma.</p>
+<p>El dueño de un restaurante usa la ampliación suave en la foto del plato para el menú, porque debe seguir pareciendo ese plato, y la ampliación creativa en el cartel de un evento temático, donde sumar atmósfera es bienvenido.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="step" data-fig="5" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">05</span> El flujo de acabado: ajusta un detalle y luego amplía</h2>
+<p>El último paso profesional no es aceptar la primera imagen buena: es refinar un detalle puntual sin regenerarlo todo, usando la herramienta de variación de región, y solo entonces elegir la ampliación adecuada para el destino de la imagen.</p>
+<p>Quien gestiona las redes sociales usa este flujo todas las semanas: genera el retrato del influencer con la fórmula por capas, ajusta solo la luz de un lado del rostro con la variación de región y lo amplía en modo suave antes de publicarlo, sin tener que regenerar toda la escena por un detalle.</p>
+<div class="qsteps">
+<p class="qk">El flujo de acabado (lo repites en la práctica)</p>
+<ol>
+<li>Genera el retrato con la fórmula por capas (sujeto → detalles → estilo).</li>
+<li>Si te molesta algún detalle específico (la luz, un pliegue de la ropa), usa la variación de región solo en ese punto — el resto de la imagen queda intacto.</li>
+<li>Elige el nivel de ampliación: suave para mantener la estructura real, creativa para añadir una atmósfera artística.</li>
+<li>Compara la imagen original con la versión ampliada: la mejora en el detalle debe notarse sin traicionar la escena.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="5"></div>
+<button class="readbtn" data-read="s5">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p2">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Construye tu primer retrato en capas</h3>
+<p class="pgoal">Sal con dos versiones del mismo retrato —sin y con las capas de realismo— y con la ampliación correcta elegida, en ~14 minutos.</p>
+<p class="psafe">Nada de esto es definitivo: cada intento genera un archivo nuevo y la imagen original nunca se sobrescribe. Si la variación regional desordena algún detalle, repite el pedido y especifica con más claridad qué debe quedar igual.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Macro photography portrait of &lt;seu assunto: um chef, um
+artesão, uma cliente&gt;, focus on biological realism, visible
+skin pores, subtle veins on temples, natural facial asymmetry,
+non-glossy skin texture, soft ambient light, shot on 85mm lens,
+f/2.8, unretouched --v 7 --stylize 200 --weird 0</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Pega el prompt de arriba (está en inglés porque la herramienta responde mejor así; cambia solo el tema entre los signos &lt; &gt;) y genera.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Repite el mismo pedido quitando la parte «focus on biological realism... unretouched» — deja solo el tema y el --v 7. Compara ambos.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> En la versión por capas, usa la variación regional para ajustar UN detalle (la luz o un pliegue de la ropa) sin tocar el resto.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Amplía la versión final con el modo suave y guarda el par de antes y después — es el argumento visual de esta lección.</label></li>
+</ol>
+<p class="pdone">Montaste un retrato por capas, lo comparaste con el estándar de fábrica y elegiste la ampliación adecuada: exactamente lo que prometía esta clase.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; O mesmo pedido, dois destinos: sem camadas a IA decide o nível de realismo sozinha; com camadas nomeadas, poros e assimetria entram de propósito." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="24" rx="6" stroke-width="2" style="stroke:var(--line2)" width="60" x="80" y="16"></rect>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="32">tu pedido</text>
+<path d="M96 40 c-16 14 -24 24 -28 40 M124 40 c16 14 24 24 28 40" fill="none" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<circle cx="60" cy="118" r="24" stroke-width="2" style="stroke:var(--muted)"></circle>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="152">predeterminado: liso</text>
+<circle cx="160" cy="118" r="24" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<g style="fill:var(--accent)">
+<circle cx="150" cy="112" r="2.4"></circle><circle cx="162" cy="108" r="2"></circle><circle cx="168" cy="120" r="2.4"></circle>
+<circle cx="154" cy="124" r="2"></circle><circle cx="166" cy="130" r="2"></circle>
+</g>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="152">capas: real</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="184">nombrar la capa cambia el destino</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A fórmula em camadas sobe em blocos (assunto, detalhes, estilo); o parágrafo poético se dispersa e perde peso." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="28" rx="5" width="70" x="30" y="120"></rect>
+<rect height="28" opacity=".85" rx="5" width="70" x="30" y="84"></rect>
+<rect height="28" opacity=".7" rx="5" width="70" x="30" y="48"></rect>
+</g>
+<g font-size="8.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="65" y="66">estilo</text>
+<text text-anchor="middle" x="65" y="102">detalles</text>
+<text text-anchor="middle" x="65" y="138">tema</text>
+</g>
+<path d="M130 60 q20 10 40 4 q20 -6 30 14 q10 20 -8 30" fill="none" stroke-dasharray="2 4" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="165" y="128">párrafo poético</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="165" y="140">se dispersa</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; O mostrador de esquisitice: zero mantém a cena no chão; qualquer valor acima começa a distorcer mãos e rostos." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M40 130 a70 70 0 0 1 140 0" fill="none" stroke-width="2.4" style="stroke:var(--line2)"></path>
+<path d="M40 130 a70 70 0 0 1 46 -63" fill="none" stroke-width="3" style="stroke:var(--accent)"></path>
+<line stroke-linecap="round" stroke-width="2.2" style="stroke:var(--accent)" x1="110" x2="72" y1="130" y2="76"></line>
+<circle cx="110" cy="130" r="6" style="fill:var(--accent)"></circle>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="72" y="66">0</text>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="176" y="80">alto</text>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="72" y="150">suelo real</text>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="176" y="150">distorsiona</text>
+<line stroke-width="2" style="stroke:var(--line2)" x1="30" x2="190" y1="176" y2="176"></line>
+<rect height="8" rx="4" style="fill:var(--accent);opacity:.4" width="70" x="30" y="172"></rect>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="192">variación: 15–25 cambia solo el encuadre</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Duas ampliações, dois destinos: a suave preserva a estrutura real; a criativa acrescenta atmosfera por conta própria." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="40" rx="8" stroke-width="2" style="stroke:var(--line2)" width="68" x="76" y="18"></rect>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="42">buena imagen</text>
+<path d="M96 58 c-20 16 -32 26 -38 44 M124 58 c20 16 32 26 38 44" fill="none" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<rect height="60" rx="8" stroke-width="2" style="stroke:var(--accent)" width="76" x="18" y="112"></rect>
+<g stroke-width="1.3" style="stroke:var(--accent)">
+<line x1="30" x2="82" y1="128" y2="128"></line><line x1="30" x2="82" y1="140" y2="140"></line><line x1="30" x2="82" y1="152" y2="152"></line>
+</g>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="56" y="184">suave: preserva</text>
+<rect height="60" rx="8" stroke-width="2" style="stroke:var(--warm)" width="76" x="126" y="112"></rect>
+<path d="M150 126 l14 -10 v10 h12 l-14 22 v-12 h-12 z" fill="none" stroke-width="1.4" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="164" y="184">creativa: añade</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 5&lt;/b&gt; O fluxo de acabamento: gerar, ajustar um ponto só, ampliar no modo certo — nessa ordem." data-fig="5"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="36" cy="100" r="20" stroke-width="2" style="stroke:var(--line2)"></circle>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="36" y="104">generar</text>
+<path d="M58 100 h30" stroke-width="1.8" style="stroke:var(--faint)"></path>
+<circle cx="110" cy="100" r="20" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<circle cx="110" cy="94" r="3.4" style="fill:var(--accent)"></circle>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="118">1 solo punto</text>
+<path d="M132 100 h30" stroke-width="1.8" style="stroke:var(--faint)"></path>
+<circle cx="184" cy="100" r="20" stroke-width="2.2" style="stroke:var(--warm)"></circle>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="184" y="104">amplía</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="160">siempre en este orden</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>El realismo no es cuestión de suerte: es pedir piel, venas y asimetría a propósito, en vez de aceptar el estándar liso de fábrica.</li>
+<li>La fórmula por capas (tema → detalles → estilo) organiza el pedido mejor que cualquier párrafo poético.</li>
+<li>Una rareza alta distorsiona la escena; para un retrato o producto real, se deja en cero — Variación es lo que da variedad al encuadre.</li>
+<li>El acabado profesional ajusta un detalle a la vez y solo después elige entre ampliación suave o creativa.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de montar un retrato que supera la prueba de «¿esto parece una foto real?», sin depender de la suerte.</p>
+<p class="na-action">En los próximos 15 minutos: toma una foto tuya que ya hayas generado (en esta clase o en cualquier trabajo anterior) y aplica solo la variación de región, ajustando un detalle que te molesta. Guarda el antes y el después.</p>
+<p class="na-hook">En la próxima clase, entrarás al editor de la herramienta: el laboratorio donde se expande el lienzo, se cambia un objeto e incluso se anima el cuadro estático, sin rehacer la escena desde cero.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-1">← clase anterior</a><a href="#aula-3">próxima clase →</a></nav>
+<footer>Clase 2 · Midjourney · Formación de Cine con IA</footer>
+<script id="cards-2" type="application/json">
+[
+  {"front":"Diagnóstico: o retrato do chef saiu com pele de boneco de cera, brilhante e sem poro nenhum. O que faltou no pedido?","back":"Nomear as camadas de realismo biológico — poros visíveis, veias sutis, assimetria — em vez de confiar no acabamento padrão da ferramenta."},
+  {"front":"Decisão: você precisa que a próxima leva de 10 fotos de produto siga a mesma estrutura de pedido, sem reescrever tudo do zero. Que ordem você usa?","back":"Assunto → detalhes → estilo, sempre nessa sequência — é a fórmula que o motor pesa por posição, como um formulário fixo."},
+  {"front":"Contraste: qual a diferença prática entre subir a Esquisitice e subir a Variação, numa foto de produto que precisa continuar real?","back":"Esquisitice distorce a cena para o surreal (mão a mais, rosto torto); Variação só muda o enquadramento entre as opções — a cena continua no chão."},
+  {"front":"Aplicação: sua foto ficou ótima, menos a luz de um canto do rosto. Regenerar tudo de novo é a jogada certa?","back":"Não — a jogada é a variação de região só naquele ponto, preservando o resto; regenerar tudo arrisca perder a cena boa inteira."}
+]
+</script>
+<!--
+COMPLETUDE aula-2 | tipo=FERRAMENTA | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  dono de restaurante (s1), fotógrafa (s2), social media (s3), dono de restaurante (s4), social media (s5) (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~14 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-2"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/contraste/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+<!-- ===== AULA 3 ===== -->
+<section class="view" data-aula="3" data-tempo="20min" id="v-aula-3">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 2B · Clase 3</p>
+<h1>El editor: tu laboratorio de <em>revelación</em></h1>
+<p class="promise">Al final de esta clase, corriges una imagen sin rehacer toda la escena, amplías el encuadre, cambias un objeto y fijas un personaje o estilo en escenas nuevas usando el editor de la herramienta.</p>
+<p class="why">La primera generación rara vez sale perfecta en todo: solo en una cosa. Regenerar desde cero hasta acertar esa cosa es perder tiempo y suerte al mismo tiempo. Hay un camino más corto, que los profesionales de la imagen ya usaban antes de la IA: corregir solo la parte equivocada y dejar intacto el resto. Hoy abres ese laboratorio.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/2303e9e05bb3468eb25e304b89bb9ef2" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a mesa de mixagem — cada régua mexe num canal só, sem tocar nos outros -->
+<rect height="150" rx="10" stroke-width="2" style="stroke:var(--line2)" width="208" x="46" y="40"></rect>
+<g stroke-width="2" style="stroke:var(--muted)">
+<line x1="86" x2="86" y1="160" y2="66"></line>
+<line x1="136" x2="136" y1="160" y2="66"></line>
+<line x1="186" x2="186" y1="160" y2="66"></line>
+<line x1="222" x2="222" y1="160" y2="66"></line>
+</g>
+<g style="fill:var(--accent)">
+<rect height="10" rx="3" width="20" x="76" y="118"></rect>
+<rect height="10" rx="3" width="20" x="126" y="94"></rect>
+<rect height="10" rx="3" width="20" x="176" y="132"></rect>
+</g>
+<rect height="10" rx="3" style="fill:var(--warm)" width="20" x="212" y="76"></rect>
+<g font-size="8" style="fill:var(--faint);font-family:var(--mono)">
+<text text-anchor="middle" x="86" y="178">expandir</text>
+<text text-anchor="middle" x="136" y="178">cambiar</text>
+<text text-anchor="middle" x="186" y="178">bloquear</text>
+<text text-anchor="middle" x="222" y="178">animar</text>
+</g>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="216">cada control modifica un solo canal</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Arreglar una pieza, no toda la obra</h2>
+<p>La imagen casi perfecta es la más fácil de arruinar: el instinto de quien empieza es pedir «genérala de nuevo», y la buena escena desaparece por completo, incluso las partes que ya estaban bien. El editor de la herramienta sirve para lo contrario: señalas solo la parte que tiene un problema (la luz, un objeto, los límites del encuadre) y todo lo demás queda exactamente igual.</p>
+<p>La fotógrafa perdió así uno de los mejores retratos de la semana: pidió «genera otra vez, pero sin ese poste al fondo», y volvió una escena completamente nueva, con la pose, la luz y la expresión del cliente distintas. El poste desapareció, pero el buen retrato también.</p>
+<div class="qerr">
+<p class="qk">Error común</p>
+<p class="qerr-txt"><b>Pedir una generación completamente nueva para resolver un problema puntual.</b> Una nueva generación no «edita» la anterior: recrea la escena desde cero, incluso lo que ya estaba bien. Usa el editor para señalar solo el área o la característica que necesita cambiar; el resto de la imagen queda bloqueado.</p>
+</div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">02</span> Amplía el encuadre sin traicionar la escena</h2>
+<p>La pantalla del editor parece un programa de edición profesional lleno de botones, pero la función de expandir la pantalla funciona como estirar un mantel: tiras del borde hacia afuera y la tela que falta sigue siendo la misma tela, no se convierte en un remiendo visible.</p>
+<p>La herramienta de relleno generativo permite arrastrar los límites de la imagen hacia afuera —por ejemplo, de un cuadrado a una franja cinematográfica ancha— y la IA reconstruye el entorno, manteniendo la luz, la perspectiva y el estilo de la escena original.</p>
+<p>La social media recibió una foto cuadrada perfecta para el feed, pero también necesitaba una portada ancha para el canal de video de la clienta. Amplió el encuadre hacia los lados: misma escena, misma luz, solo más espacio alrededor. No hizo falta volver a tomar la foto.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">03</span> Una referencia fija al personaje o el estilo</h2>
+<p>Hay un recurso que funciona como ancla: la <span class="gterm" data-def="Referência Universal (Omni Reference): recurso que usa uma imagem enviada por você como âncora — trava um rosto (personagem) ou um estilo visual em cenas novas." tabindex="0">Referencia universal</span> (Omni Reference, en pantalla). Envías una imagen ya lista y le dices a la herramienta "mantén esto": puede ser el rostro de una persona o todo el estilo visual de una foto. Un control de intensidad determina si la semejanza es exacta o solo una inspiración.</p>
+<p>El efecto es el mismo en dos situaciones muy diferentes, y ahí es donde el recurso muestra su fuerza: la misma ancla, dos usos.</p>
+<div class="qapply">
+<p class="qak">La misma restricción, dos usos</p>
+<ul>
+<li><b>Fotógrafa</b> — envía el retrato aprobado de una clienta como referencia de personaje y genera el mismo rostro en tres escenarios nuevos para el portafolio, sin repetir la sesión.</li>
+<li><b>Dueño de un restaurante</b> — envía la foto mejor iluminada del salón de la casa como referencia de estilo y genera los carteles y publicaciones de difusión del mes con la misma atmósfera, sin tener que volver a describirla en cada pieza.</li>
+</ul>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">04</span> Cambia solo el objeto — el resto se mantiene</h2>
+<p>La herramienta de selección funciona como un pincel de verdad: pasas por encima del objeto que quieres cambiar (una silla, un producto, un fondo) y escribes solo lo que debe aparecer en su lugar, sin rehacer toda la escena.</p>
+<p>La social media recibió fotos de archivo con el producto de un competidor sobre la mesa. Seleccionó solo el producto con el pincel y escribió el empaque de su clienta en su lugar; el resto de la escena (mesa, luz, manos) siguió intacto, sin una nueva sesión de fotos.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="step" data-fig="5" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">05</span> Anima el cuadro estático de la manera correcta</h2>
+<p>El último módulo del editor transforma la imagen fija en un video corto. Piensa en él como el control del viento de una vitrina: bajo, solo se mueve la tela; alto, toda la escena cobra movimiento.</p>
+<p>Eliges entre intensidad baja (movimiento sutil — cabello, respiración, humo) y alta (movimiento amplio, más dramático) — e incluso puedes definir el primer y el último cuadro para controlar exactamente cómo se transforma la escena.</p>
+<p>La social media anima la foto principal de un relanzamiento de producto para el video corto de la clienta, con baja intensidad: solo el empaque brilla sutilmente bajo la luz. Un clip de 4 segundos que parece filmado, hecho a partir de una sola foto.</p>
+<div class="qsteps">
+<p class="qk">Del fotograma fijo al clip (lo repites en la práctica)</p>
+<ol>
+<li>Elige una imagen ya lista y bien compuesta: el punto de partida importa más que el efecto.</li>
+<li>Abre el módulo de animación y elige la intensidad: baja para una atmósfera sutil, alta para un movimiento llamativo.</li>
+<li>Genera el clip corto y míralo antes de aprobarlo — demasiado movimiento puede romper el realismo de la escena.</li>
+<li>Guarda el clip terminado: sirve tanto para redes sociales como para la parte superior de un sitio web.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="5"></div>
+<button class="readbtn" data-read="s5">marcar como leído</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p3">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Arregla una imagen tuya sin rehacer la escena</h3>
+<p class="pgoal">Terminar con una imagen tuya expandida o con un objeto reemplazado, y una decisión registrada sobre qué herramienta resolvió el problema — en ~12 minutos.</p>
+<p class="psafe">El editor siempre trabaja sobre una copia: la imagen original nunca se borra y cada intento genera un archivo nuevo. Si el resultado sale raro, es un dato de la prueba, no un error tuyo: deshazlo e inténtalo de nuevo.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige una imagen tuya con un problema puntual (encuadre estrecho, objeto equivocado o luz desde un ángulo desfavorable).</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Si el problema es el encuadre, usa la expansión de lienzo; si es un objeto, usa el pincel de selección y describe solo lo que debe ocupar su lugar.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Comprueba: ¿el resto de la imagen —lo que no tocaste— quedó exactamente igual?</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Anota en una frase qué herramienta resolvió tu problema — esa frase será tu guía rápida la próxima vez.</label></li>
+</ol>
+<p class="pdone">Corregiste una imagen tuya sin regenerar toda la escena — exactamente la promesa de esta clase, cumplida con tu propia foto.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Regenerar tudo perde o que já estava certo; apontar só o ponto problemático mantém o resto intacto." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="56" rx="8" stroke-width="2" style="stroke:var(--line2)" width="70" x="30" y="30"></rect>
+<circle cx="80" cy="42" r="4" style="fill:var(--warm)"></circle>
+<path d="M28 96 l14 -16 M42 96 l14 -16 M56 96 l14 -16 M70 96 l14 -16" stroke-width="1.8" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="65" y="112">regenerar todo</text>
+<rect height="56" rx="8" stroke-width="2" style="stroke:var(--accent)" width="70" x="130" y="30"></rect>
+<circle cx="180" cy="42" fill="none" r="8" stroke-dasharray="2 2" stroke-width="2" style="stroke:var(--accent)"></circle>
+<path d="M158 106 l6 8 12 -16" fill="none" stroke-linecap="round" stroke-width="2.2" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="165" y="130">señala el punto</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="172">el resto de la escena decide si sobrevive</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A borda se estica como uma toalha puxada — o tecido novo continua a luz e a perspectiva da cena original." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="100" rx="8" stroke-dasharray="4 4" stroke-width="2" style="stroke:var(--line2)" width="180" x="20" y="50"></rect>
+<rect height="68" rx="6" stroke-width="2.2" style="stroke:var(--accent)" width="100" x="60" y="66"></rect>
+<path d="M42 100 h14 M164 100 h14 M110 54 v10 M110 138 v10" stroke-linecap="round" stroke-width="2" style="stroke:var(--warm)"></path>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="176">la escena original sigue en el centro</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Uma única referência trava a mesma identidade — rosto ou estilo — em cenas totalmente novas." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="34" rx="6" stroke-width="2" style="stroke:var(--accent)" width="44" x="88" y="18"></rect>
+<path d="M100 30 v-2 a10 10 0 0 1 20 0 v2" fill="none" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="42">referencia</text>
+<path d="M96 56 c-24 20 -34 34 -38 52 M124 56 c24 20 34 34 38 52" fill="none" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<rect height="52" rx="8" stroke-width="2" style="stroke:var(--line2)" width="72" x="16" y="118"></rect>
+<rect height="52" rx="8" stroke-width="2" style="stroke:var(--line2)" width="72" x="132" y="118"></rect>
+<circle cx="52" cy="144" r="9" stroke-width="2" style="stroke:var(--accent)"></circle>
+<circle cx="168" cy="144" r="9" stroke-width="2" style="stroke:var(--accent)"></circle>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="52" y="182">escena nueva A</text>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="168" y="182">escena nueva B</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; O pincel isola só o objeto trocado; tudo ao redor (mesa, luz, mãos) permanece exatamente onde estava." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="112" rx="8" stroke-width="2" style="stroke:var(--line2)" width="168" x="26" y="34"></rect>
+<rect height="48" rx="6" stroke-dasharray="3 3" stroke-width="2" style="stroke:var(--warm)" width="52" x="66" y="66"></rect>
+<path d="M78 90 h28 M92 76 v28" stroke-width="1.8" style="stroke:var(--warm)"></path>
+<path d="M124 90 h30" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<rect height="36" rx="4" stroke-width="2" style="stroke:var(--accent)" width="30" x="156" y="72"></rect>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="172">solo cambia el objeto del área seleccionada</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 5&lt;/b&gt; Do quadro parado ao clipe: intensidade baixa move só um detalhe, intensidade alta move a cena inteira." data-fig="5"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="50" rx="8" stroke-width="2" style="stroke:var(--line2)" width="50" x="26" y="70"></rect>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="51" y="98">quieto</text>
+<path d="M84 95 h20" stroke-width="1.8" style="stroke:var(--faint)"></path>
+<g opacity=".55" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="42" rx="7" width="42" x="112" y="40"></rect>
+</g>
+<rect height="42" rx="7" stroke-width="2.2" style="stroke:var(--accent)" width="42" x="120" y="48"></rect>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="141" y="102">baja</text>
+<g opacity=".5" stroke-width="1.6" style="stroke:var(--warm)">
+<rect height="42" rx="7" width="42" x="106" y="126"></rect>
+</g>
+<g opacity=".75" stroke-width="1.8" style="stroke:var(--warm)">
+<rect height="42" rx="7" width="42" x="118" y="122"></rect>
+</g>
+<rect height="42" rx="7" stroke-width="2.2" style="stroke:var(--warm)" width="42" x="130" y="118"></rect>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="151" y="178">alta</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>El editor está para corregir una parte de la imagen, no para empezar de nuevo toda la escena.</li>
+<li>Ampliar el lienzo extiende el entorno alrededor de la escena original: misma luz, misma perspectiva, más espacio.</li>
+<li>Una referencia que tú envías fija un rostro o un estilo en escenas completamente nuevas.</li>
+<li>Cambiar un objeto o animar el cuadro fijo son ajustes quirúrgicos: el resto de la imagen permanece intacto.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de convertir el editor en una herramienta para corregir, no para depender de la suerte.</p>
+<p class="na-action">En los próximos 15 minutos: toma la imagen que editaste en la práctica y prueba la segunda herramienta que no usaste (expansión o cambio de objeto). Guarda ambas versiones una al lado de la otra.</p>
+<p class="na-hook">En la próxima clase, todo se une: una escena fija, cuatro ajustes diferentes; la prueba final que transforma lo que aprendiste en un método propio, repetible en cualquier trabajo.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-2">← clase anterior</a><a href="#aula-4">próxima clase →</a></nav>
+<footer>Lección 3 · Midjourney · Formación de Cine con IA</footer>
+<script id="cards-3" type="application/json">
+[
+  {"front":"Diagnóstico: você pediu 'gera de novo, sem o poste ao fundo' e recebeu uma cena com pose e luz diferentes. O que deveria ter usado?","back":"O editor, para apontar só o poste — uma nova geração recria a cena inteira, não edita a anterior."},
+  {"front":"Decisão: sua foto está apertada demais para o banner do site, mas a cena em si está perfeita. Que ferramenta resolve sem refotografar?","back":"A expansão de tela (preenchimento generativo) — puxa as bordas para fora e reconstrói o ambiente mantendo luz e perspectiva."},
+  {"front":"Contraste: qual a diferença entre usar a referência para travar um personagem e usar para travar um estilo?","back":"Personagem trava a identidade (o mesmo rosto em cenas novas); estilo trava a estética (a mesma luz e acabamento em assuntos novos) — o controle de intensidade decide o quanto fica exato."},
+  {"front":"Aplicação: você quer transformar uma foto-herói parada num clipe de 4 segundos para a home do site, sem exagerar no movimento. Que ajuste você escolhe?","back":"Intensidade baixa no módulo de animação — move só detalhes sutis (vapor, cabelo, chama), preservando o realismo da cena parada."}
+]
+</script>
+<!--
+COMPLETUDE aula-3 | tipo=FERRAMENTA | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), social media (s2), fotógrafa+dono de restaurante no qapply (s3), social media (s4), social media (s5) (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-3"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/contraste/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+<!-- ===== AULA 4 ===== -->
+<section class="view" data-aula="4" data-tempo="22min" id="v-aula-4">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 2B · Clase 4</p>
+<h1>Dirección mediante variables <em>controladas</em></h1>
+<p class="promise">Al final de esta clase, generas la misma escena cuatro veces, cambiando un parámetro a la vez, y terminas con tu propio método registrado para saber qué ajuste pesa más en cada tipo de trabajo.</p>
+<p class="why">Hasta aquí aprendiste algunas piezas sueltas: estilización, modo crudo, capas de realismo, editor. Falta responder la pregunta más práctica de todas: cuando alguien pide "más dramático" o "más fiel a la marca", ¿qué botón giras primero? Esta clase cierra el curso poniendo a prueba los parámetros uno al lado del otro, en la misma escena, hasta que la respuesta se vuelva instintiva.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/881a05cb1cc2409fa967e3c1b644640c" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a régua e o esquadro — cada medida é exata, não no olho -->
+<rect height="18" rx="4" stroke-width="2" style="stroke:var(--line2)" width="220" x="40" y="150"></rect>
+<g stroke-width="1.2" style="stroke:var(--muted)">
+<line x1="60" x2="60" y1="150" y2="160"></line><line x1="90" x2="90" y1="150" y2="160"></line>
+<line x1="120" x2="120" y1="150" y2="163"></line><line x1="150" x2="150" y1="150" y2="160"></line>
+<line x1="180" x2="180" y1="150" y2="160"></line><line x1="210" x2="210" y1="150" y2="163"></line>
+<line x1="240" x2="240" y1="150" y2="160"></line>
+</g>
+<path d="M70 60 v70 h70" fill="none" stroke-width="2.4" style="stroke:var(--accent)"></path>
+<rect height="70" rx="4" stroke-dasharray="3 3" stroke-width="1.6" style="stroke:var(--line2)" width="70" x="70" y="60"></rect>
+<circle cx="150" cy="95" r="4" style="fill:var(--warm)"></circle>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="204">la misma escena, medida grado a grado</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> La escena tiene cinco piezas: nómbralas todas antes de generar</h2>
+<p>Volviendo al comienzo, con mirada de director: toda solicitud sólida nombra cinco elementos, en orden: el sujeto, la acción (lo que hace), la cámara (el plano y el lente), el entorno y el clima emocional de la escena. Es la misma disciplina de un guion publicitario, solo que escrita en una línea.</p>
+<p>La social media dejó de escribir «foto de un pastel bonito» y empezó a describir cada elemento: tema (el pastel de tres pisos), acción (la repostera añade el último detalle), cámara (plano medio, lente 50mm), ambiente (cocina profesional, luz de la mañana), tono (concentración, calidez hogareña). La solicitud de cinco frases se convirtió en el estándar de toda la campaña de la clienta.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">02</span> Prueba un parámetro a la vez — o el resultado te engaña</h2>
+<p>La pantalla de configuración tiene más controles que Estilização y Modo Cru: Caos (la distancia entre las opciones de cada generación), Qualidade (el nivel de acabado del render) y Referência de Estilo (que toma prestada la identidad visual de una imagen existente). Piensa en ellos como reglas separadas: cada una mide una sola cosa.</p>
+<p>El Caos controla cuánto se alejan entre sí las cuatro opciones de cada generación: bajo para un realismo comercial estable, alto para explorar ideas muy diferentes. La Calidad controla el nivel de acabado del render: baja sirve para un borrador rápido, alta para la entrega final.</p>
+<p>La fotógrafa quería saber el efecto real del Caos alto, pero cambió el Caos y reescribió parte del texto de la instrucción al mismo tiempo. La escena salió tan distinta que no pudo decir si todo había cambiado por el parámetro o por el texto.</p>
+<div class="qerr">
+<p class="qk">Error común</p>
+<p class="qerr-txt"><b>Cambiar el texto de la solicitud y un parámetro al mismo tiempo, en la misma prueba.</b> Sin aislar la variable, no sabes cuál de las dos causó el cambio — la prueba se vuelve una suposición. Fija el texto de la solicitud, cambia un solo parámetro a la vez y compara las generaciones lado a lado.</p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">03</span> Referencia de estilo: tomar prestada una identidad visual</h2>
+<p>Hay un parámetro que funciona como etiqueta de marca: la <span class="gterm" data-def="Referência de Estilo (sref): parâmetro que usa uma imagem sua como molde de estilo — cor, luz e acabamento — em qualquer pedido novo, mesmo com assunto diferente." tabindex="0">Referencia de estilo</span> (sref en pantalla, abreviatura de style reference). Señalas una imagen que ya tiene el aspecto adecuado, y cada nuevo pedido se guía por esa misma identidad visual: luz, color, acabado.</p>
+<p>El dueño de un restaurante tenía una foto del plato de apertura que todos elogiaron. La usó como referencia de estilo para fotografiar los otros doce platos del menú nuevo: todos con la misma luz cálida y el mismo acabado, sin escribir doce veces la descripción del estilo.</p>
+<div class="quiz" data-answer="b">
+<p class="qk">Ponte a prueba</p>
+<p class="q">Terminaste una campaña y quieres que las próximas 8 imágenes parezcan tomadas por el mismo fotógrafo, con la misma luz — pero cada una con un producto diferente. ¿Qué ajuste lo resuelve sin tener que volver a escribir la descripción del estilo en cada imagen?</p>
+<button class="opt" data-fb="Caos aumenta a diferença entre as opções de cada geração — é o oposto de manter uma identidade visual comum." data-k="a">Aumentar el Caos para dar variedad entre las 8 imágenes</button>
+<button class="opt" data-fb="Exato: a Referência de Estilo carrega a mesma luz, cor e acabamento para qualquer assunto novo, sem repetir a descrição." data-k="b">Usar la misma imagen como Referencia de estilo en las 8 generaciones</button>
+<button class="opt" data-fb="Qualidade afeta o nível de acabamento do render, não a identidade visual — imagens de qualidade alta ainda podem parecer de fotógrafos diferentes." data-k="c">Subir la Calidad al máximo en todas las generaciones</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="Midjourney v7, jul/2026">
+<h2><span class="n">04</span> La prueba de los cuatro ajustes</h2>
+<p>La prueba final de que dominas los controles no es memorizar números: es ejecutar la misma escena cuatro veces, cambiando solo la combinación de parámetros, y nombrar qué resuelve cada una: una prueba de precisión (realismo comercial), una prueba cinematográfica (drama controlado), una prueba de exploración (variación libre) y una prueba de identidad de marca (con referencia de estilo).</p>
+<p>Este es el flujo que la community manager ejecuta antes de cerrar cualquier paquete de contenido nuevo: la misma escena base, cuatro ajustes, y ella elige qué combinación se convertirá en el estándar de ese cliente.</p>
+<div class="qsteps">
+<p class="qk">La prueba de los cuatro ajustes (la repites en la práctica)</p>
+<ol>
+<li>Escribe una escena base fija con las cinco piezas (tema, acción, cámara, ambiente, clima) y no la toques más.</li>
+<li>Genera con Caos bajo y Estilización baja — la prueba de precisión para el realismo comercial.</li>
+<li>Vuelve a generar cambiando solo a Caos medio y Estilización más alta — la prueba cinematográfica para un drama controlado.</li>
+<li>Genera una tercera vez con Caos alto — la prueba de exploración, para ver cuánto se sostiene todavía la escena.</li>
+<li>Cierra con una Referencia de estilo: la prueba de identidad para fijar la imagen de marca.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p4">
+<p class="pk">Practica ahora <span class="pcount">0/5 hecho</span></p>
+<h3 class="ph">Ejecuta la prueba de los cuatro ajustes en tu propia escena</h3>
+<p class="pgoal">Sal con hasta cuatro versiones de la misma escena y una conclusión escrita sobre qué ajuste tuvo más peso para tu tipo de trabajo, en ~15 minutos.</p>
+<p class="psafe">Cada generación es un archivo nuevo e independiente; ninguna versión anterior se pierde y, al final, puedes compararlas todas lado a lado sin rehacer nada.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">&lt;seu assunto&gt;, &lt;ação em uma frase&gt;, medium shot, 50mm lens,
+&lt;ambiente: onde e que hora&gt;, &lt;clima emocional da cena&gt;
+--v 7 --chaos 10 --stylize 100 --q 2</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Pega el prompt de arriba (está en inglés porque la herramienta responde mejor así; cambia solo los textos entre los signos &lt; &gt;) y genera con los números tal como están: es la prueba de precisión.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Vuelve a generar cambiando solo los números finales por --chaos 30 --stylize 450 --q 2 — la prueba cinematográfica.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Genera una tercera vez con --chaos 60 --stylize 600 — la prueba de exploración.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Si tienes a mano una imagen tuya de referencia (de cualquier clase anterior), genera una cuarta vez usándola como Referencia de Estilo — la prueba de identidad de marca.</label></li>
+<li><label><input data-ptask="5" type="checkbox"/> Compara las versiones y anota en una frase qué ajuste influyó más en la diferencia: ese será tu método a partir de hoy.</label></li>
+</ol>
+<p class="pdone">Probaste la misma escena con distintos ajustes y sabes nombrar cuál resuelve cada tipo de pedido: el método que cierra toda esta ruta.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; As cinco peças da cena, na ordem que o pedido segue: assunto, ação, câmera, ambiente, clima." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="24" rx="5" width="160" x="30" y="16"></rect>
+<rect height="24" opacity=".88" rx="5" width="160" x="30" y="44"></rect>
+<rect height="24" opacity=".76" rx="5" width="160" x="30" y="72"></rect>
+<rect height="24" opacity=".64" rx="5" width="160" x="30" y="100"></rect>
+<rect height="24" opacity=".52" rx="5" width="160" x="30" y="128"></rect>
+</g>
+<g font-size="8.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="110" y="32">1 · tema</text>
+<text text-anchor="middle" x="110" y="60">2 · acción</text>
+<text text-anchor="middle" x="110" y="88">3 · cámara</text>
+<text text-anchor="middle" x="110" y="116">4 · ambiente</text>
+<text text-anchor="middle" x="110" y="144">5 · clima</text>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="176">nombra las cinco antes de generar</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Mudar texto e parâmetro ao mesmo tempo confunde o teste; isolar uma variável mostra o efeito puro dela." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="56" rx="8" stroke-width="2" style="stroke:var(--line2)" width="80" x="20" y="34"></rect>
+<g style="fill:var(--warm)"><circle cx="38" cy="50" r="3.4"></circle><circle cx="60" cy="46" r="3.4"></circle><circle cx="78" cy="58" r="3.4"></circle><circle cx="48" cy="72" r="3.4"></circle><circle cx="72" cy="76" r="3.4"></circle></g>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="60" y="106">texto + parámetro juntos</text>
+<rect height="56" rx="8" stroke-width="2" style="stroke:var(--accent)" width="80" x="120" y="34"></rect>
+<circle cx="160" cy="62" r="7" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="106">solo 1 variable</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="168">aislar muestra el efecto puro</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Uma referência de estilo empresta a mesma luz e acabamento para qualquer assunto novo." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="32" rx="6" stroke-width="2" style="stroke:var(--accent)" width="44" x="88" y="18"></rect>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="40">sref</text>
+<path d="M96 54 c-30 18 -42 28 -46 46 M124 54 c14 10 20 16 24 26 M132 54 c30 18 42 28 46 46" fill="none" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<g stroke-width="1.6" style="stroke:var(--accent)">
+<rect height="44" rx="6" width="52" x="14" y="112"></rect>
+<rect height="44" rx="6" width="52" x="86" y="112"></rect>
+<rect height="44" rx="6" width="52" x="158" y="112"></rect>
+</g>
+<g font-size="14" style="fill:var(--accent);font-family:var(--mono)">
+<text text-anchor="middle" x="40" y="140">◆</text><text text-anchor="middle" x="112" y="140">◆</text><text text-anchor="middle" x="184" y="140">◆</text>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="182">temas diferentes, la misma marca</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Quatro faixas partindo da mesma cena-base, cada uma com uma combinação de regulagens — a comparação nomeia o método." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="24" rx="5" stroke-width="2" style="stroke:var(--line2)" width="60" x="80" y="14"></rect>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="30">escena base</text>
+<path d="M92 38 c-30 10 -46 16 -54 28 M104 38 c-6 8 -10 14 -12 24 M116 38 c6 8 10 14 12 24 M128 38 c30 10 46 16 54 28" fill="none" stroke-width="1.3" style="stroke:var(--faint)"></path>
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="26" rx="5" width="42" x="16" y="76"></rect><rect height="26" opacity=".8" rx="5" width="42" x="66" y="76"></rect>
+<rect height="26" opacity=".6" rx="5" width="42" x="116" y="76"></rect><rect height="26" opacity=".45" rx="5" width="42" x="166" y="76"></rect>
+</g>
+<g font-size="7" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="37" y="93">precisión</text><text text-anchor="middle" x="87" y="93">cine</text>
+<text text-anchor="middle" x="137" y="93">explora</text><text text-anchor="middle" x="187" y="93">marca</text>
+</g>
+<path d="M37 106 v14 M87 106 v14 M137 106 v14 M187 106 v14" stroke-width="1.3" style="stroke:var(--faint)"></path>
+<path d="M20 134 h180" stroke-dasharray="2 3" stroke-width="1.3" style="stroke:var(--faint)"></path>
+<circle cx="110" cy="134" r="14" stroke-width="2" style="stroke:var(--warm)"></circle>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="160">compara y elige</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>Toda indicación potente nombra cinco elementos en orden: sujeto, acción, cámara, ambiente y clima.</li>
+<li>Probar un parámetro a la vez garantiza que el cambio en la imagen se debió al ajuste, no al texto reescrito al mismo tiempo.</li>
+<li>La Referencia de Estilo aporta la misma identidad visual —luz, color, acabado— a cualquier solicitud nueva.</li>
+<li>La prueba de los cuatro ajustes transforma todo lo que aprendiste en este recorrido en un método repetible.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de completar el método: calibrar, describir por capas, corregir en el editor y ahora dirigir con parámetros controlados.</p>
+<p class="na-action">En los próximos 15 minutos: elige, entre las versiones que generaste, la que se convertirá en el estándar de tu próximo trabajo real y guarda la combinación de ajustes en un lugar que recuerdes consultar.</p>
+<p class="na-hook">El siguiente paso, cuando quieras profundizar aún más en el control de Midjourney, es la ruta Midjourney Profesional.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-3">← clase anterior</a><a href="#trilha">completar el curso ✓ →</a></nav>
+<footer>Lección 4 · Midjourney · Formación de Cine con IA</footer>
+<script id="cards-4" type="application/json">
+[
+  {"front":"Aplicação: você vai fotografar (com IA) a vitrine de uma padaria pela manhã. Nomeie rapidamente as cinco peças do pedido, na ordem, para essa cena.","back":"Assunto (a vitrine/os pães) → ação (ex.: vapor saindo do pão fresco) → câmera (plano e lente) → ambiente (padaria, manhã) → clima (aconchego, começo de dia) — a estrutura se aplica a qualquer cena nova."},
+  {"front":"Diagnóstico: você mudou o Caos e reescreveu parte do texto do pedido no mesmo teste — a imagem saiu bem diferente, mas você não sabe por quê. Qual foi a falha do teste?","back":"Duas variáveis mudaram ao mesmo tempo (texto e parâmetro) — sem isolar uma só, é impossível saber qual causou a diferença."},
+  {"front":"Decisão: você vai fotografar (com IA) a cobertura de um evento único, sem nenhuma imagem anterior para seguir como molde, e quer máxima liberdade de composição. Ativar a Referência de Estilo ajuda aqui?","back":"Atrapalha — a Referência de Estilo trava a identidade a uma imagem já existente; sem molde prévio e com um evento que pede liberdade, é melhor deixar esse parâmetro de fora."},
+  {"front":"Contraste: qual a diferença entre o teste de precisão e o teste cinematográfico, nas regulagens que mudam?","back":"Precisão usa Caos baixo + Estilização baixa, mirando realismo comercial estável; cinematográfico sobe as duas, mirando drama e atmosfera — a cena-base continua igual nos dois."}
+]
+</script>
+<!--
+COMPLETUDE aula-4 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), fotógrafa (s2), dono de restaurante (s3), social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-4"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 aplicação/diagnóstico/decisão/contraste; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); teste-se opcional presente (1 pergunta, s3)
+-->
+</section>
+<script src="../../../assets/curso.js"></script>
+</body>
+</html>

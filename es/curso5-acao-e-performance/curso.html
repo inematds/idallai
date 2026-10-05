@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="fcia-c5" name="curso"/>
+<title>Acción y rendimiento — la escena que emociona · Formación Cine con IA</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;family=Inter:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/aula.css" rel="stylesheet"/>
+<script src="../../config.js"></script>
+<script>(function(){try{var m=document.querySelector('meta[name=curso]');var CK=(m&&m.content)||'v5:curso';var s=JSON.parse(localStorage.getItem(CK));if(s&&s.prefs&&s.prefs.theme)document.documentElement.setAttribute('data-theme',s.prefs.theme);}catch(e){}})();</script>
+<!--
+  PROTOCOLO DE DESCOBERTA (v5, Passo 0 — registrado como metadado):
+  - Público específico: adultos 40+, leigos em tecnologia, que querem criar imagens e vídeos cinematográficos com IA para uso profissional.
+  - Profissões-alvo (≥2): fotógrafa com estúdio próprio · dono de restaurante/pequeno comércio · social media autônoma.
+  - Familiaridade com tecnologia: baixa-média — usa WhatsApp, já conversou com IA de chat no navegador; nunca gerou imagem; zero terminal.
+  - Resultado prático esperado: sair produzindo sozinho imagens cinematográficas e um mini-filme de 30–60s com IA, pronto para usar ou vender.
+  - Tempo por sessão: 20–30 minutos.
+-->
+<style>
+  .view{display:none}.view.active{display:block}
+  .lnav{max-width:1160px;margin:0 auto 5vh;padding:0 clamp(24px,5vw,60px);display:flex;justify-content:space-between;gap:12px}
+  .lnav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:12px 16px}
+  .lnav a:hover{border-color:var(--accent);color:var(--ink)}
+  #v-trilha .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(24px,5vw,60px)}
+  #v-trilha .t-hero{position:relative;overflow:hidden;padding:20vh 0 8vh;border-bottom:1px solid var(--line)}
+  #v-trilha h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.4vw,72px);line-height:1;letter-spacing:-.025em;margin:0 0 22px}
+  #v-trilha h1 em{font-style:italic;color:var(--accent)}
+  #v-trilha .lead{font-family:var(--serif);font-size:clamp(19px,2.1vw,24px);line-height:1.5;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+  #v-trilha section{padding:8vh 0}
+  #v-trilha .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  #v-trilha h2{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);margin:0 0 28px}
+  #v-trilha .aulas{display:grid;gap:14px}
+  #v-trilha .au{display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:center;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  #v-trilha .au .num{font-family:var(--serif);font-size:30px;color:var(--accent);text-align:center}
+  #v-trilha .au h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 5px}
+  #v-trilha .au p{margin:0;color:var(--muted);font-size:14.5px}
+  #v-trilha .au .meta{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap;text-align:right}
+  #v-trilha .au .prog{position:static;margin-top:10px;height:5px;border-radius:99px;background:var(--line);overflow:hidden;max-width:220px;width:auto}
+  #v-trilha .au .prog i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  #v-trilha footer{max-width:1080px;margin:0 auto;padding:6vh clamp(24px,5vw,60px) 12vh;color:var(--faint);text-align:center;font-family:var(--serif);font-style:italic;border-top:1px solid var(--line)}
+</style>
+<link href="https://inematds.github.io/idallai/curso5-acao-e-performance/curso.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/idallai/en/curso5-acao-e-performance/curso.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/idallai/es/curso5-acao-e-performance/curso.html" hreflang="es" rel="alternate"/></head>
+<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../curso5-acao-e-performance/curso.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../en/curso5-acao-e-performance/curso.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="curso.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<div class="bar"><div class="bar-inner">
+<span class="brand"><a class="mark" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a><a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a><a class="course" href="../index.html">Acción y rendimiento</a></span>
+<a class="back" href="#trilha" style="display:none">← ruta</a>
+<button class="pill" id="pill" style="display:none">0 leído</button>
+<button id="revbtn">revisar <span id="revn">0</span></button>
+<button id="exbtn">ejercicios</button>
+<button id="jorbtn">recorrido</button>
+<button aria-label="Cómo funciona" id="helpbtn">?</button>
+<button aria-label="Preferencias de lectura" id="prefsbtn">Aa</button>
+<button id="themebtn">tema: oscuro</button>
+</div></div>
+<!-- ===== TRILHA ===== -->
+<section class="view" id="v-trilha">
+<header class="t-hero"><div class="wrap">
+<p class="kicker">Formación en Cine con IA · Curso 5</p>
+<h1>Acción y <em>rendimiento</em></h1>
+<p class="lead">En ocho lecciones aprenderás a dirigir la energía visual y la emoción genuina en escenas generadas por IA —efectos que parecen reales, cámara lenta con propósito, acción con tensión de verdad y personajes que hacen sentir algo al público, sin abrir ningún editor de efectos.</p>
+</div></header>
+<section><div class="wrap">
+<div class="statcards"></div>
+<p class="eyebrow">Lecciones</p>
+<h2>Del efecto visual a la escena que emociona</h2>
+<div class="aulas">
+<a class="au on" data-aula="1" href="#aula-1">
+<div class="num">1</div>
+<div><h3>Efectos que parecen reales</h3><p>Escribe pedidos de efectos visuales que describan peso, luz y caos real — cambiando el aspecto de dibujo por la sensación de materia real.</p><div class="prog"><i></i></div></div>
+<div class="meta">18 min · abrir →</div>
+</a>
+<a class="au on" data-aula="2" href="#aula-2">
+<div class="num">2</div>
+<div><h3>El tiempo que se alarga</h3><p>Domina el contraste rápido-lento-rápido que hace que la cámara lenta parezca una decisión del director, no un capricho.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · abrir →</div>
+</a>
+<a class="au on" data-aula="3" href="#aula-3">
+<div class="num">3</div>
+<div><h3>La cortina que disimula</h3><p>Usa humo, polvo y confeti simulados para ocultar los fallos de una escena generada por IA y crear una atmósfera cinematográfica.</p><div class="prog"><i></i></div></div>
+<div class="meta">18 min · abrir →</div>
+</a>
+<a class="au on" data-aula="4" href="#aula-4">
+<div class="num">4</div>
+<div><h3>La fórmula de la acción</h3><p>Escribe escenas de acción de 5 segundos con la fórmula de riesgo, movimiento, expectativa y giro que se usa en comerciales y clips impactantes.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · abrir →</div>
+</a>
+<a class="au on" data-aula="5" href="#aula-5">
+<div class="num">5</div>
+<div><h3>Lo que no se dice</h3><p>Escribe una escena en la que el personaje no dice lo que siente — y el público lo entiende de todos modos, por su reacción y por el silencio.</p><div class="prog"><i></i></div></div>
+<div class="meta">16 min · abrir →</div>
+</a>
+<a class="au on" data-aula="6" href="#aula-6">
+<div class="num">6</div>
+<div><h3>Hilos que dan vida</h3><p>Dirige la interpretación de un personaje de IA a través de la emoción, no del movimiento, y deja de recibir un muñeco caminando.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · abrir →</div>
+</a>
+<a class="au on" data-aula="7" href="#aula-7">
+<div class="num">7</div>
+<div><h3>La distancia que emociona</h3><p>Elige la distancia de cámara adecuada para una escena emocional y comprueba, comparando dos versiones, qué cambia en lo que se siente.</p><div class="prog"><i></i></div></div>
+<div class="meta">22 min · abrir →</div>
+</a>
+<a class="au on" data-aula="8" href="#aula-8">
+<div class="num">8</div>
+<div><h3>La escena que se mueve</h3><p>Estructura una escena de diálogo completa — conflicto, silencio y giro — combinando todo lo que aprendiste en las siete clases anteriores.</p><div class="prog"><i></i></div></div>
+<div class="meta">22 min · abrir →</div>
+</a>
+</div>
+</div></section>
+<footer><div class="wrap">Curso 5 · Formación en cine con IA · INEMA.CLUB PRO</div></footer>
+</section>
+<!-- ===== AULA 1 ===== -->
+<section class="view" data-aula="1" data-tempo="18min" id="v-aula-1">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 5 · Lección 1</p>
+<h1>Efectos que parecen <em>reales</em></h1>
+<p class="promise">Al final de esta clase, escribes pedidos de efectos visuales por IA que describen el peso, la luz y el caos físico como lo haría un efecto de cine, y cambias el aspecto de dibujo animado por la sensación de materia real.</p>
+<p class="why">¿Ya pediste «humo saliendo de la parrilla» o «salpicadura de agua realista» y recibiste algo con aspecto de dibujo? La mayoría piensa que la herramienta es débil. El problema es otro: nadie describió la física de la escena, solo el tema. Eso es lo que corrige esta clase.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/907b18ee962640eaa1df3218428df079" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: o palco (o que o público vê) e a coxia (o que sustenta por trás, escondido) -->
+<path d="M40 30 h220 M40 30 v150 M260 30 v150" fill="none" stroke-width="2" style="stroke:var(--line2)"></path>
+<rect height="122" rx="4" stroke-width="2" style="stroke:var(--accent)" width="156" x="72" y="58"></rect>
+<path d="M72 180 h156" stroke-width="2" style="stroke:var(--accent)"></path>
+<circle cx="150" cy="118" r="22" stroke-width="2" style="stroke:var(--accent)"></circle>
+<path d="M138 108 c4 -6 20 -6 24 0" fill="none" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<path d="M20 42 v146 M280 42 v146" stroke-dasharray="3 4" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<path d="M20 72 l20 -8 M20 104 l20 -8 M20 136 l20 -8" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<path d="M280 72 l-20 -8 M280 104 l-20 -8 M280 136 l-20 -8" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<text font-size="10" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="150" y="204">el escenario: lo que ve el público</text>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="221">entre bastidores: lo que lo sostiene desde atrás</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> La física pesa más que el efecto</h2>
+<p>Quien ya le haya pedido a una IA de video «humo saliendo de la parrilla» o «salpicadura de agua realista» ya vio el mismo resultado: algo bonito, pero con aspecto de dibujo. El instinto es culpar a la herramienta. Casi nunca ese es el problema — el problema es que la indicación describió el tema, no la física de la escena.</p>
+<p>En las grandes producciones, los efectos que parecen reales nacen de la física real: el humo de un fuego real se mueve de forma caótica, el agua real corre, salpica y forma charcos de una manera que nadie programa igual dos veces. No necesitas reproducir esto físicamente; necesitas describir este comportamiento con palabras para que la IA lo simule.</p>
+<p>Quien gestiona las redes sociales lo nota todos los días: genera el video de lanzamiento de una bebida nueva para un bar cliente, con un salpicón de hielo cayendo en el vaso, y el salpicón parece una animación de anuncio de banco. Faltó indicar el peso del hielo, la dirección de la caída y cómo se rompe el agua alrededor.</p>
+<div class="qanchor"><p>Describir el peso convence a la física. Describir solo el tema da como resultado un dibujo animado.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> El caos vende, la perfección delata</h2>
+<p>Aquí se esconde una paradoja que separa el pedido aficionado del profesional: un efecto perfectamente simétrico, con movimiento uniforme y predecible, le grita «computadora» al ojo humano. El mundo real es desordenado, y ese desorden es lo que hace que el cerebro acepte la imagen como verdadera.</p>
+<p>El fuego real nunca se comporta igual dos veces: la llama titila, lanza chispas en direcciones aleatorias y cambia de altura sin aviso. Por eso, quienes trabajan de verdad con efectos visuales piden caos a propósito, justo lo contrario del instinto de quien empieza, que intenta dejar todo «limpio».</p>
+<p>El dueño de un restaurante conoce muy bien esta frustración: pide «fuego bonito en la parrilla» y recibe una llama de dibujo animado, simétrica, sin una sola chispa fuera de lugar. El plato al lado, con ese fuego falso detrás, también pierde credibilidad: la vista desconfía de toda la escena.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> La luz ancla el efecto en el mundo real</h2>
+<p>En las grandes producciones, pantallas gigantes proyectan el escenario detrás de los actores, y el motivo no es solo mostrar el fondo: la luz de esa pantalla real ilumina el rostro y la ropa del actor, creando sombras y reflejos reales. Sin esa luz bien dirigida, el actor parece recortado y pegado a la escena, aunque el fondo sea bonito.</p>
+<p>Con la IA funciona igual: el efecto que pides —una llama, un haz de luz, una chispa— debe iluminar el resto de la escena en la misma dirección y con el mismo color que la luz que ya existe. Si no lo pides, la IA trata el efecto como una pegatina sobre la escena, sin integrarlo con el resto.</p>
+<p>La fotógrafa vive este detalle en las sesiones de fotos de bodas con velas: una vela encendida al lado de la pareja, sin que su luz cálida ilumine sus rostros, parece un efecto añadido después. Pedir explícitamente «la luz de la vela ilumina el rostro de la pareja, una sombra tiembla en la pared detrás» cambia toda la escena.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>"Vela encendida al lado de la pareja." La llama existe, pero nada a su alrededor reacciona a ella: parece pegada encima de la foto.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>"Vela encendida cuya luz cálida ilumina los rostros de ambos, sombra que tiembla en la pared de atrás, tono más anaranjado en la piel cercana a la llama." Toda la escena responde a la luz.</p></div>
+<p class="qba-saldo">Resultado: la misma solicitud de una vela, pero ahora parece que estuvo ahí cuando la escena fue «fotografiada», no que la pegaron después.</p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> La receta: observar, describir, probar</h2>
+<p>Las tres primeras lecturas de esta clase se convierten en una receta de tres pasos que sirve para cualquier efecto visual que quieras pedir: <b>observar</b> (cómo se comporta ese efecto en el mundo real: el peso, el caos, la luz), <b>describir</b> en campos separados (luz, textura, movimiento, atmósfera, cada uno por separado, sin mezclarlo todo en una sola frase) y <b>probar</b> (generar, comparar, ajustar un campo a la vez).</p>
+<p>Quien gestiona las redes sociales usa esta receta para organizar un pedido de chispas en un video de un taller de carpintería: en vez de escribir "chispas volando de forma bonita", separa la luz (cálida, proveniente de la lijadora), la textura (chispas pequeñas y densas), el movimiento (arco descendente, arrastrado por la gravedad) y la atmósfera (polvo fino suspendido en el aire). El resultado parece un video institucional costoso.</p>
+<p>No necesitas memorizar términos técnicos de efectos visuales; solo necesitas estos cuatro campos, siempre separados. Es la misma lógica de la ficha de producción que aparece más adelante en esta formación: un campo por decisión, para que nada se pierda en una frase larga.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<div class="quiz" data-answer="b">
+<p class="qk">Ponte a prueba</p><p class="q">Generaste una salpicadura de agua que parecía de plástico, aunque pediste «agua realista». Según lo que enseñó esta clase, ¿cuál es el primer ajuste?</p>
+<button class="opt" data-fb="Trocar de ferramenta raramente resolve sozinho: sem descrever física, luz e caos, o mesmo problema tende a se repetir em qualquer gerador." data-k="a">Cambiar de generador de video — la herramienta actual debe ser débil</button>
+<button class="opt" data-fb="Exato: 'água realista' é vago. Descrever peso, direção da queda e como a luz bate nas gotas dá à IA o que ela precisa para simular física de verdade." data-k="b">Describe el peso y la irregularidad de la salpicadura, no solo pidas «agua realista»</button>
+<button class="opt" data-fb="Resolução mais alta deixa um efeito falso mais nítido — não mais real. O problema é a descrição, não o tamanho do arquivo." data-k="c">Aumentar la resolución del video generado</button>
+<p class="qfb"></p>
+</div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p1">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Registra el caos adecuado</h3>
+<p class="pgoal">Terminar con una solicitud de efecto visual descrita en cuatro campos — luz, textura, movimiento, atmósfera — aplicada a uno de tus videos, en ~10 minutos.</p>
+<p class="psafe">Solo estás escribiendo texto y generando video: nada tuyo se borra ni se modifica. Si el efecto sale raro, solo tienes que ajustar un campo y generar de nuevo; cada intento es independiente.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">LUZ: &lt;de onde vem a luz do efeito — janela, chama, poente — e se é quente ou fria&gt;
+TEXTURA: &lt;densidade e transparência — o que fica visível através do efeito&gt;
+MOVIMENTO: &lt;direção e velocidade — vento lateral, subindo, caindo&gt;
+ATMOSFERA: &lt;o que o efeito revela ou esconde na cena&gt;
+
+Aplique esses quatro campos ao meu pedido: &lt;descreva aqui a cena e o efeito
+que você quer — fumaça, respingo, faísca, fogo&gt;</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige un video o una idea tuya que ya use (o merezca) un efecto visual: humo, salpicadura, chispa, fuego.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Completa los cuatro campos anteriores con la física de tu escena, sin dejar ninguno vacío.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Pega el prompt completo en el generador de video que ya usas y genera.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Compara con un intento sin los campos (solo el nombre del efecto, sin más): ¿cuál parece más real?</label></li>
+</ol>
+<p class="pdone">Describiste la física de un efecto en vez de solo nombrar el tema — exactamente lo que separa un resultado de plástico de uno cinematográfico.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; O respingo digital cai simétrico e liso; o respingo real se quebra em gotas de tamanhos diferentes, puxadas pelo próprio peso." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="60" cy="70" r="30" stroke-width="2" style="stroke:var(--line2)"></circle>
+<circle cx="60" cy="70" r="18" stroke-width="1.4" style="stroke:var(--line2)"></circle>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="112">salpicadura digital</text>
+<path d="M150 50 c-6 10 -14 14 -20 26 M172 46 c2 12 -4 20 -6 30 M190 56 c8 8 10 18 6 28" fill="none" stroke-linecap="round" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<g style="fill:var(--accent)"><circle cx="128" cy="80" r="3"></circle><circle cx="184" cy="90" r="2.4"></circle><circle cx="200" cy="72" r="2"></circle></g>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="170" y="112">salpicadura real</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="160">el peso rompe la simetría</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A chama simétrica (esquerda) parece desenhada; a chama irregular, com fagulhas fora do centro, é a que o olho aceita como fogo de verdade." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M50 130 c-10 -20 10 -30 0 -50 c14 8 18 24 8 34 c10 -4 14 -16 8 -26 c12 10 14 28 -2 42 c-4 4 -10 2 -14 0 z" fill="none" stroke-width="1.8" style="stroke:var(--line2)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="50" y="150">simétrica = falsa</text>
+<path d="M150 132 c-14 -16 4 -22 -6 -40 c16 4 10 22 20 28 c8 -8 6 -20 -2 -30 c16 6 22 22 8 40 c-6 8 -14 10 -20 2 z" fill="none" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<g style="fill:var(--warm)"><circle cx="182" cy="96" r="2.4"></circle><circle cx="192" cy="108" r="1.8"></circle><circle cx="172" cy="82" r="2"></circle></g>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="165" y="150">irregular = real</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Sem luz própria, o efeito flutua sobre a cena; com a luz da chama batendo no rosto e na sombra, ele passa a pertencer à cena." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="70" cy="90" r="20" stroke-width="2" style="stroke:var(--line2)"></circle>
+<path d="M40 60 c-6 -14 10 -20 4 -34" fill="none" stroke-width="1.8" style="stroke:var(--line2)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="55" y="150">efecto pegado</text>
+<circle cx="165" cy="90" r="20" stroke-width="2" style="stroke:var(--accent)"></circle>
+<path d="M135 60 c-6 -14 10 -20 4 -34" fill="none" stroke-width="1.8" style="stroke:var(--warm)"></path>
+<path d="M135 60 c-16 4 -18 20 -8 30" fill="none" stroke-dasharray="2 3" stroke-width="1.4" style="stroke:var(--warm)"></path>
+<path d="M155 78 c4 6 8 8 14 8" fill="none" stroke-dasharray="2 3" stroke-width="1.4" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="155" y="150">luz anclada en la escena</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; A receita em ciclo: observar a física, descrever em campos separados, testar um campo por vez — e voltar a observar o resultado." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="34" rx="8" stroke-width="2" style="stroke:var(--accent)" width="76" x="24" y="26"></rect>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="62" y="47">observar</text>
+<rect height="34" rx="8" stroke-width="2" style="stroke:var(--accent)" width="76" x="122" y="26"></rect>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="47">describir</text>
+<rect height="34" rx="8" stroke-width="2" style="stroke:var(--accent)" width="76" x="72" y="120"></rect>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="141">probar</text>
+<path d="M100 43 h22" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M116 38 l8 5 -8 5" fill="none" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M160 60 c0 30 -20 40 -34 50" fill="none" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M132 108 l-8 4 4 8" fill="none" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M72 137 c-30 0 -34 -70 -6 -98" fill="none" stroke-dasharray="2 3" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<path d="M70 46 l-8 -6 -2 10" fill="none" stroke-width="1.4" style="stroke:var(--faint)"></path>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>El realismo físico generado por IA depende más de describir el peso, la luz y el caos que de la herramienta elegida.</li>
+<li>Demasiada perfección delata un efecto falso: las irregularidades intencionales son lo que convence al ojo de que la escena es real.</li>
+<li>La luz del efecto debe venir de la misma dirección y tener el mismo color que la luz que ya existe en la escena: eso es lo que lo «ancla» en el mundo real.</li>
+<li>La receta de tres pasos —observar la física, describir en campos separados, probar— reemplaza la suerte por resultados.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de escribir una solicitud de efecto visual pensando en la física de la escena, no solo en el nombre del tema.</p>
+<p class="na-action">En los próximos 15 minutos: toma un video tuyo que ya use (o merezca) algún efecto y reescribe el pedido usando los cuatro campos de hoy: luz, textura, movimiento, atmósfera.</p>
+<p class="na-hook">En la próxima clase, resolverás otro pedido que suele salir mal: por qué "cámara lenta" por sí sola no funciona y cuál es el contraste que hace que el efecto parezca una decisión del director.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#trilha">← ruta</a><a href="#aula-2">próxima clase →</a></nav>
+<footer>Lección 1 · Acción y actuación · Formación Cine con IA</footer>
+<script id="cards-1" type="application/json">
+[
+  {"front":"Pergunta: o que pesa mais no realismo de um efeito gerado por IA — a ferramenta escolhida ou a descrição da física da cena?","back":"A descrição da física: peso, luz e caos contam mais do que qual gerador de vídeo você usa."},
+  {"front":"Diagnóstico: seu efeito de fumaça saiu liso e simétrico demais, parecendo desenho. O que faltou pedir?","back":"Irregularidade proposital — densidade variando, direção mudando, nada perfeitamente centralizado ou repetido."},
+  {"front":"Decisão: você vai gerar uma cena com uma vela acesa perto do rosto de alguém. Que detalhe garante que o efeito 'ancore' na cena real?","back":"A luz da chama precisa bater no rosto na mesma direção e cor da luz que já existe na cena — senão o efeito parece colado por cima."},
+  {"front":"Aplicação: reescreva o pedido genérico 'fumaça saindo da churrasqueira' usando os quatro campos da receita desta aula.","back":"Luz (de onde vem, que cor), textura (densidade, transparência), movimento (direção do vento), atmosfera (o que ela esconde ou revela) — cada campo descrito à parte."}
+]
+</script>
+<!--
+COMPLETUDE aula-1 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="18min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), dono de restaurante (s2), fotógrafa (s3), social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-1"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 em forma pergunta/diagnóstico/decisão/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 2 ===== -->
+<section class="view" data-aula="2" data-tempo="20min" id="v-aula-2">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 5 · Lección 2</p>
+<h1>El tiempo que <em>estira</em></h1>
+<p class="promise">Al final de esta clase, escribes un pedido de cámara lenta con contraste real —rápido, lento, rápido otra vez— en vez de un video uniformemente lento de principio a fin.</p>
+<p class="why">El cliente pide «un video bonito en cámara lenta» y recibe algo lento, sin emoción. La cámara lenta por sí sola no impresiona a nadie: lo que emociona es el contraste entre el ritmo normal y el momento en que el tiempo se estira. Hoy aprenderás a escribir ese contraste.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/45d3b1c5530947549272d43cd88473f9" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: as pegadas do ensaio de dança — perto = rápido, longe = devagar, perto de novo = rápido -->
+<path d="M32 190 h236" stroke-width="2" style="stroke:var(--line2)"></path>
+<g style="fill:var(--muted)">
+<ellipse cx="50" cy="188" rx="7" ry="4"></ellipse>
+<ellipse cx="74" cy="188" rx="7" ry="4"></ellipse>
+<ellipse cx="98" cy="188" rx="7" ry="4"></ellipse>
+</g>
+<g style="fill:var(--accent)">
+<ellipse cx="146" cy="188" rx="8" ry="4.6"></ellipse>
+<ellipse cx="202" cy="188" rx="8" ry="4.6"></ellipse>
+</g>
+<g style="fill:var(--muted)">
+<ellipse cx="232" cy="188" rx="7" ry="4"></ellipse>
+<ellipse cx="256" cy="188" rx="7" ry="4"></ellipse>
+<ellipse cx="278" cy="188" rx="7" ry="4"></ellipse>
+</g>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="74" y="212">rápido</text>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="174" y="212">despacio</text>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="256" y="212">rápido</text>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="36">el ritmo del ensayo marca el tiempo de la escena</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">01</span> Qué es, en realidad, la cámara lenta</h2>
+<p>A <span class="gterm" data-def="Técnica de gravar um momento em muitos quadros por segundo e reproduzi-lo em poucos — o tempo parece esticar, e o movimento fica mais lento e mais dramático na tela." tabindex="0">cámara lenta</span> — la «cámara lenta» del cine: es una de las técnicas audiovisuales más poderosas; alarga un instante y hace que el público sienta que ese momento importa más que los demás.</p>
+<p>En las producciones profesionales, aparece en los momentos que merecen énfasis: un resultado importante, un giro emocional, un impacto. Fuera de esos momentos, cansa: un video entero en cámara lenta es solo un video lento, sin ningún significado.</p>
+<p>La social media recibe esta solicitud todas las semanas: «haz un video bonito de la inauguración de la tienda en cámara lenta». Sin saber dónde aplicar el efecto ni por cuánto tiempo, suele extenderlo por todo el video, y el resultado cansa en vez de emocionar.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">02</span> El secreto es el contraste: rápido, despacio, rápido de nuevo</h2>
+<p>Si todo va lento, nada parece especial. El impacto de la cámara lenta viene del contraste: el ritmo normal antes, el tiempo estirado en el momento que importa y el ritmo normal de vuelta después. Esa interrupción es la que le avisa al público: "presta atención aquí".</p>
+<div class="qsteps">
+<p class="qk">La estructura rápido → lento → rápido</p>
+<ol>
+<li>Elige el momento exacto que merece destacarse (el corte, el giro, el resultado).</li>
+<li>Escribe el fragmento anterior a ritmo normal — la «preparación» de la escena.</li>
+<li>Escribe el momento destacado en cámara lenta por separado, sin mezclarlo con el resto.</li>
+<li>Vuelve al ritmo normal enseguida: la escena «recupera el aliento».</li>
+</ol>
+</div>
+<p>La social media aplica esto en el video de inauguración: el movimiento normal de la calle y de las personas que van llegando, el corte de la cinta extendido en cámara lenta y los aplausos de vuelta al ritmo normal. Tres bloques, un contraste, y el corte de la cinta se convierte en el centro de atención.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">03</span> Nombra los cuadros por segundo, no solo «cámara lenta»</h2>
+<p>"Cámara lenta" por sí solo es una instrucción incompleta: la IA necesita saber cuánto estirar. Escribe siempre la proporción: "120fps a 24fps" o, de forma más simple, "5x slow motion". Estas expresiones indican exactamente el grado de estiramiento que usan los profesionales del cine.</p>
+<p>Vale la pena cambiar de plano aproximadamente cada 2 segundos (abierto, medio, primer plano, un ángulo lateral) para darle ritmo cinematográfico: una escena que permanece en el mismo plano todo el tiempo cansa, incluso en cámara lenta. Y describe pequeños detalles de movimiento —parpadear, respirar, una sonrisa que aparece lentamente— para que el personaje no parezca congelado.</p>
+<p>La fotógrafa usa esta receta al generar el video de una joya que gira lentamente para el catálogo: plano cerrado, «5x slow motion», luz constante, un brillo que se mueve junto con el giro. Es ese detalle —la misma luz de principio a fin— lo que hace que el giro parezca filmado de verdad, y no simplemente alargado.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">04</span> Error común: pedir "cámara lenta" y dejarlo ahí</h2>
+<div class="qerr">
+<p class="qk">Error común</p>
+<p class="qerr-txt"><b>Escribir solo «en cámara lenta» y nada más.</b> Sin contraste, sin fotogramas por segundo y sin saber dónde entra el efecto, la IA aplica un ritmo genérico — a veces todo el video queda lento, a veces el efecto ni siquiera se nota. Nombra siempre el momento, la proporción de fotogramas y lo que viene antes y después.</p>
+</div>
+<p>El dueño de un restaurante cayó en este error al pedir «plato flameándose en cámara lenta»: la llama subió despacio durante todo el video, sin ningún instante a ritmo normal antes ni después; el resultado cansaba en vez de impresionar. Al reescribirlo con la estructura rápido-despacio-rápido y «5x slow motion» solo en el instante en que subía la llama, el mismo plato adquirió el peso que le faltaba.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<div class="quiz" data-answer="a">
+<p class="qk">Ponte a prueba (opcional)</p><p class="q">Tu video en cámara lenta quedó uniforme de principio a fin y pareció pesado, sin ningún momento destacado. ¿Qué probablemente faltó en la solicitud?</p>
+<button class="opt" data-fb="Exato: sem o contraste rápido-devagar-rápido, a câmera lenta perde a força — ela só funciona quando interrompe um ritmo normal." data-k="a">El contraste entre el ritmo normal y el momento prolongado</button>
+<button class="opt" data-fb="A duração total do vídeo não é o problema central aqui — um vídeo curto sem contraste continua parecendo arrastado." data-k="b">Un video más corto, con menos segundos en total</button>
+<button class="opt" data-fb="Cor e iluminação pesam no resultado final, mas não explicam a sensação de 'arrastado' — isso vem do ritmo, não da paleta de cores." data-k="c">Más variedad de colores en la iluminación de la escena</button>
+<p class="qfb"></p>
+</div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p2">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Escribe tu contraste rápido-lento-rápido</h3>
+<p class="pgoal">Terminar con una solicitud de video en tres bloques — ritmo normal, cámara lenta, ritmo normal — aplicada a un momento tuyo, en ~12 minutos.</p>
+<p class="psafe">Es solo texto: no se borra ninguno de tus videos y cada generación es independiente. Si el ritmo no queda bien, ajusta un bloque a la vez y genera de nuevo.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Bloco 1 (ritmo normal): &lt;descreva o preparo da cena, alguns segundos antes
+do momento que importa&gt;
+Bloco 2 (câmera lenta, 5x slow motion, 120fps para 24fps): &lt;descreva só
+o instante de destaque — o corte, a virada, o resultado — com um detalhe
+pequeno de movimento: piscar, respirar, um sorriso surgindo&gt;
+Bloco 3 (ritmo normal): &lt;descreva o que acontece logo depois, de volta
+ao ritmo normal&gt;
+
+Mantenha a mesma luz e o mesmo ambiente nos três blocos.</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige un momento tuyo que merezca destacarse: un resultado, un giro, una entrega.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Completa los tres bloques del pedido anterior, sin omitir el «antes» ni el «después».</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Genera el video y comprueba: ¿se siente la diferencia de ritmo entre los bloques?</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Si el efecto desapareció o se apoderó de todo el video, refuerza la proporción de fotogramas ("120fps para 24fps") y genera de nuevo.</label></li>
+</ol>
+<p class="pdone">Escribiste una indicación de cámara lenta con inicio, desarrollo y final rítmicos — la diferencia entre un video lento y uno que emociona.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Câmera lenta contínua não tem pico: o público não sabe onde prestar atenção. Um vídeo precisa de um momento que se destaque dos outros." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 120 h180" stroke-width="1.6" style="stroke:var(--line2)"></path>
+<path d="M20 120 h180" stroke-dasharray="1 5" stroke-linecap="round" stroke-width="2" style="stroke:var(--muted)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="150">todo lento = sin picos</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="40">ritmo sin contraste</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A curva de ritmo certa: rápido, um vale de tempo esticado no meio, rápido de novo — o momento de destaque fica isolado." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 90 h50 c20 0 26 60 50 60 c24 0 30 -60 50 -60 h50" fill="none" stroke-width="2.2" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="45" y="76">rápido</text>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="168">despacio</text>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="175" y="76">rápido</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; A proporção de quadros diz o quanto esticar: 120fps para 24fps é 5 vezes mais devagar — sem esse número, a IA escolhe por conta própria." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g style="fill:var(--line2)"><rect height="26" width="10" x="26" y="40"></rect><rect height="26" width="10" x="40" y="40"></rect><rect height="26" width="10" x="54" y="40"></rect><rect height="26" width="10" x="68" y="40"></rect><rect height="26" width="10" x="82" y="40"></rect></g>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="86">120fps grabados</text>
+<path d="M108 53 h24" stroke-width="2" style="stroke:var(--accent)"></path><path d="M126 48 l8 5 -8 5" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<g style="fill:var(--accent)"><rect height="26" width="16" x="150" y="40"></rect></g>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="158" y="86">24fps en pantalla</text>
+<text font-size="10" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="130">= 5 veces más despacio</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; 'Câmera lenta' sozinho é uma caixa vazia: sem contraste, sem proporção e sem o momento marcado, a IA decide o ritmo por você." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="60" rx="8" stroke-dasharray="4 4" stroke-width="2" style="stroke:var(--warm)" width="120" x="50" y="60"></rect>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="95">"cámara lenta"</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="140">sin contraste, sin fps, sin momento</text>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="158">= la IA decide por su cuenta</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>La cámara lenta extendida de principio a fin no emociona: el efecto viene del contraste entre el ritmo normal y el ritmo extendido.</li>
+<li>La estructura rápido-lento-rápido da forma a cualquier escena destacada, cambiando de plano cada pocos segundos.</li>
+<li>"Cámara lenta" por sí solo es una instrucción incompleta: indicar la proporción de cuadros (como "120fps a 24fps") le dice a la IA cuánto estirar el tiempo.</li>
+<li>Los pequeños detalles de movimiento y la luz constante entre los bloques evitan la sensación de un personaje congelado.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de convertir una solicitud imprecisa de cámara lenta en una solicitud técnica, con el contraste y la proporción definidos.</p>
+<p class="na-action">En los próximos 15 minutos: toma un segundo momento de tu trabajo y vuelve a escribir el pedido; esta vez, cambia el tipo de plano del bloque destacado (close en lugar de abierto, por ejemplo).</p>
+<p class="na-hook">En la próxima clase, aprenderás a usar humo, polvo y confeti para ocultar los errores que la IA todavía comete en las transiciones entre un instante y otro.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-1">← clase anterior</a><a href="#aula-3">próxima clase →</a></nav>
+<footer>Clase 2 · Acción y actuación · Formación de Cine con IA</footer>
+<script id="cards-2" type="application/json">
+[
+  {"front":"Diagnóstico: seu vídeo em câmera lenta ficou uniforme do início ao fim e pareceu arrastado, não emocionante. O que faltou?","back":"Contraste — trechos em ritmo normal antes e depois do momento esticado; câmera lenta o tempo todo perde a força."},
+  {"front":"Pergunta: além de escrever 'câmera lenta', o que você precisa nomear para a IA simular o estiramento certo do tempo?","back":"A proporção de quadros por segundo — por exemplo, '120fps para 24fps' ou '5x slow motion'."},
+  {"front":"Aplicação: você vai gerar o corte de fita de uma inauguração em câmera lenta. Cite dois detalhes pequenos que evitam a cara de personagem congelado.","back":"Piscar os olhos e uma respiração visível — pequenos movimentos que mostram que a pessoa está viva, não parada no tempo."}
+]
+</script>
+<!--
+COMPLETUDE aula-2 | tipo=FERRAMENTA | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), social media (s2), fotógrafa (s3), dono de restaurante (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-2"> presente (3 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 3/3 diagnóstico/pergunta/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); teste-se opcional presente (1 pergunta no s4) — única aula FERRAMENTA do curso com este opcional
+-->
+</section>
+<!-- ===== AULA 3 ===== -->
+<section class="view" data-aula="3" data-tempo="18min" id="v-aula-3">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 5 · Lección 3</p>
+<h1>La cortina que <em>disfraza</em></h1>
+<p class="promise">Al final de esta clase usarás humo, polvo o confeti simulados para ocultar el instante en que una escena generada por IA todavía falla, transformando un error visible en una atmósfera cinematográfica.</p>
+<p class="why">Los videos generados con IA todavía fallan en las transiciones: un objeto cambia de forma de manera extraña, un borde parpadea. Perseguir una transformación perfecta es perder tiempo. Quienes trabajan con esto a diario usan un truco más antiguo que el cine digital: ocultar el instante difícil detrás de un movimiento atmosférico.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/0e6a91c6d583437db60f8836e0dc1bd7" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a cortina de fumaça do truque de palco — esconde a troca, não o que importa -->
+<path d="M50 62 v128" stroke-width="2" style="stroke:var(--line2)"></path>
+<circle cx="50" cy="52" r="14" stroke-width="2" style="stroke:var(--line2)"></circle>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="50" y="212">antes</text>
+<path d="M112 70 c14 -10 10 20 26 14 c-6 16 20 8 14 26 c18 -4 6 22 22 20 c-10 14 14 10 6 28" fill="none" opacity=".85" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<path d="M130 100 c10 -6 8 16 20 12 c-4 12 16 6 12 20" fill="none" opacity=".5" stroke-width="1.2" style="stroke:var(--accent)"></path>
+<path d="M100 130 c10 4 6 -12 18 -10" fill="none" opacity=".4" stroke-width="1.1" style="stroke:var(--accent)"></path>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="170" y="222">la cortina de humo oculta el cambio</text>
+<path d="M250 62 v128" stroke-width="2" style="stroke:var(--warm)"></path>
+<circle cx="250" cy="52" r="14" stroke-width="2" style="stroke:var(--warm)"></circle>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="250" y="212">después</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> El mundo real nunca está quieto</h2>
+<p>Llámalo <span class="gterm" data-def="Conjunto de pequenos elementos simulados — fumaça, poeira, faíscas, confete, gotas — que se movem juntos numa cena para criar atmosfera, textura e sensação de vida." tabindex="0">sistemas de partículas</span> cualquier nube de pequeños elementos que se mueven juntos en una escena: humo, polvo suspendido en el aire, chispas, confeti, niebla. Existen porque el mundo real nunca permanece completamente quieto, y una escena sin ninguno de estos elementos se siente estéril, digital, muerta.</p>
+<p>En una escena generada con IA, esa ausencia se nota aún más: si nada se mueve en el aire, el fondo parece un estudio vacío, no un lugar real. Las partículas resuelven esto con poca descripción y también resuelven otro problema que verás en el siguiente paso.</p>
+<p>La social media lo nota al generar el video de aniversario de una tienda: cinco años en el local. Un video «limpio», sin nada en el aire, parece un anuncio de una inmobiliaria vacía. Con confeti y serpentinas en movimiento, el mismo escenario se convierte en una verdadera fiesta.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> La partícula es una cortina, no un adorno</h2>
+<p>Aquí está el uso profesional que pocos conocen: las partículas ocultan los errores que la IA todavía comete. El video generado por IA tiembla durante las transformaciones: una forma cambia de manera extraña, un borde parpadea o «se derrite» por una fracción de segundo. En lugar de intentar una transformación matemáticamente perfecta, los profesionales usan la física para engañar al ojo.</p>
+<p>El humo denso oculta el instante exacto en que una forma cambia. La neblina suaviza los bordes temblorosos. Las partículas que se disuelven rompen un contorno predecible y hacen que cualquier imperfección parezca intencional. La mirada del espectador sigue el movimiento del humo, no el pequeño error que hay detrás.</p>
+<p>El dueño de un restaurante usa este truco sin saber cómo se llama: al generar la transición de un plato crudo al plato listo, pone una nube de humo de la estufa justo en medio del cambio. El público ve el humo subir, no el instante en que la escena «saltó» de un estado al otro.</p>
+<div class="qanchor"><p>La partícula no decora la escena: oculta el instante en que la IA todavía tropieza.</p></div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> Dónde entra la atmósfera: luz, densidad, viento</h2>
+<p>Tres detalles deciden si la partícula parece real o solo un efecto flotando sobre la escena. La <b>luz</b>: las partículas adecuadas captan y dispersan la luz que ya existe en la escena —polvo brillando en un rayo de sol, humo iluminado desde atrás. La <b>densidad</b>: cuánto se puede ver a través de ella —la ligera deja pasar el fondo, la densa lo oculta a propósito. Y la <b>viento</b>: la dirección en la que todo se mueve, dando a la escena una corriente de aire coherente, no partículas flotando sin rumbo.</p>
+<p>Combinar más de una capa —humo de fondo con chispas en primer plano, por ejemplo— crea profundidad: cada capa ocupa una distancia diferente de la cámara, y el ojo lo interpreta como espacio real, no como un efecto pegado a una imagen plana.</p>
+<p>La fotógrafa aplica esta idea en una foto fija de estudio: una neblina fina, iluminada de lado, suspendida entre el fondo y la persona retratada. El resultado gana una profundidad que una foto «limpia» en el mismo estudio nunca tendría.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> La receta: describe la partícula, la luz y el viento</h2>
+<p>Toda indicación de partículas que funciona nombra tres cosas: el tipo y la densidad de la partícula, la luz que refleja y la dirección del viento que la mueve. Sin estos tres campos, la IA improvisa — y el resultado suele ser genérico o, peor aún, no tener ningún efecto visible.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>"Confeti cayendo en la fiesta de cumpleaños de la tienda." Sin densidad, sin viento, sin luz: el confeti suele salir flotando de forma extraña, sin peso.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>"Confeti denso, cayendo con una leve brisa lateral y captando la luz cálida de las lámparas de la tienda mientras gira en el aire." El mismo pedido, con la física descrita: el confeti cae como confeti de verdad.</p></div>
+<p class="qba-saldo">Balance: cero generaciones adicionales gastadas — toda la diferencia provino de los tres campos descritos.</p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<div class="quiz" data-answer="a">
+<p class="qk">Ponte a prueba</p><p class="q">Un clip tuyo de transformación (un producto que se revela dentro de una caja, por ejemplo) tiembla de forma extraña justo en el momento del cambio. ¿Qué ayuda a ocultar esta falla?</p>
+<button class="opt" data-fb="Exato: a partícula densa funciona como cortina — ela ocupa o olho do espectador bem no momento em que a IA ainda tropeça." data-k="a">Un sistema de partículas denso (humo, polvo, confeti) justo en el instante del cambio</button>
+<button class="opt" data-fb="O oposto costuma expor mais a falha: uma cena limpa deixa o tremor da transformação visível, sem nada para disfarçar." data-k="b">Dejar la escena bien limpia, sin ningún efecto, para no distraer</button>
+<button class="opt" data-fb="Cortar a duração não resolve o instante exato da falha — ela continua lá, só que mais rápida." data-k="c">Reducir la duración del clip a la mitad</button>
+<p class="qfb"></p>
+</div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p3">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Esconde el defecto detrás de la atmósfera</h3>
+<p class="pgoal">Terminar con una solicitud de transición oculta por partículas — humo, polvo o confeti — aplicada a una escena tuya, en ~10 minutos.</p>
+<p class="psafe">Es texto y generación de video: no se borra nada tuyo. Si la partícula no oculta bien el defecto, solo aumenta la densidad y genera de nuevo; cada intento es independiente.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">PARTÍCULA: &lt;tipo — fumaça, poeira, confete, faíscas — e densidade: rala
+ou densa&gt;
+LUZ: &lt;de onde vem e como ela toca a partícula&gt;
+VENTO: &lt;direção do movimento — lateral, subindo, caindo&gt;
+MOMENTO: &lt;o instante exato da cena que a partícula deve cobrir&gt;
+
+Aplique esses quatro campos à minha cena: &lt;descreva a transição ou
+transformação que você quer esconder&gt;</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige una escena tuya con una transición o transformación (una revelación, un cambio, un «antes y después»).</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Completa los cuatro campos anteriores, sin dejar ninguno vacío.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Genera el video y comprueba: ¿la partícula cubre bien el instante del cambio?</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Si el fallo sigue apareciendo, aumenta la densidad de la partícula en ese momento específico y genera de nuevo.</label></li>
+</ol>
+<p class="pdone">Transformaste un fallo visible de la IA en una capa de atmósfera cinematográfica: exactamente lo que prometía esta clase.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Um fundo sem nenhuma partícula no ar lê como cenário de estúdio vazio; com fumaça ou poeira suspensa, o mesmo espaço lê como lugar real." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="100" rx="6" stroke-width="2" style="stroke:var(--line2)" width="80" x="20" y="40"></rect>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="160">aire quieto = vacío</text>
+<rect height="100" rx="6" stroke-width="2" style="stroke:var(--accent)" width="80" x="120" y="40"></rect>
+<g opacity=".7" style="fill:var(--accent)"><circle cx="140" cy="66" r="2.4"></circle><circle cx="158" cy="84" r="1.8"></circle><circle cx="172" cy="60" r="2"></circle><circle cx="150" cy="104" r="1.6"></circle><circle cx="184" cy="96" r="2.2"></circle><circle cx="164" cy="118" r="1.8"></circle></g>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="160">aire vivo = lugar real</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A borda tremida da transformação (esquerda) fica exposta; uma nuvem de partículas sobre o mesmo instante (direita) cobre exatamente o ponto do tropeço." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M40 60 l6 14 -10 4 10 10 -8 10 12 8" fill="none" stroke-width="2" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="46" y="150">borde expuesto</text>
+<path d="M150 60 l6 14 -10 4 10 10 -8 10 12 8" fill="none" opacity=".4" stroke-width="1.4" style="stroke:var(--line2)"></path>
+<g opacity=".85" style="fill:var(--accent)"><circle cx="140" cy="70" r="4"></circle><circle cx="156" cy="82" r="5"></circle><circle cx="148" cy="98" r="4.4"></circle><circle cx="164" cy="94" r="3.6"></circle><circle cx="152" cy="112" r="4"></circle></g>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="152" y="150">cubierta por la nube</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Camadas em distâncias diferentes — faísca perto, fumaça no meio, névoa ao fundo — criam profundidade que uma camada só não alcança." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="30" opacity=".5" rx="4" stroke-width="1.4" style="stroke:var(--faint)" width="172" x="24" y="130"></rect>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="150">neblina al fondo</text>
+<g opacity=".7" style="fill:var(--muted)"><circle cx="70" cy="90" r="5"></circle><circle cx="100" cy="98" r="6"></circle><circle cx="130" cy="88" r="5.4"></circle></g>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="100" y="70">humo en el medio</text>
+<g style="fill:var(--warm)"><circle cx="90" cy="44" r="2.6"></circle><circle cx="112" cy="38" r="2"></circle><circle cx="128" cy="48" r="2.4"></circle></g>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="24">chispa cerca de la cámara</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Confete sem densidade, luz ou vento descritos boia sem peso; com os três campos preenchidos, ele cai como confete de verdade." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g opacity=".6" style="fill:var(--line2)"><rect height="6" width="6" x="30" y="40"></rect><rect height="6" width="6" x="55" y="70"></rect><rect height="6" width="6" x="40" y="100"></rect></g>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="45" y="150">suelto, sin peso</text>
+<g style="fill:var(--accent)"><rect height="7" transform="rotate(20 143 40)" width="7" x="140" y="36"></rect><rect height="7" transform="rotate(-15 161 60)" width="7" x="158" y="56"></rect><rect height="7" transform="rotate(35 149 82)" width="7" x="146" y="78"></rect><rect height="7" transform="rotate(-25 175 74)" width="7" x="172" y="70"></rect><rect height="7" transform="rotate(10 157 104)" width="7" x="154" y="100"></rect></g>
+<path d="M130 30 l60 90" stroke-dasharray="2 3" stroke-width="1.2" style="stroke:var(--faint)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="150">viento + luz + densidad</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>El mundo real nunca está quieto: las partículas (humo, polvo, confeti) dan vida a una escena generada por IA.</li>
+<li>La partícula funciona como una cortina: oculta el instante en que la IA todavía tropieza con una transformación o una transición.</li>
+<li>La luz, la densidad y la dirección del viento determinan si la partícula parece una atmósfera real o un adorno suelto sobre la escena.</li>
+<li>Combinar más de una capa —humo al fondo, una chispa cerca de la cámara— crea una profundidad que un solo efecto no puede alcanzar.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de convertir un defecto visible de la IA en una capa de atmósfera cinematográfica.</p>
+<p class="na-action">En los próximos 15 minutos: identifica un clip tuyo con una transición extraña y reescribe el pedido para cubrir ese instante con un sistema de partículas descrito en los cuatro campos de hoy.</p>
+<p class="na-hook">En la próxima clase, cerrarás este primer bloque combinando todo —efecto, ritmo y atmósfera— en una escena de acción completa, con la fórmula que hace que el público aliente hasta el final.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-2">← clase anterior</a><a href="#aula-4">próxima clase →</a></nav>
+<footer>Lección 3 · Acción y actuación · Formación de Cine con IA</footer>
+<script id="cards-3" type="application/json">
+[
+  {"front":"Pergunta: o que os sistemas de partículas fazem numa cena gerada por IA, além de deixar tudo mais bonito?","back":"Escondem falhas da IA (tremores, bordas instáveis, trocas bruscas) usando movimento atmosférico para distrair o olho."},
+  {"front":"Diagnóstico: seu vídeo de transição saiu com um tremor visível bem no instante da troca. O que ajudaria a esconder isso?","back":"Um sistema de partículas denso (fumaça, poeira, confete) posicionado exatamente sobre aquele instante."},
+  {"front":"Decisão: você tem duas opções para o vídeo de aniversário da loja — 'confete caindo' solto, ou confete com densidade, vento e luz descritos. Qual escolher, e por quê?","back":"A segunda — sem esses três campos, o confete costuma sair boiando de forma artificial, sem peso nem direção."},
+  {"front":"Aplicação: cite dois sistemas que, combinados, criam mais profundidade numa cena do que um efeito sozinho.","back":"Por exemplo, fumaça ao fundo mais faíscas em primeiro plano — cada camada ocupa uma distância diferente da câmera."}
+]
+</script>
+<!--
+COMPLETUDE aula-3 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="18min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), dono de restaurante (s2), fotógrafa (s3), social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-3"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 pergunta/diagnóstico/decisão/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 4 ===== -->
+<section class="view" data-aula="4" data-tempo="20min" id="v-aula-4">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 5 · Lección 4</p>
+<h1>La fórmula de la <em>acción</em></h1>
+<p class="promise">Al final de esta clase, escribes tres escenas de acción de 5 segundos con la fórmula de riesgo visual, movimiento, expectativa y giro, la misma que sostiene comerciales y videoclips impactantes, sin ningún efecto realmente aterrador.</p>
+<p class="why">Un cliente pide "un video con acción" y recibe un video con movimiento — personas caminando rápido, cámara temblorosa — pero nadie siente nada al verlo. La acción no es velocidad: es una fórmula con elementos específicos. Hoy cierras el primer bloque del curso aprendiendo esa fórmula.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/12c542ad01df480887bcc9d7267f4b99" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a coreografia de luta de palco — cada passo é marcado e ensaiado, o risco é só aparência -->
+<path d="M40 190 h220" stroke-width="2" style="stroke:var(--line2)"></path>
+<circle cx="90" cy="80" r="16" stroke-width="2" style="stroke:var(--accent)"></circle>
+<path d="M90 96 v50 M90 118 l-26 20 M90 118 l30 14" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<circle cx="210" cy="80" r="16" stroke-width="2" style="stroke:var(--warm)"></circle>
+<path d="M210 96 v50 M210 118 l26 20 M210 118 l-30 14" fill="none" stroke-width="2" style="stroke:var(--warm)"></path>
+<path d="M110 142 q40 -30 80 0" fill="none" stroke-dasharray="3 4" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<g font-size="9" style="fill:var(--faint);font-family:var(--mono)">
+<text x="118" y="184">1</text><text x="147" y="150">2</text><text x="176" y="184">3</text>
+</g>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="218">cada paso se marca y se ensaya de antemano</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> La acción no es solo movimiento</h2>
+<p>Una escena con mucho movimiento y ninguna tensión es solo agitación: la vista se cansa y la olvida en segundos. La acción verdadera, la que queda en la memoria del público, tiene cuatro piezas, siempre en este orden: <b>riesgo visual</b> (algo parece estar en juego), <b>movimiento</b> (la energía de la escena), <b>expectativa</b> (el público no sabe cómo termina) y <b>giro</b> (la resolución, el pago de esa tensión).</p>
+<p>La pregunta que toda buena escena de acción deja en el aire es sencilla: «¿y ahora, cómo va a terminar esto?». Sin esa pregunta, no importa cuántos efectos acumules: la escena no se queda en la memoria.</p>
+<p>La social media lo nota al generar el video de una cafetería cliente: un mesero cruza el salón lleno, esquiva las sillas y entrega el pedido antes de que se apague sola la vela del pastel de cumpleaños. El movimiento por sí solo sería solo un mesero caminando rápido; la vela a punto de apagarse es lo que plantea la pregunta.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> La tensión viene del casi</h2>
+<p>El mecanismo más usado en comerciales y videoclips impactantes no es el choque: es el <b>casi</b>. Casi algo sale mal y, en el último instante, todo sale bien. Ese "casi" es lo que hace que el público contenga la respiración por medio segundo, sin ningún efecto realmente aterrador.</p>
+<p>También funciona con objetos: una pila de cajas de entrega baja lentamente, una se resbala y el repartidor sujeta el último paquete a centímetros del suelo. Nadie se lastima, nada se rompe de verdad, pero el público sintió todo ese «casi».</p>
+<p>El dueño de un restaurante aplicó exactamente esto en un video detrás de cámaras: unas cajas de insumos apiladas en la cocina se tambalean con el movimiento del salón, una casi se cae y el cocinero la sostiene sin soltar el cuchillo. Riesgo visual, sin ningún peligro real: solo la sensación de «casi».</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>Montaje de «movimiento»: personas caminando rápido, cámara temblorosa, sin ningún instante de riesgo. Energía, pero ninguna tensión.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>El mismo movimiento, pero con un "casi" en medio: la caja que se resbala, la pausa de medio segundo, la mano que la sujeta a tiempo.</p></div>
+<p class="qba-saldo">Resultado: el mismo elenco de imágenes, pero ahora queda una pregunta en el aire y una respuesta que la resuelve.</p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> Una idea fuerte por escena</h2>
+<p>En cinco segundos no caben cinco ideas. La regla de oro de quienes escriben escenas de acción para comerciales y videoclips es sencilla: una idea visual potente por escena. Intentar encajar un «casi se cae», una revelación y una persecución en el mismo clip de cinco segundos lo vuelve todo confuso: ninguna de las tres ideas tiene espacio para respirar.</p>
+<p>La fotógrafa aplicó esta regla en un video de boda: el ramo se resbala de la mano de la novia justo al borde de un charco y un invitado lo atrapa en el aire, a centímetros del agua. Una sola idea —el «casi» del ramo— sostiene toda la escena. Ningún otro elemento compite con ella.</p>
+<p>Lo mismo vale para escenas de revelación: una caja que se abre, un producto que aparece, una cortina que se abre despacio; también son una idea visual potente, sin necesidad de ningún riesgo físico. Lo importante es elegir una sola idea y dejar que sostenga los cinco segundos por sí sola.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> La pregunta que pone a prueba si funcionó</h2>
+<div class="qanchor"><p>Si el público piensa "casi no lo logra", la escena cumplió la fórmula.</p></div>
+<p>Después de generar cualquier escena de acción, hazte esta sencilla pregunta: ¿alguien que la vea pensaría «casi no lo logró»? Si la respuesta es sí, la fórmula funcionó: están presentes el riesgo visual, el movimiento, la expectativa y el giro. Si la respuesta es no, por lo general falta una de estas cuatro piezas, casi siempre la expectativa.</p>
+<p>Quien gestiona las redes sociales usa esta pregunta para revisar su propio clip de entrega antes de publicarlo: el mesero corriendo se ve bien, pero nadie lo alentaría si no estuviera la vela a punto de apagarse al fondo. Agregar ese detalle sencillo cambia la respuesta a la pregunta de "no" a "sí".</p>
+<div class="mobfig" data-mobfig="4"></div>
+<div class="quiz" data-answer="a">
+<p class="qk">Ponte a prueba</p><p class="q">Revisas un clip de acción que generaste: hay mucho movimiento, pero nadie comentó nada después de verlo. Según la fórmula de esta clase, ¿qué probablemente hace falta?</p>
+<button class="opt" data-fb="Exato: movimento sem expectativa é só agitação. Falta o momento em que o resultado parece incerto — a pergunta 'como isso termina?'." data-k="a">Expectativa: el público nunca llega a preguntarse «¿será que puede hacerlo?»</button>
+<button class="opt" data-fb="Mais efeito não cria tensão sozinho — sem risco visual e expectativa, mais elementos só deixam a cena mais cheia, não mais forte." data-k="b">Faltan más efectos visuales, como humo y chispas</button>
+<button class="opt" data-fb="Duração não é o centro da fórmula — uma cena de 5 segundos com risco e virada prende mais do que uma longa sem tensão nenhuma." data-k="c">El video es demasiado corto</button>
+<p class="qfb"></p>
+</div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p4">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Planifica tres escenas de «casi»</h3>
+<p class="pgoal">Sal con tres ideas para una escena de acción de 5 segundos —lo visual, el mecanismo y por qué funciona—, en ~12 minutos, sin generar nada todavía.</p>
+<p class="psafe">Es un ejercicio en papel o en las notas del celular: en esta práctica no se genera nada y nada puede salir mal. Una idea floja aquí es solo un borrador tachado, nunca una pérdida.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige tres momentos de tu trabajo con potencial de "casi": una entrega, un resultado, una revelación.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Para cada uno, escribe tres líneas: lo visual (lo que se ve), el mecanismo (casi perderlo, revelación, carrera contra el tiempo) y la lógica (por qué funciona).</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Vuelve a leer las tres y tacha cualquier escena que intente transmitir más de una idea fuerte a la vez.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Aplica la pregunta de prueba a cada una: ¿alguien pensaría «casi no lo logra»? Guarda la mejor para generarla después.</label></li>
+</ol>
+<p class="pdone">Planeaste tres escenas de acción con la fórmula completa —riesgo visual, movimiento, expectativa y giro—, listas para convertirse en pedidos de video cuando quieras.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; As quatro peças da ação, sempre nessa ordem: risco visual entra primeiro, a virada resolve a tensão que as outras três construíram." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="2" style="stroke:var(--accent)">
+<rect height="34" rx="6" width="42" x="14" y="80"></rect><rect height="34" rx="6" width="42" x="66" y="80"></rect>
+<rect height="34" rx="6" width="42" x="118" y="80"></rect><rect height="34" rx="6" width="42" x="170" y="80"></rect>
+</g>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="35" y="100">riesgo</text><text text-anchor="middle" x="87" y="100">movimiento</text>
+<text text-anchor="middle" x="139" y="100">expectativa</text><text text-anchor="middle" x="191" y="100">giro</text>
+</g>
+<path d="M56 97 h10 M108 97 h10 M160 97 h10" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="140">las cuatro piezas, en este orden</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Movimento sem risco é uma linha reta, sem tensão; o 'quase' cria um mergulho — a queda que quase acontece — antes da recuperação." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 70 h60" stroke-width="2" style="stroke:var(--line2)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="50" y="56">solo movimiento</text>
+<path d="M100 70 c20 4 24 60 44 60 c20 0 24 -50 40 -50" fill="none" stroke-width="2.2" style="stroke:var(--accent)"></path>
+<circle cx="144" cy="130" r="4" style="fill:var(--warm)"></circle>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="150" y="56">el «casi» + el giro</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Cinco ideias empilhadas competem entre si e nenhuma vence; uma ideia só, sozinha no quadro, carrega os cinco segundos inteiros." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" opacity=".7" stroke-width="1.6" style="stroke:var(--line2)">
+<circle cx="60" cy="70" r="14"></circle><rect height="16" width="20" x="40" y="90"></rect><path d="M76 60 l14 -10"></path><circle cx="44" cy="100" r="8"></circle><rect height="12" width="14" x="66" y="94"></rect>
+</g>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="140">cinco ideas, ninguna se impone</text>
+<circle cx="160" cy="80" r="26" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="140">una idea, con espacio</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; A pergunta-teste depois de gerar: se a resposta é 'sim, quase não conseguiu', as quatro peças da fórmula estão todas presentes." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="60" rx="12" stroke-width="2" style="stroke:var(--accent)" width="140" x="40" y="40"></rect>
+<path d="M76 100 l-14 20 26 -12 z" style="fill:var(--bg,var(--panel))"></path>
+<path d="M76 100 l-14 20 26 -12 z" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="66">"casi no</text>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="82">¿lo lograste?"</text>
+<path d="M92 158 l14 14 26 -30" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="stroke:var(--accent)"></path>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>La acción de verdad no es solo movimiento: implica riesgo visual, movimiento, expectativa y giro, siempre en ese orden.</li>
+<li>La tensión nace del "casi": algo casi sale mal y se resuelve en el último instante, sin ningún peligro real.</li>
+<li>Una escena intensa transmite una sola idea visual: acumular varios recursos en cinco segundos diluye el efecto de todos.</li>
+<li>La prueba final es sencilla: si el público pensara "casi no lo logra", las cuatro piezas de la fórmula están presentes.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de completar el primer bloque del curso con una fórmula que reúne física, ritmo y atmósfera en una sola escena.</p>
+<p class="na-action">En los próximos 15 minutos: elige la mejor de tus tres ideas planificadas y escribe el pedido completo de video, aplicando lo que aprendiste en las tres clases anteriores.</p>
+<p class="na-hook">En la próxima clase, el curso cambia de registro: entrarás en el bloque de actuación; cómo hacer que un personaje generado por IA sienta algo, empezando por lo que nunca necesita decir en voz alta.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-3">← clase anterior</a><a href="#aula-5">próxima clase →</a></nav>
+<footer>Lección 4 · Acción y actuación · Formación de Cine con IA</footer>
+<script id="cards-4" type="application/json">
+[
+  {"front":"Pergunta: quais são as quatro peças da fórmula de ação, na ordem certa?","back":"Risco visual, movimento, expectativa e virada — nessa ordem."},
+  {"front":"Diagnóstico: seu clipe de ação tem bastante movimento, mas ninguém comentou nada depois de assistir. O que provavelmente falta?","back":"Expectativa — sem uma pergunta no ar ('como isso termina?'), movimento sozinho não gera tensão."},
+  {"front":"Contraste: qual a diferença entre uma cena de 'perseguição sem risco' e uma cena de 'quase'?","back":"A perseguição sem risco é só energia; o 'quase' cria uma pergunta (vai dar certo?) e resolve ela — é isso que prende o público."},
+  {"front":"Aplicação: você tem uma ideia de cena com uma revelação de produto E um 'quase cai' ao mesmo tempo, nos mesmos 5 segundos. O que a regra desta aula recomenda?","back":"Escolher uma ideia só — dividir em duas cenas separadas, cada uma carregando o próprio mecanismo, em vez de empilhar as duas."}
+]
+</script>
+<!--
+COMPLETUDE aula-4 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  social media (s1), dono de restaurante (s2), fotógrafa (s3), social media (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-4"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 pergunta/diagnóstico/contraste/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 5 ===== -->
+<section class="view" data-aula="5" data-tempo="16min" id="v-aula-5">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 5 · Lección 5</p>
+<h1>Lo que no se <em>dice</em></h1>
+<p class="promise">Al final de esta clase, escribes una escena corta en la que el personaje no dice lo que siente y, aun así, el público entiende exactamente qué siente por su reacción y su silencio.</p>
+<p class="why">El diálogo generado por IA suele sonar «muerto» porque el personaje lo explica todo en voz alta: «estoy triste», «estoy nervioso». La gente de verdad casi nunca habla así. Este es el primer paso del segundo bloque del curso: el bloque de interpretación.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/d32d355425014de1a0970b429b050411" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a máscara de teatro — o rosto que se mostra e o que sente por trás dele -->
+<path d="M100 70 c0 -26 20 -40 50 -40 c30 0 50 14 50 40 c0 34 -20 56 -50 56 c-30 0 -50 -22 -50 -56 z" fill="none" stroke-width="2.2" style="stroke:var(--accent)"></path>
+<path d="M126 66 q8 -8 16 0 M158 66 q8 -8 16 0" fill="none" stroke-linecap="round" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M136 108 q14 10 28 0" fill="none" stroke-linecap="round" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M92 78 c-4 -30 16 -46 48 -46 c32 0 52 16 48 46" fill="none" stroke-dasharray="3 4" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<path d="M126 118 q14 -6 28 0" fill="none" stroke-dasharray="2 3" stroke-linecap="round" stroke-width="1.6" style="stroke:var(--warm)"></path>
+<text font-size="10" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="150" y="200">el rostro muestra calma</text>
+<text font-size="10" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="150" y="218">detrás, una tensión que no se dice</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Lo que se siente es distinto de lo que se dice</h2>
+<p>En el cine, las personas casi nunca dicen exactamente lo que sienten. Una escena de diálogo potente no nace de las palabras, sino de la emoción escondida debajo de ellas, del lenguaje corporal, las pausas y el conflicto que nadie nombra en voz alta. Esto tiene un nombre: <b>subtexto</b> — el sentimiento real, que corre por debajo del diálogo.</p>
+<p>Cuando escribes una instrucción para que la IA genere un diálogo y dejas que el personaje "explique todo lo que siente", la escena pierde toda la tensión. Al público le gusta leer entre líneas — quitarle esa posibilidad es quitarle el motivo para mirar.</p>
+<p>La fotógrafa vive esto en su propio estudio: un cliente indeciso sobre qué paquete de fotos elegir mira el catálogo en silencio, sonríe sin convicción y solo dice «lo voy a pensar». Nunca dice «me da miedo gastar demasiado», pero todos en la sala saben exactamente lo que está pasando.</p>
+<div class="qanchor"><p>Un personaje que dice todo lo que siente no deja ninguna tensión para que el público la descubra.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> La reacción, el silencio y el conflicto hacen el trabajo pesado</h2>
+<p>Tres herramientas sostienen una escena de diálogo más que cualquier frase: la <b>reacción</b> de quien escucha (a veces el rostro de quien oye cuenta más que las palabras de quien habló), el <b>silencio</b> (lo que no se dice pesa más que cualquier diálogo) y el <b>conflicto</b> — dos personas que quieren cosas distintas en la misma escena, sin necesidad de una pelea a gritos.</p>
+<p>Al escribir el pedido, describe la reacción de quien escucha con el mismo cuidado que describes lo que se dice: una mirada que se desvía, una pausa antes de responder, una mano que aprieta la taza con más fuerza. Esos son los detalles que la IA necesita recibir, no la emoción nombrada.</p>
+<p>El dueño de un restaurante graba este tipo de escena sin darse cuenta, todos los días: un cliente insatisfecho nunca se queja en voz alta, pero el mesero lo nota por la forma en que dobla la servilleta, por la demora en probar el segundo bocado. Una escena institucional sobre atención al cliente puede usar exactamente ese silencio tenso, sin ninguna queja verbal.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> La medida: si todo se dice, la escena muere</h2>
+<p>Usa esta regla sencilla al revisar cualquier pedido de diálogo: si un personaje explica en voz alta lo que siente, reescribe la escena y sustituye el diálogo por una reacción física. La regla sirve para cualquier escena, comercial o personal: es la diferencia entre una escena que se siente y una que solo informa.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>"Me preocupa el presupuesto de la boda", dice el cliente. Toda la emoción está en lo que dice: no queda nada para que el público lo perciba por sí mismo.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>El cliente hojea el catálogo despacio, se detiene en una página, mira el precio en la esquina y cierra el catálogo sin decir nada. «Lo voy a pensar y te aviso», dice, sonriendo sin que la sonrisa le llegue a los ojos.</p></div>
+<p class="qba-saldo">Resultado: ambos muestran la misma preocupación, pero ahora el público la descubre en lugar de recibirla ya explicada.</p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<div class="quiz" data-answer="c">
+<p class="qk">Ponte a prueba</p><p class="q">Escribiste una escena en la que el personaje dice «estoy muy feliz con el resultado» mirando directamente a la cámara. Según lo que enseñó esta clase, ¿qué es probable que pierda esa escena?</p>
+<button class="opt" data-fb="A duração não é o centro do problema aqui — mesmo uma fala curta que declara a emoção direto tira a tensão da cena." data-k="a">Queda demasiado corta para que el público la entienda</button>
+<button class="opt" data-fb="O vocabulário não é a questão — mesmo com palavras simples, dizer a emoção em voz alta já elimina o subtexto." data-k="b">Usa palabras demasiado complicadas para el público</button>
+<button class="opt" data-fb="Exato: quando a fala nomeia a emoção direto, não sobra nada para o público descobrir por conta própria — a tensão desaparece." data-k="c">La tensión del subtexto: no queda nada para que el público descubra por su cuenta</button>
+<p class="qfb"></p>
+</div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p5">
+<p class="pk">Practica ahora <span class="pcount">0/3 hecho</span></p>
+<h3 class="ph">Escribe una escena que no lo dice</h3>
+<p class="pgoal">Terminar con una escena corta de dos diálogos, sin nombrar ninguna emoción en voz alta, en ~10 minutos.</p>
+<p class="psafe">Es un ejercicio de escritura: papel, notas del celular o un documento en blanco. En esta práctica no se genera ni se publica nada; equivocarte solo cuesta un borrador tachado.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige una situación real de tu trabajo en la que alguien siente algo pero no lo dice directamente (un cliente indeciso, un empleado molesto, un proveedor incómodo).</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Escribe dos o tres diálogos cortos para esta escena; ninguno puede nombrar la emoción («estoy triste», «estoy nervioso»).</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Para cada diálogo, escribe una línea sobre la reacción física de quien escucha o habla: un gesto, una pausa, una mirada.</label></li>
+</ol>
+<p class="pdone">Escribiste una escena donde el sentimiento se percibe sin decirse — la diferencia entre un diálogo que informa y uno que emociona.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; A fala visível é só a ponta: o sentimento real — o subtexto — corre por baixo, maior do que qualquer frase dita." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M60 60 h100 l-14 24 h-72 z" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="76">"lo voy a pensar"</text>
+<path d="M30 100 h160 v70 h-160 z" fill="none" stroke-dasharray="3 4" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="138">miedo a gastar demasiado</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="182">el subtexto pesa más que el diálogo</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Três ferramentas mais fortes que a fala: a reação de quem escuta, o silêncio entre as falas, e o conflito de desejos diferentes." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="2" style="stroke:var(--accent)">
+<rect height="40" rx="8" width="56" x="16" y="70"></rect><rect height="40" rx="8" width="56" x="82" y="70"></rect><rect height="40" rx="8" width="56" x="148" y="70"></rect>
+</g>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="44" y="94">reacción</text><text text-anchor="middle" x="110" y="94">silencio</text><text text-anchor="middle" x="176" y="94">conflicto</text>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="140">transmiten más que cualquier diálogo</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; A fala que nomeia a emoção fecha a cena; a reação física deixa uma lacuna — e é nessa lacuna que o público sente algo." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="40" rx="8" stroke-width="2" style="stroke:var(--warm)" width="80" x="20" y="46"></rect>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="60" y="70">"estoy triste"</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="60" y="104">escena cerrada</text>
+<path d="M126 66 h-8 M154 46 v40" stroke-dasharray="2 3" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<rect height="40" rx="8" stroke-dasharray="3 4" stroke-width="2" style="stroke:var(--accent)" width="80" x="126" y="46"></rect>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="166" y="70">pausa, mirada</text>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="166" y="104">escena abierta</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>La gente casi nunca dice exactamente lo que siente: el sentimiento real corre por debajo de las palabras, en el subtexto.</li>
+<li>La reacción de quien escucha, el silencio entre las líneas y el conflicto de deseos sostienen la escena más que cualquier diálogo.</li>
+<li>Un personaje que nombra en voz alta su propia emoción le quita al público la oportunidad de descubrir qué siente.</li>
+<li>La medida práctica: siempre que un diálogo explique un sentimiento, cámbialo por una reacción física: un gesto, una pausa, una mirada.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de escribir tu primera escena en la que se siente la emoción sin necesidad de nombrarla.</p>
+<p class="na-action">En los próximos 15 minutos: toma la escena que escribiste y léela en voz alta a alguien, sin contarle el contexto. Pregúntale qué cree que sentía el personaje; si acierta, el subtexto funcionó.</p>
+<p class="na-hook">En la próxima clase, aprenderás a traducir ese mismo cuidado a un personaje generado por IA, partiendo de la emoción que motiva el movimiento, no del movimiento por sí solo.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-4">← clase anterior</a><a href="#aula-6">próxima clase →</a></nav>
+<footer>Lección 5 · Acción y actuación · Formación de Cine con IA</footer>
+<script id="cards-5" type="application/json">
+[
+  {"front":"Pergunta: por que dizer 'estou triste' em voz alta costuma enfraquecer uma cena de diálogo, em vez de fortalecer?","back":"Porque nomear a emoção direto fecha a cena — não sobra nada para o público descobrir sozinho, e é essa descoberta que gera tensão."},
+  {"front":"Contraste: qual a diferença entre uma cena que usa reação física e uma que usa fala direta para a mesma emoção?","back":"A reação física (pausa, olhar, gesto) deixa uma lacuna para o público interpretar; a fala direta entrega a resposta pronta, sem espaço para descoberta."},
+  {"front":"Decisão: você tem uma cena onde um funcionário está claramente incomodado com uma decisão, mas o roteiro só tem falas neutras. O que fazer primeiro?","back":"Adicionar reações físicas nas falas existentes (um silêncio antes de responder, um gesto contido) antes de adicionar qualquer fala nova que explique o sentimento."}
+]
+</script>
+<!--
+COMPLETUDE aula-5 | tipo=FUNDAMENTO | steps=3
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="16min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), dono de restaurante (s2), mini-caso implícito/cliente indeciso (s3) (3/3)
+  [OK] apoio-visual       figs 1–3 legendadas no trilho, mobfig por step (3/3)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-5"> presente (3 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 3/3 pergunta/contraste/decisão; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s3)
+-->
+</section>
+<!-- ===== AULA 6 ===== -->
+<section class="view" data-aula="6" data-tempo="20min" id="v-aula-6">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 5 · Lección 6</p>
+<h1>Hilos que dan <em>vida</em></h1>
+<p class="promise">Al final de esta clase, escribes un pedido de personaje para video por IA que describe la emoción que motiva cada movimiento, y cambias el muñeco que solo camina por un personaje que parece sentir algo.</p>
+<p class="why">Pides «el personaje camina hasta la puerta» y recibes exactamente eso: un muñeco caminando, técnicamente correcto y emocionalmente vacío. La física y el ritmo de las cinco primeras clases no bastan cuando hay una persona en escena. A partir de ahora entras en el bloque de interpretación, y el primer ajuste es sencillo: la IA no actúa por sí sola; necesita que describas lo que siente el personaje por dentro.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/2821b72d6f3e4c2abe86c5d2ca91c184" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a marionete e os fios — cada fio só se move quando alguém decide puxar por um motivo -->
+<path d="M90 46 h120" stroke-width="2" style="stroke:var(--line2)"></path>
+<path d="M150 46 v-14" stroke-width="2" style="stroke:var(--line2)"></path>
+<path d="M108 46 v40" stroke-dasharray="2 3" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<path d="M192 46 v40" stroke-dasharray="2 3" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<path d="M150 46 v66" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<circle cx="150" cy="128" r="18" stroke-width="2" style="stroke:var(--accent)"></circle>
+<path d="M108 86 l24 40 M192 86 l-24 40" fill="none" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<path d="M132 126 h-30 M168 126 h30" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<path d="M150 146 v46 M150 168 l-22 30 M150 168 l22 30" fill="none" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<text font-size="10" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="150" y="212">el hilo del medio solo tira si hay un motivo</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="228">los demás hilos solo siguen el cuerpo</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> El movimiento sin motivo no es una actuación</h2>
+<p>Las personas reales nunca se mueven porque sí: el miedo crea vacilación, la confianza crea dirección, la curiosidad crea observación. Todo gesto nace de un motivo emocional antes de convertirse en movimiento; esa es la base de la <span class="gterm" data-def="A atuação de um personagem gerado por IA: o conjunto de emoção, intenção e comportamento físico que faz o público acreditar que ele sente algo — não só que ele se move." tabindex="0">interpretación de un personaje por IA</span>.</p>
+<p>Cuando la instrucción describe solo la acción — "el personaje camina hasta la puerta", "el personaje sonríe" — la IA entrega exactamente eso, sin nada detrás. El resultado es técnicamente correcto y vacío por dentro: un muñeco caminando, no un personaje que siente algo. Falta escribir el motivo que impulsa el gesto.</p>
+<p>La fotógrafa siente esta diferencia al generar un video de retrato emocional de una pareja: el instante en que la novia se da vuelta para ver al novio por primera vez el día de la boda. «Ella se da vuelta y sonríe» devuelve una sonrisa genérica, de anuncio. «Ella se da vuelta con vacilación, todavía sin poder creerlo, y la sonrisa aparece despacio, como si estuviera asimilando la escena» cambia por completo al personaje.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> Describe el comportamiento, no el adjetivo</h2>
+<p>Los pequeños detalles transmiten grandes emociones: una mirada que se desvía del foco, un parpadeo más lento de lo normal, una mandíbula tensa, una respiración que cambia de ritmo. Estas señales dicen más que cualquier palabra, y son exactamente lo que la IA necesita recibir en lugar de una emoción nombrada.</p>
+<p>Pedir «personaje triste» es vago: la IA improvisa una tristeza genérica, de postal. Pedir el comportamiento físico de la tristeza —la mirada que se desvía, el parpadeo lento, la mandíbula tensa— le da a la IA algo concreto para simular, igual que un buen actor construye la escena con el cuerpo, no con la etiqueta de la emoción.</p>
+<p>El dueño de un restaurante aplicó este cambio en un video institucional sobre lo que ocurre entre bastidores en la cocina: «cocinero cansado después del rush» salió con un rostro de cansancio decorativo. Al reescribirlo como «hombros caídos, respiración más lenta, mirada fija en la estufa sin ver realmente nada», el cansancio empezó a parecer real.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>"Personaje triste mirando por la ventana." Tristeza genérica, sin nada que demuestre que es real.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>"El personaje mira por la ventana, aparta la mirada del foco por un instante, parpadea más despacio de lo normal, mantiene la mandíbula tensa." La misma tristeza, ahora demostrada por el cuerpo.</p></div>
+<p class="qba-saldo">Resultado: ni un adjetivo más; toda la diferencia vino de describir el comportamiento físico, no el nombre del sentimiento.</p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> La pausa demuestra que está vivo</h2>
+<p>La emoción verdadera lleva tiempo. Una actuación intensa no reacciona al instante —procesa antes de reaccionar, y ese instante de silencio es lo que crea realismo. La postura del cuerpo hace el resto del trabajo: los hombros caídos, el mentón en alto, un paso más pesado revelan el estado interno del personaje antes de cualquier gesto más marcado.</p>
+<p>En el pedido, esto se convierte en una instrucción sencilla: describe la pausa antes de la reacción, no solo la reacción. «El personaje reacciona a la noticia» pide una respuesta inmediata; «el personaje se queda quieto por un instante, asimilando la noticia, y solo después se le caen los hombros» le da tiempo al público para sentir la escena junto con el personaje.</p>
+<p>La fotógrafa usa este recurso en una sesión de fotos familiar: el momento en que un padre ve por primera vez al recién nacido, en un video para anunciar el embarazo. En lugar de una sonrisa instantánea, pide: «se queda inmóvil por un segundo, mirando al bebé sin moverse, y solo entonces su rostro se ilumina con una sonrisa lenta»; la pausa es lo que hace conmovedora la escena.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> La receta: motivo, detalle, pausa</h2>
+<p>Las tres lecturas anteriores de esta clase se convierten en una receta de tres campos, siempre en este orden: <b>motivo</b> (la emoción que impulsa el gesto), <b>detalle</b> (el comportamiento físico que demuestra esa emoción — mirada, respiración, tensión) y <b>pausa</b> (el tiempo que tarda el personaje en procesar antes de reaccionar). Los tres juntos son lo que distingue a un personaje que actúa de un muñeco que solo se mueve.</p>
+<p>La fotógrafa revisa cualquier clip de personaje con esta fórmula antes de aprobarlo: si falta un motivo, el gesto parece aleatorio; si falta un detalle, la emoción queda genérica; si falta una pausa, todo parece demasiado automático. Corregir un campo a la vez suele resolver el problema sin tener que generar todo de nuevo desde cero.</p>
+<div class="qanchor"><p>Un personaje que siente algo por dentro hace que el público sienta algo por fuera.</p></div>
+<div class="mobfig" data-mobfig="4"></div>
+<div class="quiz" data-answer="a">
+<p class="qk">Ponte a prueba</p><p class="q">Generaste un personaje que sonríe exactamente como pediste, pero el clip pareció vacío, sin ninguna emoción. Según la receta de esta clase, ¿qué campo debes revisar primero?</p>
+<button class="opt" data-fb="Exato: um sorriso sem motivo por trás é só um gesto correto e vazio. Descrever a razão emocional do sorriso costuma resolver antes de mexer em qualquer outro campo." data-k="a">El motivo —¿qué emoción impulsa esta sonrisa?</button>
+<button class="opt" data-fb="Mais luz não resolve um gesto sem motivo — o problema está na direção da performance, não na iluminação da cena." data-k="b">La iluminación de la escena, para que la sonrisa se vea mejor</button>
+<button class="opt" data-fb="Duração maior não cria motivo sozinha — um clipe mais longo de um gesto vazio continua vazio, só que por mais tempo." data-k="c">La duración del clip, para hacerlo más largo</button>
+<p class="qfb"></p>
+</div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p6">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Escribe un personaje que siente algo</h3>
+<p class="pgoal">Terminar con una solicitud de personaje para video con IA que describa motivo, detalle y pausa, aplicada a una escena tuya, en ~12 minutos.</p>
+<p class="psafe">Es solo texto y generación de video: no se borra ni se modifica nada tuyo. Si el resultado todavía parece vacío, ajusta un campo a la vez y genera de nuevo; cada intento es independiente.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">MOTIVO: &lt;a emoção que empurra o gesto do personagem neste instante&gt;
+DETALHE: &lt;o comportamento físico que prova essa emoção — olhar, respiração,
+tensão, postura&gt;
+PAUSA: &lt;quanto tempo o personagem leva para processar antes de reagir,
+antes do gesto maior acontecer&gt;
+
+Aplique esses três campos ao meu personagem: &lt;descreva aqui a cena e o
+que o personagem precisa sentir&gt;</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige una escena tuya con un personaje: un video de retrato, un video institucional, una escena de anuncio.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Completa los tres campos anteriores con la emoción real de ese instante, sin dejar ninguno vacío.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Pega el prompt completo en el generador de video que ya usas y genera.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Compara con un intento sin los tres campos (solo la acción, sin más): ¿cuál parece más vivo?</label></li>
+</ol>
+<p class="pdone">Escribiste un personaje que siente algo antes de moverse — la diferencia entre un muñeco que camina y una actuación de verdad.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; O gesto nasce por dentro: emoção mais intenção decidem o movimento — pedir só a ação deixa a IA sem nenhum dos dois." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="56" cy="60" r="26" stroke-width="2" style="stroke:var(--accent)"></circle>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="56" y="64">emoción</text>
+<text font-size="14" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="98" y="66">+</text>
+<circle cx="140" cy="60" r="26" stroke-width="2" style="stroke:var(--accent)"></circle>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="140" y="64">intención</text>
+<path d="M98 92 v20" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M92 106 l6 8 6 -8" fill="none" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<rect height="40" rx="8" stroke-width="2" style="stroke:var(--warm)" width="104" x="46" y="126"></rect>
+<text font-size="10" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="98" y="150">movimiento</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="98" y="184">sin las dos de arriba, solo queda la acción vacía</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; O adjetivo nomeado fica na superfície; o comportamento físico — olhar, respiração, tensão — é o que a IA consegue de fato simular." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="34" rx="8" stroke-width="1.8" style="stroke:var(--line2)" width="80" x="20" y="50"></rect>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="72">"triste"</text>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="102">se queda en la superficie</text>
+<circle cx="160" cy="66" r="20" stroke-width="2" style="stroke:var(--accent)"></circle>
+<path d="M150 62 q10 -8 20 0" fill="none" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<path d="M148 78 h6 M166 78 h6" stroke-width="1.4" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="112">mirada, parpadeo, tensión</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="160">el comportamiento es lo que se filma</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Reação instantânea parece automática; um instante de pausa antes do gesto maior é o que faz o personagem parecer vivo." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 100 h50" stroke-width="2" style="stroke:var(--line2)"></path>
+<path d="M70 100 l14 -34" fill="none" stroke-width="2" style="stroke:var(--line2)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="45" y="120">reacción instantánea</text>
+<path d="M110 100 h30" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M140 100 h30" stroke-dasharray="1 5" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M170 100 l14 -34" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="150" y="120">pausa, luego reacción</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="160">el silencio previo demuestra que procesó</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; A receita em três campos: motivo empurra o detalhe, o detalhe atravessa a pausa, e só então nasce a performance." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="32" rx="7" stroke-width="2" style="stroke:var(--accent)" width="58" x="16" y="30"></rect>
+<text font-size="8.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="45" y="50">motivo</text>
+<rect height="32" rx="7" stroke-width="2" style="stroke:var(--accent)" width="58" x="82" y="30"></rect>
+<text font-size="8.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="111" y="50">detalle</text>
+<rect height="32" rx="7" stroke-width="2" style="stroke:var(--accent)" width="58" x="148" y="30"></rect>
+<text font-size="8.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="177" y="50">pausa</text>
+<path d="M74 46 h8 M140 46 h8" stroke-width="1.6" style="stroke:var(--muted)"></path>
+<path d="M100 92 v20" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<path d="M94 106 l6 8 6 -8" fill="none" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<circle cx="100" cy="150" r="28" stroke-width="2" style="stroke:var(--warm)"></circle>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="100" y="154">personaje vivo</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>Todo gesto nace de un motivo emocional antes de convertirse en movimiento — sin un motivo, la indicación solo devuelve un muñeco caminando.</li>
+<li>Describir el comportamiento físico (mirada, respiración, tensión) convence más que nombrar el sentimiento con palabras.</li>
+<li>Un instante de pausa antes de la reacción es lo que hace que el personaje parezca vivo, en lugar de automático.</li>
+<li>La receta de tres campos —motivo, detalle, pausa— distingue a un personaje que actúa de uno que solo se mueve.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de escribir un personaje cuyo movimiento nace de una emoción, no de una instrucción aislada.</p>
+<p class="na-action">En los próximos 15 minutos: toma otra escena tuya con un personaje y reescribe el pedido usando los tres campos de hoy; esta vez, cambia la emoción que lo motiva.</p>
+<p class="na-hook">En la próxima clase, descubrirás que una misma escena emocional cambia de sentido según la distancia de cámara, y lo comprobarás al comparar dos versiones del mismo momento.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-5">← clase anterior</a><a href="#aula-7">próxima clase →</a></nav>
+<footer>Lección 6 · Acción y actuación · Formación de Cine con IA</footer>
+<script id="cards-6" type="application/json">
+[
+  {"front":"Pergunta: segundo a fórmula desta aula, o que precisa vir antes de qualquer movimento de personagem para ele parecer real?","back":"A emoção e a intenção — o motivo que empurra o gesto. Sem isso, o movimento sai tecnicamente certo e vazio por dentro."},
+  {"front":"Diagnóstico: você pediu 'personagem nervoso apertando as mãos' e o resultado saiu robótico, sem convencer. O que provavelmente faltou?","back":"Descrever o comportamento físico específico (respiração alterada, olhar que desvia, dedos que tremem) em vez de só nomear 'nervoso' — o adjetivo sozinho não dá à IA nada concreto para simular."},
+  {"front":"Decisão: seu personagem recebe uma notícia ruim e você quer que a cena pareça real, não automática. O que você escreve entre a notícia e a reação dele?","back":"Uma pausa — o personagem processando antes de reagir. Reação instantânea tende a parecer automática; o silêncio antes é o que prova que ele sentiu algo."},
+  {"front":"Aplicação: você tem um pedido só com a ação ('personagem abre a porta e entra'). Reescreva mentalmente usando os três campos da receita desta aula.","back":"Motivo (por que ele está entrando — alívio, medo, pressa), detalhe (postura, respiração, olhar ao entrar) e pausa (hesita antes de abrir, ou entra direto) — os três, nessa ordem."}
+]
+</script>
+<!--
+COMPLETUDE aula-6 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), dono de restaurante (s2), fotógrafa (s3), fotógrafa (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-6"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 pergunta/diagnóstico/decisão/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 7 ===== -->
+<section class="view" data-aula="7" data-tempo="22min" id="v-aula-7">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 5 · Lección 7</p>
+<h1>La distancia que <em>emociona</em></h1>
+<p class="promise">Al final de esta clase, eliges la distancia de cámara adecuada para una escena emocional y demuestras tu elección comparando dos versiones generadas del mismo momento, una abierta y otra en primer plano.</p>
+<p class="why">Un personaje puede llorar de verdad, la actuación puede convencer y el diálogo puede emocionar sobre el papel, y aun así la escena parecer fría. Casi siempre falta lo mismo: la cámara no se eligió para acompañar esa emoción. Hoy aprenderás a elegir la distancia correcta antes de generar, y no al azar.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/ca83dbeb06da4607ad958680436e3b03" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: o binóculo de teatro — da plateia só se vê o vulto; o binóculo aproxima só o que precisa ser sentido -->
+<rect height="120" rx="6" stroke-dasharray="3 4" stroke-width="1.8" style="stroke:var(--line2)" width="90" x="30" y="60"></rect>
+<circle cx="75" cy="110" r="10" stroke-width="1.6" style="stroke:var(--muted)"></circle>
+<path d="M75 120 v34 M75 138 l-14 22 M75 138 l14 22" fill="none" stroke-width="1.6" style="stroke:var(--muted)"></path>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="75" y="204">de la audiencia, solo la silueta</text>
+<circle cx="200" cy="90" r="26" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<circle cx="248" cy="90" r="26" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<path d="M226 90 h22" stroke-width="2.2" style="stroke:var(--accent)"></path>
+<path d="M224 116 v18" stroke-width="2.2" style="stroke:var(--accent)"></path>
+<path d="M190 84 q10 -8 20 0" fill="none" stroke-width="1.6" style="stroke:var(--warm)"></path>
+<circle cx="200" cy="92" r="4" style="fill:var(--warm)"></circle>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="224" y="204">los binoculares acercan lo que hay que sentir</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">01</span> La distancia del plano es la distancia de la emoción</h2>
+<p>La distancia entre la cámara y el personaje no es solo una elección estética: es la distancia emocional que siente el público. Un plano abierto, con espacio de sobra alrededor del personaje, crea una sensación de alejamiento, aunque la escena sea cálida. Un <span class="gterm" data-def="Um enquadramento fechado no rosto ou nas mãos do personagem, perto o bastante para mostrar reação — respiração, um músculo tremendo, o brilho dos olhos — em vez do corpo inteiro." tabindex="0">close emocional</span> hace lo opuesto: acerca al público hasta un punto en que los pequeños detalles se vuelven imposibles de ignorar.</p>
+<p>Por eso la misma escena, filmada desde dos distancias diferentes, cuenta dos historias emocionales distintas — incluso con el mismo diálogo, el mismo personaje y la misma luz. La distancia dentro del encuadre se convierte en la distancia que el público siente entre sí mismo y el personaje.</p>
+<p>La fotógrafa lo probó al generar el video de la propuesta de matrimonio de una pareja: en el plano general, ambos aparecen pequeños en medio del jardín; es bonito, pero distante. En el primer plano de las manos, en el instante en que el anillo entra en el dedo, ese mismo momento se convierte en algo que el público siente, no solo observa.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">02</span> El vacío alrededor también es sentimiento</h2>
+<p>El vacío alrededor de un personaje también es sentimiento. Un personaje rodeado de espacio libre, sin nada que llene el cuadro, transmite aislamiento, incluso sin ningún diálogo que lo explique. Es lo opuesto al primer plano: en vez de acercar, la escena se aleja a propósito, y ese alejamiento se vuelve parte del sentimiento.</p>
+<p>En el pedido de video, describe cuánto espacio vacío hay alrededor del personaje y dónde está ubicado en el encuadre: pequeño y desplazado hacia una esquina crea más soledad que centrado; una habitación grande y vacía al fondo pesa más que una pared cercana.</p>
+<p>El dueño de un restaurante usó este recurso en un video institucional sobre el final de un día ajetreado: él solo, contando la caja después del cierre, pequeño en medio del salón vacío, con las sillas todavía fuera de lugar. El mismo instante, filmado de cerca y centrado, solo habría parecido «contar dinero»; desde lejos y pequeño, se convirtió en cansancio de verdad.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">03</span> Error común: acercar o alejar sin motivo</h2>
+<div class="qerr">
+<p class="qk">Error común</p>
+<p class="qerr-txt"><b>Pedir un «primer plano dramático» o una «cámara bien alejada» solo porque parece bonito, sin ninguna razón emocional detrás de la elección.</b> El resultado es visualmente correcto y emocionalmente aleatorio; a veces incluso invasivo, cuando la cámara se acerca antes de que la escena haya creado tensión suficiente para justificar ese acercamiento. Elige la distancia según la emoción de la escena, nunca solo por el estilo.</p>
+</div>
+<p>La fotógrafa cometió este error en una sesión familiar con un adolescente poco cómodo frente a la cámara: pidió un primer plano dramático justo al inicio de la escena, y el resultado pareció invasivo, casi incómodo. Al empezar de nuevo con un plano más abierto y acercarse poco a poco, a medida que él se relajaba, la misma escena empezó a parecer genuina.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">04</span> Acercarse a propósito: avance lento, hombro, punto de vista</h2>
+<p>Tres movimientos de cámara se acercan a propósito, cada uno por un motivo diferente. El avance lento de la cámara construye tensión poco a poco: el público no percibe conscientemente el movimiento, pero siente que la emoción crece junto con él. El plano por encima del hombro crea conexión cuando hay tensión entre dos personas en la escena. Y el punto de vista — la cámara en el lugar de los ojos del personaje — se reserva para el instante en que el público debe sentir exactamente lo que siente el personaje, no solo observar desde afuera.</p>
+<p>La regla práctica: elige el movimiento según la emoción que la escena ya tiene, nunca por el efecto aislado. Un avance lento sin tensión previa cansa; un plano sobre el hombro sin ningún conflicto entre los dos personajes no crea ninguna conexión.</p>
+<p>La fotógrafa aplicó esto en una sesión familiar: una abuela que vuelve a encontrarse con su nieto después de meses lejos. La cámara avanza despacio mientras ella reconoce su rostro, y la emoción crece poco a poco: no sería la misma escena con un corte directo al primer plano.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="step" data-fig="5" data-kind="ferramenta" data-versao="geradores de vídeo por IA (Seedance, Kling ou similar), jul/2026">
+<h2><span class="n">05</span> La receta: elige por la emoción, no por el estilo</h2>
+<div class="qsteps">
+<p class="qk">La receta de la distancia adecuada</p>
+<ol>
+<li>Nombra la emoción de la escena antes de elegir cualquier plano: ¿qué necesita sentir el público aquí?</li>
+<li>Si la emoción pide intimidad, usa un primer plano del rostro, las manos o un detalle físico.</li>
+<li>Si pide aislamiento, usa un plano general con bastante espacio vacío alrededor del personaje.</li>
+<li>Si pide tensión entre dos personas, usa un plano por encima del hombro de una de ellas.</li>
+<li>Reserva el punto de vista para el único instante en que el público debe sentir exactamente lo que siente el personaje.</li>
+</ol>
+</div>
+<p>La fotógrafa prueba esta receta generando la misma escena dos veces: una siguiendo la distancia que pide la emoción y otra con la distancia genérica que usaría por costumbre. La diferencia suele notarse en los primeros segundos: la versión adecuada atrapa; la genérica solo muestra.</p>
+<div class="mobfig" data-mobfig="5"></div>
+<div class="quiz" data-answer="b">
+<p class="qk">Ponte a prueba (opcional)</p><p class="q">Estás generando una escena en la que dos personajes tienen una conversación tensa y cada uno quiere algo diferente. ¿Qué distancia de cámara refuerza más la tensión entre ambos?</p>
+<button class="opt" data-fb="Um plano bem aberto tende a diluir a tensão entre os dois — sobra espaço vazio demais para a conexão (ou o conflito) entre eles ficar em primeiro plano." data-k="a">Un plano muy abierto que muestra todo el entorno alrededor de los dos</button>
+<button class="opt" data-fb="Exato: o plano por trás do ombro de um deles mantém os dois na cena mas cria a perspectiva de tensão entre eles — é o uso mais direto desse recurso." data-k="b">Un plano por encima del hombro de uno de los personajes, mirando al otro</button>
+<button class="opt" data-fb="O ponto de vista funciona melhor quando o público precisa sentir a partir de um personagem só — numa cena de tensão a dois, ele tira metade da tensão do quadro." data-k="c">El punto de vista (POV) de uno de los personajes, sin mostrar al otro</button>
+<p class="qfb"></p>
+</div>
+<button class="readbtn" data-read="s5">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p7">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Compara el plano abierto con el primer plano</h3>
+<p class="pgoal">Sal con dos versiones del mismo momento emocional —una en plano abierto y otra en primer plano— y compara lo que te hace sentir cada una, en ~14 minutos.</p>
+<p class="psafe">Es texto y generación de video: no se borra nada tuyo. Si ninguna de las dos versiones te convence, ajusta la distancia y genera de nuevo; cada intento es independiente.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">CENA (comum às duas versões): &lt;descreva o personagem, o lugar e a
+emoção do momento&gt;
+
+VERSÃO ABERTA: plano aberto, corpo inteiro visível, espaço sobrando ao
+redor do personagem.
+
+VERSÃO FECHADA: close no rosto ou num detalhe físico (mãos, olhos),
+mostrando a reação de perto.
+
+Gere as duas versões da mesma cena e compare o que cada uma faz você
+sentir.</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige un momento emocional tuyo que ya tenga (o merezca) un video: un retrato, una sesión de fotos, una escena institucional.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Escribe la escena común y las dos versiones (abierta y cerrada) usando el modelo de arriba.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Genera las dos y míralas una al lado de la otra.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Anota en una frase qué te hizo sentir cada versión de manera diferente.</label></li>
+</ol>
+<p class="pdone">Comparaste en la práctica cómo cambia una escena emocional según la distancia de cámara — exactamente lo que pedía la promesa de esta clase.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; O mesmo personagem, duas distâncias: no plano aberto ele encolhe no espaço; no close, o rosto ocupa o quadro inteiro e a reação vira impossível de ignorar." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="110" rx="6" stroke-width="1.8" style="stroke:var(--line2)" width="90" x="16" y="40"></rect>
+<circle cx="61" cy="112" r="8" stroke-width="1.6" style="stroke:var(--muted)"></circle>
+<path d="M61 120 v18" stroke-width="1.6" style="stroke:var(--muted)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="61" y="164">plano general = distante</text>
+<circle cx="164" cy="90" r="46" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<path d="M148 84 q16 -12 32 0" fill="none" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<path d="M144 100 h8 M176 100 h8" stroke-width="1.4" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="164" y="164">close = íntimo</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Espaço vazio sobrando ao redor do personagem lê como isolamento — mesmo sem nenhuma fala explicando o que ele sente." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="150" rx="8" stroke-dasharray="3 4" stroke-width="1.6" style="stroke:var(--faint)" width="188" x="16" y="24"></rect>
+<circle cx="60" cy="130" r="9" stroke-width="1.8" style="stroke:var(--accent)"></circle>
+<path d="M60 139 v20" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="60">vacío sobrante alrededor</text>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="190">pequeño y desplazado = aislamiento</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Aproximar de repente, sem tensão construída antes, sai invasivo; a mesma aproximação, devagar e depois de uma razão emocional, convence." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 70 h60" stroke-width="2.2" style="stroke:var(--warm)"></path>
+<path d="M72 62 l10 8 -10 8" fill="none" stroke-width="2.2" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="50" y="94">salto sin motivo</text>
+<path d="M120 120 h16 M144 120 h16 M168 120 h16" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M188 112 l10 8 -10 8" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="164" y="144">avance lento, con tensión</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Três aproximações de propósito: avanço lento constrói tensão, o ombro cria conexão entre dois, o ponto de vista faz o público sentir por dentro." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<circle cx="42" cy="60" r="18"></circle>
+<circle cx="42" cy="120" r="10"></circle>
+</g>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="42" y="156">avance lento</text>
+<circle cx="100" cy="98" r="12" stroke-width="1.6" style="stroke:var(--muted)"></circle>
+<circle cx="130" cy="76" r="12" stroke-width="1.8" style="stroke:var(--accent)"></circle>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="112" y="156">hombro</text>
+<path d="M168 62 h34 v34 h-34 z" fill="none" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<circle cx="185" cy="79" r="7" style="fill:var(--accent)"></circle>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="185" y="156">punto de vista</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 5&lt;/b&gt; A régua da distância: cada ponto corresponde a uma emoção — aberto isola, médio observa, close aproxima, detalhe expõe." data-fig="5"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 100 h180" stroke-width="2" style="stroke:var(--line2)"></path>
+<g style="fill:var(--accent)"><circle cx="30" cy="100" r="4"></circle><circle cx="83" cy="100" r="4"></circle><circle cx="136" cy="100" r="4"></circle><circle cx="190" cy="100" r="4"></circle></g>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="30" y="122">abierto</text><text text-anchor="middle" x="83" y="122">medio</text>
+<text text-anchor="middle" x="136" y="122">close</text><text text-anchor="middle" x="190" y="122">detalle</text>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="60">la distancia adecuada nace de la emoción de la escena</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>La distancia entre la cámara y el personaje se convierte en la distancia emocional que siente el público: un primer plano acerca, un plano abierto aleja.</li>
+<li>El espacio vacío alrededor del personaje también comunica: un personaje pequeño rodeado de vacío se percibe como aislado.</li>
+<li>Acercarse sin un motivo emocional resulta invasivo o aleatorio: la cámara necesita una razón para moverse, no solo un estilo.</li>
+<li>El avance lento, el plano por encima del hombro y el punto de vista cumplen propósitos diferentes: tensión creciente, conexión entre dos e inmersión en uno solo.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de comparar, lado a lado, cómo cambia una escena emocional según la distancia de la cámara.</p>
+<p class="na-action">En los próximos 15 minutos: elige otro momento tuyo y repite la prueba de las dos versiones. Esta vez, decide antes de generar qué distancia pide la emoción de la escena.</p>
+<p class="na-hook">En la próxima clase, la última del curso, unirás todo —motivo, detalle, pausa y distancia de cámara— para estructurar una escena de diálogo completa, con conflicto, silencio y giro.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-6">← clase anterior</a><a href="#aula-8">próxima clase →</a></nav>
+<footer>Lección 7 · Acción y actuación · Formación de Cine con IA</footer>
+<script id="cards-7" type="application/json">
+[
+  {"front":"Pergunta: o que a distância física entre a câmera e o personagem representa emocionalmente para quem assiste?","back":"A distância emocional entre o personagem e quem assiste — mais perto no quadro tende a parecer mais perto no sentimento, mais aberto tende a parecer mais distante."},
+  {"front":"Diagnóstico: você aproximou a câmera de repente numa cena que ainda não tinha construído nenhuma tensão, e o resultado pareceu invasivo. O que faltou antes da aproximação?","back":"Uma razão emocional construída na cena antes do movimento — o avanço de câmera precisa de tensão crescente para justificar a aproximação, não pode nascer do nada."},
+  {"front":"Aplicação: você tem uma cena de duas pessoas discordando sobre algo importante. Que enquadramento reforça essa tensão entre elas sem tirar nenhuma de cena?","back":"Um plano por trás do ombro de uma delas, olhando para a outra — mantém as duas presentes e cria a perspectiva de tensão entre elas."}
+]
+</script>
+<!--
+COMPLETUDE aula-7 | tipo=FERRAMENTA | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), dono de restaurante (s2), fotógrafa (s3), fotógrafa (s4), fotógrafa (s5) (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~14 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-7"> presente (3 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 3/3 pergunta/diagnóstico/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); teste-se opcional presente (1 pergunta no s5) — segunda e última aula FERRAMENTA do curso com este opcional
+-->
+</section>
+<!-- ===== AULA 8 ===== -->
+<section class="view" data-aula="8" data-tempo="22min" id="v-aula-8">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 5 · Lección 8</p>
+<h1>La escena que <em>mueve</em></h1>
+<p class="promise">Al final de esta clase, estructuras una escena de diálogo completa por IA, con conflicto, silencio y un giro emocional, y reúnes en un solo pedido lo que aprendiste en las siete clases anteriores.</p>
+<p class="why">Dos personas intercambian frases, una pregunta y una respuesta, todo parece lógico —y aun así la escena parece muerta. Casi siempre falta lo mismo: no cambia nada emocionalmente de principio a fin. Esta es la última lección del curso, y reúne motivo, detalle, pausa y distancia de cámara en una sola estructura.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/7d11ea2c6f524a92823ebcc2ae552ce5" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a marcação de cena — o mapa que o diretor risca no chão antes de qualquer ensaio -->
+<rect height="140" rx="4" stroke-dasharray="2 4" stroke-width="1.6" style="stroke:var(--line2)" width="220" x="40" y="50"></rect>
+<path d="M76 84 h14 M83 77 v14" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M210 150 h14 M217 143 v14" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M150 110 h14 M157 103 v14" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<path d="M83 84 q40 10 67 26" fill="none" stroke-dasharray="3 4" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<path d="M157 116 q30 14 60 34" fill="none" stroke-dasharray="3 4" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="83" y="70">conflicto</text>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="157" y="96">silencio</text>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="217" y="168">giro</text>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="216">la puesta en escena: cada posición es una decisión</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Toda escena de diálogo es una negociación emocional</h2>
+<p>Dos personas conversan, una pregunta y la otra responde, todo parece lógico —y aun así la escena parece muerta. Es porque el diálogo cinematográfico no nace solo de las palabras: nace del conflicto. Una <span class="gterm" data-def="O desenho por trás de uma conversa — quem quer o quê, o que fica em silêncio, o que muda até o final — que faz duas falas soltas virarem uma cena de verdade." tabindex="0">estructura de escena de diálogo</span> es lo que organiza esa tensión de principio a fin, en vez de dejar la conversación suelta.</p>
+<p>Ya viste, en la clase 5, que nadie dice exactamente lo que siente: ese es el <span class="gterm" data-def="O sentimento real que corre por baixo das palavras — o que o personagem sente mas não diz em voz alta." tabindex="0">subtexto</span>. Hoy aprenderás la estructura más amplia que organiza ese subtexto en una escena completa: las dos personas de la conversación necesitan querer cosas diferentes, aunque ninguna lo diga en voz alta. Ese choque de deseos es lo que sostiene la escena.</p>
+<p>La fotógrafa aplicó esto en un video de aniversario de bodas: una pareja de setenta años decide si vende o no la casa donde criaron a sus hijos. Ella quiere conservarla por los recuerdos; él quiere librarse del peso de mantenerla. Ninguno lo dice con esas palabras, pero el conflicto sostiene toda la escena.</p>
+<div class="qanchor"><p>Toda escena de diálogo potente es una negociación emocional, no un intercambio de información.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> El silencio y el poder cambian quién manda en la escena</h2>
+<p>La emoción necesita tiempo para llegar: el silencio antes de una respuesta crea una tensión que ninguna palabra puede crear por sí sola. Y quien controla el ritmo de ese silencio generalmente controla la escena: alguien que responde de inmediato parece ansioso o débil; alguien que espera antes de responder parece tener el control.</p>
+<p>En el pedido de video, esto se convierte en una instrucción concreta: describe no solo quién habla, sino quién espera, y durante cuánto tiempo. «Los dos responden de inmediato» deja la escena pareja, sin ninguna jerarquía; «uno responde de inmediato, el otro deja que el silencio se extienda antes de hablar» ya le dice al público quién tiene el control de ese momento.</p>
+<p>El dueño de un restaurante usa este recurso en un video sobre una negociación con el proveedor de un insumo retrasado: el proveedor se explica rápido, casi atropellando las palabras; el dueño del restaurante deja que el silencio se alargue antes de responder. Su silencio pesa más que cualquier cosa que pudiera decir.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> El objetivo cambia algo o la escena no es una escena</h2>
+<p>Toda escena de diálogo potente cambia algo emocionalmente antes del final — alguien gana valor, renuncia a algo, admite lo que venía ocultando. Si nada cambia de principio a fin, lo que tienes no es una escena: son solo dos personas intercambiando frases.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>Dos personas intercambian frases sobre el mismo tema, de principio a fin —la segunda termina exactamente en la misma posición emocional en la que empezó. Información clara, escena sin vida.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>El mismo intercambio, pero la segunda persona termina en un lugar emocional distinto de donde empezó: al principio se resiste y al final cede (o deja de ceder).</p></div>
+<p class="qba-saldo">Resultado: los mismos dos diálogos, pero ahora la escena responde una pregunta: qué cambió entre el principio y el final.</p>
+</div>
+<p>La fotógrafa aplica esto a la escena de la pareja de setenta años: ella empieza resistiéndose a vender la casa; al oír que su marido admite que también siente el peso de mantenerla solo, cede un poco: no decide vender, pero deja de decir «nunca». Ese pequeño cambio es el giro de la escena.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> La cámara cambia el significado del diálogo</h2>
+<p>El mismo diálogo, filmado de distintas maneras, se convierte en escenas emocionalmente diferentes: ya viste esto en la lección 7, sobre la distancia de cámara, y en una escena de diálogo este recurso tiene un uso adicional: un primer plano del rostro de quien escucha, mientras habla la otra persona, hace que el público sienta más la reacción que las propias palabras.</p>
+<p>Un plano general con los dos personajes divide la atención entre ellos por igual; es bueno para mostrar toda la negociación. Un primer plano alternado entre ambos, especialmente del rostro de quien guarda silencio, revela lo que las palabras por sí solas ocultan.</p>
+<p>La fotógrafa usa esta alternancia en la escena de la pareja: mientras él habla del peso de mantener la casa, la cámara se queda en el rostro de ella, en silencio, asimilándolo; es el silencio de ella, no las palabras de él, lo que transmite el peso emocional de ese instante.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="step" data-fig="5" data-kind="fundamento">
+<h2><span class="n">05</span> La receta completa: reúne todo lo que aprendiste</h2>
+<p>Las siete clases de este curso se convierten en una sola receta para cualquier escena de personaje que generes de ahora en adelante: escribe el <b>motivo</b> detrás del movimiento, el <b>detalle</b> físico que demuestra la emoción, la <b>pausa</b> antes de la reacción, la <b>distancia</b> de cámara que pide la emoción y, cuando haya diálogo, el <b>conflicto</b> entre lo que quiere cada personaje, el <b>silencio</b> que decide quién está en control y la <b>giro</b> que cambia algo hasta el final.</p>
+<p>Ricardo, dueño de un restaurante de barrio desde hace veinte años, quiso un video institucional para celebrar la fecha: una escena corta entre él y su hija, que quiere modernizar el menú familiar. Escribió el conflicto (él quiere preservar las recetas de su padre; ella quiere actualizar el menú), dejó un silencio antes de su respuesta —él mira hacia la cocina antes de hablar— y cerró con un pequeño giro: no está de acuerdo con todo, pero acepta probar uno de sus platos nuevos. La cámara se queda en su rostro durante el silencio, no en ella mientras habla. El resultado no parece un comercial de restaurante: parece una conversación familiar de verdad.</p>
+<div class="mobfig" data-mobfig="5"></div>
+<div class="quiz" data-answer="a">
+<p class="qk">Ponte a prueba</p><p class="q">Escribiste una escena de diálogo con un conflicto claro entre los dos personajes, pero el final parece el comienzo: nada cambió entre ellos. Según lo que enseñó esta clase, ¿qué falta?</p>
+<button class="opt" data-fb="Exato: sem uma virada, mesmo um conflito bem escrito fica parado — a cena precisa terminar num lugar emocional diferente de onde começou." data-k="a">El giro: un desplazamiento emocional hasta el final</button>
+<button class="opt" data-fb="Mais falas não criam movimento sozinhas — sem uma virada, a cena só fica mais longa no mesmo lugar emocional." data-k="b">Más diálogos en medio de la escena</button>
+<button class="opt" data-fb="Um efeito visual de transição não resolve a falta de movimento emocional — o problema está na estrutura da cena, não no corte entre planos." data-k="c">Un efecto visual de transición entre los dos personajes</button>
+<p class="qfb"></p>
+</div>
+<button class="readbtn" data-read="s5">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p8">
+<p class="pk">Practica ahora <span class="pcount">0/5 hecho</span></p>
+<h3 class="ph">Estructura tu escena de diálogo completa</h3>
+<p class="pgoal">Sal con el pedido completo de una escena de diálogo entre dos personajes —conflicto, silencio y giro—, listo para generar, en ~15 minutos.</p>
+<p class="psafe">Solo se usan texto y generación de video: nada tuyo se borra ni se modifica. Si la escena queda estática, revisa un campo a la vez y vuelve a generarla — cada intento es independiente.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">PERSONAGENS: &lt;quem são os dois e o que cada um quer nesta cena&gt;
+CONFLITO: &lt;o que eles querem de diferente, mesmo sem dizer isso em voz
+alta&gt;
+FALAS: &lt;duas ou três falas curtas, sem nomear a emoção em voz alta&gt;
+SILÊNCIO: &lt;quem espera antes de responder, e por quanto tempo&gt;
+VIRADA: &lt;o que muda emocionalmente entre o início e o fim da cena&gt;
+CÂMERA: &lt;close em quem escuta, ou plano aberto — pela emoção da cena&gt;
+
+Gere esta cena de diálogo completa a partir dos seis campos acima.</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige una situación real de tu trabajo con dos personajes que quieren cosas diferentes.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Completa los seis campos anteriores, sin dejar ninguno vacío.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Escribe los diálogos sin nombrar la emoción en voz alta: usa lo que aprendiste en la clase 5.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Genera la escena completa y comprueba: ¿algo cambia entre el inicio y el final?</label></li>
+<li><label><input data-ptask="5" type="checkbox"/> Si la escena parece estática, revisa primero el campo VIRADA antes de generar de nuevo.</label></li>
+</ol>
+<p class="pdone">Estructuraste una escena de diálogo completa combinando motivo, detalle, pausa, distancia, conflicto, silencio y giro — todo el curso en una sola indicación.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Duas setas puxando para lados opostos: cada personagem quer uma coisa diferente, mesmo sem dizer isso em voz alta — é esse choque que sustenta a cena." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="60" cy="90" r="16" stroke-width="2" style="stroke:var(--accent)"></circle>
+<path d="M76 90 h30" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M100 84 l8 6 -8 6" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<circle cx="160" cy="90" r="16" stroke-width="2" style="stroke:var(--warm)"></circle>
+<path d="M144 90 h-30" stroke-width="2" style="stroke:var(--warm)"></path>
+<path d="M120 84 l-8 6 8 6" fill="none" stroke-width="2" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="60" y="128">quiere guardar</text>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="160" y="128">quiere dejar ir</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="164">el choque de deseos sostiene la escena</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Quem responde na hora parece ansioso; quem deixa o silêncio se estender antes de falar controla o ritmo emocional da cena." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 70 h50" stroke-width="2.4" style="stroke:var(--muted)"></path>
+<path d="M70 70 h40" stroke-width="2.4" style="stroke:var(--muted)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="65" y="94">respuesta inmediata, sin pausa</text>
+<path d="M110 130 h24" stroke-width="2.4" style="stroke:var(--accent)"></path>
+<path d="M134 130 h30" stroke-dasharray="1 5" stroke-width="1.4" style="stroke:var(--accent)"></path>
+<path d="M164 130 h34" stroke-width="2.4" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="150" y="154">silencio antes de responder = control</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Sem virada, o personagem termina no mesmo lugar emocional onde começou; com virada, ele termina num lugar diferente — é isso que prova que a cena aconteceu." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 60 h80" stroke-dasharray="1 5" stroke-width="2" style="stroke:var(--muted)"></path>
+<circle cx="20" cy="60" r="5" style="fill:var(--muted)"></circle><circle cx="100" cy="60" r="5" style="fill:var(--muted)"></circle>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="82">sin giro = mismo lugar</text>
+<path d="M120 150 q40 -70 80 -90" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<circle cx="120" cy="150" r="5" style="fill:var(--accent)"></circle><circle cx="200" cy="60" r="5" style="fill:var(--accent)"></circle>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="172">con giro = otro lugar</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; A câmera no rosto de quem fala mostra a fala; a câmera no rosto de quem escuta, calado, mostra o que a fala esconde." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="60" cy="90" r="22" stroke-width="1.8" style="stroke:var(--line2)"></circle>
+<path d="M50 84 q10 -6 20 0" fill="none" stroke-width="1.4" style="stroke:var(--line2)"></path>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="132">quién habla</text>
+<circle cx="160" cy="90" r="30" stroke-width="2.2" style="stroke:var(--accent)"></circle>
+<path d="M148 84 q12 -8 24 0" fill="none" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<path d="M144 100 h8 M168 100 h8" stroke-width="1.4" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="140">quién escucha, en silencio</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 5&lt;/b&gt; A cena completa: motivo e detalhe movem o personagem, distância decide o que se sente, conflito e silêncio sustentam, a virada fecha." data-fig="5"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="28" rx="6" width="50" x="14" y="26"></rect><rect height="28" rx="6" width="50" x="76" y="26"></rect><rect height="28" rx="6" width="66" x="138" y="26"></rect>
+<rect height="28" rx="6" width="50" x="45" y="90"></rect><rect height="28" rx="6" width="50" x="107" y="90"></rect>
+</g>
+<g font-size="7" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="39" y="44">motivo</text><text text-anchor="middle" x="101" y="44">detalle</text><text text-anchor="middle" x="171" y="44">distancia</text>
+<text text-anchor="middle" x="70" y="108">conflicto</text><text text-anchor="middle" x="132" y="108">silencio</text>
+</g>
+<path d="M70 118 v20" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<path d="M64 132 l6 8 6 -8" fill="none" stroke-width="1.6" style="stroke:var(--faint)"></path>
+<circle cx="70" cy="166" r="24" stroke-width="2" style="stroke:var(--warm)"></circle>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="70" y="170">giro</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>Una escena de diálogo intensa es una negociación emocional entre dos personas que quieren cosas distintas, no un intercambio de información.</li>
+<li>Quien controla el ritmo del silencio antes de responder suele controlar el poder emocional de la escena.</li>
+<li>Sin un giro — un cambio emocional entre el inicio y el final — lo que hay no es una escena, solo diálogos intercambiados.</li>
+<li>La cámara cambia el significado del diálogo: un primer plano de quien escucha revela lo que oculta lo que dice la otra persona.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de estructurar una escena de diálogo completa, combinando todo lo que aprendiste en las ocho clases de este curso.</p>
+<p class="na-action">En los próximos 15 minutos: toma la escena que escribiste en la práctica de hoy y revisa cada uno de los seis campos una última vez antes de considerarla lista para generar.</p>
+<p class="na-hook">El próximo curso de esta formación, "Del guion a la película final", toma esta escena lista y enseña a unir varias escenas como esta en un cortometraje completo, desde el primer corte hasta la entrega final.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-7">← clase anterior</a><a href="#trilha">completar el curso ✓ →</a></nav>
+<footer>Lección 8 · Acción y actuación · Formación de Cine con IA</footer>
+<script id="cards-8" type="application/json">
+[
+  {"front":"Pergunta: o que faz duas falas trocadas virarem uma cena de diálogo de verdade, e não só uma troca de informação?","back":"O conflito — os dois personagens querendo coisas diferentes, mesmo sem dizer isso em voz alta."},
+  {"front":"Diagnóstico: sua cena tem um conflito bem escrito, mas o final parece igual ao começo — nada mudou entre os dois personagens. O que falta?","back":"A virada — o personagem termina a cena num lugar emocional diferente de onde começou. Um conflito sem essa mudança final fica só declarado, nunca resolvido nem aprofundado."},
+  {"front":"Decisão: numa cena, um personagem responde instantaneamente e o outro deixa o silêncio se estender antes de falar. Quem parece estar no controle emocional da cena?","back":"Quem deixa o silêncio se estender — responder na hora tende a parecer ansioso ou sem poder de decisão."},
+  {"front":"Contraste: qual a diferença entre filmar o rosto de quem fala e filmar o rosto de quem escuta, calado, durante a mesma fala?","back":"Filmar quem fala mostra a fala em si; filmar quem escuta, calado, revela o subtexto — o que essa pessoa sente e não diz."},
+  {"front":"Aplicação: você tem uma cena de dois personagens sem nenhum conflito nomeado ainda. Qual é o primeiro campo da receita desta aula que você preenche antes de qualquer outro?","back":"O que cada um dos dois quer de diferente — o conflito nasce primeiro; os outros campos (silêncio, virada, câmera) organizam esse conflito depois."}
+]
+</script>
+<!--
+COMPLETUDE aula-8 | tipo=FUNDAMENTO | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), dono de restaurante (s2), fotógrafa (s3), fotógrafa (s4), dono de restaurante/mini-caso Ricardo (s5) (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-8"> presente (5 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 5/5 pergunta/diagnóstico/decisão/contraste/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s5)
+-->
+</section>
+<script src="../../assets/curso.js"></script>
+</body>
+</html>

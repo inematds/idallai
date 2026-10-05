@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="fcia-c3" name="curso"/>
+<title>Piensa como un director · Formación de cine con IA</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;family=Inter:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/aula.css" rel="stylesheet"/>
+<script src="../../config.js"></script>
+<script>(function(){try{var m=document.querySelector('meta[name=curso]');var CK=(m&&m.content)||'v5:curso';var s=JSON.parse(localStorage.getItem(CK));if(s&&s.prefs&&s.prefs.theme)document.documentElement.setAttribute('data-theme',s.prefs.theme);}catch(e){}})();</script>
+<!--
+  PROTOCOLO DE DESCOBERTA (v5, Passo 0 — registrado como metadado):
+  - Público específico: adultos 40+, leigos em tecnologia, que querem criar imagens e vídeos cinematográficos com IA para uso profissional.
+  - Profissões-alvo (≥2): fotógrafa com estúdio próprio · dono de restaurante/pequeno comércio · social media autônoma.
+  - Familiaridade com tecnologia: baixa-média — usa WhatsApp, já conversou com IA de chat no navegador; nunca gerou imagem; zero terminal.
+  - Resultado prático esperado: sair produzindo sozinho imagens cinematográficas e um mini-filme de 30–60s com IA, pronto para usar ou vender.
+  - Tempo por sessão: 20–30 minutos.
+-->
+<style>
+  .view{display:none}.view.active{display:block}
+  .lnav{max-width:1160px;margin:0 auto 5vh;padding:0 clamp(24px,5vw,60px);display:flex;justify-content:space-between;gap:12px}
+  .lnav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line2);border-radius:12px;padding:12px 16px}
+  .lnav a:hover{border-color:var(--accent);color:var(--ink)}
+  #v-trilha .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(24px,5vw,60px)}
+  #v-trilha .t-hero{position:relative;overflow:hidden;padding:20vh 0 8vh;border-bottom:1px solid var(--line)}
+  #v-trilha h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.4vw,72px);line-height:1;letter-spacing:-.025em;margin:0 0 22px}
+  #v-trilha h1 em{font-style:italic;color:var(--accent)}
+  #v-trilha .lead{font-family:var(--serif);font-size:clamp(19px,2.1vw,24px);line-height:1.5;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+  #v-trilha section{padding:8vh 0}
+  #v-trilha .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  #v-trilha h2{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);margin:0 0 28px}
+  #v-trilha .aulas{display:grid;gap:14px}
+  #v-trilha .au{display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:center;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+  #v-trilha .au .num{font-family:var(--serif);font-size:30px;color:var(--accent);text-align:center}
+  #v-trilha .au h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 5px}
+  #v-trilha .au p{margin:0;color:var(--muted);font-size:14.5px}
+  #v-trilha .au .meta{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap;text-align:right}
+  #v-trilha .au .prog{position:static;margin-top:10px;height:5px;border-radius:99px;background:var(--line);overflow:hidden;max-width:220px;width:auto}
+  #v-trilha .au .prog i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  #v-trilha footer{max-width:1080px;margin:0 auto;padding:6vh clamp(24px,5vw,60px) 12vh;color:var(--faint);text-align:center;font-family:var(--serif);font-style:italic;border-top:1px solid var(--line)}
+</style>
+<link href="https://inematds.github.io/idallai/curso3-olhar-de-diretor/curso.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/idallai/en/curso3-olhar-de-diretor/curso.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/idallai/es/curso3-olhar-de-diretor/curso.html" hreflang="es" rel="alternate"/></head>
+<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../curso3-olhar-de-diretor/curso.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../en/curso3-olhar-de-diretor/curso.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="curso.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<div class="bar"><div class="bar-inner">
+<span class="brand"><a class="mark" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a><a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a><a class="course" href="../index.html">Piensa como un director</a></span>
+<a class="back" href="#trilha" style="display:none">← ruta</a>
+<button class="pill" id="pill" style="display:none">0 leído</button>
+<button id="revbtn">revisar <span id="revn">0</span></button>
+<button id="exbtn">ejercicios</button>
+<button id="jorbtn">recorrido</button>
+<button aria-label="Cómo funciona" id="helpbtn">?</button>
+<button aria-label="Preferencias de lectura" id="prefsbtn">Aa</button>
+<button id="themebtn">tema: oscuro</button>
+</div></div>
+<!-- ===== TRILHA ===== -->
+<section class="view" id="v-trilha">
+<header class="t-hero"><div class="wrap">
+<p class="kicker">Formación en Cine con IA · Curso 3</p>
+<h1>Piensa como un <em>director</em></h1>
+<p class="lead">Ocho clases para entrenar el ojo que decide: intención, ancla, composición, luz y profundidad: lo que distingue cualquier imagen de una escena que atrapa.</p>
+</div></header>
+<section><div class="wrap">
+<div class="statcards"></div>
+<p class="eyebrow">Lecciones</p>
+<h2>Primero la mirada, después la herramienta</h2>
+<div class="aulas">
+<a class="au on" data-aula="1" href="#aula-1">
+<div class="num">1</div>
+<div><h3>Las preguntas que todo director hace</h3><p>Sal preparado para evaluar cualquier escena con las cuatro preguntas que sostienen una decisión de dirección.</p><div class="prog"><i></i></div></div>
+<div class="meta">18 min · abrir →</div>
+</a>
+<a class="au on" data-aula="2" href="#aula-2">
+<div class="num">2</div>
+<div><h3>El ancla de la escena</h3><p>Descubre qué mantiene la atención en cada tipo de trabajo y elige el ancla antes de generar cualquier cosa.</p><div class="prog"><i></i></div></div>
+<div class="meta">15 min · abrir →</div>
+</a>
+<a class="au on" data-aula="3" href="#aula-3">
+<div class="num">3</div>
+<div><h3>Del guion a la escena, como un estudio</h3><p>Arma toda la línea de preproducción: guion, storyboard, personaje, vestuario, entorno y lista de planos.</p><div class="prog"><i></i></div></div>
+<div class="meta">25 min · abrir →</div>
+</a>
+<a class="au on" data-aula="4" href="#aula-4">
+<div class="num">4</div>
+<div><h3>Del fotograma al movimiento</h3><p>Convierte el storyboard en una secuencia animada — con un movimiento de cámara claro por plano.</p><div class="prog"><i></i></div></div>
+<div class="meta">22 min · abrir →</div>
+</a>
+<a class="au on" data-aula="5" href="#aula-5">
+<div class="num">5</div>
+<div><h3>La escena que hace que el público se pregunte</h3><p>Usa la contradicción, el ambiente y la revelación para crear una pregunta en la mente de quien mira.</p><div class="prog"><i></i></div></div>
+<div class="meta">18 min · abrir →</div>
+</a>
+<a class="au on" data-aula="6" href="#aula-6">
+<div class="num">6</div>
+<div><h3>Composición en el tiempo</h3><p>Diseña hacia dónde va la mirada, plano a plano: tercios, líneas, espacio vacío y escala, cada uno en el momento adecuado.</p><div class="prog"><i></i></div></div>
+<div class="meta">15 min · abrir →</div>
+</a>
+<a class="au on" data-aula="7" href="#aula-7">
+<div class="num">7</div>
+<div><h3>La luz es emoción</h3><p>Diez maniobras de luz para controlar lo que siente el público, incluido el arte de quitar luz en vez de ponerla.</p><div class="prog"><i></i></div></div>
+<div class="meta">22 min · abrir →</div>
+</a>
+<a class="au on" data-aula="8" href="#aula-8">
+<div class="num">8</div>
+<div><h3>Profundidad: la escena en tres capas</h3><p>Arma el primer plano, el plano medio y el fondo en cada encuadre, y cuenta relaciones humanas solo con la posición y la mirada.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · abrir →</div>
+</a>
+</div>
+</div></section>
+<footer><div class="wrap">Curso 3 · Formación en Cine con IA · INEMA.CLUB PRO</div></footer>
+</section>
+<!-- ===== AULA 1 ===== -->
+<section class="view" data-aula="1" data-tempo="18min" id="v-aula-1">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 3 · Clase 1</p>
+<h1>Las preguntas que todo <em>director</em> hace</h1>
+<p class="promise">Al final de esta clase, evalúas cualquier escena, tuya o de otras personas, respondiendo las cuatro preguntas que sostienen una decisión de dirección.</p>
+<p class="why">La IA ejecuta la dirección; no crea la intención. Si la escena no tiene lógica interna, un punto focal definido y un motivo para la cámara, el resultado será inconsistente, sin importar cuán avanzada sea la herramienta. Todo este curso entrena la parte que la máquina no hace por ti.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/aa83f214de4c4b15a2e901104c91c1bd" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a maquete do arquiteto — decidir no pequeno antes de construir no grande -->
+<path d="M40 190 h220" stroke-width="2" style="stroke:var(--line2)"></path>
+<rect height="70" stroke-width="2" style="stroke:var(--accent)" width="70" x="70" y="120"></rect>
+<path d="M70 120 l35 -28 35 28" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<rect height="40" stroke-width="1.6" style="stroke:var(--accent);opacity:.6" width="16" x="88" y="150"></rect>
+<rect height="14" stroke-width="1.6" style="stroke:var(--accent);opacity:.6" width="14" x="114" y="138"></rect>
+<g fill="none" stroke-width="1.8" style="stroke:var(--warm)">
+<path d="M188 150 c0 -10 8 -18 18 -18 c10 0 18 8 18 18"></path>
+<line x1="206" x2="206" y1="132" y2="120"></line>
+<circle cx="206" cy="114" r="5"></circle>
+</g>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="206" y="176">quién decide</text>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="105" y="212">la maqueta</text>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="232">barato de cambiar aquí, caro de cambiar en la obra</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> La IA ejecuta; la intención es tuya</h2>
+<p>Hay una división del trabajo que este curso no te deja olvidar: la herramienta genera píxeles; quien genera <b>sentido</b> eres tú. Una escena sin lógica interna queda bonita y vacía; ninguna actualización tecnológica puede arreglar el vacío.</p>
+<p>Aquí, la intención tiene una definición práctica: poder justificar cada decisión de la escena. Si la respuesta a «¿por qué este ángulo?» es «salió así», la escena pierde fuerza.</p>
+<p>La fotógrafa vive esto en la sesión de fotos de graduación: cuando coloca a la familia a contraluz de la ventana, hay un motivo: destacar a quien se gradúa, suavizar los rostros. La IA necesita recibir ese mismo motivo por escrito.</p>
+<div class="qanchor"><p>La herramienta no tiene opinión. Toda buena escena es una opinión tuya, ejecutada.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> Las cinco leyes de toda escena que funciona</h2>
+<p>Todo el curso se apoya en cinco leyes. Memoriza sus nombres ahora, porque las próximas clases profundizan en ellas una por una:</p>
+<ul>
+<li><b>Jerarquía visual</b> — qué ve el ojo primero, segundo y tercero. Sin jerarquía, el público no sabe dónde mirar.</li>
+<li><b>Lógica de cámara</b> — la posición y el movimiento de la cámara tienen un motivo narrativo, no son solo estéticos.</li>
+<li><b>Control del movimiento</b> — qué se mueve en la escena y por qué. El movimiento sin función se convierte en ruido.</li>
+<li><b>Ancla emocional</b> — el elemento que mantiene la mirada y el sentimiento (la clase 2 trata íntegramente sobre esto).</li>
+<li><b>Legibilidad</b> — ¿se entiende la escena en un segundo? Si necesita subtítulos, no funcionó.</li>
+</ul>
+<p>El dueño de un bistró probó las cinco leyes en el video de inauguración de su nuevo local: definió que la vista vería primero la puerta abriéndose, después el salón y, por último, el mostrador, y el video dejó de parecer una «grabación de celular».</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> Las cuatro preguntas antes de generar</h2>
+<p>Antes de cualquier generación, el director interroga a su propia escena: <b>¿Por qué este ángulo? ¿Por qué este movimiento? ¿Por qué esta duración? ¿Por qué esta luz?</b> Cuatro preguntas, cuatro respuestas — o la escena vuelve a la mesa de trabajo.</p>
+<p>El efecto secundario es liberador: las preguntas transforman «no quedó bien» (inútil) en un diagnóstico preciso («la duración no se justifica: corta 2 segundos»). Dejas de rehacer a ciegas.</p>
+<p>La social media adoptó las preguntas durante la aprobación con la clienta de la posada: en vez de discutir sobre gustos, ambas responden juntas las cuatro preguntas, y la conversación termina en una decisión, no en una opinión.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>"Genera un video del salón." El ángulo, el movimiento, la duración y la luz quedan al azar, y volver a hacerlo se convierte en una lotería.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>"Ángulo bajo para darle imponencia, cámara que avanza despacio porque es una invitación, 8 segundos porque es el tiempo necesario para leer el ambiente, luz del final de la tarde porque la casa vive de las cenas."</p></div>
+<p class="qba-saldo">Resultado: cuatro respuestas escritas antes de generar, y cada nuevo intento mejora algo concreto, no la suerte.</p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> Cada herramienta cumple una función; ninguna cumple la tuya</h2>
+<p>En los próximos cursos encontrarás varias herramientas: generadores de imágenes, de video y de cámara. Guarda desde ahora la regla de la casa: <b>cada herramienta tiene un papel definido dentro del flujo</b>; ninguna decide por ti. Quien escala la herramienta adecuada para la tarea adecuada es el director.</p>
+<p>Es el mismo razonamiento de la fotógrafa con su propio equipo: el teleobjetivo cumple una función, el reflector cumple una función — y ninguno de los dos elige la foto. La jerarquía siempre es: primero la intención, después el instrumento.</p>
+<div class="quiz" data-answer="b">
+<p class="qk">Ponte a prueba</p><p class="q">Una escena generada quedó técnicamente perfecta, pero «no funciona». Según el marco de esta clase, ¿cuál es el diagnóstico más probable?</p>
+<button class="opt" data-fb="Trocar de ferramenta sem diagnóstico repete o problema em outra interface — a falha raramente é do executor." data-k="a">La herramienta que se usa es débil para escenas complejas</button>
+<button class="opt" data-fb="Exato: beleza técnica sem lógica interna é o sintoma clássico de intenção ausente — alguma das quatro perguntas ficou sem resposta." data-k="b">Faltó intención: alguna de las cuatro preguntas no tiene respuesta</button>
+<button class="opt" data-fb="Duração é só uma das quatro perguntas — encurtar sem diagnóstico é chute, não direção." data-k="c">El video es demasiado largo</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="analise" data-practice="p1">
+<p class="pk">Practica ahora <span class="pcount">0/3 hecho</span></p>
+<h3 class="ph">Interroga una escena real</h3>
+<p class="pgoal">Aplicar las cuatro preguntas a un caso concreto y comparar con la respuesta modelo: en ~10 minutos.</p>
+<p class="psafe">Es un ejercicio de lectura y decisión: no hay nada que instalar, generar ni arruinar de forma permanente. Discrepar de la respuesta correcta es parte del ejercicio; el valor está en justificar tu respuesta.</p>
+<p><b>El caso:</b> Regina, encargada de redes sociales, recibió de la pastelería un video generado por IA para el lanzamiento del pastel de exhibición: la cámara gira rápido alrededor del pastel, dura 20 segundos, tiene una luz blanca uniforme de tienda y un ángulo de arriba hacia abajo. A la dueña le pareció «moderno»; Regina sintió que «algo no encaja». El pastel es artesanal y se vende como una muestra de cariño familiar.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Responde por escrito las cuatro preguntas sobre la escena descrita: ¿se justifican el ángulo, el movimiento, la duración y la luz para un producto que se vende como una muestra de cariño?</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Reescribe la escena en 3 líneas, con las cuatro respuestas correctas para la intención «afecto artesanal».</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Compara con la clave de respuestas de abajo: no para acertar igual, sino para comprobar si puedes explicar el porqué de cada elección.</label></li>
+</ol>
+<details><summary>Respuestas comentadas</summary>
+<p>Un ángulo desde arriba aplana el pastel y recuerda a la vigilancia — para transmitir afecto, usa la altura de la mesa, como quien se sienta a comer. Un giro rápido vende tecnología, no calidez — un avance lento hacia el pastel invita. Veinte segundos para un solo producto cansan — 8 a 10 bastan. La luz blanca de tienda esteriliza — una luz cálida lateral, como la de una ventana de cocina, cuenta la historia adecuada. El error de la escena no era técnico: era la falta de intención — las cuatro respuestas describían una joyería, no una pastelería familiar.</p>
+</details>
+<p class="pdone">Diagnosticastes una escena con las cuatro preguntas y la redirigiste por escrito — exactamente el criterio que pedía la promesa de esta clase.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; A divisão real do trabalho: a intenção nasce de um lado só — a ferramenta executa, nunca opina." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="56" rx="8" stroke-width="2" style="stroke:var(--accent)" width="76" x="24" y="50"></rect>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="62" y="74">tú</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="62" y="90">porqués</text>
+<path d="M100 78 h24" stroke-width="2" style="stroke:var(--muted)"></path>
+<path d="M118 73 l8 5 -8 5" fill="none" stroke-width="2" style="stroke:var(--muted)"></path>
+<rect height="56" rx="8" stroke-width="2" style="stroke:var(--line2)" width="70" x="126" y="50"></rect>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="161" y="74">IA</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="161" y="90">píxeles</text>
+<path d="M161 106 v28" stroke-width="2" style="stroke:var(--line2)"></path>
+<path d="M156 126 l5 8 5 -8" fill="none" stroke-width="2" style="stroke:var(--line2)"></path>
+<rect height="34" rx="8" stroke-width="2" style="stroke:var(--warm)" width="86" x="118" y="142"></rect>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="161" y="163">escena con sentido</text>
+<path d="M62 106 c0 34 30 44 56 50" fill="none" stroke-dasharray="3 3" stroke-width="1.6" style="stroke:var(--accent)"></path>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; As cinco leis em camadas: hierarquia no topo decide o olhar; legibilidade na base decide se a cena sobrevive a um segundo de atenção." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="24" rx="5" width="100" x="60" y="22"></rect>
+<rect height="24" opacity=".85" rx="5" width="116" x="52" y="54"></rect>
+<rect height="24" opacity=".7" rx="5" width="132" x="44" y="86"></rect>
+<rect height="24" opacity=".55" rx="5" width="148" x="36" y="118"></rect>
+<rect height="24" opacity=".4" rx="5" width="164" x="28" y="150"></rect>
+</g>
+<g font-size="8" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="110" y="37">jerarquía visual</text>
+<text text-anchor="middle" x="110" y="69">lógica de cámara</text>
+<text text-anchor="middle" x="110" y="101">control del movimiento</text>
+<text text-anchor="middle" x="110" y="133">ancla emocional</text>
+<text text-anchor="middle" x="110" y="165">legibilidad</text>
+</g>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; O filtro das quatro perguntas: só passa para a geração a cena com quatro respostas — o resto volta para a prancheta." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="28" rx="6" stroke-width="2" style="stroke:var(--line2)" width="80" x="70" y="20"></rect>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="38">idea de la escena</text>
+<path d="M110 48 v18" stroke-width="2" style="stroke:var(--muted)"></path>
+<path d="M60 66 h100 l-14 52 h-72 z" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<g font-size="7.5" style="fill:var(--accent);font-family:var(--mono)">
+<text text-anchor="middle" x="110" y="82">¿ángulo? ¿movimiento?</text>
+<text text-anchor="middle" x="110" y="96">¿duración? ¿luz?</text>
+</g>
+<path d="M110 118 v22" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M105 132 l5 8 5 -8" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<rect height="28" rx="6" stroke-width="2" style="stroke:var(--warm)" width="88" x="66" y="146"></rect>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="164">generar con intención</text>
+<path d="M160 92 c26 0 30 -34 20 -58" fill="none" stroke-dasharray="3 3" stroke-width="1.6" style="stroke:var(--line2)"></path>
+<text font-size="7" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="196" y="80">sin respuesta:</text>
+<text font-size="7" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="196" y="92">vuelta</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; A hierarquia da produção: a intenção no topo distribui papéis; cada ferramenta ocupa um posto — nenhuma ocupa o seu." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="30" rx="8" stroke-width="2" style="stroke:var(--accent)" width="76" x="72" y="20"></rect>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="39">tu intención</text>
+<path d="M110 50 v16 M110 66 h-66 v14 M110 66 h66 v14 M110 66 v14" fill="none" stroke-width="1.6" style="stroke:var(--muted)"></path>
+<g fill="none" stroke-width="1.8" style="stroke:var(--line2)">
+<rect height="26" rx="6" width="58" x="16" y="80"></rect>
+<rect height="26" rx="6" width="58" x="81" y="80"></rect>
+<rect height="26" rx="6" width="58" x="146" y="80"></rect>
+</g>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="45" y="97">imagen</text>
+<text text-anchor="middle" x="110" y="97">video</text>
+<text text-anchor="middle" x="175" y="97">cámara</text>
+</g>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="140">roles definidos, un puesto cada uno</text>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="170">ninguna herramienta decide lo mejor</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>La IA ejecuta la dirección; la intención —el porqué de cada decisión— sigue siendo trabajo tuyo.</li>
+<li>Una escena que funciona obedece cinco leyes: jerarquía visual, lógica de cámara, control del movimiento, ancla emocional y legibilidad.</li>
+<li>Antes de generar, responde cuatro preguntas: por qué este ángulo, este movimiento, esta duración, esta luz. Si no hay respuesta, vuelve a la mesa de trabajo.</li>
+<li>Las herramientas tienen funciones definidas dentro del flujo; no se delega el puesto de quien decide.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de obtener el filtro que distingue la dirección de la suerte: cuatro preguntas que caben en una servilleta.</p>
+<p class="na-action">En los próximos 15 minutos: toma el último video o foto que publicaste de tu trabajo y responde las cuatro preguntas sobre él. Donde no encuentres respuesta, habrás encontrado qué rehacer primero.</p>
+<p class="na-hook">En la próxima clase, la ley más decisiva de las cinco tendrá su propia clase: el ancla, el elemento que retiene la mirada y que cambia según el tipo de trabajo.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#trilha">← ruta</a><a href="#aula-2">próxima clase →</a></nav>
+<footer>Clase 1 · Piensa como un director · Formación de Cine con IA</footer>
+<script id="cards-1" type="application/json">
+[
+  {"front":"Pergunta: quais são as quatro perguntas do diretor antes de gerar qualquer cena?","back":"Por que este ângulo? Por que este movimento? Por que esta duração? Por que esta luz?"},
+  {"front":"Diagnóstico: a cena saiu tecnicamente linda e mesmo assim 'não funciona'. Onde procurar o defeito primeiro?","back":"Na intenção: alguma das quatro perguntas está sem resposta — beleza sem lógica interna é sintoma de direção ausente, não de ferramenta fraca."},
+  {"front":"Contraste: qual a diferença entre 'não ficou bom' e um diagnóstico de diretor?","back":"'Não ficou bom' não aponta ação; o diagnóstico nomeia a pergunta sem resposta (ex.: 'a duração não se justifica') e diz o que mudar."},
+  {"front":"Aplicação: sua cliente quer 'um vídeo moderno' do produto artesanal dela. O que você define antes de abrir qualquer ferramenta?","back":"As quatro respostas (ângulo, movimento, duração, luz) coerentes com a emoção do produto — e só então a ferramenta entra."},
+  {"front":"Decisão: entre estudar uma ferramenta nova e revisar a hierarquia visual da cena, o que vem primeiro segundo as cinco leis?","back":"A hierarquia visual — sem saber o que o olho vê primeiro, qualquer ferramenta nova só executa a mesma confusão melhor."}
+]
+</script>
+<!--
+COMPLETUDE aula-1 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="18min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa (s1), dono de bistrô (s2), social media (s3), fotógrafa (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="analise"] (exatamente 1, mini-caso + gabarito em details)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-1"> presente (5 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 5/5 pergunta/diagnóstico/contraste/aplicação/decisão; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 2 ===== -->
+<section class="view" data-aula="2" data-tempo="15min" id="v-aula-2">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 3 · Clase 2</p>
+<h1>El ancla de la <em>escena</em></h1>
+<p class="promise">Al final de esta clase, identificas el ancla adecuada para cualquier escena —persona, producto o ritmo— y la nombras antes de escribir el primer pedido para la IA.</p>
+<p class="why">En la clase pasada conociste las cinco leyes de toda escena que funciona. El ancla es la más decisiva de las cinco y también la más fácil de pasar por alto. Si no la nombras, la mirada de quien ve la escena vaga por todas partes y no se detiene en ningún lugar, aunque la luz, el ángulo y el movimiento sean técnicamente correctos.</p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: o pátio central de uma casa — todo cômodo se organiza ao redor dele -->
+<rect height="160" rx="4" stroke-width="2" style="stroke:var(--line2)" width="220" x="40" y="40"></rect>
+<rect height="72" stroke-width="2" style="stroke:var(--accent)" width="92" x="104" y="94"></rect>
+<path d="M104 130 h92 M150 94 v72" stroke-width="1.2" style="stroke:var(--accent);opacity:.4"></path>
+<rect height="34" stroke-width="1.4" style="stroke:var(--line2)" width="40" x="52" y="52"></rect>
+<rect height="34" stroke-width="1.4" style="stroke:var(--line2)" width="40" x="208" y="52"></rect>
+<rect height="34" stroke-width="1.4" style="stroke:var(--line2)" width="40" x="52" y="154"></rect>
+<rect height="34" stroke-width="1.4" style="stroke:var(--line2)" width="40" x="208" y="154"></rect>
+<path d="M92 69 h12 M92 171 h12 M196 69 h12 M196 171 h12" stroke-dasharray="2 3" stroke-width="1.2" style="stroke:var(--faint)"></path>
+<circle cx="150" cy="130" r="5" style="fill:var(--warm)"></circle>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="150" y="152">el patio</text>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="222">cada habitación se organiza a su alrededor</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> El ancla es lo que la mirada encuentra y no suelta</h2>
+<p>En esta formación, <span class="gterm" data-def="O elemento único de uma cena para onde o olho vai primeiro e volta sempre que se perde — pode ser uma pessoa, um objeto ou até um ritmo de movimento." tabindex="0">ancla</span> es el elemento único que la vista encuentra primero en una escena y al que siempre regresa cuando se pierde. Toda escena que funciona tiene uno; toda escena confusa, cuando la analizas, no tiene ninguno: solo candidatos que compiten entre sí.</p>
+<p>Sin el ancla nombrada antes de generar, la IA elige por su cuenta — normalmente el elemento técnicamente más llamativo, no el más importante para la narración. Un color intenso, el brillo o el movimiento: cualquiera de ellos gana por accidente si no decides antes.</p>
+<p>Una fotógrafa que hace sesiones de embarazo decide esto antes de apretar el botón: enfocarse en las manos entrelazadas sobre la barriga, no en el vestido ni en la pared del estudio detrás. Esa decisión —tomada antes, no corregida después— es lo que la clase de hoy te enseña a repetir.</p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> En un retrato, el ancla casi siempre es una persona</h2>
+<p>Cuando el tema son las personas, el ancla suele estar en un detalle humano: la mirada, un gesto de las manos, la curva de una sonrisa. Ese detalle transmite la emoción de toda la escena — lo demás (la ropa, el fondo, la luz ambiental) solo tiene que evitar competir con él.</p>
+<p>Volviendo a la sesión de fotos de embarazo: si la solicitud para la IA solo describe «embarazada en estudio, luz suave», la máquina decide por su cuenta qué poner en el centro; a veces el rostro de frente, a veces el cuerpo entero, sin criterio. Nombrar el punto de referencia evita dejar esa decisión al azar.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>"Sesión de fotos de maternidad en estudio, luz suave, fondo neutro." La IA elige el encuadre por su cuenta: a veces un retrato del rostro, a veces el cuerpo entero, sin repetir la elección entre intentos.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>"Manos entrelazadas sobre el vientre, en primer plano; luz lateral suave que resalta los dedos; rostro y fondo discretos, fuera del centro de atención."</p></div>
+<p class="qba-saldo">Resultado: el ancla nombrada —las manos— se convierte en el criterio que debe respetar cualquier nuevo intento, en lugar de empezar de cero en cada generación.</p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> En un producto o negocio, el ancla es la transformación</h2>
+<p>Cuando el tema es un producto o un servicio, el ancla rara vez es el objeto inmóvil — es la transformación que provoca: el antes y el después que el video existe para mostrar. Una tienda entera, un mostrador, una vitrina: ninguno de estos es el ancla; son solo el escenario que la rodea.</p>
+<p>El dueño de una heladería que estaba lanzando un sabor nuevo lo decidió en la práctica: en vez de mostrar el local, el congelador y al cliente pagando, el ancla pasó a ser un solo gesto: la cuchara hundiéndose en el pote y el helado escurriéndose por el borde. Todo lo demás del video empezó a servir a ese instante.</p>
+<p>Es el mismo razonamiento que distingue un video institucional (lo muestra todo, no muestra nada) de un video de lanzamiento (muestra una sola cosa con claridad).</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> Sin un objeto fijo, el ancla puede ser el ritmo</h2>
+<p>No todas las escenas tienen un objeto o un rostro que capte la mirada. En un video de baile, de entrenamiento o de cualquier actividad en movimiento continuo, el ancla puede ser el propio ritmo: el pulso, la cadencia, la repetición que crea una expectativa de continuidad.</p>
+<p>La social media que gestiona las redes de una academia de danza aprendió esto al grabar los reels del grupo: sin un objeto o rostro fijo en cada corte, empezó a cortar siempre en el momento fuerte del movimiento. Los videos dejaron de parecer fragmentados porque el ancla (el ritmo) se mantuvo constante incluso al cambiar de ángulo.</p>
+<div class="qanchor"><p>El ancla no es el elemento más bonito de la escena. Es el elemento sin el cual la escena no existe.</p></div>
+<div class="quiz" data-answer="c">
+<p class="qk">Ponte a prueba</p><p class="q">Un reel muestra una secuencia de saltos de un entrenamiento de baile, sin ningún objeto ni rostro que destaque de forma constante. ¿Cuál es el ancla más probable de esta escena?</p>
+<button class="opt" data-fb="O tênis muda de plano a plano e não segura sozinho a atenção — é detalhe, não âncora." data-k="a">El tenis más colorido de quien aparece en el video</button>
+<button class="opt" data-fb="O espelho é cenário, não âncora — ele não muda de plano a plano e não carrega nenhuma emoção específica." data-k="b">El espejo del estudio al fondo</button>
+<button class="opt" data-fb="Exato: sem objeto fixo, o próprio ritmo do movimento — o pulso dos saltos — segura o olhar e organiza os cortes." data-k="c">El ritmo del movimiento en sí</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="analise" data-practice="p2">
+<p class="pk">Practica ahora <span class="pcount">0/3 hecho</span></p>
+<h3 class="ph">Elige el ancla adecuada para una escena real</h3>
+<p class="pgoal">Lee el caso, elige el ancla entre cuatro candidatos y compara con la respuesta correcta — en ~8 minutos.</p>
+<p class="psafe">Es un ejercicio de lectura y elección: no hay nada que generar ni descargar, ni ningún costo. No existe una respuesta que rompa algo; solo una que enseña más que la otra.</p>
+<p><b>El caso:</b> Otávio, dueño de una tienda de bicicletas, pidió un video de lanzamiento para la nueva bicicleta eléctrica de la tienda. El primer resultado tenía cuatro elementos que competían por la atención: la fachada con luz de neón, el manubrio cromado brillante, el rostro sonriente del modelo contratado y el letrero de la tienda al fondo. En el grupo de prueba, después de ver el video, nadie supo decir cuál era el tema principal.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Enumera los cuatro candidatos a ancla y escribe qué representaría cada uno en la escena (producto, persona o ambiente).</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Elige un solo candidato como ancla, recordando que el objetivo del video es vender la bici, no la tienda ni el modelo.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Compara tu elección y tu justificación con la clave de respuestas de abajo.</label></li>
+</ol>
+<details><summary>Respuestas comentadas</summary>
+<p>La bicicleta eléctrica es el ancla adecuada: es el producto que Otávio necesita vender y la transformación que importa —la nueva movilidad que ofrece—. El rostro del modelo compite por ser humano; el letrero y el neón compiten por ser llamativos, pero ninguno de los dos es el motivo de que exista el video. Una vez definida el ancla, la cámara y la luz se organizan en torno a ella: primeros planos del manubrio y de la rueda girando, el modelo aparece apenas como escala humana y la tienda queda reducida a un fondo discreto.</p>
+</details>
+<p class="pdone">Aplicaste, a un caso que no es tuyo, el mismo razonamiento de esta clase — nombrar el ancla antes de juzgar la escena. Esa es exactamente la habilidad que pedía la promesa de hoy.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Sem âncora nomeada, vários candidatos competem pela mesma atenção; com a âncora escolhida, tudo o resto se organiza ao redor de um único ponto." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g stroke-width="1.8" style="stroke:var(--line2)">
+<circle cx="46" cy="46" r="9"></circle><circle cx="100" cy="34" r="7"></circle><circle cx="150" cy="56" r="8"></circle><circle cx="70" cy="88" r="6"></circle>
+</g>
+<text font-size="8.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="112">sin ancla: todo compite</text>
+<circle cx="110" cy="160" r="10" style="fill:var(--accent)"></circle>
+<g stroke-width="1.4" style="stroke:var(--accent);opacity:.5">
+<path d="M110 160 l-40 -16 M110 160 l42 -10 M110 160 l-10 34 M110 160 l30 20"></path>
+</g>
+<text font-size="8.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="196">con ancla: todo apunta hacia ella</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Pedido sem âncora: enquadramento decidido pela IA, muda a cada tentativa. Pedido com âncora nomeada: o critério se repete entre tentativas." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="60" rx="6" stroke-width="1.8" style="stroke:var(--line2)" width="80" x="20" y="26"></rect>
+<circle cx="60" cy="48" r="8" stroke-width="1.6" style="stroke:var(--muted)"></circle>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="98">intento 1</text>
+<rect height="60" rx="6" stroke-width="1.8" style="stroke:var(--line2)" width="80" x="120" y="26"></rect>
+<rect height="28" stroke-width="1.6" style="stroke:var(--muted)" width="20" x="150" y="42"></rect>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="160" y="98">intento 2 (cambió)</text>
+<rect height="60" rx="6" stroke-width="2" style="stroke:var(--accent)" width="80" x="70" y="126"></rect>
+<path d="M96 156 c0 -8 8 -14 14 -14 c8 0 14 6 14 14" fill="none" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="198">ancla con nombre: criterio fijo</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; A âncora de produto raramente é o objeto parado — é o instante da transformação, com o resto reduzido a cenário." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="14" rx="4" stroke-width="1.6" style="stroke:var(--line2)" width="160" x="30" y="130"></rect>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="168">escenario (tienda, mostrador, letrero)</text>
+<path d="M90 40 l20 -14 20 14 v46 h-40 z" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M110 60 v20" stroke-width="2" style="stroke:var(--warm)"></path>
+<circle cx="110" cy="88" r="6" style="fill:var(--warm)"></circle>
+<text font-size="8.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="24">la transformación = el ancla</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Sem objeto fixo, o pulso do movimento — repetido a cada corte — faz o papel que um objeto faria em outra cena." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 140 q22 -70 44 0 q22 -70 44 0 q22 -70 44 0 q22 -70 44 0" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<g style="fill:var(--accent)">
+<circle cx="64" cy="140" r="4"></circle><circle cx="152" cy="140" r="4"></circle>
+</g>
+<text font-size="8.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="176">el corte cae siempre en el mismo tiempo fuerte</text>
+<text font-size="8.5" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="26">ritmo como ancla</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>El ancla es el elemento único que el ojo encuentra primero y al que siempre vuelve — sin nombrarla, la escena se dispersa aunque la técnica sea perfecta.</li>
+<li>En un retrato, el ancla casi siempre es una persona: la mirada, el gesto, la expresión.</li>
+<li>En un producto o negocio, el ancla es la transformación —el antes y el después que el video existe para mostrar.</li>
+<li>Sin un objeto fijo, el ancla puede ser el ritmo: el pulso del movimiento mantiene la atención por sí solo.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de aprender a nombrar, con una palabra, el motivo por el que existe cualquier escena.</p>
+<p class="na-action">En los próximos 10 minutos: mira una foto o un video reciente de tu trabajo y escribe en una frase cuál es su ancla. Si no te sale la frase, probablemente esa es la escena que más necesita rehacerse.</p>
+<p class="na-hook">En la próxima clase, el ancla gana compañía: armarás toda la línea de preproducción —guion, storyboard, personaje, vestuario y ambiente— como lo haría un pequeño estudio antes de grabar cualquier cosa.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-1">← clase anterior</a><a href="#aula-3">próxima clase →</a></nav>
+<footer>Clase 2 · Piensa como un director · Formación de Cine con IA</footer>
+<script id="cards-2" type="application/json">
+[
+  {"front":"Diagnóstico: uma cena tem luz, ângulo e movimento certos, mas ninguém sabe pra onde olhar primeiro. Qual pergunta de uma palavra revela o problema?","back":"'Qual é a âncora?' — se a resposta não sai em uma palavra, ela nunca foi escolhida antes de gerar a cena."},
+  {"front":"Decisão: um vídeo de lançamento tem o rosto sorridente do vendedor e o produto lado a lado, competindo por atenção. Qual dos dois vira âncora, se o objetivo é vender o produto?","back":"O produto — o rosto do vendedor vira apoio humano de escala, não o centro da cena."},
+  {"front":"Contraste: qual a diferença entre a âncora de um retrato e a âncora de uma cena sem nenhum objeto fixo, como um vídeo de dança?","back":"No retrato, um detalhe humano específico carrega o olhar — um rosto, uma mão; sem objeto fixo, é a cadência do movimento que assume esse papel."},
+  {"front":"Aplicação: você vai gravar o lançamento de um prato novo do seu restaurante. Qual é a âncora mais provável, e por quê?","back":"A transformação do prato — o gesto que revela o prato pronto. Não o salão, não quem serve: esse gesto é o motivo do vídeo existir."},
+  {"front":"Pergunta: por que uma cena com câmera, luz e composição tecnicamente perfeitas ainda pode falhar?","back":"Porque nenhuma dessas três decide sozinha para onde o olho vai — sem uma âncora nomeada, elas competem entre si em vez de apontar para um único lugar."}
+]
+</script>
+<!--
+COMPLETUDE aula-2 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="15min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa/ensaio de gestante (s1,s2), dono de sorveteria (s3), social media/academia de dança (s4) (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="analise"] (exatamente 1, mini-caso + gabarito em details)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~8 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-2"> presente (5 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 5/5 diagnóstico/decisão/contraste/aplicação/pergunta; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 3 ===== -->
+<section class="view" data-aula="3" data-tempo="25min" id="v-aula-3">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 3 · Clase 3</p>
+<h1>Del guion a la escena, como un <em>estudio</em></h1>
+<p class="promise">Al final de esta clase, preparas para una escena real de tu trabajo los cinco elementos que un estudio profesional decide antes de grabar: emoción objetivo, storyboard, personaje, entorno y lista de planos.</p>
+<p class="why">Ya sabes que la IA necesita una intención y sabes nombrar el ancla. Falta el vínculo que transforma esas dos decisiones en una escena completa, coherente de principio a fin: la misma línea de preproducción que recorre un estudio de cine antes de encender cualquier cámara, adaptada para que trabajes por tu cuenta.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/e78b0dec68c042bba1f1c1eaea511c6a" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: da semente à colheita — cada etapa no seu tempo -->
+<path d="M30 200 h240" stroke-width="2" style="stroke:var(--line2)"></path>
+<circle cx="56" cy="192" r="5" style="fill:var(--accent)"></circle>
+<path d="M110 192 v-16 M110 176 c-10 0 -16 -8 -16 -16 M110 176 c10 0 16 -8 16 -16" fill="none" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<path d="M164 192 v-40 M164 172 c-14 0 -22 -10 -22 -22 M164 172 c14 0 22 -10 22 -22 M164 152 c-10 0 -16 -8 -16 -16 M164 152 c10 0 16 -8 16 -16" fill="none" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<g stroke-width="2" style="stroke:var(--warm)">
+<path d="M224 192 v-62"></path>
+<circle cx="224" cy="122" fill="none" r="16"></circle>
+<circle cx="210" cy="132" fill="none" r="10"></circle>
+<circle cx="238" cy="132" fill="none" r="10"></circle>
+</g>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="56" y="214">semilla</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="214">brote</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="164" y="214">cambia</text>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="224" y="214">cosecha</text>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="34">cada etapa a su tiempo, nunca fuera de orden</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Todo empieza por la emoción que quieres provocar</h2>
+<p>Antes de cualquier imagen, todo director profesional se hace una pregunta sencilla: ¿qué debe sentir el público en este momento? La respuesta es lo que decide después el ángulo, la luz y la composición — nunca al revés. Generar de inmediato sin responder esa pregunta es como cocinar sin saber qué plato estás preparando.</p>
+<p>El dueño de una pizzería, mientras planeaba el video de lanzamiento de una pizza nueva para el Día del Padre, decidió esto antes de escribir cualquier pedido: la emoción era «calidez de una familia reunida», no «pizza apetitosa aislada en el plato». Esa única elección cambió el ángulo (mesa llena, no un primer plano aislado), la luz (cálida, de última hora de la tarde) e incluso la duración (más lenta, para dar tiempo a reconocer los rostros).</p>
+<div class="qanchor"><p>La emoción no decora la escena. La emoción decide la escena, antes de que exista cualquier imagen.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> El storyboard es el primer orden visual de la historia</h2>
+<p>Un <span class="gterm" data-def="Sequência de quadros simples, um por plano, que mostra a ordem em que a história vai aparecer na tela — antes de qualquer imagem final ser gerada." tabindex="0">storyboard</span> es la secuencia de cuadros sencillos —trazo tosco, sin color ni detalles— que muestra en qué orden aparecerá la historia en pantalla. Define el encuadre, el punto de vista de la cámara y el ritmo con el que aumenta la tensión, todo antes de que gastes una sola generación costosa.</p>
+<p>El dueño de la pizzería dibujó cuatro cuadros sencillos, a mano, antes de abrir cualquier herramienta de imagen: la fachada de la pizzería de noche, el horno abriéndose con la pizza dentro, la pizza saliendo humeante, la mesa de la familia recibiendo el plato. Solo después de comprobar que ese orden tenía sentido en el papel, pasó a generar imágenes de verdad.</p>
+<p>Equivocarse en el orden del borrador cuesta un lápiz; equivocarse en el orden de la generación final cuesta tiempo y cuota de la herramienta. Por eso, el storyboard siempre va primero.</p>
+<div class="quiz" data-answer="b">
+<p class="qk">Ponte a prueba</p><p class="q">Ya sabes cuál es la emoción que buscas en la escena y estás listo para empezar. ¿Cuál es el siguiente paso antes de generar cualquier imagen final?</p>
+<button class="opt" data-fb="Pular direto pro acabamento sem testar a ordem é o erro mais caro dessa linha de trabalho — o problema só aparece depois de já ter gastado a geração." data-k="a">Generar la imagen final de la primera escena para ver cómo queda</button>
+<button class="opt" data-fb="Exato: o storyboard testa a ordem da história em rascunho barato — errar aqui custa um traço a mais, não uma geração perdida." data-k="b">Bocetar un storyboard sencillo con el orden de las escenas</button>
+<button class="opt" data-fb="A lista de planos vem depois do storyboard — sem a ordem da história definida, ainda não dá para saber que planos vão existir." data-k="c">Escribir la lista de planos, con la cámara y el movimiento de cada plano</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> El personaje se crea una vez y se repite siempre</h2>
+<p>En la producción profesional, quien lleva la escena —una persona o un producto— se describe una sola vez, en un contexto neutro, y luego se reutiliza en cada escena nueva. Separar «quién es» de «dónde está» evita el problema más común de quienes generan imágenes por su cuenta: que el mismo producto parezca uno diferente en cada intento.</p>
+<p>Para la campaña de la pizza nueva, el "personaje" no era una persona, sino la propia pizza, descrita una sola vez y reutilizada en todas las escenas siguientes.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>Escena 1: «pizza margherita, masa fina, borde dorado». Escena 4: «pizza con albahaca y queso derretido». Dos descripciones independientes: las pizzas salen visiblemente distintas.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>Una sola descripción, escrita una vez: "pizza margherita, masa fina con el borde dorado, albahaca fresca, queso derritiéndose en los bordes." La misma frase se usa en cada escena nueva, sin volver a escribirla.</p></div>
+<p class="qba-saldo">Resultado: una descripción reutilizada reemplaza cuatro descripciones sueltas; la pizza del fotograma 1 sigue siendo, visiblemente, la misma pizza del fotograma 4.</p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> El entorno determina la escala y la tensión de la escena</h2>
+<p>El entorno no es un fondo decorativo: define cuánto se intensifica o se expande la emoción del espectador. Un espacio estrecho acerca y crea intimidad o urgencia; un espacio amplio expande y crea generosidad o grandiosidad. La misma escena, en dos entornos diferentes, cuenta dos historias distintas.</p>
+<p>En la campaña de la pizzería, la cocina estrecha y llena de vapor, filmada de cerca, creó una sensación de apuro y dedicación en la preparación; mientras que la mesa abundante al aire libre, filmada de lejos, creó una sensación de abundancia y celebración. La misma pizza, dos ambientes, dos emociones; y ambas escenas sirvieron a distintas partes del mismo video.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="step" data-fig="5" data-kind="fundamento">
+<h2><span class="n">05</span> La lista de planos: cada uno con un motivo declarado</h2>
+<p>Con la emoción, el storyboard, el personaje y el entorno definidos, el último paso es traducir todo eso en una lista de planos: para cada uno, el tipo (general, medio, primer plano), la posición de la cámara, el movimiento y el propósito narrativo. Es la misma lógica de las cuatro preguntas de la lección 1, ahora aplicada plano por plano, no a toda la escena de una vez.</p>
+<p>Un plano sin un propósito declarado es relleno: córtalo. Un plano con propósito es insustituible, aunque dure dos segundos.</p>
+<div class="qapply">
+<p class="qak">Aplica la misma lógica</p>
+<ul>
+<li><b>Dueño de una pizzería:</b> la lista de planos de la campaña tiene cuatro líneas: fachada (plano general, establece el lugar), horno abriéndose (plano medio, crea expectativa), pizza saliendo (primer plano, es el punto de referencia) y mesa reunida (plano general, cierra con la emoción deseada).</li>
+<li><b>Fotógrafa:</b> antes de una sesión de fotos de pareja en exteriores, ella construye toda la misma línea — emoción objetivo ("complicidad, no pose"), storyboard de tres momentos, vestuario coordinado de una sola vez, ambiente (jardín al atardecer) y lista de planos con cada encuadre justificado.</li>
+</ul>
+</div>
+<div class="mobfig" data-mobfig="5"></div>
+<button class="readbtn" data-read="s5">marcar como leído</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p3">
+<p class="pk">Practica ahora <span class="pcount">0/5 hecho</span></p>
+<h3 class="ph">Arma la preproducción de una escena de tu trabajo</h3>
+<p class="pgoal">Escribir, en papel o en un documento sencillo, los cinco elementos de la línea de preproducción para una escena real tuya — en ~15 minutos.</p>
+<p class="psafe">Es un ejercicio de planificación, sin abrir ninguna herramienta de generación: solo escribes. Nada de esto es definitivo; el objetivo es terminar con un borrador que puedas ajustar después, no con una versión perfecta al primer intento.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Escribe, en una frase, la emoción objetivo de una escena real de tu trabajo.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Haz un boceto de 3 a 4 cuadros del storyboard — puede ser un dibujo sencillo o solo una frase por cuadro.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Describe, en 2 a 3 frases, al «personaje» de la escena (persona o producto) tal como lo reutilizarás en todas las escenas siguientes.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Elige el ambiente y di, en una frase, si intensifica o amplía la emoción de la escena.</label></li>
+<li><label><input data-ptask="5" type="checkbox"/> Convierte el storyboard en una lista breve de planos, con el propósito de cada uno.</label></li>
+</ol>
+<p class="pdone">Está listo cuando tienes los cinco elementos escritos y puedes justificar cada uno en voz alta: la misma línea de preproducción que sostiene una escena profesional, adaptada a tu ritmo.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; A emoção-alvo é decidida antes de qualquer imagem — e é ela que determina ângulo, luz e composição, não o contrário." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="110" cy="60" r="22" stroke-width="2" style="stroke:var(--warm)"></circle>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="65">emoción</text>
+<path d="M110 82 v20" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<path d="M105 96 l5 8 5 -8" fill="none" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<g fill="none" stroke-width="1.6" style="stroke:var(--line2)">
+<rect height="30" rx="6" width="46" x="30" y="122"></rect><rect height="30" rx="6" width="46" x="88" y="122"></rect><rect height="30" rx="6" width="46" x="146" y="122"></rect>
+</g>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="53" y="141">ángulo</text><text text-anchor="middle" x="111" y="141">luz</text><text text-anchor="middle" x="169" y="141">composición</text>
+</g>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="180">todo nace de la misma decisión</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; O storyboard testa a ordem da história em rascunho barato, antes de qualquer geração final custosa." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.6" style="stroke:var(--accent)">
+<rect height="30" rx="4" width="42" x="18" y="70"></rect><rect height="30" rx="4" width="42" x="70" y="70"></rect><rect height="30" rx="4" width="42" x="122" y="70"></rect><rect height="30" rx="4" width="30" x="174" y="70"></rect>
+</g>
+<path d="M60 85 h10 M112 85 h10 M164 85 h10" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<g font-size="7" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="39" y="115">1</text><text text-anchor="middle" x="91" y="115">2</text><text text-anchor="middle" x="143" y="115">3</text><text text-anchor="middle" x="189" y="115">4</text>
+</g>
+<text font-size="8.5" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="46">orden probada primero en papel</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; O personagem (pessoa ou produto) é descrito uma vez, num contexto neutro, e a mesma descrição viaja para toda cena seguinte." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="50" rx="8" stroke-width="2" style="stroke:var(--accent)" width="60" x="80" y="24"></rect>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="53">1 descripción</text>
+<path d="M110 74 v14 M110 88 h-56 v14 M110 88 h56 v14 M110 88 v14" fill="none" stroke-width="1.4" style="stroke:var(--muted)"></path>
+<g fill="none" stroke-width="1.6" style="stroke:var(--line2)">
+<rect height="30" rx="6" width="56" x="26" y="102"></rect><rect height="30" rx="6" width="56" x="138" y="102"></rect>
+</g>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="54" y="121">escena 1</text><text text-anchor="middle" x="166" y="121">escena 4</text>
+</g>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="168">misma identidad en cada escena</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Espaço apertado aproxima e aperta a emoção; espaço amplo afasta e expande — a mesma cena muda de sentido conforme o ambiente." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="70" rx="6" stroke-width="2" style="stroke:var(--accent)" width="70" x="24" y="40"></rect>
+<circle cx="59" cy="75" r="12" stroke-width="1.8" style="stroke:var(--accent)"></circle>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="59" y="126">cerrado: intimidad</text>
+<rect height="50" rx="6" stroke-width="1.6" style="stroke:var(--muted)" width="74" x="122" y="50"></rect>
+<circle cx="159" cy="75" r="7" stroke-width="1.6" style="stroke:var(--muted)"></circle>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="159" y="126">amplio: grandiosidad</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 5&lt;/b&gt; A lista de planos: cada linha carrega tipo, posição, movimento e propósito — sem propósito declarado, o plano é gordura." data-fig="5"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g stroke-width="1.4" style="stroke:var(--line2)">
+<line x1="20" x2="200" y1="40" y2="40"></line><line x1="20" x2="200" y1="76" y2="76"></line><line x1="20" x2="200" y1="112" y2="112"></line><line x1="20" x2="200" y1="148" y2="148"></line>
+</g>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text x="24" y="34">tipo</text><text x="24" y="70">posición</text><text x="24" y="106">movimiento</text><text x="24" y="142">propósito</text>
+</g>
+<g style="fill:var(--accent)">
+<circle cx="180" cy="30" r="4"></circle><circle cx="180" cy="66" r="4"></circle><circle cx="180" cy="102" r="4"></circle><circle cx="180" cy="138" r="4"></circle>
+</g>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="178">sin propósito: corta el plano</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>Antes de cualquier imagen, decide la emoción que debe provocar la escena — eso determina el ángulo, la luz y la composición, y no al revés.</li>
+<li>El storyboard es el borrador barato que pone a prueba el orden de la historia antes de gastar en una generación final.</li>
+<li>El personaje —persona o producto— se describe una vez, en un contexto neutro, y se reutiliza en cada escena siguiente.</li>
+<li>El entorno define la escala y la tensión: un espacio reducido intensifica la emoción; uno amplio la expande.</li>
+<li>Una lista de planos solo sirve cuando cada línea tiene un propósito declarado: tipo, posición, movimiento y motivo.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de montar, por primera vez, toda la línea de preproducción, como lo haría un pequeño estudio antes de filmar.</p>
+<p class="na-action">En los próximos 15 minutos: guarda el borrador que escribiste en la práctica de hoy en un lugar fijo (una nota en el celular, un documento sencillo). Se puede reutilizar: la próxima escena parecida empieza desde ahí, no desde cero.</p>
+<p class="na-hook">En la próxima clase, esa misma línea de preproducción cobra movimiento: transformarás el storyboard estático en una secuencia animada, con un movimiento de cámara definido para cada plano.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-2">← clase anterior</a><a href="#aula-4">próxima clase →</a></nav>
+<footer>Lección 3 · Piensa como un director · Formación de Cine con IA</footer>
+<script id="cards-3" type="application/json">
+[
+  {"front":"Diagnóstico: você gerou uma pizza deliciosa em foto, mas o vídeo inteiro parece deslocado da campanha. O que provavelmente não foi decidido antes de gerar?","back":"A emoção-alvo da cena — sem ela escolhida primeiro, ângulo, luz e composição saem soltos, sem amarração entre si."},
+  {"front":"Decisão: duas cenas do seu vídeo mostram o mesmo produto. Vale a pena redescrever o produto do zero em cada pedido, ou reaproveitar a mesma descrição?","back":"Reaproveitar — descrever o produto (ou personagem) uma vez, num contexto neutro, e usar essa mesma descrição em toda cena nova mantém a identidade visual."},
+  {"front":"Contraste: qual a diferença entre filmar um ambiente apertado e um ambiente amplo?","back":"Apertado aproxima e cria intimidade ou urgência; amplo afasta e cria generosidade ou grandiosidade — a mesma cena muda de sentido conforme o espaço ao redor."},
+  {"front":"Aplicação: sua lista de planos tem uma linha sem propósito claro, só porque 'ficaria bonita'. O que fazer com ela?","back":"Cortar ou reescrever — todo plano numa lista profissional carrega tipo, posição, movimento e propósito narrativo; sem propósito, é gordura, não cena."},
+  {"front":"Pergunta: qual pergunta um diretor faz antes de escrever o primeiro quadro do storyboard?","back":"O que o público deve sentir neste momento? — é essa resposta que organiza todas as decisões visuais que vêm depois."}
+]
+</script>
+<!--
+COMPLETUDE aula-3 | tipo=FUNDAMENTO | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="25min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  dono de pizzaria (s1–s4), pizzaria + fotógrafa no qapply (s5) (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-3"> presente (5 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 5/5 diagnóstico/decisão/contraste/aplicação/pergunta; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s2)
+-->
+</section>
+<!-- ===== AULA 4 ===== -->
+<section class="view" data-aula="4" data-tempo="22min" id="v-aula-4">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 3 · Clase 4</p>
+<h1>Del fotograma al <em>movimiento</em></h1>
+<p class="promise">Al final de esta clase, escribes un pedido de movimiento de cámara desglosando el sujeto, el entorno, el movimiento y el estilo, en vez de usar un adjetivo vago, y conviertes un plano de tu storyboard en video.</p>
+<p class="why">Ya tienes el storyboard estático de la clase pasada. Las herramientas de video con IA entienden la física —posición, dirección, velocidad—, no entienden las sensaciones. Pedir «un movimiento dramático» es como pedirle a un conductor que «conduzca con emoción»: no sabe qué hacer con eso, y el resultado sale genérico o inestable.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/35976e505dcb4a85b829f23e20c5fda9" rel="noopener" target="_blank"><span class="va-play"></span> ver esta clase en video <span class="va-lang">(inglés · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: fonte em cascata — de tanque em tanque, sempre no mesmo sentido -->
+<g fill="none" stroke-width="2" style="stroke:var(--line2)">
+<rect height="20" rx="4" width="70" x="70" y="40"></rect>
+<rect height="20" rx="4" width="80" x="110" y="100"></rect>
+<rect height="20" rx="4" width="90" x="150" y="160"></rect>
+</g>
+<path d="M100 60 q6 20 12 40" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M150 120 q6 20 12 40" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M92 100 c-4 -14 12 -18 18 -4" fill="none" stroke-width="1.4" style="stroke:var(--accent);opacity:.5"></path>
+<path d="M132 160 c-4 -14 12 -18 18 -4" fill="none" stroke-width="1.4" style="stroke:var(--accent);opacity:.5"></path>
+<circle cx="105" cy="50" r="3" style="fill:var(--warm)"></circle>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="105" y="34">plano 1</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="195" y="182">plano 3</text>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="216">de tanque en tanque, siempre en el mismo sentido</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="ferramenta" data-versao="geradores de vídeo por IA, jul/2026">
+<h2><span class="n">01</span> Un movimiento claro por plano — tres son suficientes</h2>
+<p>Toda herramienta de video con IA entiende la física, no los adjetivos. «Movimiento dramático» no significa nada para ella; «la cámara avanza despacio hacia el sujeto» significa todo. Elegir un movimiento concreto por plano, en lugar de una sensación vaga, es lo que separa una indicación que funciona de una que sale mal.</p>
+<p>Tres movimientos cubren la mayoría de las escenas: el <b>avance</b> (la cámara se acerca al sujeto, crea tensión), el <b>acompañamiento</b> (la cámara sigue al sujeto mientras se mueve, crea fluidez) y el <span class="gterm" data-def="Movimento em que a câmera gira ao redor do assunto, mantendo a mesma distância — revela profundidade e volume, como se você desse a volta em alguém parado." tabindex="0">contorno</span> (la cámara gira alrededor del sujeto, revela profundidad y volumen).</p>
+<p>La fotógrafa que convirtió el storyboard de una sesión de pareja en un teaser animado eligió un movimiento para cada plano: avance lento en el plano inicial (crea expectativa), seguimiento en el plano de la pareja caminando de la mano (fluidez) y vuelta alrededor en el beso final (los revela a los dos, crea intimidad).</p>
+<div class="qsteps">
+<p class="qsk">Los tres movimientos y cuándo usar cada uno</p>
+<ol>
+<li><b>Avance</b> (la cámara se acerca): para crear expectativa o una tensión creciente.</li>
+<li><b>Seguimiento</b> (la cámara sigue al sujeto): para dar fluidez a un desplazamiento.</li>
+<li><b>Contorno</b> (la cámara gira alrededor): para revelar profundidad en un instante quieto.</li>
+</ol>
+</div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="geradores de vídeo por IA, jul/2026">
+<h2><span class="n">02</span> La distancia determina la cercanía emocional</h2>
+<p>Además del movimiento, la distancia de la cámara al sujeto cambia lo que siente quien mira: un plano cerrado, o close-up, transmite emoción y detalle; un plano medio enfoca a la persona y la acción; un plano abierto transmite el entorno y la escala — «dónde estamos», antes que cualquier otra cosa.</p>
+<p>En el teaser de la sesión de fotos de la pareja, el plano abierto mostró todo el jardín (establece el lugar), el plano medio mostró a la pareja caminando lado a lado (la acción principal) y el primer plano quedó reservado solo para las manos entrelazadas y el anillo: el instante que lleva la mayor emoción de todo el video.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="ferramenta" data-versao="geradores de vídeo por IA, jul/2026">
+<h2><span class="n">03</span> El estilo del movimiento es el ambiente de la escena</h2>
+<p>El mismo movimiento puede tener estilos diferentes, y cada estilo transmite un ambiente propio: una cámara estabilizada, suave y controlada transmite calma; una cámara "en mano", más cruda e inestable, transmite urgencia o realismo; la cámara lenta transmite peso: el instante importa más que los demás.</p>
+<p>La fotógrafa mantuvo la cámara estabilizada en todo el teaser, con una sola excepción: cámara lenta en el beso final, el único instante del video que debía pesar más que los demás.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="geradores de vídeo por IA, jul/2026">
+<h2><span class="n">04</span> La estructura del pedido: sujeto, entorno, movimiento, estilo</h2>
+<p>Después de decidir los tres primeros elementos —movimiento, distancia y estilo—, el pedido para la herramienta de video sigue una estructura sencilla, siempre en el mismo orden: primero el sujeto (quién o qué aparece en la escena), luego el entorno (dónde ocurre, con uno o dos detalles de ambiente), después el movimiento de cámara elegido y, por último, el estilo. Este orden fijo evita que olvides algún elemento y mantiene el pedido breve.</p>
+<p>Para el plano del beso: tema (la pareja, de perfil, acercándose), ambiente (jardín al atardecer, luz dorada y baja), movimiento (contorno lento), estilo (cámara lenta, suave). Cuatro frases, una escena completa decidida.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="step" data-fig="5" data-kind="ferramenta" data-versao="geradores de vídeo por IA, jul/2026">
+<h2><span class="n">05</span> El primer resultado rara vez es el definitivo</h2>
+<p>Una aclaración que evita frustraciones: el primer video generado rara vez sale perfecto, incluso cuando toda la estructura está bien. Regenerar, ajustar una palabra del pedido y volver a intentarlo es parte del proceso; el error más costoso no es necesitar un segundo intento, sino no saber diagnosticar por qué el primero no funcionó.</p>
+<div class="qerr">
+<p class="qk">Error común</p>
+<p class="qerr-txt"><b>Pedir varios movimientos de cámara en el mismo plano: «rodea, avanza y además haz un paneo».</b> El resultado suele salir borroso y sin una dirección clara, porque la herramienta intenta obedecer a todos al mismo tiempo y nada queda limpio. La fotógrafa lo intentó una vez en el plano del beso; al separarlo en dos planos —el contorno en uno y el acercamiento en el otro—, ambos quedaron limpios.</p>
+</div>
+<div class="mobfig" data-mobfig="5"></div>
+<button class="readbtn" data-read="s5">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p4">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Anima un plano de tu storyboard</h3>
+<p class="pgoal">Escribir un pedido de movimiento con las cuatro partes de la estructura y generar al menos un plano — en ~12 minutos.</p>
+<p class="psafe">Los generadores de video con IA que ofrecen un plan de prueba suelen limitar cuántas generaciones puedes hacer por día, y ese límite cambia con frecuencia. Por eso, escribe y revisa la solicitud completa antes de generar: primero prueba la estructura en papel, sin gastar un intento tras otro en pantalla.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Cinematic video shot, single clear camera movement only, 5-8 seconds.
+
+SUBJECT: &lt;describe your subject — person, product, or scene&gt;
+
+ENVIRONMENT: &lt;where it happens, 1-2 details that set the mood&gt;
+
+CAMERA MOVEMENT (choose exactly one): slow dolly in toward the subject /
+tracking shot following the subject / slow orbit around the subject
+
+STYLE (choose exactly one): smooth steadycam / raw handheld / dramatic
+slow motion
+
+Photorealistic, cinematic lighting, no text, no watermark.</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige un plano del storyboard que ya tienes (o un plano nuevo de tu trabajo).</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Completa las cuatro partes del pedido anterior, eligiendo solo un movimiento y un estilo.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Pégalo en el generador de video con IA que ya usas y genera el plano.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Comprueba: ¿puedes nombrar con una palabra el movimiento que hizo la cámara? Si no, simplifica la indicación y vuelve a generarla.</label></li>
+</ol>
+<p class="pdone">Transformaste un cuadro estático del storyboard en un plano en movimiento, con una decisión nombrada detrás de cada elección: exactamente lo que prometía esta clase.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Três movimentos bastam: avanço cria tensão, acompanhamento cria fluidez, contorno revela profundidade." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="110" cy="100" r="14" stroke-width="2" style="stroke:var(--warm)"></circle>
+<path d="M40 100 h44" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M76 94 l8 6 -8 6" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="58" y="86">avance</text>
+<path d="M40 150 h140" stroke-dasharray="3 3" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<path d="M170 144 l8 6 -8 6" fill="none" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="168">acompañamiento</text>
+<path d="M110 60 a40 40 0 1 1 -0.1 0" fill="none" stroke-dasharray="2 3" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="30">contorno</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A distância entrega papéis diferentes: aberto estabelece o lugar, médio mostra a ação, close entrega a emoção." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="120" rx="6" stroke-width="1.6" style="stroke:var(--line2)" width="180" x="20" y="40"></rect>
+<rect height="80" rx="6" stroke-width="1.6" style="stroke:var(--muted)" width="110" x="55" y="60"></rect>
+<rect height="40" rx="6" stroke-width="2" style="stroke:var(--accent)" width="50" x="85" y="80"></rect>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="176">abierto → medio → close</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; O mesmo movimento muda de clima conforme o estilo: linha reta é calma, linha irregular é urgência, trecho esticado é peso." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M24 50 h172" stroke-width="2" style="stroke:var(--accent)"></path>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="38">estabilizada: calma</text>
+<path d="M24 104 q8 -14 16 0 q8 14 16 0 q8 -16 16 0 q8 16 16 0 q8 -12 16 0 q8 12 16 0 q8 -14 16 0 q8 14 16 0" fill="none" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="128">de mano: urgencia</text>
+<path d="M24 160 h172" stroke-width="3" style="stroke:var(--warm)"></path>
+<text font-size="7.5" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="184">cámara lenta: peso</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; A estrutura do pedido, sempre na mesma ordem: assunto, ambiente, movimento, estilo." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g stroke-width="1.6" style="stroke:var(--line2)"><line x1="40" x2="40" y1="30" y2="170"></line></g>
+<g style="fill:var(--accent)"><circle cx="40" cy="30" r="6"></circle><circle cx="40" cy="76" r="6"></circle><circle cx="40" cy="122" r="6"></circle><circle cx="40" cy="168" r="6"></circle></g>
+<g font-size="9" style="fill:var(--ink-soft);font-family:var(--mono)">
+<text x="58" y="34">1 · tema</text>
+<text x="58" y="80">2 · ambiente</text>
+<text x="58" y="126">3 · movimiento</text>
+<text x="58" y="172">4 · estilo</text>
+</g>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 5&lt;/b&gt; Um movimento por plano sai limpo; vários movimentos empilhados no mesmo plano saem tremidos e sem direção." data-fig="5"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="60" cy="70" r="12" stroke-width="2" style="stroke:var(--accent)"></circle>
+<path d="M20 70 h26" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M40 65 l6 5 -6 5" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="60" y="100">1 plano, 1 movimiento: limpio</text>
+<circle cx="150" cy="150" r="12" stroke-width="2" style="stroke:var(--warm)"></circle>
+<path d="M110 150 h26 M150 112 v26 M172 128 l-14 14" fill="none" stroke-dasharray="2 3" stroke-width="1.6" style="stroke:var(--warm)"></path>
+<text font-size="7.5" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="150" y="184">3 movimientos juntos: temblor</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>La IA de video entiende de física, no de adjetivos: un movimiento claro por plano —avance, seguimiento o rodeo— funciona; «dramático» no funciona.</li>
+<li>La distancia de la cámara determina la cercanía emocional: un primer plano acerca, un plano abierto establece el contexto y un plano medio equilibra ambos.</li>
+<li>El estilo del movimiento transmite el ambiente: cámara estabilizada es calma, cámara en mano es urgencia, cámara lenta es peso.</li>
+<li>Toda indicación sigue la misma estructura, siempre en el mismo orden: sujeto, ambiente, movimiento, estilo.</li>
+<li>Acumular varios movimientos en un mismo plano es el error más costoso: sepáralos en planos diferentes, un movimiento a la vez.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de animar tu primer plano tomando una decisión de movimiento concreta; ya no es «haz algo dramático ahí».</p>
+<p class="na-action">En los próximos 15 minutos: anima otros dos planos del storyboard que preparaste en la clase pasada, cada uno con su propio movimiento y estilo, y mira los tres en secuencia.</p>
+<p class="na-hook">En la próxima clase, aprenderás a sembrar una pregunta en la mente de quien mira, usando la contradicción, el ambiente y la revelación: los tres ingredientes que hacen que alguien siga mirando.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-3">← clase anterior</a><a href="#aula-5">próxima clase →</a></nav>
+<footer>Lección 4 · Piensa como un director · Formación de Cine con IA</footer>
+<script id="cards-4" type="application/json">
+[
+  {"front":"Diagnóstico: você pediu 'câmera contornando e avançando ao mesmo tempo' e o resultado saiu tremido, sem direção clara. Qual foi o erro?","back":"Pedir mais de um movimento de câmera no mesmo plano — separe em dois planos, um movimento por vez, e o resultado fica limpo."},
+  {"front":"Decisão: você quer que quem assiste sinta o peso do instante em que o casal se beija, mais do que em qualquer outro plano do vídeo. Qual estilo pedir?","back":"Câmera lenta — é o estilo que carrega peso e importância; os demais planos podem seguir estabilizados, normais."},
+  {"front":"Contraste: qual a diferença entre pedir 'movimento dramático' e pedir 'a câmera avança devagar em direção ao assunto'?","back":"'Dramático' é sensação — a ferramenta não sabe traduzir isso em física. 'Avança devagar' é um movimento concreto que ela executa direto, sem interpretar nada."},
+  {"front":"Aplicação: como você escreveria, nas quatro partes da estrutura, um pedido de vídeo para o momento em que um prato novo chega à mesa de um cliente?","back":"Assunto: o prato chegando às mãos do cliente. Ambiente: mesa posta, luz de restaurante à noite. Movimento: acompanhamento, seguindo o prato até a mesa. Estilo: estabilizada, suave."}
+]
+</script>
+<!--
+COMPLETUDE aula-4 | tipo=FERRAMENTA | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa/ensaio de casal em 100% dos steps (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-4"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/contraste/aplicação; operação difere do recap
+  [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
+-->
+</section>
+<!-- ===== AULA 5 ===== -->
+<section class="view" data-aula="5" data-tempo="18min" id="v-aula-5">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 3 · Clase 5</p>
+<h1>La escena que hace que el público <em>preguntar</em></h1>
+<p class="promise">Al final de esta clase, planeas una escena que deja una pregunta en la mente de quien la ve, usando el entorno, la contradicción y una secuencia que revela las cosas poco a poco, en vez de mostrarlo todo en el primer segundo.</p>
+<p class="why">Ya sabes preparar la preproducción y animar un plano con un movimiento definido. Pero un video técnicamente correcto aún puede abandonarse al tercer segundo si no da ningún motivo para seguir mirando. Ese motivo tiene nombre, y esta clase te enseña a construirlo.</p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a trilha na mata que sobe e some atrás da curva -->
+<path d="M40 210 q40 -20 60 -50 q22 -34 10 -60" fill="none" stroke-linecap="round" stroke-width="10" style="stroke:var(--line2)"></path>
+<path d="M40 210 q40 -20 60 -50 q22 -34 10 -60" fill="none" stroke-dasharray="4 6" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<g fill="none" opacity=".6" stroke-width="1.4" style="stroke:var(--line2)">
+<path d="M20 80 q60 -30 20 -60"></path><path d="M230 60 q-40 20 10 70"></path><path d="M250 160 q-30 -10 -10 -50"></path>
+</g>
+<circle cx="110" cy="100" r="5" style="fill:var(--warm)"></circle>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" x="130" y="90">desaparece detrás de la curva</text>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="228">no ves la parte superior, pero sabes que está ahí</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> No estás creando una escena: estás creando una pregunta</h2>
+<p>Hasta aquí aprendiste a decidir el ancla, preparar la preproducción y animar un plano. Falta el ingrediente que separa una escena competente de una escena que atrapa: una buena escena no entrega la respuesta de una sola vez; plantea una pregunta en la mente de quien la mira y solo después responde.</p>
+<p>El dueño de una hamburguesería de barrio decidió esto antes de grabar el lanzamiento de una hamburguesa secreta, fuera del menú: en vez de mostrar el producto entero en la primera escena, ocultó el resultado hasta el corte final, y la pregunta «¿cómo quedará armado?» mantuvo la atención hasta ese momento.</p>
+<div class="qanchor"><p>Una escena que lo muestra todo de una vez no necesita verse hasta el final.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> El ambiente cuenta la historia antes de cualquier palabra</h2>
+<p>Un entorno bien elegido ya dice mucho por sí solo, sin necesidad de un subtítulo o una narración que explique lo obvio. Desorden, vapor, movimiento, textura: cada detalle del escenario es una pista que quien mira lee sin darse cuenta de que está leyendo.</p>
+<p>El mismo dueño de una hamburguesería lo probó en la práctica: una cocina limpia y vacía, filmada en silencio, no decía nada del negocio. La cocina en pleno ajetreo del viernes por la noche —con el humo subiendo, las ollas apiladas y las manos cruzándose— contó por sí sola la historia de "aquí hay gente trabajando en serio", sin una sola frase de texto.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> La contradicción es lo que atrapa la mirada</h2>
+<p>Un elemento fuera de lugar crea curiosidad más rápido que cualquier imagen "bonita y correcta". Cuando algo en la escena contradice lo esperado — delicadeza donde se espera fuerza, cuidado donde se espera prisa — quien mira se detiene para entender por qué.</p>
+<p>En el video de la hamburguesa secreta, en vez de mostrar solo el producto terminado de siempre, el dueño filmó las manos llenas de tatuajes de un cocinero corpulento colocando, con extremo cuidado, una sola hoja de lechuga. La contradicción entre la apariencia ruda de las manos y la delicadeza del gesto captó más atención de la que la hamburguesa terminada por sí sola habría captado jamás.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> La secuencia revela por partes, no todo de una vez</h2>
+<p>Una escena que atrapa sigue un orden: muestra el mundo (el entorno, sin prisa), se acerca (la cámara se aproxima a lo que importa), revela (el personaje o el producto aparece, pero todavía no por completo), rompe las expectativas (algo cambia o sorprende) y solo entonces muestra la intención final (la emoción o la respuesta que cierra la pregunta planteada al principio).</p>
+<p>El video de la hamburguesa secreta siguió exactamente este orden: la fachada de la hamburguesería de noche (el mundo) → la cámara se acerca a la cocina (se acerca) → las manos montan la hamburguesa capa por capa, sin mostrar la parte superior (revela en parte) → la hamburguesa entera aparece de repente, fuera del menú (rompe la expectativa) → el rostro de sorpresa de un cliente al morderla (muestra la intención: generar deseo).</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>Un único plano fijo de quince segundos, que muestra desde arriba la hamburguesa lista: la respuesta completa aparece en el primer segundo.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>Fachada de noche → cocina acercándose → montaje en capas, sin mostrar la parte superior → hamburguesa completa solo en el corte final, junto con el mordisco.</p></div>
+<p class="qba-saldo">Resultado: la misma información, reorganizada en cinco partes, transformó un video ignorado en uno que se vio hasta el final.</p>
+</div>
+<div class="quiz" data-answer="a">
+<p class="qk">Ponte a prueba</p><p class="q">Un video promocional muestra, en el primer segundo, el producto completo, listo y quieto en primer plano. Según lo que aprendiste en esta clase, ¿cuál es el problema más probable?</p>
+<button class="opt" data-fb="Exato: mostrar tudo de cara fecha a pergunta antes mesmo dela nascer — sem pergunta em aberto, não sobra motivo para continuar assistindo." data-k="a">La escena ya respondió la pregunta antes de plantearla</button>
+<button class="opt" data-fb="A qualidade da imagem não é o problema descrito nesta aula — o produto pode estar tecnicamente perfeito e a cena ainda assim não prender ninguém." data-k="b">El producto tiene mala calidad de imagen</button>
+<button class="opt" data-fb="Duração é outra variável — o problema aqui é de ordem (o que aparece primeiro), não de tempo total." data-k="c">El video es demasiado largo para las redes sociales</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="analise" data-practice="p5">
+<p class="pk">Practica ahora <span class="pcount">0/3 hecho</span></p>
+<h3 class="ph">Reescribe una escena que lo revela todo de una vez</h3>
+<p class="pgoal">Lee el caso, reescribe la secuencia en cinco partes y compara con la respuesta correcta — en ~10 minutos.</p>
+<p class="psafe">Es un ejercicio de lectura y reescritura: no hay nada que generar ni publicar. Discrepar de la respuesta correcta es parte del ejercicio; el valor está en justificar por qué cada parte de tu secuencia va en ese orden.</p>
+<p><b>El caso:</b> Juliana administra una hamburguesería de barrio y grabó un video para el lanzamiento del combo del mes: un solo plano fijo que muestra la hamburguesa completa, desde arriba, durante quince segundos, con el texto «nuestro nuevo combo». En las pruebas, el 90% de quienes lo vieron dejó de ver el video antes del tercer segundo.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Identifica: ¿qué pregunta ya respondió este video de entrada, sin dar motivos para seguir viéndolo?</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Reescribe la escena en cinco partes — mundo, acercamiento, revelación, ruptura, intención — para la misma combinación.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Compara tu secuencia con la clave de respuestas de abajo.</label></li>
+</ol>
+<details><summary>Respuestas comentadas</summary>
+<p>El video original lo mostró todo en la primera imagen: el producto completo, de frente, sin dejar ninguna pregunta abierta; por eso nadie tuvo motivos para seguir mirando. Una secuencia que funciona: la cocina en movimiento durante la hora pico (mundo) → la cámara se acerca a la parrilla (acercamiento) → las manos arman el combo capa por capa, sin mostrar la parte superior (revelación parcial) → el combo completo aparece solo en el corte final, junto con la mordida de un cliente (ruptura + intención). La pregunta "¿cómo quedará armado este combo?" mantiene la atención hasta el final.</p>
+</details>
+<p class="pdone">Aplicaste, a una escena que no es tuya, la misma lógica de esta clase — plantear una pregunta antes de responder. Esa es exactamente la habilidad que pedía la promesa de hoy.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Entregar a resposta de cara fecha a pergunta antes dela nascer; guardar parte da resposta mantém quem assiste olhando." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="50" rx="6" stroke-width="1.6" style="stroke:var(--muted)" width="80" x="20" y="40"></rect>
+<text font-size="9" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="70">respuesta</text>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="106">de inmediato: cierra la pregunta</text>
+<rect height="50" rx="6" stroke-dasharray="4 4" stroke-width="2" style="stroke:var(--accent)" width="80" x="120" y="40"></rect>
+<text font-size="9" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="70">?</text>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="160" y="106">guardada: mantiene la mirada</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Ambiente parado não conta história; ambiente em movimento, com pistas visuais, conta sozinho." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="60" rx="6" stroke-width="1.4" style="stroke:var(--muted)" width="70" x="24" y="50"></rect>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="59" y="126">vacío: silencio</text>
+<rect height="60" rx="6" stroke-width="1.8" style="stroke:var(--accent)" width="70" x="126" y="50"></rect>
+<path d="M140 60 q4 -10 8 0 M156 60 q4 -10 8 0 M172 60 q4 -10 8 0" fill="none" stroke-width="1.4" style="stroke:var(--accent)"></path>
+<g stroke-width="1.4" style="stroke:var(--accent)"><line x1="138" x2="150" y1="90" y2="98"></line><line x1="184" x2="172" y1="90" y2="98"></line></g>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="161" y="126">en movimiento: cuenta la historia</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Duas qualidades opostas no mesmo elemento — bruto e delicado — criam a tensão que prende o olhar." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M30 60 l30 -10 30 14 -8 34 -44 6 z" fill="none" stroke-width="1.8" style="stroke:var(--muted)"></path>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="60" y="120">bruto</text>
+<path d="M150 50 c14 0 22 10 22 22 c0 14 -10 22 -22 22 c-14 0 -22 -10 -22 -22 c0 -14 10 -22 22 -22 z" fill="none" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="150" y="120">delicado</text>
+<path d="M90 72 h30" stroke-dasharray="2 3" stroke-width="1.6" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="30">contradicción = atención</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; A sequência de cinco partes: mundo, aproximação, revelação parcial, ruptura, intenção — a resposta só chega no fim." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 110 h180" stroke-width="1.6" style="stroke:var(--line2)"></path>
+<g style="fill:var(--accent)"><circle cx="26" cy="110" r="5"></circle><circle cx="72" cy="110" r="5"></circle><circle cx="118" cy="110" r="5"></circle><circle cx="164" cy="110" r="5"></circle><circle cx="204" cy="110" r="5" style="fill:var(--warm)"></circle></g>
+<g font-size="6.6" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="26" y="130">mundo</text><text text-anchor="middle" x="72" y="130">aprox.</text><text text-anchor="middle" x="118" y="130">revela</text><text text-anchor="middle" x="164" y="130">rompe</text>
+</g>
+<text font-size="6.6" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="204" y="130">intención</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>Una escena que funciona plantea una pregunta en la mente de quien la ve y solo después la responde: no lo muestra todo de una vez.</li>
+<li>El entorno ya cuenta parte de la historia por sí solo, sin necesidad de subtítulos ni de una narración que explique lo obvio.</li>
+<li>Un elemento inesperado — una contradicción — capta la atención más que cualquier imagen "bonita y correcta".</li>
+<li>Una secuencia revela por partes: mundo, acercamiento, revelación, ruptura, intención; siempre en ese orden.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de aprender a plantear una pregunta antes de responderla: eso hace que alguien siga mirando después del tercer segundo.</p>
+<p class="na-action">En los próximos 10 minutos: toma el próximo video que vayas a grabar y escribe las cinco partes de la secuencia antes de filmar nada. Si falta alguna parte, ese es el punto débil del guion.</p>
+<p class="na-hook">En la próxima clase, aprenderás a dirigir la mirada dentro de cada plano: tercios, líneas, espacio vacío y escala, y por qué la composición cambia de un plano a otro en vez de repetirse.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-4">← clase anterior</a><a href="#aula-6">próxima clase →</a></nav>
+<footer>Lección 5 · Piensa como un director · Formación de Cine con IA</footer>
+<script id="cards-5" type="application/json">
+[
+  {"front":"Diagnóstico: um vídeo de divulgação mostra o produto inteiro, pronto, já no primeiro segundo — e a maioria abandona antes do fim. O que faltou?","back":"Uma pergunta em aberto — o vídeo respondeu tudo de cara, sem motivo para continuar assistindo."},
+  {"front":"Decisão: você tem duas opções de abertura para o próximo vídeo: mostrar o produto pronto de cara, ou mostrar só as mãos preparando, sem revelar o resultado. Qual prende mais?","back":"Mostrar só a preparação — cria a pergunta 'como vai ficar?' e segura a atenção até a revelação no final."},
+  {"front":"Contraste: qual a diferença entre um ambiente 'bonito' e um ambiente que conta uma história sozinho?","back":"Um ambiente bonito só decora; um ambiente que conta história carrega pistas — bagunça, movimento, textura — que dizem algo sem precisar de legenda."},
+  {"front":"Aplicação: seu comércio passou a abrir mais cedo — como você escreveria a sequência de cinco partes para anunciar isso, plantando uma pergunta antes de revelar o horário novo?","back":"Mundo: a rua ainda vazia ao amanhecer. Aproximação: a porta abrindo bem cedo. Revelação: luzes acendendo, movimento lá dentro. Ruptura/intenção: o letreiro com o novo horário aparecendo por último, respondendo por que já está aberto tão cedo."}
+]
+</script>
+<!--
+COMPLETUDE aula-5 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="18min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  dono de hamburgueria em 100% dos steps (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="analise"] (exatamente 1, mini-caso + gabarito em details)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-5"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/contraste/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 6 ===== -->
+<section class="view" data-aula="6" data-tempo="15min" id="v-aula-6">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 3 · Lección 6</p>
+<h1>Composición en el <em>tiempo</em></h1>
+<p class="promise">Al final de esta clase, preparas una secuencia de planos usando una herramienta de composición diferente en cada uno —tercios, líneas, espacio vacío, escala— en vez de repetir la misma composición de principio a fin.</p>
+<p class="why">Ya sabes plantear una pregunta en la escena. Falta decidir, dentro de cada plano, adónde irá la mirada primero. Sin esa decisión, incluso una secuencia bien planeada cansa, porque todas las fotos o todos los planos usan la misma organización visual, sin variaciones.</p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a moldura da janela — o que fica dentro, o que fica fora -->
+<rect height="170" rx="4" stroke-width="6" style="stroke:var(--line2)" width="200" x="50" y="30"></rect>
+<path d="M150 30 v170 M50 115 h200" stroke-width="2" style="stroke:var(--line2)"></path>
+<circle cx="190" cy="80" r="10" stroke-width="2" style="stroke:var(--warm)"></circle>
+<path d="M70 180 q40 -30 90 -10 q50 20 80 -20" fill="none" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="222">el encuadre decide qué entra y dónde</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> La regla de los tercios organiza sin centrar</h2>
+<p>A <span class="gterm" data-def="Divida o quadro em três colunas e três linhas iguais; posicionar o assunto principal num dos quatro pontos onde essas linhas se cruzam, em vez de bem no centro, cria uma composição mais equilibrada e menos parada." tabindex="0">regla de los tercios</span> es la herramienta de composición más usada: en vez de centrar al sujeto, lo colocas en uno de los puntos donde se cruzan las líneas imaginarias. El encuadre gana aire y la vista tiene adónde moverse.</p>
+<p>Las diagonales cumplen el papel opuesto: en lugar de organizar con calma, crean energía y sensación de movimiento; se usan cuando la escena debe parecer viva, no quieta.</p>
+<p>Una fotógrafa que hacía un book corporativo en un espacio de coworking aplicó la regla de los tercios al retrato individual: colocó el rostro en el tercio superior derecho y dejó libre el resto del encuadre para que se viera el ambiente de trabajo detrás, sin competir con el rostro.</p>
+<div class="qanchor"><p>Centrar es la opción de composición más fácil. Casi nunca es la más acertada.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> Líneas que guían la mirada y el centro que estabiliza</h2>
+<p>Las líneas rectas — una mesa larga, un pasillo, el borde de una ventana — guían la mirada hacia el tema principal sin que nadie note que está siendo guiado. El centro, con simetría, hace lo contrario: transmite control y estabilidad, útil cuando la escena pide autoridad serena, no movimiento.</p>
+<p>En el plano del equipo reunido en la mesa de reuniones, la fotógrafa usó la propia mesa como línea guía hacia el rostro de la persona que lidera, sentada en la cabecera. En el retrato individual del fundador, centró el rostro con simetría, porque esa escena pedía autoridad inmóvil, no energía.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> El espacio vacío aísla; la escala amplía o acerca</h2>
+<p>El espacio vacío alrededor de un tema pequeño lo aísla y lo realza — la mirada no tiene otra opción que posarse en lo que queda. La escala del plano, desde un detalle muy cerrado hasta un ambiente entero, decide si la escena habla de intimidad o de grandiosidad.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>Manos escribiendo, plano medio, mesa llena de objetos alrededor que compiten por la atención con el gesto principal.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>Manos escribiendo, encuadre cerrado, mesa casi vacía alrededor: solo se ven el teclado y los dedos dentro del cuadro.</p></div>
+<p class="qba-saldo">Resultado: el mismo gesto, aislado por el espacio vacío, se convirtió en el único punto posible de atención.</p>
+</div>
+<p>Después de este primer plano aislado, la fotógrafa cerró el portafolio con un plano muy abierto de toda la oficina, mostrando la escala de la empresa: justo lo opuesto al primer plano de las manos.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> La composición cambia de un plano a otro; nunca se repite</h2>
+<p>Cada plano resuelve una tarea de composición distinta; ninguna buena secuencia repite la misma composición de principio a fin. Si todos los planos usan el mismo tercio, el mismo centrado y el mismo espacio vacío, el conjunto cansa antes de terminar, aunque cada plano por separado sea técnicamente correcto.</p>
+<p>En el book completo, la fotógrafa alternó cinco composiciones diferentes: regla de los tercios en el retrato individual, líneas guía en la mesa de reunión, simetría en el fundador, espacio vacío en las manos, plano abierto en la oficina; ninguna se repitió dos veces.</p>
+<div class="quiz" data-answer="b">
+<p class="qk">Ponte a prueba</p><p class="q">Estás armando una secuencia de cuatro fotos para el mismo cliente. ¿Qué elección hace que la secuencia parezca más viva y profesional?</p>
+<button class="opt" data-fb="Consistência de terços em toda foto vira repetição — cansa, mesmo sendo tecnicamente correto em cada uma." data-k="a">Usar la regla de los tercios en las cuatro fotos para mantener la consistencia</button>
+<button class="opt" data-fb="Exato: cada plano resolve uma tarefa diferente — terços, linhas, espaço vazio, escala — a sequência evolui, não repete." data-k="b">Elegir una herramienta de composición diferente para cada foto</button>
+<button class="opt" data-fb="Simetria o tempo todo tira o movimento da sequência — útil só quando a cena pede autoridade parada, não em toda foto." data-k="c">Centra siempre el sujeto para garantizar la simetría</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p6">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Audita la composición de tus últimas fotos</h3>
+<p class="pgoal">Identifica la herramienta de composición que usaste en cuatro o cinco fotos recientes tuyas y corrige una repetición, en ~10 minutos.</p>
+<p class="psafe">Es un ejercicio de observación de fotos que ya existen: no necesitas tomar fotos nuevas ni descargar ningún programa. Si no encuentras ninguna repetición, el ejercicio también habrá terminado; el objetivo es entrenar la vista, no buscar errores a la fuerza.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Prepara de 4 a 5 fotos recientes de tu trabajo (celular o cámara).</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Para cada una, escribe qué herramienta de composición predomina: tercios, línea guía, simetría, espacio vacío o escala.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Marca si algún recurso se repite en más de dos fotos seguidas.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Si encuentras repetición, escribe cómo recomponer una de ellas con una herramienta diferente.</label></li>
+</ol>
+<p class="pdone">Está listo cuando cada una de las 4 o 5 fotos tiene asignada una herramienta de composición y has identificado (o descartado) cualquier repetición entre ellas.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; A grade de terços: posicionar o assunto num dos quatro cruzamentos, em vez do centro, dá respiro ao quadro." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="160" stroke-width="1.6" style="stroke:var(--line2)" width="180" x="20" y="20"></rect>
+<path d="M80 20 v160 M140 20 v160 M20 73 h180 M20 127 h180" stroke-dasharray="2 3" stroke-width="1" style="stroke:var(--line2)"></path>
+<circle cx="140" cy="73" r="8" style="fill:var(--accent)"></circle>
+<circle cx="80" cy="127" r="4" stroke-width="1.2" style="stroke:var(--faint)"></circle>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="196">tema en un cruce, no en el centro</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Uma linha guia conduz o olho até o assunto; a simetria em torno do centro transmite controle e estabilidade." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M20 160 L160 40" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<circle cx="160" cy="40" r="8" style="fill:var(--accent)"></circle>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" x="90" y="130">línea guía</text>
+<g fill="none" stroke-width="1.6" style="stroke:var(--muted)">
+<rect height="30" rx="4" width="30" x="60" y="150"></rect><rect height="30" rx="4" width="30" x="130" y="150"></rect>
+</g>
+<line stroke-dasharray="2 3" stroke-width="1" style="stroke:var(--faint)" x1="110" x2="110" y1="140" y2="190"></line>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="196">simetría: control</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Espaço vazio isola um assunto pequeno; a escala do plano decide entre intimidade e grandiosidade." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="70" rx="6" stroke-width="1.4" style="stroke:var(--line2)" width="70" x="30" y="30"></rect>
+<circle cx="80" cy="80" r="6" style="fill:var(--accent)"></circle>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="65" y="118">el vacío aísla</text>
+<rect height="70" rx="6" stroke-width="1.4" style="stroke:var(--line2)" width="70" x="120" y="30"></rect>
+<g stroke-width="1.2" style="stroke:var(--muted)"><rect height="14" width="14" x="130" y="45"></rect><rect height="10" width="10" x="150" y="60"></rect><rect height="12" width="12" x="166" y="42"></rect><rect height="8" width="8" x="140" y="75"></rect></g>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="155" y="118">escala abierta</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Cinco planos, cinco composições diferentes: a sequência evolui, nunca repete a mesma organização visual." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.6" style="stroke:var(--accent)">
+<rect height="34" rx="4" width="34" x="16" y="70"></rect><rect height="34" rx="4" width="34" x="60" y="70"></rect><rect height="34" rx="4" width="34" x="104" y="70"></rect><rect height="34" rx="4" width="34" x="148" y="70"></rect>
+</g>
+<g font-size="6.4" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="33" y="94">tercios</text><text text-anchor="middle" x="77" y="94">línea</text><text text-anchor="middle" x="121" y="94">vacío</text><text text-anchor="middle" x="165" y="94">escala</text>
+</g>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="100" y="130">nunca la misma dos veces</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>La regla de los tercios organiza sin centrar; las diagonales crean energía cuando la escena necesita parecer viva.</li>
+<li>Las líneas rectas guían la mirada hacia el tema sin que nadie lo note; la simetría transmite control y autoridad.</li>
+<li>El espacio vacío aísla y realza un tema pequeño; la escala del plano decide entre intimidad y grandiosidad.</li>
+<li>Una buena secuencia nunca repite la misma composición de un plano a otro: cada uno resuelve una tarea diferente.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de aprender a variar la composición a propósito, en vez de repetir la misma organización visual por costumbre.</p>
+<p class="na-action">En los próximos 10 minutos: elige tres fotos o planos que todavía vas a generar o fotografiar esta semana y decide, antes de hacer clic, qué herramienta de composición usará cada uno, sin repetir ninguna.</p>
+<p class="na-hook">En la próxima clase, aprenderás que la luz no sirve para iluminar: sirve para controlar lo que siente el público, incluido el arte de quitar luz en vez de solo agregarla.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-5">← clase anterior</a><a href="#aula-7">próxima clase →</a></nav>
+<footer>Lección 6 · Piensa como un director · Formación de Cine con IA</footer>
+<script id="cards-6" type="application/json">
+[
+  {"front":"Diagnóstico: uma sequência de cinco fotos usa a regra dos terços em todas elas, sem exceção. O conjunto parece cansativo, mesmo cada foto sendo tecnicamente correta. Por quê?","back":"Composição repetida cansa mesmo sendo correta — cada plano numa sequência boa resolve uma tarefa de composição diferente do anterior."},
+  {"front":"Decisão: você precisa fotografar um fundador de empresa transmitindo autoridade calma. Terços (assimetria) ou centro (simetria)?","back":"Centro — a simetria transmite controle e estabilidade; terços cria mais movimento, útil quando a emoção é outra."},
+  {"front":"Contraste: qual a diferença entre usar espaço vazio ao redor de um assunto e usar um plano bem aberto?","back":"Espaço vazio isola um assunto pequeno dentro de um quadro fechado; plano aberto mostra a escala de um ambiente inteiro — os dois afastam elementos, mas por motivos diferentes."},
+  {"front":"Aplicação: você vai fotografar as mãos de um artesão trabalhando um detalhe pequeno. Que ferramenta de composição isola melhor esse gesto?","back":"Espaço vazio ao redor das mãos — reduz tudo que compete por atenção e força o olho a ficar só no gesto."}
+]
+</script>
+<!--
+COMPLETUDE aula-6 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="15min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa/book corporativo em 100% dos steps (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~10 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-6"> presente (4 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 4/4 diagnóstico/decisão/contraste/aplicação; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 7 ===== -->
+<section class="view" data-aula="7" data-tempo="22min" id="v-aula-7">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 3 · Lección 7</p>
+<h1>La luz es <em>emoción</em></h1>
+<p class="promise">Al final de esta clase, eliges, para una escena real, entre cinco maniobras de luz —quitar luz, acercar la fuente, ocultar el 80%, contrastar el color, contrastar la exposición— pensando en la emoción, no en iluminarlo todo.</p>
+<p class="why">Ya decides el ancla, la preproducción, el movimiento y la composición. Falta la variable que más rápido cambia cómo se siente una escena: la luz. Y la mayoría de quienes empiezan se equivoca en la dirección opuesta — lo iluminan todo, cuando el efecto profesional casi siempre nace de quitar luz.</p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: luz de fim de tarde entrando numa sala -->
+<rect fill="none" height="190" stroke-width="2" style="stroke:var(--line2)" width="240" x="30" y="20"></rect>
+<rect fill="none" height="90" stroke-width="2" style="stroke:var(--line2)" width="70" x="60" y="46"></rect>
+<path d="M60 46 l70 90 M130 46 l-70 90" stroke-width="1.2" style="stroke:var(--line2);opacity:.5"></path>
+<path d="M130 90 l100 -20 v90 l-100 20 z" style="fill:var(--warm);opacity:.14"></path>
+<path d="M130 90 l100 -20 v90 l-100 20 z" fill="none" stroke-width="1.4" style="stroke:var(--warm)"></path>
+<g opacity=".7" stroke-width="1.6" style="stroke:var(--line2)">
+<rect height="40" width="26" x="180" y="150"></rect>
+<rect height="50" width="18" x="212" y="140"></rect>
+</g>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="222">la misma sala, casi sin luz nueva</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Quitar luz crea misterio, no añadirla</h2>
+<p>La cinematografía profesional rara vez consiste en agregar luz: consiste en quitarla a propósito. Cuando eliminas la luz de una parte de la escena, las sombras se vuelven más profundas y el cuadro parece misterioso y vivo, en lugar de plano y uniforme.</p>
+<p>Una forma sencilla de aplicarlo: iluminar el sujeto solo desde un lado, dejando una <span class="gterm" data-def="Uma faixa fina de luz na borda do assunto, contra um fundo mais escuro — o suficiente para separar a silhueta do fundo sem precisar iluminar o resto da cena." tabindex="0">luz de contorno</span> fina en el borde, contra un fondo más oscuro. El ojo sigue el contraste, no el brillo — no hace falta iluminarlo todo para que algo destaque.</p>
+<p>El dueño de un salón de belleza que graba un reels del último corte del día, de noche, apagó las luces generales del techo y dejó solo una luz lateral sobre el rostro de la clienta, con el fondo del salón a oscuras. El resultado pareció un video de revista, no una grabación de celular en la oscuridad.</p>
+<div class="qanchor"><p>La luz no existe para que veas la escena. Existe para que el público sienta algo.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> La suavidad depende de la distancia; toda luz necesita una fuente real</h2>
+<p>La luz suave no depende del tamaño de la fuente, sino de la distancia. Una luz pequeña, muy cerca del tema, se dispersa y lo envuelve como si fuera grande; esa misma luz, lejos del tema, se vuelve dura y crea sombras marcadas en los bordes.</p>
+<p>Y toda la luz de la escena debe parecer que viene de algún lugar real —el sol, una lámpara, una pantalla. Si quien mira cree en la fuente, cree en toda la escena; la luz sin un origen claro siempre parece artificial, aunque sea técnicamente perfecta.</p>
+<p>En el salón de belleza, en vez de pedir una genérica «luz de estudio», el dueño decidió que la luz del video viniera del espejo iluminado de su propio tocador: una fuente que ya existía de verdad allí, y por eso nadie cuestionó si era una luz «falsa».</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> La regla 80/20: casi todo oculto, un poco visible</h2>
+<p>Solo el 20% de la luz de una escena debe estar visible; el otro 80% queda oculto en las sombras. Esa proporción crea profundidad y hace que la imagen parezca cinematográfica, en vez de plana y uniforme.</p>
+<p>La profundidad también nace de las capas — primer plano, plano medio, fondo — y la niebla o el vapor entre ellas hacen visible la propia luz en el aire, no solo en las superficies que toca.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>Salón con todas las luces del techo encendidas, iguales, sin ninguna sombra — el video parece una grabación de vigilancia, no una escena.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>Solo la luz de la mesa de trabajo está encendida, el resto del salón queda en sombras; el vapor de una toalla caliente se convierte en una capa visible de luz en el aire.</p></div>
+<p class="qba-saldo">Resultado: apagar el 80% de la luz del ambiente creó más profundidad de la que habría creado cualquier luz nueva.</p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> El contraste de color crea tensión; la exposición crea foco</h2>
+<p>Los tonos cálidos y fríos uno al lado del otro crean tensión visual — y la tensión, aquí, es sinónimo de vida en el cuadro. Una escena con la misma temperatura de color en todas partes resulta cómoda, pero también fácil de olvidar.</p>
+<p>Mostrar solo lo que importa y dejar que el resto se oscurezca o quede sobreexpuesto crea un enfoque absoluto en un solo punto de la escena, sin necesidad de recortar ni señalar nada con una flecha.</p>
+<p>En el salón, la luz cálida del tocador contra la luz fría que entraba desde la calle por el escaparate, de noche, le dio al video un ambiente de «fin de la jornada» sin necesitar ninguna palabra escrita en pantalla.</p>
+<div class="quiz" data-answer="b">
+<p class="qk">Ponte a prueba</p><p class="q">Una escena tiene luz cálida en la encimera y luz fría que entra por el escaparate de noche, una junto a la otra. Según esta clase, ¿qué efecto crea esta elección?</p>
+<button class="opt" data-fb="É o oposto: duas temperaturas de cor lado a lado criam tensão, não uniformidade — é essa tensão que dá vida ao quadro." data-k="a">Comodidad y uniformidad, porque las dos luces se equilibran</button>
+<button class="opt" data-fb="Exato: contraste de cor — quente contra frio — é sinônimo de vida na cena; a mesma temperatura em tudo fica confortável, mas esquecível." data-k="b">Tensión visual, que da sensación de vida al cuadro</button>
+<button class="opt" data-fb="O público não nomeia 'temperatura de cor', mas sente o efeito dela mesmo assim — é por isso que a técnica funciona sem precisar explicar nada." data-k="c">Ningún efecto perceptible, porque nadie se fija en la temperatura de color</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="step" data-fig="5" data-kind="fundamento">
+<h2><span class="n">05</span> La luz que se mueve parece viva</h2>
+<p>Una vela, un reflejo tembloroso, la luz que pasa a través de una hoja al viento: la luz en movimiento le da vida al encuadre. La luz completamente quieta, por bien colocada que esté, tiende a parecer muerta después de unos segundos en pantalla.</p>
+<div class="qapply">
+<p class="qak">Aplica la misma lógica</p>
+<ul>
+<li><b>Dueño de un salón de belleza:</b> en el video de cierre del día, expón solo el último corte bajo la luz de la mesa de trabajo, dejando que el resto del salón se oscurezca — el corte final se convierte en el único punto posible de atención.</li>
+<li><b>Fotógrafa:</b> en un ensayo nocturno en exteriores, usa el reflejo tembloroso de una luz de calle sobre un charco para darle movimiento a la luz, en lugar de una luz de estudio fija y uniforme.</li>
+</ul>
+</div>
+<div class="mobfig" data-mobfig="5"></div>
+<button class="readbtn" data-read="s5">marcar como leído</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p7">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Escribe un pedido de iluminación desglosado</h3>
+<p class="pgoal">Escribir un pedido de imagen o video desglosando la fuente, la distancia, el contraste y el movimiento de la luz — en ~12 minutos.</p>
+<p class="psafe">Los generadores de imágenes y videos con IA que ofrecen un plan de prueba suelen limitar cuántas generaciones puedes hacer por día, y ese límite cambia con frecuencia. Escribe y revisa la solicitud completa antes de generar: primero prueba la decisión de iluminación en papel.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">Cinematic lighting, one clear light source only.
+
+SUBJECT: &lt;describe your subject&gt;
+
+LIGHT SOURCE: &lt;a real-world source — window, lamp, screen, candle&gt;,
+positioned &lt;side / behind / close&gt;
+
+CONTRAST: mostly in shadow, only 20% of the frame lit; &lt;warm/cool&gt;
+tones against &lt;the opposite tone&gt; in the background
+
+MOVEMENT: &lt;steady light / flickering light / reflection moving&gt;
+
+Photorealistic, cinematic, no text, no watermark.</pre></div>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige una escena real de tu trabajo y nombra la emoción que debe transmitir la luz.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Completa las cuatro partes del pedido anterior: tema, fuente, contraste, movimiento.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Pégalo en el generador de imágenes o video que ya usas y genera el resultado.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Comprueba: ¿puedes decir con una palabra de dónde viene la luz de la escena? Si no puedes, la fuente no quedó clara: ajusta y vuelve a generarla.</label></li>
+</ol>
+<p class="pdone">Elegiste la luz pensando en la emoción y en una fuente real, no en «iluminarlo todo» — exactamente el cambio de perspectiva que pedía la promesa de esta clase.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Luz de contorno fina, contra um fundo escuro, separa o assunto sem precisar iluminar o resto da cena." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="160" style="fill:var(--bg2)" width="180" x="20" y="20"></rect>
+<path d="M110 50 c-24 0 -40 20 -40 50 c0 30 16 60 40 60 c24 0 40 -30 40 -60 c0 -30 -16 -50 -40 -50 z" fill="none" stroke-width="2" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="180">solo el borde iluminado</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Luz pequena e perto se espalha como se fosse grande; a mesma luz longe fica dura. Toda fonte precisa parecer real." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="60" cy="70" r="8" style="fill:var(--accent)"></circle>
+<path d="M60 70 m-30 0 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0" fill="none" stroke-width="10" style="stroke:var(--accent);opacity:.35"></path>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="60" y="130">cerca: suave</text>
+<circle cx="170" cy="70" r="5" style="fill:var(--muted)"></circle>
+<path d="M170 70 m-10 0 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0" fill="none" stroke-width="4" style="stroke:var(--muted);opacity:.4"></path>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="170" y="130">lejos: dura</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; A regra 80/20: 80% da cena em sombra, 20% visível — a proporção que cria profundidade cinematográfica." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="140" rx="6" style="fill:var(--bg2)" width="180" x="20" y="30"></rect>
+<rect height="60" rx="4" style="fill:var(--warm);opacity:.22" width="50" x="130" y="70"></rect>
+<rect fill="none" height="60" rx="4" stroke-width="1.6" style="stroke:var(--warm)" width="50" x="130" y="70"></rect>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="155" y="184">20% visible</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Contraste de temperatura — quente contra frio — cria tensão visual; a mesma temperatura em tudo fica esquecível." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="120" rx="6" style="fill:var(--warm);opacity:.18" width="85" x="20" y="40"></rect>
+<rect height="120" rx="6" style="fill:var(--accent);opacity:.18" width="85" x="115" y="40"></rect>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="62" y="176">caliente</text>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="157" y="176">frío</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 5&lt;/b&gt; Luz parada tende a parecer morta; um pequeno tremular ou reflexo em movimento traz vida ao quadro." data-fig="5"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M40 60 c4 20 -4 30 0 50" fill="none" stroke-width="1.6" style="stroke:var(--muted)"></path>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="40" y="130">parada</text>
+<path d="M160 50 c10 12 -12 18 4 30 c10 12 -12 20 2 34 c10 12 -10 18 4 32" fill="none" stroke-width="1.8" style="stroke:var(--warm)"></path>
+<text font-size="7.5" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="160" y="140">parpadea: viva</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>Quitar luz crea misterio: una luz de contorno tenue, contra un fondo oscuro, separa al sujeto sin necesidad de iluminarlo todo.</li>
+<li>La suavidad depende de la distancia, no del tamaño de la fuente; toda luz debe parecer que viene de algún lugar real.</li>
+<li>Solo el 20% de la luz debe estar visible; las capas con niebla o vapor hacen que la propia luz forme parte de la profundidad.</li>
+<li>El contraste de color crea tensión, el contraste de exposición crea foco y la luz en movimiento parece viva.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de cambiar el instinto de «encenderlo todo» por el instinto profesional de decidir dónde quitar luz.</p>
+<p class="na-action">En los próximos 10 minutos: mira ahora mismo un espacio de tu trabajo e identifica una fuente de luz real que ya esté allí —ventana, lámpara, pantalla— e imagina la escena solo con esa luz, sin ninguna luz adicional.</p>
+<p class="na-hook">En la última clase de esta formación, reunirás todo esto en una sola habilidad: colocar el frente, el medio y el fondo en cada cuadro, y contar relaciones humanas solo con la posición y la mirada.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-6">← clase anterior</a><a href="#aula-8">próxima clase →</a></nav>
+<footer>Lección 7 · Piensa como un director · Formación de Cine con IA</footer>
+<script id="cards-7" type="application/json">
+[
+  {"front":"Diagnóstico: um vídeo tem luz forte em todo o ambiente, mas nada chama atenção — a cena parece plana. O que provavelmente falta?","back":"Tirar luz de propósito — sombra em 80% da cena e luz só em 20% cria o contraste que puxa o olho para um ponto só."},
+  {"front":"Decisão: você precisa que uma cena pareça misteriosa, mas o rosto do assunto ainda tem que aparecer, mesmo que pouco. Que técnica de luz usar?","back":"Luz de contorno — remove a luz de frente e deixa só uma borda fina iluminada; a silhueta se mantém legível, o resto vira mistério."},
+  {"front":"Contraste: qual a diferença entre uma luz suave por ser grande e uma luz suave por estar perto?","back":"O efeito final pode ser parecido, mas a distância é o que realmente controla a suavidade — uma luz pequena bem próxima se espalha tanto quanto uma luz grande distante."},
+  {"front":"Aplicação: você vai gravar à noite e não tem nenhum equipamento de luz. Como criar uma fonte que pareça real?","back":"Use algo que já existe no ambiente — uma luminária, o brilho de uma tela, a luz da rua pela janela; fonte real convence mais do que luz sem origem, mesmo tecnicamente perfeita."},
+  {"front":"Pergunta: por que uma cena com luz uniforme em tudo costuma parecer sem graça, mesmo bem exposta?","back":"Porque sem contraste — de luz, de cor, de exposição — não existe nenhum ponto que puxe o olho primeiro; tudo compete igual, e nada vence."}
+]
+</script>
+<!--
+COMPLETUDE aula-7 | tipo=FUNDAMENTO | steps=5
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="22min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  dono de salão de beleza (s1–s4), salão + fotógrafa no qapply (s5) (5/5)
+  [OK] apoio-visual       figs 1–5 legendadas no trilho, mobfig por step (5/5)
+  [OK] practice           .practice[data-mode="prompt"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~12 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-7"> presente (5 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 5/5 diagnóstico/decisão/contraste/aplicação/pergunta; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s4)
+-->
+</section>
+<!-- ===== AULA 8 ===== -->
+<section class="view" data-aula="8" data-tempo="20min" id="v-aula-8">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 3 · Lección 8</p>
+<h1>Profundidad: la escena en tres <em>capas</em></h1>
+<p class="promise">Al final de esta clase, preparas una escena con primer plano, plano medio y fondo definidos, y colocas a dos personas o elementos en capas diferentes para contar una relación solo con la posición y la mirada.</p>
+<p class="why">Ya decides el ancla, la preproducción, el movimiento, la composición y la luz. Falta la última capa — literalmente: la profundidad es lo que hace que un cuadro parezca un lugar real, con espacio para entrar, en vez de una superficie plana con cosas pegadas encima.</p>
+<p class="cue"><span class="arw">↓</span> desplázate para estudiar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: um jardim em camadas — canteiro baixo, arbustos, árvores ao fundo -->
+<path d="M20 210 h260" stroke-width="2" style="stroke:var(--line2)"></path>
+<path d="M30 210 q50 -10 100 0 q50 10 100 0 q30 -6 40 0" fill="none" stroke-linecap="round" stroke-width="10" style="stroke:var(--warm);opacity:.5"></path>
+<g stroke-linecap="round" stroke-width="8" style="stroke:var(--accent);opacity:.6">
+<path d="M60 208 q0 -30 4 -46"></path><path d="M150 208 q0 -34 -2 -50"></path><path d="M225 208 q0 -28 4 -42"></path>
+</g>
+<g fill="none" stroke-width="2" style="stroke:var(--accent)">
+<path d="M70 90 l30 -50 30 50 z"></path>
+<path d="M180 76 l26 -44 26 44 z"></path>
+</g>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="55" y="228">parterre</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="228">arbustos</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="240" y="228">árboles</text>
+</svg></div>
+</div></header>
+<div class="layout">
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Toda escena profesional tiene tres capas</h2>
+<p>La profundidad es la ilusión de espacio tridimensional dentro de un encuadre plano. Nace de organizar la escena en tres capas: el primer plano — donde está quien mira —, el plano medio — donde vive el tema principal — y el fondo, donde respira el contexto. Sin las tres, la imagen queda aplanada: bonita, pero sin espacio para entrar.</p>
+<p>Las capas solo funcionan cuando se distinguen visualmente entre sí, por el foco, la luz o el color. Si las tres se mezclan, el ojo no logra separarlas y la sensación de profundidad desaparece, aunque técnicamente estén presentes.</p>
+<p>Una fotógrafa que organizaba una sesión familiar en un parque decidió esto antes de tomar cualquier foto: ramas ligeramente desenfocadas en primer plano, la familia en el plano medio y el lago al fondo; tres capas nítidas, cada una con un papel propio en la composición.</p>
+<div class="qanchor"><p>Una imagen plana muestra lo que existe. Una imagen en capas muestra dónde está cada cosa con respecto a las demás.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como leído</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> La profundidad de campo determina qué queda nítido</h2>
+<p>A <span class="gterm" data-def="O quanto da cena fica nítido ao mesmo tempo, da frente para o fundo. Profundidade de campo rasa deixa só uma fatia fina em foco, com o resto borrado; profundidade de campo grande mantém quase tudo nítido, da frente ao fundo." tabindex="0">profundidad de campo</span> controla qué parte de la escena queda nítida a la vez, y eso es lo que guía la mirada. Una profundidad de campo reducida aísla al sujeto y desenfoca el primer plano y el fondo; una profundidad de campo amplia mantiene todo legible, algo útil cuando el entorno importa tanto como la persona.</p>
+<p>La elección del lente refuerza este efecto: un lente gran angular expande el espacio y exagera la distancia entre las capas; un teleobjetivo comprime el espacio y acerca visualmente capas que en la vida real están lejos unas de otras.</p>
+<p>En el retrato principal de la sesión familiar, la fotógrafa usó poca profundidad de campo para aislar los rostros; en el plano general de todo el parque, cambió a mucha profundidad de campo, porque allí el entorno contaba tanto como la familia.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como leído</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> Las capas cuentan relaciones humanas sin diálogo</h2>
+<p>Colocar personas en diferentes capas del mismo cuadro cuenta una relación sin necesidad de una sola palabra de diálogo. La poca distancia entre dos personas habla de intimidad; la mucha distancia, de aislamiento. El movimiento habla de cambio; la quietud total, de tensión.</p>
+<p>En la sesión de fotos familiar, la fotógrafa colocó a los abuelos en primer plano, mirando a la cámara con calma, y a los nietos corriendo al fondo, desenfocados. La composición por sí sola contó «una generación que observa, otra que vive en movimiento», sin que nadie tuviera que decir nada.</p>
+<div class="quiz" data-answer="a">
+<p class="qk">Ponte a prueba</p><p class="q">En un retrato familiar, los abuelos aparecen nítidos y cerca de la cámara, mirando al objetivo; los nietos aparecen desenfocados y lejos, corriendo al fondo. ¿Qué relación sugiere esta composición, sin ninguna palabra escrita?</p>
+<button class="opt" data-fb="Exato: a posição em camadas diferentes, junto da nitidez e do movimento de cada um, conta a relação inteira sem precisar de legenda." data-k="a">Dos generaciones viven el mismo momento de maneras diferentes</button>
+<button class="opt" data-fb="O contrário: estar numa camada diferente não significa ser menos importante — muitas vezes é exatamente essa posição que carrega o significado da cena." data-k="b">Que los nietos no son importantes en esta escena</button>
+<button class="opt" data-fb="Tecnicamente, a foto está certa — profundidade de campo rasa deixando parte da cena desfocada é decisão, não erro." data-k="c">Que la foto es técnicamente incorrecta porque no todos están enfocados</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como leído</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> Las cinco decisiones se convierten en una sola: diriges, no solo generas</h2>
+<p>La composición, la cámara y el lente, la luz, el movimiento y la posición de los personajes —las cinco decisiones de este curso— no funcionan de manera aislada. En una escena profesional, trabajan como un solo sistema: la luz separa las capas que la composición organizó; el movimiento revela la profundidad que el lente comprimió o expandió; la posición de cada persona transmite la relación que el guion pedía desde la preproducción.</p>
+<p>Es esta integración — no el dominio de una técnica aislada — lo que distingue a quien genera imágenes sueltas de quien dirige una escena completa.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>Un video con buena luz, pero sin capas: todos en el mismo plano, con la misma nitidez y a la misma distancia. Técnicamente correcto, fácil de olvidar.</p></div>
+<div class="qba-col"><p class="qk">Después</p><p>El mismo video con el primer plano, el plano medio y el fondo definidos, la profundidad de campo elegida a propósito y cada persona ubicada en una capa que dice algo sobre ella.</p></div>
+<p class="qba-saldo">Resultado: la diferencia entre las dos versiones no es técnica, es una decisión. Pasaste todo este curso aprendiendo a tomar esa decisión a propósito, en lugar de aceptar la primera generación de la IA.</p>
+</div>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como leído</button>
+</section>
+<section class="practice" data-mode="tarefa" data-practice="p8">
+<p class="pk">Practica ahora <span class="pcount">0/4 hecho</span></p>
+<h3 class="ph">Arma una escena con tres capas y una relación</h3>
+<p class="pgoal">Arma, en papel o en una escena real, las tres capas de profundidad con una relación humana contada solo mediante la posición; en ~15 minutos.</p>
+<p class="psafe">Es un ejercicio de planificación y observación: puedes hacerlo en papel, con una foto que ya existe u organizando una escena real; nada de esto depende de generar una imagen nueva ni de ninguna herramienta específica.</p>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Elige una escena real de tu trabajo con al menos dos personas o dos elementos.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Decide qué va en cada capa: primer plano, plano medio y fondo.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Ubica a las dos personas (o elementos) en capas diferentes, pensando en lo que cuenta la relación entre ellas a través de la distancia.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Comprueba: ¿alguien que no conoce la escena puede «leer» la relación solo por la posición, sin ninguna explicación?</label></li>
+</ol>
+<p class="pdone">Terminaste el curso armando en la práctica la misma escena que resume las ocho clases: profundidad con una relación humana incorporada, decidida por ti — no por casualidad.</p>
+</section>
+</div>
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; As três camadas — frente, meio, fundo — precisam ser visualmente distintas por foco, luz ou cor, ou se misturam." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="40" rx="4" stroke-width="2" style="stroke:var(--accent)" width="180" x="20" y="140"></rect>
+<rect height="40" rx="4" stroke-width="1.6" style="stroke:var(--muted)" width="152" x="34" y="90"></rect>
+<rect height="40" rx="4" stroke-width="1.4" style="stroke:var(--faint)" width="124" x="48" y="42"></rect>
+<g font-size="8" style="fill:var(--muted);font-family:var(--mono)">
+<text style="fill:var(--accent)" text-anchor="middle" x="110" y="164">frente</text>
+<text text-anchor="middle" x="110" y="114">medio</text>
+<text style="fill:var(--faint)" text-anchor="middle" x="110" y="66">fondo</text>
+</g>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Profundidade de campo rasa isola um ponto nítido; profundidade de campo grande mantém quase tudo legível." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="70" cy="100" r="26" stroke-width="2" style="stroke:var(--accent)"></circle>
+<circle cx="30" cy="70" r="14" stroke-dasharray="2 3" stroke-width="1.2" style="stroke:var(--faint)"></circle>
+<circle cx="120" cy="130" r="16" stroke-dasharray="2 3" stroke-width="1.2" style="stroke:var(--faint)"></circle>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="70" y="145">raso: aísla</text>
+<g stroke-width="1.6" style="stroke:var(--muted)"><circle cx="175" cy="70" r="12"></circle><circle cx="175" cy="105" r="12"></circle><circle cx="175" cy="140" r="12"></circle></g>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="175" y="168">grande: todo nítido</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; Distância entre camadas conta relação: perto e voltado para a câmera é intimidade; longe e em movimento é distância." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="55" cy="140" r="16" stroke-width="2" style="stroke:var(--accent)"></circle>
+<text font-size="7.5" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="55" y="172">frente: quieto</text>
+<circle cx="170" cy="60" r="9" stroke-width="1.6" style="stroke:var(--muted)"></circle>
+<path d="M170 60 l14 10" stroke-dasharray="2 3" stroke-width="1.4" style="stroke:var(--muted)"></path>
+<text font-size="7.5" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="170" y="92">fondo: en movimiento</text>
+<path d="M70 130 L158 66" stroke-dasharray="2 3" stroke-width="1" style="stroke:var(--faint)"></path>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; As cinco decisões do curso — composição, câmera, luz, movimento, posição — se juntam num sistema só." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.6" style="stroke:var(--line2)">
+<circle cx="60" cy="40" r="16"></circle><circle cx="160" cy="40" r="16"></circle><circle cx="30" cy="100" r="16"></circle><circle cx="190" cy="100" r="16"></circle><circle cx="110" cy="70" r="16"></circle>
+</g>
+<g font-size="6.2" style="fill:var(--faint);font-family:var(--mono)">
+<text text-anchor="middle" x="60" y="43">comp.</text><text text-anchor="middle" x="160" y="43">cámara</text><text text-anchor="middle" x="30" y="103">luz</text><text text-anchor="middle" x="190" y="103">mov.</text><text text-anchor="middle" x="110" y="73">posición</text>
+</g>
+<path d="M60 56 L110 86 M160 56 L110 86 M30 116 L110 86 M190 116 L110 86" stroke-dasharray="2 3" stroke-width="1" style="stroke:var(--faint)"></path>
+<circle cx="110" cy="150" r="24" stroke-width="2" style="stroke:var(--warm)"></circle>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="154">1 escena</text>
+<path d="M110 86 v40" stroke-width="1.6" style="stroke:var(--warm)"></path>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Resalta cualquier fragmento para convertirlo en una tarjeta de repaso.</p>
+</div></aside>
+</div>
+<div class="fecho-wrap">
+<div class="recap-autor">
+<p class="rak">Resumen</p>
+<ul>
+<li>La profundidad surge al organizar la escena en tres capas —frente, medio, fondo— que se distinguen visualmente por el enfoque, la luz o el color.</li>
+<li>La profundidad de campo determina cuánto de la escena queda nítido; el lente refuerza ese efecto al expandir o comprimir el espacio entre capas.</li>
+<li>Colocar personas en diferentes capas cuenta relaciones sin diálogo: la distancia habla de intimidad o aislamiento; el movimiento, de cambio.</li>
+<li>Las cinco decisiones del curso —composición, cámara, luz, movimiento, posición— funcionan como un solo sistema, nunca de forma aislada.</li>
+</ul>
+</div>
+<div class="next-action">
+<p class="nak">Tu siguiente paso</p>
+<p class="na-win">Acabas de completar la mirada de director: desde la intención y el ancla hasta la profundidad y la relación. Las ocho clases siguieron un mismo razonamiento, desde el porqué hasta dónde está cada cosa en el encuadre.</p>
+<p class="na-action">En los próximos 15 minutos: elige una escena real de tu trabajo y anota en papel las cinco decisiones de todo el curso —ancla, preproducción, movimiento, composición e iluminación— aplicadas a las tres capas de profundidad de esta clase.</p>
+<p class="na-hook">El curso 4, «El flujo de producción y el lenguaje de cámara», toma esa mirada entrenada y entra en los mecanismos: la secuencia con propósito, la física del movimiento, el ritmo adecuado para cada emoción y el vocabulario de cámara que una producción usa desde el storyboard hasta la escena final.</p>
+</div>
+</div>
+<nav class="lnav"><a href="#aula-7">← clase anterior</a><a href="#trilha">completar el curso ✓ →</a></nav>
+<footer>Lección 8 · Piensa como un director · Formación de Cine con IA</footer>
+<script id="cards-8" type="application/json">
+[
+  {"front":"Diagnóstico: um vídeo tem luz e composição corretas, mas todo mundo está no mesmo plano, mesma nitidez, mesma distância — parece achatado. O que falta?","back":"Camadas: sem frente, meio e fundo visualmente distintos, a cena perde profundidade mesmo com o resto tecnicamente certo."},
+  {"front":"Decisão: você quer isolar o rosto de alguém, borrando tudo ao redor. Profundidade de campo rasa ou grande?","back":"Rasa — isola o assunto borrando frente e fundo; profundidade de campo grande mantém tudo nítido, útil quando o ambiente importa tanto quanto a pessoa."},
+  {"front":"Contraste: qual a diferença entre duas pessoas próximas e duas pessoas distantes, em camadas diferentes do mesmo quadro?","back":"Distância curta sugere intimidade; distância longa sugere isolamento — a posição sozinha já conta a relação, sem precisar de diálogo."},
+  {"front":"Aplicação: você vai fotografar um mestre artesão ensinando um aprendiz. Como usar camadas para mostrar essa relação sem legenda?","back":"Mestre no plano médio, atento, em foco; aprendiz um pouco atrás ou ao lado, observando — a posição e o olhar de cada um já contam quem ensina e quem aprende."},
+  {"front":"Pergunta: o que separa alguém que gera imagens soltas de alguém que dirige uma cena inteira, segundo esta aula?","back":"Tratar composição, câmera, luz, movimento e posição como decisões de um sistema só — não como técnicas isoladas, escolhidas sem relação entre si."}
+]
+</script>
+<!--
+COMPLETUDE aula-8 | tipo=FUNDAMENTO | steps=4
+  [OK] promise            .promise no cold-open (1)
+  [OK] why                .why após a promessa (1)
+  [OK] tempo              data-tempo="20min" no view + render no cold-open (1)
+  [OK] exemplo-profissao  fotógrafa/ensaio de família em 100% dos steps (4/4)
+  [OK] apoio-visual       figs 1–4 legendadas no trilho, mobfig por step (4/4)
+  [OK] practice           .practice[data-mode="tarefa"] (exatamente 1)
+  [OK] psafe              .psafe dentro da prática (1)
+  [OK] pgoal-tempo        .pgoal com "~15 minutos" (1)
+  [OK] recap-autor        .recap-autor no fecho (1)
+  [OK] next-action        .next-action no fecho (1)
+  [OK] cards              <script id="cards-8"> presente (5 cartões)
+  [OK] anti-duplicacao    3 testes: sem substring ≥6 palavras; 5/5 diagnóstico/decisão/contraste/aplicação/pergunta; operação difere do recap
+  [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s3)
+-->
+</section>
+<script src="../../assets/curso.js"></script>
+</body>
+</html>

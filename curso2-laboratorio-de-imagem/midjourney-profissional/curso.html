@@ -1,14 +1,15 @@
-<!doctype html>
-<html lang="pt-BR" data-theme="dark">
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="curso" content="fcia-c2c">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="fcia-c2c" name="curso"/>
 <title>Midjourney Profissional · Formação Cinema com IA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/aula.css">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;family=Inter:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/aula.css" rel="stylesheet"/>
 <script src="../../config.js"></script>
 <script>(function(){try{var m=document.querySelector('meta[name=curso]');var CK=(m&&m.content)||'v5:curso';var s=JSON.parse(localStorage.getItem(CK));if(s&&s.prefs&&s.prefs.theme)document.documentElement.setAttribute('data-theme',s.prefs.theme);}catch(e){}})();</script>
 <!--
@@ -42,217 +43,205 @@
   #v-trilha .au .prog i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
   #v-trilha footer{max-width:1080px;margin:0 auto;padding:6vh clamp(24px,5vw,60px) 12vh;color:var(--faint);text-align:center;font-family:var(--serif);font-style:italic;border-top:1px solid var(--line)}
 </style>
-</head>
-<body>
+<link href="https://inematds.github.io/idallai/curso2-laboratorio-de-imagem/midjourney-profissional/curso.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/idallai/en/curso2-laboratorio-de-imagem/midjourney-profissional/curso.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/idallai/es/curso2-laboratorio-de-imagem/midjourney-profissional/curso.html" hreflang="es" rel="alternate"/></head>
+<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="curso.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="../../en/curso2-laboratorio-de-imagem/midjourney-profissional/curso.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="../../es/curso2-laboratorio-de-imagem/midjourney-profissional/curso.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
 <div class="bar"><div class="bar-inner">
-  <span class="brand"><a class="mark" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a><a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a><a class="course" href="../../index.html">Laboratório de Imagem · Midjourney Profissional</a></span>
-  <a class="back" href="#trilha" style="display:none">← trilha</a>
-  <button id="pill" class="pill" style="display:none">0 lido</button>
-  <button id="revbtn">revisar <span id="revn">0</span></button>
-  <button id="exbtn">exercícios</button>
-  <button id="jorbtn">jornada</button>
-  <button id="helpbtn" aria-label="Como funciona">?</button>
-  <button id="prefsbtn" aria-label="Preferências de leitura">Aa</button>
-  <button id="themebtn">tema: escuro</button>
+<span class="brand"><a class="mark" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a><a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a><a class="course" href="../../index.html">Laboratório de Imagem · Midjourney Profissional</a></span>
+<a class="back" href="#trilha" style="display:none">← trilha</a>
+<button class="pill" id="pill" style="display:none">0 lido</button>
+<button id="revbtn">revisar <span id="revn">0</span></button>
+<button id="exbtn">exercícios</button>
+<button id="jorbtn">jornada</button>
+<button aria-label="Como funciona" id="helpbtn">?</button>
+<button aria-label="Preferências de leitura" id="prefsbtn">Aa</button>
+<button id="themebtn">tema: escuro</button>
 </div></div>
-
 <!-- ===== TRILHA ===== -->
 <section class="view" id="v-trilha">
-  <header class="t-hero"><div class="wrap">
-    <p class="kicker">Formação Cinema com IA · Curso 2 · Trilha C</p>
-    <h1>Midjourney <em>Profissional</em></h1>
-    <p class="lead">Três aulas de acabamento fino: sequências planejadas como pré-produção, luz que conta história e um personagem que não muda de rosto — em qualquer mundo.</p>
-  </div></header>
-  <section><div class="wrap">
-    <div class="statcards"></div>
-    <p class="eyebrow">Aulas</p>
-    <h2>O salto do bonito para o intencional</h2>
-    <div class="aulas">
-      <a class="au on" data-aula="1" href="#aula-1">
-        <div class="num">1</div>
-        <div><h3>Storyboard: planos, não imagens</h3><p>Monte uma sequência curta com linguagem de cinema — cada geração com função, nada ao acaso.</p><div class="prog"><i></i></div></div>
-        <div class="meta">18 min · abrir →</div>
-      </a>
-      <a class="au on" data-aula="2" href="#aula-2">
-        <div class="num">2</div>
-        <div><h3>A luz conta a história</h3><p>Domine as cinco linguagens da luz e a temperatura de cor — e mude a emoção de uma cena sem tocar em mais nada.</p><div class="prog"><i></i></div></div>
-        <div class="meta">20 min · abrir →</div>
-      </a>
-      <a class="au on" data-aula="3" href="#aula-3">
-        <div class="num">3</div>
-        <div><h3>Identidade estável em qualquer mundo</h3><p>Referência visual, âncora de texto e figurino travado: o mesmo personagem crível em quatro cenários diferentes.</p><div class="prog"><i></i></div></div>
-        <div class="meta">21 min · abrir →</div>
-      </a>
-    </div>
-  </div></section>
-  <footer><div class="wrap">Curso 2 · Trilha C · Formação Cinema com IA · INEMA.CLUB PRO</div></footer>
-</section>
-
-<!-- ===== AULA 1 ===== -->
-<section class="view" id="v-aula-1" data-aula="1" data-tempo="18min">
-<header class="hero"><div class="hero-inner">
-  <div>
-    <p class="kicker">Curso 2C · Aula 1</p>
-    <h1>Storyboard: planos, não <em>imagens</em></h1>
-    <p class="promise">Ao fim desta aula você monta uma sequência de 3 a 5 planos no Midjourney com lente, tamanho de plano e luz escolhidos de propósito — e sabe justificar cada escolha.</p>
-    <p class="why">No cinema, clareza vem antes de beleza. Uma imagem linda que não conversa com a anterior é um beco sem saída — e é exatamente o que sai quando se gera "mais uma bonita". Esta aula transforma o gerador em ferramenta de pré-produção: cada quadro nasce com função na sequência.</p>
-    <p class="video-aula"><a href="https://www.loom.com/share/e381f9bc4f8941c49d9e147013f8053c" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
-    <p class="cue"><span class="arw">↓</span> role para estudar</p>
-  </div>
-  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
-    <!-- metáfora: a mesa de luz do ateliê — pranchas em sequência, examinadas uma a uma -->
-    <rect x="34" y="60" width="232" height="120" rx="10" style="stroke:var(--line2)" stroke-width="2"/>
-    <rect x="46" y="72" width="208" height="96" rx="6" style="stroke:var(--warm);opacity:.5" stroke-width="1.6"/>
-    <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
-      <rect x="60" y="90" width="34" height="26" rx="3"/>
-      <rect x="104" y="90" width="34" height="26" rx="3"/>
-      <rect x="148" y="90" width="34" height="26" rx="3"/>
-      <rect x="192" y="90" width="34" height="26" rx="3"/>
-    </g>
-    <path d="M94 103 h10 M138 103 h10 M182 103 h10" style="stroke:var(--accent)" stroke-width="1.6"/>
-    <circle cx="121" cy="140" r="12" style="stroke:var(--muted)" stroke-width="2"/>
-    <path d="M130 149 l10 10" style="stroke:var(--muted)" stroke-width="2" stroke-linecap="round"/>
-    <text x="150" y="206 " text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">na mesa de luz, a sequência aparece — e o quadro solto se revela</text>
-  </svg></div>
+<header class="t-hero"><div class="wrap">
+<p class="kicker">Formação Cinema com IA · Curso 2 · Trilha C</p>
+<h1>Midjourney <em>Profissional</em></h1>
+<p class="lead">Três aulas de acabamento fino: sequências planejadas como pré-produção, luz que conta história e um personagem que não muda de rosto — em qualquer mundo.</p>
 </div></header>
-
+<section><div class="wrap">
+<div class="statcards"></div>
+<p class="eyebrow">Aulas</p>
+<h2>O salto do bonito para o intencional</h2>
+<div class="aulas">
+<a class="au on" data-aula="1" href="#aula-1">
+<div class="num">1</div>
+<div><h3>Storyboard: planos, não imagens</h3><p>Monte uma sequência curta com linguagem de cinema — cada geração com função, nada ao acaso.</p><div class="prog"><i></i></div></div>
+<div class="meta">18 min · abrir →</div>
+</a>
+<a class="au on" data-aula="2" href="#aula-2">
+<div class="num">2</div>
+<div><h3>A luz conta a história</h3><p>Domine as cinco linguagens da luz e a temperatura de cor — e mude a emoção de uma cena sem tocar em mais nada.</p><div class="prog"><i></i></div></div>
+<div class="meta">20 min · abrir →</div>
+</a>
+<a class="au on" data-aula="3" href="#aula-3">
+<div class="num">3</div>
+<div><h3>Identidade estável em qualquer mundo</h3><p>Referência visual, âncora de texto e figurino travado: o mesmo personagem crível em quatro cenários diferentes.</p><div class="prog"><i></i></div></div>
+<div class="meta">21 min · abrir →</div>
+</a>
+</div>
+</div></section>
+<footer><div class="wrap">Curso 2 · Trilha C · Formação Cinema com IA · INEMA.CLUB PRO</div></footer>
+</section>
+<!-- ===== AULA 1 ===== -->
+<section class="view" data-aula="1" data-tempo="18min" id="v-aula-1">
+<header class="hero"><div class="hero-inner">
+<div>
+<p class="kicker">Curso 2C · Aula 1</p>
+<h1>Storyboard: planos, não <em>imagens</em></h1>
+<p class="promise">Ao fim desta aula você monta uma sequência de 3 a 5 planos no Midjourney com lente, tamanho de plano e luz escolhidos de propósito — e sabe justificar cada escolha.</p>
+<p class="why">No cinema, clareza vem antes de beleza. Uma imagem linda que não conversa com a anterior é um beco sem saída — e é exatamente o que sai quando se gera "mais uma bonita". Esta aula transforma o gerador em ferramenta de pré-produção: cada quadro nasce com função na sequência.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/e381f9bc4f8941c49d9e147013f8053c" rel="noopener" target="_blank"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> role para estudar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a mesa de luz do ateliê — pranchas em sequência, examinadas uma a uma -->
+<rect height="120" rx="10" stroke-width="2" style="stroke:var(--line2)" width="232" x="34" y="60"></rect>
+<rect height="96" rx="6" stroke-width="1.6" style="stroke:var(--warm);opacity:.5" width="208" x="46" y="72"></rect>
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="26" rx="3" width="34" x="60" y="90"></rect>
+<rect height="26" rx="3" width="34" x="104" y="90"></rect>
+<rect height="26" rx="3" width="34" x="148" y="90"></rect>
+<rect height="26" rx="3" width="34" x="192" y="90"></rect>
+</g>
+<path d="M94 103 h10 M138 103 h10 M182 103 h10" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<circle cx="121" cy="140" r="12" stroke-width="2" style="stroke:var(--muted)"></circle>
+<path d="M130 149 l10 10" stroke-linecap="round" stroke-width="2" style="stroke:var(--muted)"></path>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="206 ">na mesa de luz, a sequência aparece — e o quadro solto se revela</text>
+</svg></div>
+</div></header>
 <div class="layout">
-  <div class="col">
-
-    <section class="step" data-fig="1" data-kind="fundamento">
-      <h2><span class="n">01</span> Tamanho de plano é função, não gosto</h2>
-      <p>Cada tamanho de plano faz um trabalho: o <b>plano geral</b> mostra escala e lugar; o <b>aberto</b> coloca o personagem no espaço; o <b>médio</b> deixa a ação legível; o <b>close</b> entrega emoção; o <b>detalhe</b> aponta o que importa. Sequência boa é alternância desses trabalhos — é isso que cria ritmo.</p>
-      <p>A fotógrafa monta o book de casamento assim há anos, mesmo sem nomear: a igreja inteira (geral), os noivos no altar (médio), a aliança entrando no dedo (detalhe), a lágrima da mãe (close). Quatro tamanhos, quatro funções — e o álbum conta a história sozinho.</p>
-      <div class="qanchor"><p>Clareza vem antes de beleza.</p></div>
-      <div class="mobfig" data-mobfig="1"></div>
-      <button class="readbtn" data-read="s1">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="2" data-kind="fundamento">
-      <h2><span class="n">02</span> Lente molda sentimento; luz precisa de fonte</h2>
-      <p>Regra simples de lente, suficiente para dirigir: <b>24mm</b> dramatiza o espaço (ambientes engolem o personagem), <b>35mm</b> equilibra com naturalidade, <b>85mm</b> isola e emociona. Você não precisa saber ótica — precisa saber qual sentimento quer.</p>
-      <p>E a regra de ouro da luz nesta trilha: <b>toda luz tem fonte nomeada</b>. A lua é a luz principal, o abajur é a luz de apoio, a tela do celular é o acento. Brilho sem origem é o carimbo do amador — o olho percebe que aquilo não existiria no mundo real.</p>
-      <p>A fotógrafa atendendo o cliente chef aplicou as duas regras no retrato dele: 85mm para isolar o rosto, e a única luz vinda da boca do fogão acesa — fonte real, drama real.</p>
-      <div class="quiz" data-answer="b">
-        <p class="qk">Teste-se</p><p class="q">Sua cena noturna saiu com um brilho bonito, mas "de mentira". Qual é a correção desta aula?</p>
-        <button class="opt" data-k="a" data-fb="Aumentar o brilho aumenta o problema: mais luz sem origem, mais cara de montagem.">Pedir mais brilho e mais contraste</button>
-        <button class="opt" data-k="b" data-fb="Exato: luz sem fonte é o carimbo do amador — nomeando a origem (lua, abajur, letreiro), o brilho passa a existir no mundo da cena.">Dar uma fonte à luz: lua, abajur, letreiro — e reescrever o pedido a partir dela</button>
-        <button class="opt" data-k="c" data-fb="Trocar a lente muda o sentimento do espaço, não a credibilidade da luz.">Trocar a lente de 35mm para 24mm</button>
-        <p class="qfb"></p>
-      </div>
-      <div class="mobfig" data-mobfig="2"></div>
-      <button class="readbtn" data-read="s2">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="3" data-kind="fundamento">
-      <h2><span class="n">03</span> Planejar remove o caos: logline, lista, formato</h2>
-      <p>Antes de gerar o primeiro quadro, quatro decisões no papel: uma <b>logline</b> (a história em uma frase), a <b>lista de planos</b> (3 a 5, cada um com tamanho e função), a <b>descrição fixa dos personagens</b>, e o <b>formato travado</b> — 16:9, o retângulo deitado do cinema, em todos os quadros.</p>
-      <p>É a diferença entre encomendar e pescar. Quem pesca gera vinte imagens e reza para três combinarem; quem encomenda gera cinco, cada uma com endereço na sequência.</p>
-      <p>No ensaio de produto para a joalheria, a fotógrafa escreveu a logline — "a joia atravessa a noite da cidade até encontrar sua dona" — e a lista de cinco planos antes de abrir o gerador. Resultado: a primeira leva já saiu 80% aproveitável.</p>
-      <div class="qbefore-after">
-        <div class="qba-col"><p class="qk">Antes</p><p>Vinte gerações soltas, "para ver o que sai" — três aproveitáveis, nenhuma conversa entre elas.</p></div>
-        <div class="qba-col"><p class="qk">Depois</p><p>Logline + lista de 5 planos + personagens fixos + 16:9 travado — cinco gerações, cada uma com função na sequência.</p></div>
-        <p class="qba-saldo">Saldo: 4× menos gerações, e o resultado é uma sequência — não uma gaveta de avulsos.</p>
-      </div>
-      <div class="mobfig" data-mobfig="3"></div>
-      <button class="readbtn" data-read="s3">marcar como lido</button>
-    </section>
-
-    <section class="practice" data-practice="p1" data-mode="prompt">
-      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
-      <h3 class="ph">Monte sua sequência de 3 a 5 planos</h3>
-      <p class="pgoal">Sair com um storyboard curto — 3 a 5 quadros em 16:9, cada um com lente, tamanho e luz justificados — em ~12 minutos.</p>
-      <p class="psafe">Tudo acontece no papel e no gerador: nada dos seus arquivos é alterado. Plano que não funcionou se regenera sozinho, sem afetar os outros quadros.</p>
-      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">&lt;tamanho do plano: extreme wide / wide / medium / close-up / insert&gt;,
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Tamanho de plano é função, não gosto</h2>
+<p>Cada tamanho de plano faz um trabalho: o <b>plano geral</b> mostra escala e lugar; o <b>aberto</b> coloca o personagem no espaço; o <b>médio</b> deixa a ação legível; o <b>close</b> entrega emoção; o <b>detalhe</b> aponta o que importa. Sequência boa é alternância desses trabalhos — é isso que cria ritmo.</p>
+<p>A fotógrafa monta o book de casamento assim há anos, mesmo sem nomear: a igreja inteira (geral), os noivos no altar (médio), a aliança entrando no dedo (detalhe), a lágrima da mãe (close). Quatro tamanhos, quatro funções — e o álbum conta a história sozinho.</p>
+<div class="qanchor"><p>Clareza vem antes de beleza.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como lido</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> Lente molda sentimento; luz precisa de fonte</h2>
+<p>Regra simples de lente, suficiente para dirigir: <b>24mm</b> dramatiza o espaço (ambientes engolem o personagem), <b>35mm</b> equilibra com naturalidade, <b>85mm</b> isola e emociona. Você não precisa saber ótica — precisa saber qual sentimento quer.</p>
+<p>E a regra de ouro da luz nesta trilha: <b>toda luz tem fonte nomeada</b>. A lua é a luz principal, o abajur é a luz de apoio, a tela do celular é o acento. Brilho sem origem é o carimbo do amador — o olho percebe que aquilo não existiria no mundo real.</p>
+<p>A fotógrafa atendendo o cliente chef aplicou as duas regras no retrato dele: 85mm para isolar o rosto, e a única luz vinda da boca do fogão acesa — fonte real, drama real.</p>
+<div class="quiz" data-answer="b">
+<p class="qk">Teste-se</p><p class="q">Sua cena noturna saiu com um brilho bonito, mas "de mentira". Qual é a correção desta aula?</p>
+<button class="opt" data-fb="Aumentar o brilho aumenta o problema: mais luz sem origem, mais cara de montagem." data-k="a">Pedir mais brilho e mais contraste</button>
+<button class="opt" data-fb="Exato: luz sem fonte é o carimbo do amador — nomeando a origem (lua, abajur, letreiro), o brilho passa a existir no mundo da cena." data-k="b">Dar uma fonte à luz: lua, abajur, letreiro — e reescrever o pedido a partir dela</button>
+<button class="opt" data-fb="Trocar a lente muda o sentimento do espaço, não a credibilidade da luz." data-k="c">Trocar a lente de 35mm para 24mm</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como lido</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> Planejar remove o caos: logline, lista, formato</h2>
+<p>Antes de gerar o primeiro quadro, quatro decisões no papel: uma <b>logline</b> (a história em uma frase), a <b>lista de planos</b> (3 a 5, cada um com tamanho e função), a <b>descrição fixa dos personagens</b>, e o <b>formato travado</b> — 16:9, o retângulo deitado do cinema, em todos os quadros.</p>
+<p>É a diferença entre encomendar e pescar. Quem pesca gera vinte imagens e reza para três combinarem; quem encomenda gera cinco, cada uma com endereço na sequência.</p>
+<p>No ensaio de produto para a joalheria, a fotógrafa escreveu a logline — "a joia atravessa a noite da cidade até encontrar sua dona" — e a lista de cinco planos antes de abrir o gerador. Resultado: a primeira leva já saiu 80% aproveitável.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes</p><p>Vinte gerações soltas, "para ver o que sai" — três aproveitáveis, nenhuma conversa entre elas.</p></div>
+<div class="qba-col"><p class="qk">Depois</p><p>Logline + lista de 5 planos + personagens fixos + 16:9 travado — cinco gerações, cada uma com função na sequência.</p></div>
+<p class="qba-saldo">Saldo: 4× menos gerações, e o resultado é uma sequência — não uma gaveta de avulsos.</p>
+</div>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como lido</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p1">
+<p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+<h3 class="ph">Monte sua sequência de 3 a 5 planos</h3>
+<p class="pgoal">Sair com um storyboard curto — 3 a 5 quadros em 16:9, cada um com lente, tamanho e luz justificados — em ~12 minutos.</p>
+<p class="psafe">Tudo acontece no papel e no gerador: nada dos seus arquivos é alterado. Plano que não funcionou se regenera sozinho, sem afetar os outros quadros.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">&lt;tamanho do plano: extreme wide / wide / medium / close-up / insert&gt;,
 &lt;lente: 24mm / 35mm / 85mm lens&gt;,
 &lt;personagem: a MESMA descrição fixa em todos os planos&gt;,
 &lt;ação deste plano, em uma frase&gt;,
 &lt;luz COM fonte nomeada: moonlight as key light, a desk lamp as
 practical light...&gt;,
 cinematic realism, 16:9 --ar 16:9</pre></div>
-      <ol class="psteps">
-        <li><label><input type="checkbox" data-ptask="1"> Escreva a logline da sua mini-história em uma frase (do seu mundo: um produto, um espaço, um personagem).</label></li>
-        <li><label><input type="checkbox" data-ptask="2"> Liste 3 a 5 planos, anotando ao lado de cada um: tamanho, lente e de onde vem a luz.</label></li>
-        <li><label><input type="checkbox" data-ptask="3"> Gere os planos com o modelo acima, mantendo a descrição do personagem idêntica em todos.</label></li>
-        <li><label><input type="checkbox" data-ptask="4"> Enfileire os quadros e leia a sequência: dá para entender a história sem legenda? Então o storyboard funciona.</label></li>
-      </ol>
-      <p class="pdone">Você montou uma sequência em que cada quadro tem função, lente e luz escolhidas — controle sobre o acaso, que era a promessa desta aula.</p>
-    </section>
-  </div>
-
-  <aside class="rail"><div class="railsticky">
-    <div class="figstage">
-      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> Os cinco tamanhos de plano e o trabalho de cada um — ritmo é alternar funções, não repetir enquadramento."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
-          <rect x="18" y="30" width="56" height="34" rx="4"/>
-          <rect x="86" y="30" width="46" height="34" rx="4"/>
-          <rect x="144" y="30" width="36" height="34" rx="4"/>
-        </g>
-        <circle cx="46" cy="49" r="4" style="stroke:var(--accent)" stroke-width="1.4"/>
-        <circle cx="109" cy="45" r="7" style="stroke:var(--accent)" stroke-width="1.6"/>
-        <circle cx="162" cy="47" r="11" style="stroke:var(--accent)" stroke-width="1.8"/>
-        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
-          <text x="46" y="80" text-anchor="middle">geral: lugar</text>
-          <text x="109" y="80" text-anchor="middle">médio: ação</text>
-          <text x="162" y="80" text-anchor="middle">close: emoção</text>
-        </g>
-        <path d="M26 130 c22 -18 40 18 62 0 c22 -18 40 18 62 0 c14 -12 24 0 34 -6" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
-        <text x="110" y="160" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">alternância = ritmo</text>
-        <text x="110" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">repetição = monotonia</text>
-      </svg></div>
-      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> Toda luz da cena aponta para uma fonte que existe no mundo dela — brilho órfão quebra a credibilidade."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <circle cx="60" cy="40" r="12" style="stroke:var(--warm)" stroke-width="2"/>
-        <path d="M60 56 c0 30 20 50 40 62" style="stroke:var(--warm)" stroke-width="1.6" stroke-dasharray="4 3" fill="none"/>
-        <text x="60" y="24" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">lua = principal</text>
-        <rect x="160" y="96" width="22" height="26" rx="3" style="stroke:var(--accent)" stroke-width="1.8"/>
-        <path d="M171 96 v-10" style="stroke:var(--accent)" stroke-width="1.6"/>
-        <path d="M160 112 c-16 4 -30 8 -40 10" style="stroke:var(--accent)" stroke-width="1.4" stroke-dasharray="3 3" fill="none"/>
-        <text x="171" y="140" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">abajur = apoio</text>
-        <circle cx="110" cy="130" r="16" style="stroke:var(--line2)" stroke-width="2"/>
-        <path d="M104 152 v18 M96 162 h28" style="stroke:var(--line2)" stroke-width="1.8"/>
-        <text x="110" y="192" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">cada raio tem endereço</text>
-      </svg></div>
-      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> O funil do planejamento: logline → lista de planos → personagens fixos → formato travado — o caos fica do lado de fora."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <path d="M30 30 h160 l-30 44 h-100 z" style="stroke:var(--line2)" stroke-width="1.8" fill="none"/>
-        <path d="M60 74 h100 l-22 40 h-56 z" style="stroke:var(--line2)" stroke-width="1.8" fill="none"/>
-        <path d="M82 114 h56 l-12 36 h-32 z" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
-        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
-          <text x="110" y="50" text-anchor="middle">logline: 1 frase</text>
-          <text x="110" y="92" text-anchor="middle">lista de 3–5 planos</text>
-        </g>
-        <text x="110" y="136" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">gerações com função</text>
-        <text x="110" y="180" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">encomendar, não pescar</text>
-      </svg></div>
-    </div>
-    <p class="railcap"></p>
-    <div class="steps-ind"></div>
-    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
-  </div></aside>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Escreva a logline da sua mini-história em uma frase (do seu mundo: um produto, um espaço, um personagem).</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Liste 3 a 5 planos, anotando ao lado de cada um: tamanho, lente e de onde vem a luz.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Gere os planos com o modelo acima, mantendo a descrição do personagem idêntica em todos.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Enfileire os quadros e leia a sequência: dá para entender a história sem legenda? Então o storyboard funciona.</label></li>
+</ol>
+<p class="pdone">Você montou uma sequência em que cada quadro tem função, lente e luz escolhidas — controle sobre o acaso, que era a promessa desta aula.</p>
+</section>
 </div>
-
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; Os cinco tamanhos de plano e o trabalho de cada um — ritmo é alternar funções, não repetir enquadramento." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="34" rx="4" width="56" x="18" y="30"></rect>
+<rect height="34" rx="4" width="46" x="86" y="30"></rect>
+<rect height="34" rx="4" width="36" x="144" y="30"></rect>
+</g>
+<circle cx="46" cy="49" r="4" stroke-width="1.4" style="stroke:var(--accent)"></circle>
+<circle cx="109" cy="45" r="7" stroke-width="1.6" style="stroke:var(--accent)"></circle>
+<circle cx="162" cy="47" r="11" stroke-width="1.8" style="stroke:var(--accent)"></circle>
+<g font-size="8" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="46" y="80">geral: lugar</text>
+<text text-anchor="middle" x="109" y="80">médio: ação</text>
+<text text-anchor="middle" x="162" y="80">close: emoção</text>
+</g>
+<path d="M26 130 c22 -18 40 18 62 0 c22 -18 40 18 62 0 c14 -12 24 0 34 -6" fill="none" stroke-width="2" style="stroke:var(--warm)"></path>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="160">alternância = ritmo</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="184">repetição = monotonia</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; Toda luz da cena aponta para uma fonte que existe no mundo dela — brilho órfão quebra a credibilidade." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="60" cy="40" r="12" stroke-width="2" style="stroke:var(--warm)"></circle>
+<path d="M60 56 c0 30 20 50 40 62" fill="none" stroke-dasharray="4 3" stroke-width="1.6" style="stroke:var(--warm)"></path>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="60" y="24">lua = principal</text>
+<rect height="26" rx="3" stroke-width="1.8" style="stroke:var(--accent)" width="22" x="160" y="96"></rect>
+<path d="M171 96 v-10" stroke-width="1.6" style="stroke:var(--accent)"></path>
+<path d="M160 112 c-16 4 -30 8 -40 10" fill="none" stroke-dasharray="3 3" stroke-width="1.4" style="stroke:var(--accent)"></path>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="171" y="140">abajur = apoio</text>
+<circle cx="110" cy="130" r="16" stroke-width="2" style="stroke:var(--line2)"></circle>
+<path d="M104 152 v18 M96 162 h28" stroke-width="1.8" style="stroke:var(--line2)"></path>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="192">cada raio tem endereço</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; O funil do planejamento: logline → lista de planos → personagens fixos → formato travado — o caos fica do lado de fora." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M30 30 h160 l-30 44 h-100 z" fill="none" stroke-width="1.8" style="stroke:var(--line2)"></path>
+<path d="M60 74 h100 l-22 40 h-56 z" fill="none" stroke-width="1.8" style="stroke:var(--line2)"></path>
+<path d="M82 114 h56 l-12 36 h-32 z" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<g font-size="8" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="110" y="50">logline: 1 frase</text>
+<text text-anchor="middle" x="110" y="92">lista de 3–5 planos</text>
+</g>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="136">gerações com função</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="180">encomendar, não pescar</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+</div></aside>
+</div>
 <div class="fecho-wrap">
 <div class="recap-autor">
-  <p class="rak">Resumo</p>
-  <ul>
-    <li>Tamanho de plano é função — lugar, ação, emoção, detalhe — e ritmo nasce da alternância entre eles.</li>
-    <li>Lente molda o sentimento do espaço: 24mm dramatiza, 35mm equilibra, 85mm isola.</li>
-    <li>Toda luz precisa de fonte nomeada dentro do mundo da cena; brilho órfão denuncia o amadorismo.</li>
-    <li>Logline, lista de planos, personagem fixo e 16:9 travado transformam geração em encomenda.</li>
-  </ul>
+<p class="rak">Resumo</p>
+<ul>
+<li>Tamanho de plano é função — lugar, ação, emoção, detalhe — e ritmo nasce da alternância entre eles.</li>
+<li>Lente molda o sentimento do espaço: 24mm dramatiza, 35mm equilibra, 85mm isola.</li>
+<li>Toda luz precisa de fonte nomeada dentro do mundo da cena; brilho órfão denuncia o amadorismo.</li>
+<li>Logline, lista de planos, personagem fixo e 16:9 travado transformam geração em encomenda.</li>
+</ul>
 </div>
-
 <div class="next-action">
-  <p class="nak">Seu próximo passo</p>
-  <p class="na-win">Você acabou de trocar a pesca de imagens pela encomenda de uma sequência.</p>
-  <p class="na-action">Nos próximos 15 minutos: pegue a sua sequência e escreva, ao lado de cada quadro, a justificativa em uma linha — por que essa lente, por que esse tamanho, de onde vem a luz. Sequência que se justifica é sequência que se vende.</p>
-  <p class="na-hook">Na próxima aula, a alavanca mais poderosa do quadro: a luz — e por que pedir "iluminação cinematográfica" quase sempre falha.</p>
+<p class="nak">Seu próximo passo</p>
+<p class="na-win">Você acabou de trocar a pesca de imagens pela encomenda de uma sequência.</p>
+<p class="na-action">Nos próximos 15 minutos: pegue a sua sequência e escreva, ao lado de cada quadro, a justificativa em uma linha — por que essa lente, por que esse tamanho, de onde vem a luz. Sequência que se justifica é sequência que se vende.</p>
+<p class="na-hook">Na próxima aula, a alavanca mais poderosa do quadro: a luz — e por que pedir "iluminação cinematográfica" quase sempre falha.</p>
 </div>
 </div>
-
 <nav class="lnav"><a href="#trilha">← trilha</a><a href="#aula-2">próxima aula →</a></nav>
 <footer>Aula 1 · Midjourney Profissional · Formação Cinema com IA</footer>
-
-<script type="application/json" id="cards-1">
+<script id="cards-1" type="application/json">
 [
   {"front":"Decisão: a sequência precisa sair do lugar (mostrar o espaço) para a emoção (rosto). Que tamanhos de plano e que lente no fechamento?","back":"Geral ou aberto para o espaço → médio para a ação → close com 85mm para a emoção."},
   {"front":"Diagnóstico: a cena noturna tem um brilho que 'não convence'. Qual é a pergunta profissional a fazer?","back":"De onde vem essa luz? Se não há fonte nomeada no mundo da cena (lua, abajur, letreiro), o brilho é órfão — nomeie a fonte e regenere."},
@@ -260,7 +249,6 @@ cinematic realism, 16:9 --ar 16:9</pre></div>
   {"front":"Pergunta: quais são as quatro decisões de papel antes de gerar o primeiro quadro?","back":"Logline em uma frase, lista de 3–5 planos, descrição fixa dos personagens e formato 16:9 travado."}
 ]
 </script>
-
 <!--
 COMPLETUDE aula-1 | tipo=FUNDAMENTO | steps=3
   [OK] promise            .promise no cold-open (1)
@@ -278,214 +266,202 @@ COMPLETUDE aula-1 | tipo=FUNDAMENTO | steps=3
   [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s2)
 -->
 </section>
-
 <!-- ===== AULA 2 ===== -->
-<section class="view" id="v-aula-2" data-aula="2" data-tempo="20min">
+<section class="view" data-aula="2" data-tempo="20min" id="v-aula-2">
 <header class="hero"><div class="hero-inner">
-  <div>
-    <p class="kicker">Curso 2C · Aula 2</p>
-    <h1>A luz conta a <em>história</em></h1>
-    <p class="promise">Ao fim desta aula você troca só a luz de uma cena — mantendo tudo o resto idêntico — e nomeia, antes de gerar, qual emoção aquela luz vai produzir no espectador.</p>
-    <p class="why">"Iluminação cinematográfica" é o pedido mais comum e o que mais falha: é vago, e pedido vago vira loteria. A luz não é acabamento — é a alavanca mais forte de emoção numa imagem parada. Dominar as cinco linguagens da luz e a temperatura de cor é o que separa uma cena bonita de uma cena que conta a própria história, sem precisar de legenda.</p>
-    <p class="video-aula"><a href="https://www.loom.com/share/bfab0be180e14725b036aea80b37f2c5" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
-    <p class="cue"><span class="arw">↓</span> role para estudar</p>
-  </div>
-  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
-    <!-- metáfora: a lapidação de pedra — o corte da faceta decide que luz sai -->
-    <path d="M150 40 L200 92 L182 162 L118 162 L100 92 Z" style="stroke:var(--line2)" stroke-width="2"/>
-    <path d="M150 40 L150 162 M100 92 L200 92 M118 162 L150 92 L182 162" style="stroke:var(--line2);opacity:.55" stroke-width="1.4"/>
-    <path d="M150 16 v24" style="stroke:var(--warm)" stroke-width="2.4" stroke-linecap="round"/>
-    <path d="M150 40 l-38 52 M150 40 l38 52 M150 40 l-16 122 M150 40 l16 122" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="3 3"/>
-    <g style="fill:var(--accent)">
-      <circle cx="112" cy="92" r="3"/><circle cx="188" cy="92" r="3"/><circle cx="134" cy="162" r="3"/><circle cx="166" cy="162" r="3"/>
-    </g>
-    <text x="150" y="200" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">cada corte decide que luz sai — e que sensação ela carrega</text>
-  </svg></div>
+<div>
+<p class="kicker">Curso 2C · Aula 2</p>
+<h1>A luz conta a <em>história</em></h1>
+<p class="promise">Ao fim desta aula você troca só a luz de uma cena — mantendo tudo o resto idêntico — e nomeia, antes de gerar, qual emoção aquela luz vai produzir no espectador.</p>
+<p class="why">"Iluminação cinematográfica" é o pedido mais comum e o que mais falha: é vago, e pedido vago vira loteria. A luz não é acabamento — é a alavanca mais forte de emoção numa imagem parada. Dominar as cinco linguagens da luz e a temperatura de cor é o que separa uma cena bonita de uma cena que conta a própria história, sem precisar de legenda.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/bfab0be180e14725b036aea80b37f2c5" rel="noopener" target="_blank"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> role para estudar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: a lapidação de pedra — o corte da faceta decide que luz sai -->
+<path d="M150 40 L200 92 L182 162 L118 162 L100 92 Z" stroke-width="2" style="stroke:var(--line2)"></path>
+<path d="M150 40 L150 162 M100 92 L200 92 M118 162 L150 92 L182 162" stroke-width="1.4" style="stroke:var(--line2);opacity:.55"></path>
+<path d="M150 16 v24" stroke-linecap="round" stroke-width="2.4" style="stroke:var(--warm)"></path>
+<path d="M150 40 l-38 52 M150 40 l38 52 M150 40 l-16 122 M150 40 l16 122" stroke-dasharray="3 3" stroke-width="1.2" style="stroke:var(--accent)"></path>
+<g style="fill:var(--accent)">
+<circle cx="112" cy="92" r="3"></circle><circle cx="188" cy="92" r="3"></circle><circle cx="134" cy="162" r="3"></circle><circle cx="166" cy="162" r="3"></circle>
+</g>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="200">cada corte decide que luz sai — e que sensação ela carrega</text>
+</svg></div>
 </div></header>
-
 <div class="layout">
-  <div class="col">
-
-    <section class="step" data-fig="1" data-kind="fundamento">
-      <h2><span class="n">01</span> Cinco luzes, cinco histórias diferentes</h2>
-      <p>O cinema resolveu a luz em cinco famílias, e cada uma faz um trabalho emocional só seu:</p>
-      <ul>
-        <li><b>Luz dura</b> — sombra recortada, contraste forte. Tensão, pressão, interrogatório.</li>
-        <li><b>Luz suave</b> — sombra que se dissolve aos poucos. Intimidade, calma, vulnerabilidade.</li>
-        <li><b>Alta-chave</b> — cena clara e uniforme, quase sem sombra. Comercial, sonho, conforto, comédia.</li>
-        <li><b>Baixa-chave</b> — escuridão pesada com um ponto isolado de luz. Suspense, mistério, filme noir.</li>
-        <li><b>Luz prática</b> — a fonte aparece dentro do quadro: abajur, tela, vela, farol. É o que faz a cena parecer real.</li>
-      </ul>
-      <p>A fotógrafa fechou contrato para fazer a capa do álbum de uma banda indie que pediu, por telefone, "algo sombrio, meio ameaçador". Ela não teve dúvida: baixa-chave, quase todo o quadro em sombra, luz dura vindo de um só ponto, isolando o vocalista. Sem escrever "sombrio" em lugar nenhum do pedido — a combinação de luz já entregava a sensação sozinha.</p>
-      <div class="qanchor"><p>A luz não decora a cena — decide o que o público sente.</p></div>
-      <div class="mobfig" data-mobfig="1"></div>
-      <button class="readbtn" data-read="s1">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="2" data-kind="fundamento">
-      <h2><span class="n">02</span> A temperatura da luz fala com a memória do público</h2>
-      <p>Toda luz tem uma cor de fundo, chamada de <span class="gterm" tabindex="0" data-def="A escala que descreve se uma luz puxa para o laranja (quente) ou para o azul (fria). Medida em graus Kelvin (K) — você não precisa decorar os números, só saber para que lado cada faixa puxa.">temperatura de cor</span>, medida em graus Kelvin. Você não precisa decorar o número — pense em três gavetas: a <b>quente</b> (memória de lareira e casa), a <b>neutra</b> (luz de meio-dia, sem drama) e a <b>fria</b> (tela de computador, hospital, futuro).</p>
-      <p>Cada gaveta carrega um sentimento pronto: quente é segurança e lembrança; neutra é realidade crua, documental; fria é isolamento, tecnologia, medo. As cenas mais fortes do cinema costumam misturar duas temperaturas na mesma imagem — um personagem quente numa sala fria, por exemplo, já cria tensão antes de qualquer ação acontecer.</p>
-      <p>A fotógrafa fez um ensaio newborn para uma família que queria, nas palavras da mãe, "aconchego, não estúdio". Trocar a luz neutra do quarto por uma luz quente de 3200K, entrando como se fosse o abajur do canto, bastou para a cena inteira parecer memória — mesmo sendo feita na hora.</p>
-      <div class="quiz" data-answer="c">
-        <p class="qk">Teste-se</p><p class="q">Um cliente pede uma cena que pareça "fria, isolada, quase de ficção científica" para o lançamento de um produto de tecnologia. Que temperatura de luz você escolhe?</p>
-        <button class="opt" data-k="a" data-fb="Quente carrega o oposto do pedido: memória, casa, conforto — não isolamento nem futuro.">Luz quente, 3200K</button>
-        <button class="opt" data-k="b" data-fb="Neutra é realidade documental, sem carga emocional própria — não entrega a sensação de isolamento pedida.">Luz neutra, 5600K</button>
-        <button class="opt" data-k="c" data-fb="Exato: fria, 7000K ou mais, é a faixa que o público já associa a tecnologia, distância e isolamento.">Luz fria, 7000K ou mais</button>
-        <p class="qfb"></p>
-      </div>
-      <div class="mobfig" data-mobfig="2"></div>
-      <button class="readbtn" data-read="s2">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="3" data-kind="fundamento">
-      <h2><span class="n">03</span> Descreva a luz por quatro perguntas, não por um adjetivo</h2>
-      <p>"Iluminação bonita, sombras dramáticas, clima misterioso" parece um pedido completo — mas é só um adjetivo repetido três vezes. O gerador não sabe de onde a luz vem, então inventa por conta própria, e o resultado varia a cada tentativa.</p>
-      <p>Isto que vem a seguir parece uma receita técnica em inglês, mas é só a resposta a quatro perguntas simples, sempre na mesma ordem: de onde vem a luz, para que direção ela aponta, se é quente ou fria, e onde a sombra cai.</p>
-      <div class="qbefore-after">
-        <div class="qba-col"><p class="qk">Antes (vago)</p><p>"cinematic lighting, beautiful shadows, moody atmosphere" — três adjetivos, zero fonte, resultado sorteado a cada geração.</p></div>
-        <div class="qba-col"><p class="qk">Depois (nomeado)</p><p>"single overhead tungsten bulb, hard light from above, warm 3200K, deep shadow across the left side of the face, sharp falloff into black" — fonte, direção, temperatura e sombra, os quatro nomeados.</p></div>
-        <p class="qba-saldo">Saldo: a mesma cena deixa de ser sorteio e passa a ser encomenda — você escolhe a emoção antes de apertar gerar, não depois de ver o resultado.</p>
-      </div>
-      <p>A fotógrafa fechou contrato com uma imobiliária de alto padrão para fotografar um apartamento à venda. O pedido antigo dela — "luz aconchegante ao entardecer" — virava três resultados diferentes a cada tentativa. Nomeando a fonte (janela oeste), a direção (lateral, baixa), a temperatura (quente, 3200K) e a sombra (longa, projetada no piso), a segunda tentativa já era a capa do anúncio.</p>
-      <div class="mobfig" data-mobfig="3"></div>
-      <button class="readbtn" data-read="s3">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="4" data-kind="fundamento">
-      <h2><span class="n">04</span> Mesma cena, luz diferente, história diferente</h2>
-      <p>O teste mais revelador desta aula é simples: pegue exatamente a mesma cena — mesmo personagem, mesmo enquadramento, mesma pose — e troque só a luz. O assunto continua idêntico. A história muda inteira.</p>
-      <p>Uma luz quente entrando de lado cria segurança; a mesma cena com uma luz dura vinda de cima cria tensão; trocando para uma luz fria de lua, o clima vira perigo. Nada mudou além da luz — e é exatamente por isso que ela é a alavanca mais forte que você tem.</p>
-      <p>A fotógrafa vive disso todo mês: reaproveita a mesma foto de um bolo de uma confeitaria artesanal para duas campanhas do mesmo cliente. Com luz quente de janela, vira anúncio de "café da manhã aconchegante"; com luz fria e um pingo de neon ao fundo, a mesma foto vira peça de "festa de fim de ano". Uma cena fotografada, duas campanhas vendidas — sem reagendar o ensaio.</p>
-      <div class="mobfig" data-mobfig="4"></div>
-      <button class="readbtn" data-read="s4">marcar como lido</button>
-    </section>
-
-    <section class="practice" data-practice="p2" data-mode="prompt">
-      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
-      <h3 class="ph">Gere a mesma cena três vezes — só a luz muda</h3>
-      <p class="pgoal">Sair com três versões da mesma cena (quente, fria, dramática) e uma frase por versão nomeando fonte, direção, temperatura e sombra — em ~12 minutos.</p>
-      <p class="psafe">Você está gerando imagens novas, nunca apagando nada: cada tentativa é um arquivo a mais, não uma substituição. Se a luz não saiu como o esperado, o problema é quase sempre uma das quatro perguntas sem resposta — reveja e gere de novo.</p>
-      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">&lt;a mesma descrição de cena e personagem em todas as versões&gt;,
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Cinco luzes, cinco histórias diferentes</h2>
+<p>O cinema resolveu a luz em cinco famílias, e cada uma faz um trabalho emocional só seu:</p>
+<ul>
+<li><b>Luz dura</b> — sombra recortada, contraste forte. Tensão, pressão, interrogatório.</li>
+<li><b>Luz suave</b> — sombra que se dissolve aos poucos. Intimidade, calma, vulnerabilidade.</li>
+<li><b>Alta-chave</b> — cena clara e uniforme, quase sem sombra. Comercial, sonho, conforto, comédia.</li>
+<li><b>Baixa-chave</b> — escuridão pesada com um ponto isolado de luz. Suspense, mistério, filme noir.</li>
+<li><b>Luz prática</b> — a fonte aparece dentro do quadro: abajur, tela, vela, farol. É o que faz a cena parecer real.</li>
+</ul>
+<p>A fotógrafa fechou contrato para fazer a capa do álbum de uma banda indie que pediu, por telefone, "algo sombrio, meio ameaçador". Ela não teve dúvida: baixa-chave, quase todo o quadro em sombra, luz dura vindo de um só ponto, isolando o vocalista. Sem escrever "sombrio" em lugar nenhum do pedido — a combinação de luz já entregava a sensação sozinha.</p>
+<div class="qanchor"><p>A luz não decora a cena — decide o que o público sente.</p></div>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como lido</button>
+</section>
+<section class="step" data-fig="2" data-kind="fundamento">
+<h2><span class="n">02</span> A temperatura da luz fala com a memória do público</h2>
+<p>Toda luz tem uma cor de fundo, chamada de <span class="gterm" data-def="A escala que descreve se uma luz puxa para o laranja (quente) ou para o azul (fria). Medida em graus Kelvin (K) — você não precisa decorar os números, só saber para que lado cada faixa puxa." tabindex="0">temperatura de cor</span>, medida em graus Kelvin. Você não precisa decorar o número — pense em três gavetas: a <b>quente</b> (memória de lareira e casa), a <b>neutra</b> (luz de meio-dia, sem drama) e a <b>fria</b> (tela de computador, hospital, futuro).</p>
+<p>Cada gaveta carrega um sentimento pronto: quente é segurança e lembrança; neutra é realidade crua, documental; fria é isolamento, tecnologia, medo. As cenas mais fortes do cinema costumam misturar duas temperaturas na mesma imagem — um personagem quente numa sala fria, por exemplo, já cria tensão antes de qualquer ação acontecer.</p>
+<p>A fotógrafa fez um ensaio newborn para uma família que queria, nas palavras da mãe, "aconchego, não estúdio". Trocar a luz neutra do quarto por uma luz quente de 3200K, entrando como se fosse o abajur do canto, bastou para a cena inteira parecer memória — mesmo sendo feita na hora.</p>
+<div class="quiz" data-answer="c">
+<p class="qk">Teste-se</p><p class="q">Um cliente pede uma cena que pareça "fria, isolada, quase de ficção científica" para o lançamento de um produto de tecnologia. Que temperatura de luz você escolhe?</p>
+<button class="opt" data-fb="Quente carrega o oposto do pedido: memória, casa, conforto — não isolamento nem futuro." data-k="a">Luz quente, 3200K</button>
+<button class="opt" data-fb="Neutra é realidade documental, sem carga emocional própria — não entrega a sensação de isolamento pedida." data-k="b">Luz neutra, 5600K</button>
+<button class="opt" data-fb="Exato: fria, 7000K ou mais, é a faixa que o público já associa a tecnologia, distância e isolamento." data-k="c">Luz fria, 7000K ou mais</button>
+<p class="qfb"></p>
+</div>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como lido</button>
+</section>
+<section class="step" data-fig="3" data-kind="fundamento">
+<h2><span class="n">03</span> Descreva a luz por quatro perguntas, não por um adjetivo</h2>
+<p>"Iluminação bonita, sombras dramáticas, clima misterioso" parece um pedido completo — mas é só um adjetivo repetido três vezes. O gerador não sabe de onde a luz vem, então inventa por conta própria, e o resultado varia a cada tentativa.</p>
+<p>Isto que vem a seguir parece uma receita técnica em inglês, mas é só a resposta a quatro perguntas simples, sempre na mesma ordem: de onde vem a luz, para que direção ela aponta, se é quente ou fria, e onde a sombra cai.</p>
+<div class="qbefore-after">
+<div class="qba-col"><p class="qk">Antes (vago)</p><p>"cinematic lighting, beautiful shadows, moody atmosphere" — três adjetivos, zero fonte, resultado sorteado a cada geração.</p></div>
+<div class="qba-col"><p class="qk">Depois (nomeado)</p><p>"single overhead tungsten bulb, hard light from above, warm 3200K, deep shadow across the left side of the face, sharp falloff into black" — fonte, direção, temperatura e sombra, os quatro nomeados.</p></div>
+<p class="qba-saldo">Saldo: a mesma cena deixa de ser sorteio e passa a ser encomenda — você escolhe a emoção antes de apertar gerar, não depois de ver o resultado.</p>
+</div>
+<p>A fotógrafa fechou contrato com uma imobiliária de alto padrão para fotografar um apartamento à venda. O pedido antigo dela — "luz aconchegante ao entardecer" — virava três resultados diferentes a cada tentativa. Nomeando a fonte (janela oeste), a direção (lateral, baixa), a temperatura (quente, 3200K) e a sombra (longa, projetada no piso), a segunda tentativa já era a capa do anúncio.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como lido</button>
+</section>
+<section class="step" data-fig="4" data-kind="fundamento">
+<h2><span class="n">04</span> Mesma cena, luz diferente, história diferente</h2>
+<p>O teste mais revelador desta aula é simples: pegue exatamente a mesma cena — mesmo personagem, mesmo enquadramento, mesma pose — e troque só a luz. O assunto continua idêntico. A história muda inteira.</p>
+<p>Uma luz quente entrando de lado cria segurança; a mesma cena com uma luz dura vinda de cima cria tensão; trocando para uma luz fria de lua, o clima vira perigo. Nada mudou além da luz — e é exatamente por isso que ela é a alavanca mais forte que você tem.</p>
+<p>A fotógrafa vive disso todo mês: reaproveita a mesma foto de um bolo de uma confeitaria artesanal para duas campanhas do mesmo cliente. Com luz quente de janela, vira anúncio de "café da manhã aconchegante"; com luz fria e um pingo de neon ao fundo, a mesma foto vira peça de "festa de fim de ano". Uma cena fotografada, duas campanhas vendidas — sem reagendar o ensaio.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como lido</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p2">
+<p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+<h3 class="ph">Gere a mesma cena três vezes — só a luz muda</h3>
+<p class="pgoal">Sair com três versões da mesma cena (quente, fria, dramática) e uma frase por versão nomeando fonte, direção, temperatura e sombra — em ~12 minutos.</p>
+<p class="psafe">Você está gerando imagens novas, nunca apagando nada: cada tentativa é um arquivo a mais, não uma substituição. Se a luz não saiu como o esperado, o problema é quase sempre uma das quatro perguntas sem resposta — reveja e gere de novo.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">&lt;a mesma descrição de cena e personagem em todas as versões&gt;,
 &lt;fonte da luz: janela, abajur, lua, letreiro...&gt;,
 &lt;direção: de cima, lateral, de trás, de baixo&gt;,
 &lt;temperatura: warm 3200K / neutral 5600K / cold 7000K&gt;,
 &lt;sombra: onde cai e como se comporta — soft falloff / hard
 falloff into black&gt;,
 cinematic realism, 16:9 --ar 16:9</pre></div>
-      <ol class="psteps">
-        <li><label><input type="checkbox" data-ptask="1"> Escolha uma cena simples do seu trabalho (um produto, um ambiente, um personagem) e escreva a descrição fixa dela.</label></li>
-        <li><label><input type="checkbox" data-ptask="2"> Gere a versão quente: fonte e temperatura respondendo "conforto".</label></li>
-        <li><label><input type="checkbox" data-ptask="3"> Gere a versão fria e a versão dramática, trocando só fonte, direção, temperatura e sombra.</label></li>
-        <li><label><input type="checkbox" data-ptask="4"> Coloque as três lado a lado: cada uma parece contar uma história diferente? Então a luz está fazendo o trabalho dela.</label></li>
-      </ol>
-      <p class="pdone">Você trocou a luz mantendo a cena idêntica e nomeou a emoção antes de gerar — exatamente o que a promessa desta aula pedia.</p>
-    </section>
-  </div>
-
-  <aside class="rail"><div class="railsticky">
-    <div class="figstage">
-      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> As cinco linguagens da luz — cada família ativa uma emoção diferente no mesmo rosto."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <g style="stroke:var(--accent)" stroke-width="1.6" fill="none">
-          <rect x="10" y="34" width="38" height="48" rx="4"/>
-          <rect x="58" y="34" width="38" height="48" rx="4"/>
-          <rect x="106" y="34" width="38" height="48" rx="4"/>
-          <rect x="154" y="34" width="38" height="48" rx="4" style="stroke:var(--warm)"/>
-        </g>
-        <path d="M18 44 l24 30" style="stroke:var(--accent)" stroke-width="2.2"/>
-        <path d="M66 40 c10 10 10 26 0 36" style="stroke:var(--accent)" stroke-width="1.1" opacity=".5"/>
-        <rect x="110" y="38" width="30" height="40" style="fill:var(--accent);opacity:.14" stroke="none"/>
-        <rect x="158" y="38" width="30" height="40" style="fill:var(--ink);opacity:.5" stroke="none"/>
-        <circle cx="180" cy="58" r="4" style="fill:var(--warm)"/>
-        <g style="fill:var(--muted);font-family:var(--mono)" font-size="7.5">
-          <text x="29" y="96" text-anchor="middle">dura</text>
-          <text x="77" y="96" text-anchor="middle">suave</text>
-          <text x="125" y="96" text-anchor="middle">alta-chave</text>
-          <text x="173" y="96" text-anchor="middle">baixa-chave</text>
-        </g>
-        <text x="110" y="150" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">+ prática: a fonte aparece dentro do quadro</text>
-        <text x="110" y="172" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">a família muda; a emoção muda junto</text>
-      </svg></div>
-      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> A temperatura da luz — três gavetas, três sentimentos prontos; as cenas mais fortes misturam duas."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <rect x="20" y="70" width="180" height="26" rx="13" style="stroke:var(--line2)" stroke-width="1.6"/>
-        <path d="M22 83 h176" style="stroke:var(--warm)" stroke-width="10" opacity=".22"/>
-        <circle cx="50" cy="83" r="9" style="fill:var(--warm)"/>
-        <circle cx="110" cy="83" r="9" style="stroke:var(--muted)" stroke-width="2"/>
-        <circle cx="172" cy="83" r="9" style="stroke:var(--accent)" stroke-width="2"/>
-        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
-          <text x="50" y="112" text-anchor="middle">3200K</text>
-          <text x="110" y="112" text-anchor="middle">5600K</text>
-          <text x="172" y="112" text-anchor="middle">7000K+</text>
-        </g>
-        <g style="fill:var(--faint);font-family:var(--mono)" font-size="8">
-          <text x="50" y="140" text-anchor="middle">memória</text>
-          <text x="110" y="140" text-anchor="middle">realidade</text>
-          <text x="172" y="140" text-anchor="middle">isolamento</text>
-        </g>
-        <text x="110" y="176" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">misturar duas temperaturas cria as cenas mais fortes</text>
-      </svg></div>
-      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> As quatro perguntas que substituem um adjetivo — fonte, direção, temperatura e sombra."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <g style="stroke:var(--accent)" stroke-width="1.8" fill="none">
-          <rect x="20" y="20" width="80" height="34" rx="6"/>
-          <rect x="120" y="20" width="80" height="34" rx="6"/>
-          <rect x="20" y="70" width="80" height="34" rx="6"/>
-          <rect x="120" y="70" width="80" height="34" rx="6"/>
-        </g>
-        <g style="fill:var(--muted);font-family:var(--mono)" font-size="9">
-          <text x="60" y="41" text-anchor="middle">fonte</text>
-          <text x="160" y="41" text-anchor="middle">direção</text>
-          <text x="60" y="91" text-anchor="middle">temperatura</text>
-          <text x="160" y="91" text-anchor="middle">sombra</text>
-        </g>
-        <path d="M110 122 h0" style="stroke:var(--faint)" stroke-width="1.4"/>
-        <path d="M40 130 c40 -6 100 -6 140 0" style="stroke:var(--warm)" stroke-width="1.6" stroke-dasharray="3 3" fill="none"/>
-        <text x="110" y="160" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="9">as quatro juntas = controle, não sorte</text>
-        <text x="110" y="182" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">um adjetivo sozinho = resultado sorteado</text>
-      </svg></div>
-      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> Mesmo enquadramento, três luzes: a silhueta não muda — a história, sim."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <g style="stroke:var(--line2)" stroke-width="1.8" fill="none">
-          <circle cx="46" cy="70" r="16"/><circle cx="110" cy="70" r="16"/><circle cx="174" cy="70" r="16"/>
-        </g>
-        <path d="M30 54 l16 16" style="stroke:var(--warm)" stroke-width="2"/>
-        <path d="M110 40 v20" style="stroke:var(--accent)" stroke-width="2"/>
-        <path d="M188 60 l-14 10" style="stroke:var(--muted)" stroke-width="2"/>
-        <g style="fill:var(--faint);font-family:var(--mono)" font-size="8">
-          <text x="46" y="112" text-anchor="middle">segurança</text>
-          <text x="110" y="112" text-anchor="middle">tensão</text>
-          <text x="174" y="112" text-anchor="middle">perigo</text>
-        </g>
-        <text x="110" y="160" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">mesmo assunto, mesma pose — só a luz mudou</text>
-      </svg></div>
-    </div>
-    <p class="railcap"></p>
-    <div class="steps-ind"></div>
-    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
-  </div></aside>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Escolha uma cena simples do seu trabalho (um produto, um ambiente, um personagem) e escreva a descrição fixa dela.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Gere a versão quente: fonte e temperatura respondendo "conforto".</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Gere a versão fria e a versão dramática, trocando só fonte, direção, temperatura e sombra.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Coloque as três lado a lado: cada uma parece contar uma história diferente? Então a luz está fazendo o trabalho dela.</label></li>
+</ol>
+<p class="pdone">Você trocou a luz mantendo a cena idêntica e nomeou a emoção antes de gerar — exatamente o que a promessa desta aula pedia.</p>
+</section>
 </div>
-
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; As cinco linguagens da luz — cada família ativa uma emoção diferente no mesmo rosto." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.6" style="stroke:var(--accent)">
+<rect height="48" rx="4" width="38" x="10" y="34"></rect>
+<rect height="48" rx="4" width="38" x="58" y="34"></rect>
+<rect height="48" rx="4" width="38" x="106" y="34"></rect>
+<rect height="48" rx="4" style="stroke:var(--warm)" width="38" x="154" y="34"></rect>
+</g>
+<path d="M18 44 l24 30" stroke-width="2.2" style="stroke:var(--accent)"></path>
+<path d="M66 40 c10 10 10 26 0 36" opacity=".5" stroke-width="1.1" style="stroke:var(--accent)"></path>
+<rect height="40" stroke="none" style="fill:var(--accent);opacity:.14" width="30" x="110" y="38"></rect>
+<rect height="40" stroke="none" style="fill:var(--ink);opacity:.5" width="30" x="158" y="38"></rect>
+<circle cx="180" cy="58" r="4" style="fill:var(--warm)"></circle>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="29" y="96">dura</text>
+<text text-anchor="middle" x="77" y="96">suave</text>
+<text text-anchor="middle" x="125" y="96">alta-chave</text>
+<text text-anchor="middle" x="173" y="96">baixa-chave</text>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="150">+ prática: a fonte aparece dentro do quadro</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="172">a família muda; a emoção muda junto</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A temperatura da luz — três gavetas, três sentimentos prontos; as cenas mais fortes misturam duas." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="26" rx="13" stroke-width="1.6" style="stroke:var(--line2)" width="180" x="20" y="70"></rect>
+<path d="M22 83 h176" opacity=".22" stroke-width="10" style="stroke:var(--warm)"></path>
+<circle cx="50" cy="83" r="9" style="fill:var(--warm)"></circle>
+<circle cx="110" cy="83" r="9" stroke-width="2" style="stroke:var(--muted)"></circle>
+<circle cx="172" cy="83" r="9" stroke-width="2" style="stroke:var(--accent)"></circle>
+<g font-size="8" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="50" y="112">3200K</text>
+<text text-anchor="middle" x="110" y="112">5600K</text>
+<text text-anchor="middle" x="172" y="112">7000K+</text>
+</g>
+<g font-size="8" style="fill:var(--faint);font-family:var(--mono)">
+<text text-anchor="middle" x="50" y="140">memória</text>
+<text text-anchor="middle" x="110" y="140">realidade</text>
+<text text-anchor="middle" x="172" y="140">isolamento</text>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="176">misturar duas temperaturas cria as cenas mais fortes</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; As quatro perguntas que substituem um adjetivo — fonte, direção, temperatura e sombra." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.8" style="stroke:var(--accent)">
+<rect height="34" rx="6" width="80" x="20" y="20"></rect>
+<rect height="34" rx="6" width="80" x="120" y="20"></rect>
+<rect height="34" rx="6" width="80" x="20" y="70"></rect>
+<rect height="34" rx="6" width="80" x="120" y="70"></rect>
+</g>
+<g font-size="9" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="60" y="41">fonte</text>
+<text text-anchor="middle" x="160" y="41">direção</text>
+<text text-anchor="middle" x="60" y="91">temperatura</text>
+<text text-anchor="middle" x="160" y="91">sombra</text>
+</g>
+<path d="M110 122 h0" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<path d="M40 130 c40 -6 100 -6 140 0" fill="none" stroke-dasharray="3 3" stroke-width="1.6" style="stroke:var(--warm)"></path>
+<text font-size="9" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="160">as quatro juntas = controle, não sorte</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="182">um adjetivo sozinho = resultado sorteado</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Mesmo enquadramento, três luzes: a silhueta não muda — a história, sim." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<g fill="none" stroke-width="1.8" style="stroke:var(--line2)">
+<circle cx="46" cy="70" r="16"></circle><circle cx="110" cy="70" r="16"></circle><circle cx="174" cy="70" r="16"></circle>
+</g>
+<path d="M30 54 l16 16" stroke-width="2" style="stroke:var(--warm)"></path>
+<path d="M110 40 v20" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M188 60 l-14 10" stroke-width="2" style="stroke:var(--muted)"></path>
+<g font-size="8" style="fill:var(--faint);font-family:var(--mono)">
+<text text-anchor="middle" x="46" y="112">segurança</text>
+<text text-anchor="middle" x="110" y="112">tensão</text>
+<text text-anchor="middle" x="174" y="112">perigo</text>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="160">mesmo assunto, mesma pose — só a luz mudou</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+</div></aside>
+</div>
 <div class="fecho-wrap">
 <div class="recap-autor">
-  <p class="rak">Resumo</p>
-  <ul>
-    <li>As cinco linguagens da luz — dura, suave, alta-chave, baixa-chave e prática — fazem cada uma um trabalho emocional próprio.</li>
-    <li>A temperatura de cor tem três gavetas: quente (memória), neutra (realidade) e fria (isolamento) — misturar duas cria as cenas mais fortes.</li>
-    <li>Um adjetivo sozinho vira sorteio; nomear fonte, direção, temperatura e sombra vira encomenda.</li>
-    <li>Trocar só a luz numa cena idêntica muda a história inteira — é a alavanca de emoção mais forte que existe numa imagem parada.</li>
-  </ul>
+<p class="rak">Resumo</p>
+<ul>
+<li>As cinco linguagens da luz — dura, suave, alta-chave, baixa-chave e prática — fazem cada uma um trabalho emocional próprio.</li>
+<li>A temperatura de cor tem três gavetas: quente (memória), neutra (realidade) e fria (isolamento) — misturar duas cria as cenas mais fortes.</li>
+<li>Um adjetivo sozinho vira sorteio; nomear fonte, direção, temperatura e sombra vira encomenda.</li>
+<li>Trocar só a luz numa cena idêntica muda a história inteira — é a alavanca de emoção mais forte que existe numa imagem parada.</li>
+</ul>
 </div>
-
 <div class="next-action">
-  <p class="nak">Seu próximo passo</p>
-  <p class="na-win">Você acabou de aprender a escolher a emoção de uma cena antes de gerar, em vez de descobrir depois.</p>
-  <p class="na-action">Nos próximos 15 minutos: pegue uma imagem sua já pronta e escreva, ao lado dela, as quatro respostas — fonte, direção, temperatura, sombra. Se alguma pergunta ficar sem resposta, foi aí que a luz "escapou".</p>
-  <p class="na-hook">Na próxima aula, o desafio muda de luz para identidade: como manter o mesmo personagem crível em quatro cenários completamente diferentes, sem o rosto se perder pelo caminho.</p>
+<p class="nak">Seu próximo passo</p>
+<p class="na-win">Você acabou de aprender a escolher a emoção de uma cena antes de gerar, em vez de descobrir depois.</p>
+<p class="na-action">Nos próximos 15 minutos: pegue uma imagem sua já pronta e escreva, ao lado dela, as quatro respostas — fonte, direção, temperatura, sombra. Se alguma pergunta ficar sem resposta, foi aí que a luz "escapou".</p>
+<p class="na-hook">Na próxima aula, o desafio muda de luz para identidade: como manter o mesmo personagem crível em quatro cenários completamente diferentes, sem o rosto se perder pelo caminho.</p>
 </div>
 </div>
-
 <nav class="lnav"><a href="#aula-1">← aula anterior</a><a href="#aula-3">próxima aula →</a></nav>
 <footer>Aula 2 · Midjourney Profissional · Formação Cinema com IA</footer>
-
-<script type="application/json" id="cards-2">
+<script id="cards-2" type="application/json">
 [
   {"front":"Decisão: o cliente quer uma cena de tecnologia que pareça isolada e distante. Que temperatura de luz você escolhe e por quê?","back":"Fria, 7000K ou mais — é a faixa que o público já associa a isolamento e tecnologia, ao contrário do calor da luz de 3200K."},
   {"front":"Diagnóstico: seu pedido diz 'iluminação bonita, sombras dramáticas' e o resultado sai diferente a cada tentativa. O que falta nomear?","back":"Fonte, direção, temperatura e sombra — um adjetivo sozinho não diz de onde a luz vem, então o gerador inventa por conta própria."},
@@ -493,7 +469,6 @@ cinematic realism, 16:9 --ar 16:9</pre></div>
   {"front":"Aplicação: você tem uma única foto de um prato e precisa vender duas campanhas diferentes para o mesmo cliente — uma de manhã, outra de festa noturna. Como resolve sem novo ensaio?","back":"Gera duas reiluminações da mesma cena: luz quente de janela para a campanha de manhã, luz fria com um ponto de cor para a campanha noturna — o assunto continua o mesmo."}
 ]
 </script>
-
 <!--
 COMPLETUDE aula-2 | tipo=FUNDAMENTO | steps=4
   [OK] promise            .promise no cold-open (1)
@@ -511,204 +486,191 @@ COMPLETUDE aula-2 | tipo=FUNDAMENTO | steps=4
   [OK] teste-se-FUND      tipo=FUNDAMENTO: presente (1 quiz data-fb no s2)
 -->
 </section>
-
 <!-- ===== AULA 3 ===== -->
-<section class="view" id="v-aula-3" data-aula="3" data-tempo="21min">
+<section class="view" data-aula="3" data-tempo="21min" id="v-aula-3">
 <header class="hero"><div class="hero-inner">
-  <div>
-    <p class="kicker">Curso 2C · Aula 3</p>
-    <h1>Identidade estável em qualquer <em>mundo</em></h1>
-    <p class="promise">Ao fim desta aula você monta a âncora de personagem e a trava de figurino que mantêm o mesmo rosto e o mesmo guarda-roupa reconhecíveis em pelo menos quatro cenários diferentes.</p>
-    <p class="why">Um quadro lindo não vale nada se o personagem muda de rosto no quadro seguinte. É o defeito mais comum de quem começa a gerar sequências — e o motivo mais comum de um cliente rejeitar um trabalho inteiro. Esta aula entrega a defesa que os profissionais usam contra isso: não é clonar um rosto com perfeição, é manter uma identidade visual estável e crível.</p>
-    <p class="video-aula"><a href="https://www.loom.com/share/d9d24a68c8724144b6a0e102fbbf92eb" target="_blank" rel="noopener"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
-    <p class="cue"><span class="arw">↓</span> role para estudar</p>
-  </div>
-  <div class="herofig"><svg viewBox="0 0 300 240" fill="none" aria-hidden="true">
-    <!-- metáfora: o gabarito de marcenaria — o mesmo molde corta peças idênticas em madeiras diferentes -->
-    <rect x="40" y="50" width="90" height="130" rx="6" style="stroke:var(--line2)" stroke-width="2"/>
-    <path d="M55 70 h60 M55 90 h60 M55 110 h44 M55 130 h56 M55 150 h36" style="stroke:var(--line2);opacity:.5" stroke-width="1.4"/>
-    <path d="M150 60 l40 -10 v140 l-40 -10 Z" style="stroke:var(--warm)" stroke-width="2" fill="none"/>
-    <path d="M210 44 h50 v34 h-50 Z" style="stroke:var(--accent)" stroke-width="1.8"/>
-    <path d="M210 100 h50 v34 h-50 Z" style="stroke:var(--accent)" stroke-width="1.8"/>
-    <path d="M210 156 h50 v34 h-50 Z" style="stroke:var(--accent)" stroke-width="1.8"/>
-    <path d="M190 61 h20 M190 117 h20 M190 173 h20" style="stroke:var(--faint)" stroke-width="1.4" stroke-dasharray="3 3"/>
-    <text x="150" y="216" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="10">o gabarito não muda — só a madeira em que ele encosta</text>
-  </svg></div>
+<div>
+<p class="kicker">Curso 2C · Aula 3</p>
+<h1>Identidade estável em qualquer <em>mundo</em></h1>
+<p class="promise">Ao fim desta aula você monta a âncora de personagem e a trava de figurino que mantêm o mesmo rosto e o mesmo guarda-roupa reconhecíveis em pelo menos quatro cenários diferentes.</p>
+<p class="why">Um quadro lindo não vale nada se o personagem muda de rosto no quadro seguinte. É o defeito mais comum de quem começa a gerar sequências — e o motivo mais comum de um cliente rejeitar um trabalho inteiro. Esta aula entrega a defesa que os profissionais usam contra isso: não é clonar um rosto com perfeição, é manter uma identidade visual estável e crível.</p>
+<p class="video-aula"><a href="https://www.loom.com/share/d9d24a68c8724144b6a0e102fbbf92eb" rel="noopener" target="_blank"><span class="va-play"></span> assistir esta aula em vídeo <span class="va-lang">(inglês · opcional)</span></a></p>
+<p class="cue"><span class="arw">↓</span> role para estudar</p>
+</div>
+<div class="herofig"><svg aria-hidden="true" fill="none" viewbox="0 0 300 240">
+<!-- metáfora: o gabarito de marcenaria — o mesmo molde corta peças idênticas em madeiras diferentes -->
+<rect height="130" rx="6" stroke-width="2" style="stroke:var(--line2)" width="90" x="40" y="50"></rect>
+<path d="M55 70 h60 M55 90 h60 M55 110 h44 M55 130 h56 M55 150 h36" stroke-width="1.4" style="stroke:var(--line2);opacity:.5"></path>
+<path d="M150 60 l40 -10 v140 l-40 -10 Z" fill="none" stroke-width="2" style="stroke:var(--warm)"></path>
+<path d="M210 44 h50 v34 h-50 Z" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<path d="M210 100 h50 v34 h-50 Z" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<path d="M210 156 h50 v34 h-50 Z" stroke-width="1.8" style="stroke:var(--accent)"></path>
+<path d="M190 61 h20 M190 117 h20 M190 173 h20" stroke-dasharray="3 3" stroke-width="1.4" style="stroke:var(--faint)"></path>
+<text font-size="10" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="150" y="216">o gabarito não muda — só a madeira em que ele encosta</text>
+</svg></div>
 </div></header>
-
 <div class="layout">
-  <div class="col">
-
-    <section class="step" data-fig="1" data-kind="fundamento">
-      <h2><span class="n">01</span> Identidade tem três camadas: rosto, roupa, presença</h2>
-      <p>Antes de qualquer técnica, entenda o que compõe "ser reconhecível" numa sequência de imagens. São três camadas, e elas não pesam igual:</p>
-      <ul>
-        <li><b>Identidade</b> — rosto, cabelo, idade, corpo. É a camada mais difícil de travar; ela é a que mais varia entre uma geração e outra.</li>
-        <li><b>Figurino</b> — roupa, cores, acessórios, silhueta. É de onde vem a maior parte da consistência real, na prática.</li>
-        <li><b>Presença</b> — postura, expressão, movimento, energia do personagem. Consistência não é só aparência — é uma presença que se reconhece.</li>
-      </ul>
-      <p><i>Marina, fotógrafa autônoma em Recife, quase perdeu um contrato de seis meses com uma marca de cosméticos por causa disso. A primeira leva de imagens da "embaixadora" da campanha saiu linda — mas cada uma parecia uma mulher diferente: olhos mais claros aqui, nariz mais fino ali. O cliente reprovou tudo em cinco minutos: "isso não é a mesma pessoa". Foi ali que Marina aprendeu, do jeito difícil, que gerar um rosto bonito uma vez é fácil — mantê-lo é o verdadeiro trabalho.</i></p>
-      <div class="mobfig" data-mobfig="1"></div>
-      <button class="readbtn" data-read="s1">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="2" data-kind="ferramenta" data-versao="Midjourney, jul/2026">
-      <h2><span class="n">02</span> A referência visual dá memória à IA — mas a força certa importa</h2>
-      <p>O Midjourney tem um recurso chamado <span class="gterm" tabindex="0" data-def="Recurso do Midjourney que usa uma imagem sua de referência para guiar a aparência do personagem nas gerações seguintes — funciona como uma memória visual da ferramenta.">Referência Visual</span>: você envia uma imagem do seu personagem, e as próximas gerações usam esse rosto como ponto de partida. Não é mágico — o ajuste que decide se funciona bem chama-se <b>Força da Referência</b>, e tem três posições.</p>
-      <p>Na força <b>baixa</b>, a IA tem mais liberdade criativa — e o personagem começa a se afastar do original a cada nova cena. Na força <b>alta</b>, a trava é forte, mas o resultado pode ficar rígido, com poses e expressões repetidas demais. O ponto de partida profissional é a força <b>equilibrada</b>: identidade estável com variação natural de cena para cena.</p>
-      <p>A fotógrafa testou as três num mesmo dia de trabalho: na força baixa, o cliente reclamou que "não parecia mais a mesma modelo" depois da terceira cena; na força alta, reclamou que "parece sempre a mesma pose, travada"; na equilibrada, aprovou o lote inteiro sem pedir ajuste.</p>
-      <div class="mobfig" data-mobfig="2"></div>
-      <button class="readbtn" data-read="s2">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="3" data-kind="ferramenta" data-versao="Midjourney, jul/2026">
-      <h2><span class="n">03</span> A âncora de personagem: um bloco fixo que se repete, não se reinventa</h2>
-      <p>A segunda defesa é textual, e funciona em qualquer gerador: a <b>âncora de personagem</b> — um bloco de texto fixo que você copia, palavra por palavra, em todo pedido daquele personagem. A IA lembra melhor de uma informação repetida do que de uma descrição que muda a cada vez. Repetição cria estabilidade.</p>
-      <p>Isto que vem a seguir é só isso: um parágrafo descritivo em inglês, escrito uma vez, guardado, e colado sem alterar em cada nova cena — como uma ficha de identidade que você não reescreve, só copia.</p>
-      <pre>extremely handsome wealthy older man around 68 years old, silver
+<div class="col">
+<section class="step" data-fig="1" data-kind="fundamento">
+<h2><span class="n">01</span> Identidade tem três camadas: rosto, roupa, presença</h2>
+<p>Antes de qualquer técnica, entenda o que compõe "ser reconhecível" numa sequência de imagens. São três camadas, e elas não pesam igual:</p>
+<ul>
+<li><b>Identidade</b> — rosto, cabelo, idade, corpo. É a camada mais difícil de travar; ela é a que mais varia entre uma geração e outra.</li>
+<li><b>Figurino</b> — roupa, cores, acessórios, silhueta. É de onde vem a maior parte da consistência real, na prática.</li>
+<li><b>Presença</b> — postura, expressão, movimento, energia do personagem. Consistência não é só aparência — é uma presença que se reconhece.</li>
+</ul>
+<p><i>Marina, fotógrafa autônoma em Recife, quase perdeu um contrato de seis meses com uma marca de cosméticos por causa disso. A primeira leva de imagens da "embaixadora" da campanha saiu linda — mas cada uma parecia uma mulher diferente: olhos mais claros aqui, nariz mais fino ali. O cliente reprovou tudo em cinco minutos: "isso não é a mesma pessoa". Foi ali que Marina aprendeu, do jeito difícil, que gerar um rosto bonito uma vez é fácil — mantê-lo é o verdadeiro trabalho.</i></p>
+<div class="mobfig" data-mobfig="1"></div>
+<button class="readbtn" data-read="s1">marcar como lido</button>
+</section>
+<section class="step" data-fig="2" data-kind="ferramenta" data-versao="Midjourney, jul/2026">
+<h2><span class="n">02</span> A referência visual dá memória à IA — mas a força certa importa</h2>
+<p>O Midjourney tem um recurso chamado <span class="gterm" data-def="Recurso do Midjourney que usa uma imagem sua de referência para guiar a aparência do personagem nas gerações seguintes — funciona como uma memória visual da ferramenta." tabindex="0">Referência Visual</span>: você envia uma imagem do seu personagem, e as próximas gerações usam esse rosto como ponto de partida. Não é mágico — o ajuste que decide se funciona bem chama-se <b>Força da Referência</b>, e tem três posições.</p>
+<p>Na força <b>baixa</b>, a IA tem mais liberdade criativa — e o personagem começa a se afastar do original a cada nova cena. Na força <b>alta</b>, a trava é forte, mas o resultado pode ficar rígido, com poses e expressões repetidas demais. O ponto de partida profissional é a força <b>equilibrada</b>: identidade estável com variação natural de cena para cena.</p>
+<p>A fotógrafa testou as três num mesmo dia de trabalho: na força baixa, o cliente reclamou que "não parecia mais a mesma modelo" depois da terceira cena; na força alta, reclamou que "parece sempre a mesma pose, travada"; na equilibrada, aprovou o lote inteiro sem pedir ajuste.</p>
+<div class="mobfig" data-mobfig="2"></div>
+<button class="readbtn" data-read="s2">marcar como lido</button>
+</section>
+<section class="step" data-fig="3" data-kind="ferramenta" data-versao="Midjourney, jul/2026">
+<h2><span class="n">03</span> A âncora de personagem: um bloco fixo que se repete, não se reinventa</h2>
+<p>A segunda defesa é textual, e funciona em qualquer gerador: a <b>âncora de personagem</b> — um bloco de texto fixo que você copia, palavra por palavra, em todo pedido daquele personagem. A IA lembra melhor de uma informação repetida do que de uma descrição que muda a cada vez. Repetição cria estabilidade.</p>
+<p>Isto que vem a seguir é só isso: um parágrafo descritivo em inglês, escrito uma vez, guardado, e colado sem alterar em cada nova cena — como uma ficha de identidade que você não reescreve, só copia.</p>
+<pre>extremely handsome wealthy older man around 68 years old, silver
 slicked-back hair, deep blue eyes, elegant aged face, wearing a beige
 cashmere overcoat, cream turtleneck, tailored trousers, luxury watch,
 old money aesthetic</pre>
-      <div class="qerr">
-        <p class="qk">Erro comum</p>
-        <p class="qerr-txt"><b>Reescrever a descrição com sinônimos a cada novo pedido</b> — "cabelo grisalho" numa cena e "cabelo prateado" na seguinte. Para a IA, isso são duas informações diferentes, não a mesma pessoa com outras palavras. Copie o mesmo bloco, sempre, sem trocar um termo por outro.</p>
-      </div>
-      <p>A fotógrafa monta a âncora do personagem antes da primeira geração, junto com o cliente — como quem preenche uma ficha de elenco. Depois disso, ela só cola o mesmo parágrafo em cada nova cena e muda apenas o cenário ao redor.</p>
-      <div class="mobfig" data-mobfig="3"></div>
-      <button class="readbtn" data-read="s3">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="4" data-kind="ferramenta" data-versao="Midjourney, jul/2026">
-      <h2><span class="n">04</span> O guarda-roupa é o que sobrevive quando o rosto varia</h2>
-      <p>Mesmo com referência visual e âncora de texto, o rosto ainda pode oscilar um pouco de cena para cena — é uma limitação real da tecnologia, não um erro seu. A terceira defesa cobre exatamente essa folga: a <b>trava de figurino</b>.</p>
-      <p>Rosto oscila; silhueta sobrevive. Um personagem forte se reconhece pela cor, pela forma, pela roupa, pelo acessório — um casaco específico, um óculos, um colar, um par de sapatos. Quando você trava essas peças na âncora de texto, o público continua reconhecendo o personagem mesmo que um detalhe fino do rosto mude.</p>
-      <p>A fotógrafa criou uma personagem "viajante" para a campanha de uma agência de turismo: lenço vermelho no pescoço e mochila de couro específica, travados na âncora, em toda cena. Mesmo com o rosto variando ligeiramente de cidade para cidade na sequência, ninguém no teste com o cliente teve dúvida de que era a mesma pessoa — o lenço e a mochila fizeram o trabalho.</p>
-      <div class="mobfig" data-mobfig="4"></div>
-      <button class="readbtn" data-read="s4">marcar como lido</button>
-    </section>
-
-    <section class="step" data-fig="5" data-kind="ferramenta" data-versao="Midjourney, jul/2026">
-      <h2><span class="n">05</span> O fluxo profissional: as três defesas juntas, em mundos diferentes</h2>
-      <p>Nenhuma das três defesas sozinha resolve tudo — juntas, sim. Referência visual + âncora de personagem + trava de figurino é a combinação que sustenta um personagem crível mesmo trocando o cenário inteiro: ruas de outra cidade, um lobby de hotel, um café, uma praia.</p>
-      <div class="qsteps">
-        <p class="qk">Montando a identidade estável</p>
-        <ol>
-          <li>Escolha ou gere uma imagem do personagem para servir de referência visual.</li>
-          <li>Escreva a âncora de texto uma única vez — rosto, idade, e ao menos duas peças fixas de figurino.</li>
-          <li>Gere a primeira cena com força equilibrada e confira: o personagem está reconhecível?</li>
-          <li>Troque só o cenário nas próximas gerações, mantendo referência, âncora e figurino idênticos.</li>
-        </ol>
-      </div>
-      <p>A fotógrafa aplicou as três defesas juntas para uma boutique de roupas que queria uma "cliente fixa" vestindo as peças da coleção em quatro posts diferentes: café da manhã, viagem, escritório, evento à noite. Referência salva, âncora colada, guarda-roupa travado — quatro cenas, quatro posts, a mesma pessoa reconhecível em todos, e a coleção inteira exposta sem contratar quatro modelos.</p>
-      <div class="mobfig" data-mobfig="5"></div>
-      <button class="readbtn" data-read="s5">marcar como lido</button>
-    </section>
-
-    <section class="practice" data-practice="p3" data-mode="prompt">
-      <p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
-      <h3 class="ph">Coloque seu personagem em quatro mundos diferentes</h3>
-      <p class="pgoal">Sair com um personagem reconhecível em 4 cenários diferentes, usando referência visual, âncora de texto e figurino travado — em ~13 minutos.</p>
-      <p class="psafe">Cada geração é um arquivo novo — a referência original fica salva e intacta, e você pode repetir qualquer cena quantas vezes quiser. Se o personagem "escapar" numa cena, o problema quase sempre é a âncora reescrita com palavras diferentes: volte ao texto original e cole de novo, sem alterar.</p>
-      <div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">&lt;a MESMA âncora de personagem, copiada sem alterar: idade,
+<div class="qerr">
+<p class="qk">Erro comum</p>
+<p class="qerr-txt"><b>Reescrever a descrição com sinônimos a cada novo pedido</b> — "cabelo grisalho" numa cena e "cabelo prateado" na seguinte. Para a IA, isso são duas informações diferentes, não a mesma pessoa com outras palavras. Copie o mesmo bloco, sempre, sem trocar um termo por outro.</p>
+</div>
+<p>A fotógrafa monta a âncora do personagem antes da primeira geração, junto com o cliente — como quem preenche uma ficha de elenco. Depois disso, ela só cola o mesmo parágrafo em cada nova cena e muda apenas o cenário ao redor.</p>
+<div class="mobfig" data-mobfig="3"></div>
+<button class="readbtn" data-read="s3">marcar como lido</button>
+</section>
+<section class="step" data-fig="4" data-kind="ferramenta" data-versao="Midjourney, jul/2026">
+<h2><span class="n">04</span> O guarda-roupa é o que sobrevive quando o rosto varia</h2>
+<p>Mesmo com referência visual e âncora de texto, o rosto ainda pode oscilar um pouco de cena para cena — é uma limitação real da tecnologia, não um erro seu. A terceira defesa cobre exatamente essa folga: a <b>trava de figurino</b>.</p>
+<p>Rosto oscila; silhueta sobrevive. Um personagem forte se reconhece pela cor, pela forma, pela roupa, pelo acessório — um casaco específico, um óculos, um colar, um par de sapatos. Quando você trava essas peças na âncora de texto, o público continua reconhecendo o personagem mesmo que um detalhe fino do rosto mude.</p>
+<p>A fotógrafa criou uma personagem "viajante" para a campanha de uma agência de turismo: lenço vermelho no pescoço e mochila de couro específica, travados na âncora, em toda cena. Mesmo com o rosto variando ligeiramente de cidade para cidade na sequência, ninguém no teste com o cliente teve dúvida de que era a mesma pessoa — o lenço e a mochila fizeram o trabalho.</p>
+<div class="mobfig" data-mobfig="4"></div>
+<button class="readbtn" data-read="s4">marcar como lido</button>
+</section>
+<section class="step" data-fig="5" data-kind="ferramenta" data-versao="Midjourney, jul/2026">
+<h2><span class="n">05</span> O fluxo profissional: as três defesas juntas, em mundos diferentes</h2>
+<p>Nenhuma das três defesas sozinha resolve tudo — juntas, sim. Referência visual + âncora de personagem + trava de figurino é a combinação que sustenta um personagem crível mesmo trocando o cenário inteiro: ruas de outra cidade, um lobby de hotel, um café, uma praia.</p>
+<div class="qsteps">
+<p class="qk">Montando a identidade estável</p>
+<ol>
+<li>Escolha ou gere uma imagem do personagem para servir de referência visual.</li>
+<li>Escreva a âncora de texto uma única vez — rosto, idade, e ao menos duas peças fixas de figurino.</li>
+<li>Gere a primeira cena com força equilibrada e confira: o personagem está reconhecível?</li>
+<li>Troque só o cenário nas próximas gerações, mantendo referência, âncora e figurino idênticos.</li>
+</ol>
+</div>
+<p>A fotógrafa aplicou as três defesas juntas para uma boutique de roupas que queria uma "cliente fixa" vestindo as peças da coleção em quatro posts diferentes: café da manhã, viagem, escritório, evento à noite. Referência salva, âncora colada, guarda-roupa travado — quatro cenas, quatro posts, a mesma pessoa reconhecível em todos, e a coleção inteira exposta sem contratar quatro modelos.</p>
+<div class="mobfig" data-mobfig="5"></div>
+<button class="readbtn" data-read="s5">marcar como lido</button>
+</section>
+<section class="practice" data-mode="prompt" data-practice="p3">
+<p class="pk">Pratique agora <span class="pcount">0/4 feito</span></p>
+<h3 class="ph">Coloque seu personagem em quatro mundos diferentes</h3>
+<p class="pgoal">Sair com um personagem reconhecível em 4 cenários diferentes, usando referência visual, âncora de texto e figurino travado — em ~13 minutos.</p>
+<p class="psafe">Cada geração é um arquivo novo — a referência original fica salva e intacta, e você pode repetir qualquer cena quantas vezes quiser. Se o personagem "escapar" numa cena, o problema quase sempre é a âncora reescrita com palavras diferentes: volte ao texto original e cole de novo, sem alterar.</p>
+<div class="pcodewrap"><button class="pcopy" type="button">copiar</button><pre class="pcode">&lt;a MESMA âncora de personagem, copiada sem alterar: idade,
 rosto, e ao menos 2 peças fixas de figurino&gt;,
 &lt;cenário deste plano: cidade, ambiente, hora do dia&gt;,
 &lt;ação simples do personagem nesta cena&gt;,
 cinematic realism, consistent character --ar 16:9</pre></div>
-      <ol class="psteps">
-        <li><label><input type="checkbox" data-ptask="1"> Escreva a âncora do seu personagem: idade, rosto, e pelo menos duas peças fixas de figurino.</label></li>
-        <li><label><input type="checkbox" data-ptask="2"> Gere a primeira cena com força de referência equilibrada e confira se o personagem ficou reconhecível.</label></li>
-        <li><label><input type="checkbox" data-ptask="3"> Gere mais três cenas trocando só o cenário, colando a âncora sem alterar uma palavra.</label></li>
-        <li><label><input type="checkbox" data-ptask="4"> Enfileire as quatro cenas: um estranho reconheceria que é a mesma pessoa em todas? Então a identidade travou.</label></li>
-      </ol>
-      <p class="pdone">Você colocou o mesmo personagem em quatro mundos diferentes e ele continuou reconhecível — a promessa desta aula, cumprida.</p>
-    </section>
-  </div>
-
-  <aside class="rail"><div class="railsticky">
-    <div class="figstage">
-      <div class="fig on" data-fig="1" data-cap="<b>Fig. 1</b> As três camadas da identidade — o rosto é a mais difícil de travar; o figurino é de onde vem a maior parte da consistência real."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <circle cx="110" cy="100" r="30" style="stroke:var(--accent)" stroke-width="2"/>
-        <circle cx="110" cy="100" r="56" style="stroke:var(--muted)" stroke-width="1.6"/>
-        <circle cx="110" cy="100" r="80" style="stroke:var(--faint)" stroke-width="1.2" stroke-dasharray="3 3"/>
-        <text x="110" y="104" text-anchor="middle" style="fill:var(--accent);font-family:var(--mono)" font-size="8">rosto</text>
-        <text x="110" y="50" text-anchor="middle" style="fill:var(--muted);font-family:var(--mono)" font-size="8">figurino</text>
-        <text x="110" y="26" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="8">presença</text>
-        <text x="110" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">quanto mais fora do centro, mais fácil de travar</text>
-      </svg></div>
-      <div class="fig" data-fig="2" data-cap="<b>Fig. 2</b> A força da referência: baixa deixa o personagem escapar, alta trava demais, equilibrada é o ponto de trabalho."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <path d="M24 130 h172" style="stroke:var(--line2)" stroke-width="2"/>
-        <circle cx="50" cy="130" r="7" style="stroke:var(--muted)" stroke-width="2"/>
-        <circle cx="110" cy="130" r="9" style="fill:var(--accent)"/>
-        <circle cx="180" cy="130" r="7" style="stroke:var(--warm)" stroke-width="2"/>
-        <path d="M40 90 c6 10 16 6 20 -4 M180 90 c-4 12 4 18 12 10" style="stroke:var(--faint)" stroke-width="1.2" stroke-dasharray="2 3" fill="none"/>
-        <g style="fill:var(--muted);font-family:var(--mono)" font-size="8">
-          <text x="50" y="156" text-anchor="middle">baixa: escapa</text>
-          <text x="110" y="156" text-anchor="middle" style="fill:var(--accent)">equilibrada</text>
-          <text x="180" y="156" text-anchor="middle">alta: trava demais</text>
-        </g>
-      </svg></div>
-      <div class="fig" data-fig="3" data-cap="<b>Fig. 3</b> A âncora de texto: o mesmo bloco fixo copiado em cada pedido — repetição cria estabilidade."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <rect x="70" y="16" width="80" height="40" rx="6" style="stroke:var(--accent)" stroke-width="2"/>
-        <path d="M70 30 h80 M70 42 h60" style="stroke:var(--accent)" stroke-width="1.2" opacity=".6"/>
-        <path d="M90 56 v14 M110 56 v30 M130 56 v50" style="stroke:var(--faint)" stroke-width="1.2" stroke-dasharray="2 3"/>
-        <g style="stroke:var(--line2)" stroke-width="1.6" fill="none">
-          <rect x="30" y="70" width="60" height="30" rx="5"/>
-          <rect x="100" y="86" width="60" height="30" rx="5"/>
-          <rect x="150" y="106" width="60" height="30" rx="5"/>
-        </g>
-        <text x="110" y="176" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">mesmo bloco, três cenários diferentes</text>
-      </svg></div>
-      <div class="fig" data-fig="4" data-cap="<b>Fig. 4</b> Rosto oscila, silhueta sobrevive: cor, forma e acessório travados seguram a identidade mesmo com o rosto variando."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <circle cx="110" cy="56" r="20" style="stroke:var(--faint)" stroke-width="1.4" stroke-dasharray="2 3"/>
-        <path d="M80 90 c8 -10 42 -10 60 0 v70 h-60 Z" style="stroke:var(--accent)" stroke-width="2" fill="none"/>
-        <path d="M80 96 h60" style="stroke:var(--warm)" stroke-width="3"/>
-        <circle cx="110" cy="130" r="6" style="fill:var(--accent)"/>
-        <text x="110" y="180" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">lenço e silhueta travados = identidade reconhecida</text>
-      </svg></div>
-      <div class="fig" data-fig="5" data-cap="<b>Fig. 5</b> As três defesas somadas sustentam o mesmo personagem em cenários totalmente diferentes."><svg viewBox="0 0 220 200" fill="none" aria-hidden="true">
-        <circle cx="60" cy="46" r="16" style="stroke:var(--accent)" stroke-width="1.8"/>
-        <circle cx="110" cy="34" r="16" style="stroke:var(--accent)" stroke-width="1.8"/>
-        <circle cx="160" cy="46" r="16" style="stroke:var(--accent)" stroke-width="1.8"/>
-        <path d="M60 62 v20 M110 50 v32 M160 62 v20" style="stroke:var(--faint)" stroke-width="1.2" stroke-dasharray="2 3"/>
-        <rect x="70" y="110" width="80" height="50" rx="8" style="stroke:var(--warm)" stroke-width="2"/>
-        <text x="110" y="140" text-anchor="middle" style="fill:var(--warm);font-family:var(--mono)" font-size="8">identidade estável</text>
-        <g style="fill:var(--muted);font-family:var(--mono)" font-size="7.5">
-          <text x="60" y="26" text-anchor="middle">referência</text>
-          <text x="110" y="14" text-anchor="middle">âncora</text>
-          <text x="160" y="26" text-anchor="middle">figurino</text>
-        </g>
-        <text x="110" y="184" text-anchor="middle" style="fill:var(--faint);font-family:var(--mono)" font-size="9">cenário muda; identidade não</text>
-      </svg></div>
-    </div>
-    <p class="railcap"></p>
-    <div class="steps-ind"></div>
-    <p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
-  </div></aside>
+<ol class="psteps">
+<li><label><input data-ptask="1" type="checkbox"/> Escreva a âncora do seu personagem: idade, rosto, e pelo menos duas peças fixas de figurino.</label></li>
+<li><label><input data-ptask="2" type="checkbox"/> Gere a primeira cena com força de referência equilibrada e confira se o personagem ficou reconhecível.</label></li>
+<li><label><input data-ptask="3" type="checkbox"/> Gere mais três cenas trocando só o cenário, colando a âncora sem alterar uma palavra.</label></li>
+<li><label><input data-ptask="4" type="checkbox"/> Enfileire as quatro cenas: um estranho reconheceria que é a mesma pessoa em todas? Então a identidade travou.</label></li>
+</ol>
+<p class="pdone">Você colocou o mesmo personagem em quatro mundos diferentes e ele continuou reconhecível — a promessa desta aula, cumprida.</p>
+</section>
 </div>
-
+<aside class="rail"><div class="railsticky">
+<div class="figstage">
+<div class="fig on" data-cap="&lt;b&gt;Fig. 1&lt;/b&gt; As três camadas da identidade — o rosto é a mais difícil de travar; o figurino é de onde vem a maior parte da consistência real." data-fig="1"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="110" cy="100" r="30" stroke-width="2" style="stroke:var(--accent)"></circle>
+<circle cx="110" cy="100" r="56" stroke-width="1.6" style="stroke:var(--muted)"></circle>
+<circle cx="110" cy="100" r="80" stroke-dasharray="3 3" stroke-width="1.2" style="stroke:var(--faint)"></circle>
+<text font-size="8" style="fill:var(--accent);font-family:var(--mono)" text-anchor="middle" x="110" y="104">rosto</text>
+<text font-size="8" style="fill:var(--muted);font-family:var(--mono)" text-anchor="middle" x="110" y="50">figurino</text>
+<text font-size="8" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="26">presença</text>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="184">quanto mais fora do centro, mais fácil de travar</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 2&lt;/b&gt; A força da referência: baixa deixa o personagem escapar, alta trava demais, equilibrada é o ponto de trabalho." data-fig="2"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<path d="M24 130 h172" stroke-width="2" style="stroke:var(--line2)"></path>
+<circle cx="50" cy="130" r="7" stroke-width="2" style="stroke:var(--muted)"></circle>
+<circle cx="110" cy="130" r="9" style="fill:var(--accent)"></circle>
+<circle cx="180" cy="130" r="7" stroke-width="2" style="stroke:var(--warm)"></circle>
+<path d="M40 90 c6 10 16 6 20 -4 M180 90 c-4 12 4 18 12 10" fill="none" stroke-dasharray="2 3" stroke-width="1.2" style="stroke:var(--faint)"></path>
+<g font-size="8" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="50" y="156">baixa: escapa</text>
+<text style="fill:var(--accent)" text-anchor="middle" x="110" y="156">equilibrada</text>
+<text text-anchor="middle" x="180" y="156">alta: trava demais</text>
+</g>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 3&lt;/b&gt; A âncora de texto: o mesmo bloco fixo copiado em cada pedido — repetição cria estabilidade." data-fig="3"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<rect height="40" rx="6" stroke-width="2" style="stroke:var(--accent)" width="80" x="70" y="16"></rect>
+<path d="M70 30 h80 M70 42 h60" opacity=".6" stroke-width="1.2" style="stroke:var(--accent)"></path>
+<path d="M90 56 v14 M110 56 v30 M130 56 v50" stroke-dasharray="2 3" stroke-width="1.2" style="stroke:var(--faint)"></path>
+<g fill="none" stroke-width="1.6" style="stroke:var(--line2)">
+<rect height="30" rx="5" width="60" x="30" y="70"></rect>
+<rect height="30" rx="5" width="60" x="100" y="86"></rect>
+<rect height="30" rx="5" width="60" x="150" y="106"></rect>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="176">mesmo bloco, três cenários diferentes</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 4&lt;/b&gt; Rosto oscila, silhueta sobrevive: cor, forma e acessório travados seguram a identidade mesmo com o rosto variando." data-fig="4"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="110" cy="56" r="20" stroke-dasharray="2 3" stroke-width="1.4" style="stroke:var(--faint)"></circle>
+<path d="M80 90 c8 -10 42 -10 60 0 v70 h-60 Z" fill="none" stroke-width="2" style="stroke:var(--accent)"></path>
+<path d="M80 96 h60" stroke-width="3" style="stroke:var(--warm)"></path>
+<circle cx="110" cy="130" r="6" style="fill:var(--accent)"></circle>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="180">lenço e silhueta travados = identidade reconhecida</text>
+</svg></div>
+<div class="fig" data-cap="&lt;b&gt;Fig. 5&lt;/b&gt; As três defesas somadas sustentam o mesmo personagem em cenários totalmente diferentes." data-fig="5"><svg aria-hidden="true" fill="none" viewbox="0 0 220 200">
+<circle cx="60" cy="46" r="16" stroke-width="1.8" style="stroke:var(--accent)"></circle>
+<circle cx="110" cy="34" r="16" stroke-width="1.8" style="stroke:var(--accent)"></circle>
+<circle cx="160" cy="46" r="16" stroke-width="1.8" style="stroke:var(--accent)"></circle>
+<path d="M60 62 v20 M110 50 v32 M160 62 v20" stroke-dasharray="2 3" stroke-width="1.2" style="stroke:var(--faint)"></path>
+<rect height="50" rx="8" stroke-width="2" style="stroke:var(--warm)" width="80" x="70" y="110"></rect>
+<text font-size="8" style="fill:var(--warm);font-family:var(--mono)" text-anchor="middle" x="110" y="140">identidade estável</text>
+<g font-size="7.5" style="fill:var(--muted);font-family:var(--mono)">
+<text text-anchor="middle" x="60" y="26">referência</text>
+<text text-anchor="middle" x="110" y="14">âncora</text>
+<text text-anchor="middle" x="160" y="26">figurino</text>
+</g>
+<text font-size="9" style="fill:var(--faint);font-family:var(--mono)" text-anchor="middle" x="110" y="184">cenário muda; identidade não</text>
+</svg></div>
+</div>
+<p class="railcap"></p>
+<div class="steps-ind"></div>
+<p class="sidenote">Grife qualquer trecho para virar um cartão de revisão.</p>
+</div></aside>
+</div>
 <div class="fecho-wrap">
 <div class="recap-autor">
-  <p class="rak">Resumo</p>
-  <ul>
-    <li>Identidade tem três camadas — rosto, figurino, presença — e o figurino é de onde vem a maior parte da consistência real.</li>
-    <li>A força da referência visual tem um ponto de trabalho: nem tão baixa que o personagem escape, nem tão alta que fique rígido.</li>
-    <li>A âncora de texto é um bloco fixo que se copia, nunca se reinventa com sinônimos — repetição é o que cria estabilidade.</li>
-    <li>Referência visual, âncora de personagem e trava de figurino juntas sustentam a mesma identidade mesmo com o cenário inteiro trocado.</li>
-  </ul>
+<p class="rak">Resumo</p>
+<ul>
+<li>Identidade tem três camadas — rosto, figurino, presença — e o figurino é de onde vem a maior parte da consistência real.</li>
+<li>A força da referência visual tem um ponto de trabalho: nem tão baixa que o personagem escape, nem tão alta que fique rígido.</li>
+<li>A âncora de texto é um bloco fixo que se copia, nunca se reinventa com sinônimos — repetição é o que cria estabilidade.</li>
+<li>Referência visual, âncora de personagem e trava de figurino juntas sustentam a mesma identidade mesmo com o cenário inteiro trocado.</li>
+</ul>
 </div>
-
 <div class="next-action">
-  <p class="nak">Seu próximo passo</p>
-  <p class="na-win">Você acabou de fechar o ciclo desta trilha: planejamento de sequência, luz com intenção e identidade estável — as três bases do acabamento profissional em imagem gerada.</p>
-  <p class="na-action">Nos próximos 15 minutos: monte a âncora de um personagem seu de verdade — um produto-personagem, um mascote, ou um modelo recorrente do seu trabalho — e guarde o texto num lugar fixo. Da próxima vez que precisar dele, é copiar e colar, não reinventar.</p>
-  <p class="na-hook">A próxima etapa da formação está no curso 3, "Pense como um diretor" — onde a câmera ganha movimento e a sequência vira cena de verdade.</p>
+<p class="nak">Seu próximo passo</p>
+<p class="na-win">Você acabou de fechar o ciclo desta trilha: planejamento de sequência, luz com intenção e identidade estável — as três bases do acabamento profissional em imagem gerada.</p>
+<p class="na-action">Nos próximos 15 minutos: monte a âncora de um personagem seu de verdade — um produto-personagem, um mascote, ou um modelo recorrente do seu trabalho — e guarde o texto num lugar fixo. Da próxima vez que precisar dele, é copiar e colar, não reinventar.</p>
+<p class="na-hook">A próxima etapa da formação está no curso 3, "Pense como um diretor" — onde a câmera ganha movimento e a sequência vira cena de verdade.</p>
 </div>
 </div>
-
 <nav class="lnav"><a href="#aula-2">← aula anterior</a><a href="#trilha">concluir o curso ✓ →</a></nav>
 <footer>Aula 3 · Midjourney Profissional · Formação Cinema com IA</footer>
-
-<script type="application/json" id="cards-3">
+<script id="cards-3" type="application/json">
 [
   {"front":"Contraste: qual a diferença prática entre força de referência baixa e força alta?","back":"Baixa dá liberdade criativa, mas o personagem se afasta do original a cada cena; alta trava a identidade, mas pode ficar rígida — a equilibrada é o ponto de trabalho."},
   {"front":"Diagnóstico: você mudou 'cabelo grisalho' para 'cabelo prateado' entre duas cenas do mesmo personagem, e ele saiu diferente. Qual foi o erro?","back":"Reescrever a âncora com sinônimos — para a IA são duas informações diferentes. A âncora se copia palavra por palavra, nunca se reinventa."},
@@ -716,7 +678,6 @@ cinematic realism, consistent character --ar 16:9</pre></div>
   {"front":"Aplicação: o rosto do seu personagem variou um pouco entre duas cenas, mas o cliente não notou. O que provavelmente segurou o reconhecimento?","back":"O figurino travado — silhueta, cor e acessórios fixos sobrevivem mesmo quando um detalhe fino do rosto oscila."}
 ]
 </script>
-
 <!--
 COMPLETUDE aula-3 | tipo=FERRAMENTA | steps=5
   [OK] promise            .promise no cold-open (1)
@@ -734,7 +695,6 @@ COMPLETUDE aula-3 | tipo=FERRAMENTA | steps=5
   [N/A] teste-se-FUND     aula é FERRAMENTA (obrigação não se aplica); sem teste-se opcional nesta aula
 -->
 </section>
-
 <script src="../../assets/curso.js"></script>
 </body>
 </html>
